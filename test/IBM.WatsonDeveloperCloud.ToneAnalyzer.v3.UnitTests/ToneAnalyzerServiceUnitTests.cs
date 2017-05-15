@@ -289,6 +289,20 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             var analyzeTone = service.Tone(null, "tones", true);
         }
 
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void Tone_Empty_Version()
+        {
+            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            service.VersionDate = null;
+
+            ToneInput toneInput = new ToneInput()
+            {
+                Text = Arg.Any<string>()
+            };
+
+            var analyzeTone = service.Tone(toneInput, Arg.Any<string>(), Arg.Any<bool>());
+        }
+
         [TestMethod]
         public void ToneChat_Success_With_ToneChatInput()
         {
@@ -398,6 +412,27 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                     }
                 }
             };
+            service.ToneChat(toneChatInput);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ToneChat_Empty_Version()
+        {
+            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            service.VersionDate = null;
+
+            ToneChatInput toneChatInput = new ToneChatInput()
+            {
+                Utterances = new List<Utterance>()
+                {
+                    new Utterance()
+                    {
+                        Text = "utteranceText",
+                        User = "utteranceUser"
+                    }
+                }
+            };
+
             service.ToneChat(toneChatInput);
         }
     }

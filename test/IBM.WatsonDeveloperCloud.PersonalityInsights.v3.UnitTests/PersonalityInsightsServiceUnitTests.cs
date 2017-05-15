@@ -155,6 +155,30 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.UnitTests
             service.Profile("Test", "me", null);
         }
 
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void Profile_No_Version()
+        {
+            PersonalityInsightsService service =
+                new PersonalityInsightsService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            //  Test Profile
+            ContentListContainer contentListContainer = new ContentListContainer()
+            {
+                ContentItems = new List<ContentItem>()
+                {
+                    new ContentItem()
+                    {
+                        Contenttype = ContentItem.ContenttypeEnum.TEXT_PLAIN,
+                        Language = ContentItem.LanguageEnum.EN,
+                        Content = content
+                    }
+                }
+            };
+
+            service.Profile("contentType", "accept", contentListContainer);
+        }
+
         [TestMethod, ExpectedException(typeof(AggregateException))]
         public void Profle_Catch_Exception()
         {
