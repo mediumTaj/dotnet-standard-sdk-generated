@@ -5,10 +5,10 @@ All URIs are relative to *http://localhost/conversation/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWorkspace**](WorkspacesAPI.md#createworkspace) | **POST** /v1/workspaces | Create workspace.
-[**DeleteWorkspace**](WorkspacesAPI.md#deleteworkspace) | **DELETE** /v1/workspaces/{workspace_id} | Delete workspace.
-[**GetWorkspace**](WorkspacesAPI.md#getworkspace) | **GET** /v1/workspaces/{workspace_id} | Get information about a workspace.
+[**DeleteWorkspace**](WorkspacesAPI.md#deleteworkspace) | **DELETE** /v1/workspaces/{workspaceId} | Delete workspace.
+[**GetWorkspace**](WorkspacesAPI.md#getworkspace) | **GET** /v1/workspaces/{workspaceId} | Get information about a workspace.
 [**ListWorkspaces**](WorkspacesAPI.md#listworkspaces) | **GET** /v1/workspaces | List workspaces.
-[**UpdateWorkspace**](WorkspacesAPI.md#updateworkspace) | **POST** /v1/workspaces/{workspace_id} | Update workspace.
+[**UpdateWorkspace**](WorkspacesAPI.md#updateworkspace) | **POST** /v1/workspaces/{workspaceId} | Update workspace.
 
 
 <a name="createworkspace"></a>

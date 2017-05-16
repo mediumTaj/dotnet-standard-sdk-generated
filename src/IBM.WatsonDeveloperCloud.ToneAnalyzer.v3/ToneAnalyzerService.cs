@@ -69,11 +69,11 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
 
         public ToneAnalysis Tone(ToneInput text, string tones = null, bool? sentences = null)
         {
-                if (text == null)
+            if (text == null)
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
+                throw new ArgumentNullException("versionDate cannot be null. Use to 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
 
             ToneAnalysis result = null;
 
@@ -81,7 +81,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v3/tone")
+                                .PostAsync(this.Endpoint + "/v3/tone")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("tones", tones)
                                 .WithArgument("sentences", sentences)
@@ -99,11 +99,11 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
 
         public UtteranceAnalyses ToneChat(ToneChatInput utterances)
         {
-                if (utterances == null)
+            if (utterances == null)
                 throw new ArgumentNullException(nameof(utterances));
 
             if(string.IsNullOrEmpty(VersionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
+                throw new ArgumentNullException("versionDate cannot be null. Use to 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
 
             UtteranceAnalyses result = null;
 
@@ -111,7 +111,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v3/tone_chat")
+                                .PostAsync(this.Endpoint + "/v3/tone_chat")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<ToneChatInput>(utterances)
                                 .As<UtteranceAnalyses>()

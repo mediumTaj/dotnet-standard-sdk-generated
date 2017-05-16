@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Message**](MessageAPI.md#message) | **POST** /v1/workspaces/{workspace_id}/message | Get a response to a user's input.
+[**Message**](MessageAPI.md#message) | **POST** /v1/workspaces/{workspaceId}/message | Get a response to a user's input.
 
 
 <a name="message"></a>

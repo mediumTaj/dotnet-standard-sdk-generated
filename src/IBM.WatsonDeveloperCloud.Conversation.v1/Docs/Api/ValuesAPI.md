@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateValue**](ValuesAPI.md#createvalue) | **POST** /v1/workspaces/{workspace_id}/entities/{entity}/values | Add entity value.
-[**DeleteValue**](ValuesAPI.md#deletevalue) | **DELETE** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value} | Delete entity value.
-[**GetValue**](ValuesAPI.md#getvalue) | **GET** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value} | Get entity value.
-[**ListValues**](ValuesAPI.md#listvalues) | **GET** /v1/workspaces/{workspace_id}/entities/{entity}/values | List entity values.
-[**UpdateValue**](ValuesAPI.md#updatevalue) | **POST** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value} | Update entity value.
+[**CreateValue**](ValuesAPI.md#createvalue) | **POST** /v1/workspaces/{workspaceId}/entities/{entity}/values | Add entity value.
+[**DeleteValue**](ValuesAPI.md#deletevalue) | **DELETE** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value} | Delete entity value.
+[**GetValue**](ValuesAPI.md#getvalue) | **GET** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value} | Get entity value.
+[**ListValues**](ValuesAPI.md#listvalues) | **GET** /v1/workspaces/{workspaceId}/entities/{entity}/values | List entity values.
+[**UpdateValue**](ValuesAPI.md#updatevalue) | **POST** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value} | Update entity value.
 
 
 <a name="createvalue"></a>

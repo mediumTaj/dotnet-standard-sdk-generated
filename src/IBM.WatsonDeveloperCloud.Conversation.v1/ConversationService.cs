@@ -83,7 +83,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateExample>(body)
                                 .As<ExampleResponse>()
@@ -113,7 +113,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples/{text}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -142,7 +142,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples/{text}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<ExampleResponse>()
                                 .Result;
@@ -169,7 +169,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -204,7 +204,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples/{text}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateExample>(body)
                                 .As<ExampleResponse>()
@@ -233,7 +233,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateEntity>(body)
                                 .As<EntityResponse>()
@@ -263,7 +263,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -292,7 +292,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<EntityExportResponse>()
@@ -320,7 +320,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .WithArgument("pageLimit", pageLimit)
@@ -356,7 +356,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateEntity>(body)
                                 .As<EntityResponse>()
@@ -387,7 +387,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateExample>(body)
                                 .As<ExampleResponse>()
@@ -419,7 +419,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -450,7 +450,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<ExampleResponse>()
                                 .Result;
@@ -479,7 +479,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -516,7 +516,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateExample>(body)
                                 .As<ExampleResponse>()
@@ -545,7 +545,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateIntent>(body)
                                 .As<IntentResponse>()
@@ -575,7 +575,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -604,7 +604,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<IntentExportResponse>()
@@ -632,7 +632,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .WithArgument("pageLimit", pageLimit)
@@ -668,7 +668,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateIntent>(body)
                                 .As<IntentResponse>()
@@ -695,7 +695,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/logs")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/logs")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("sort", sort)
                                 .WithArgument("filter", filter)
@@ -725,7 +725,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/message")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/message")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<MessageRequest>(body)
                                 .As<MessageResponse>()
@@ -758,7 +758,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateSynonym>(body)
                                 .As<SynonymResponse>()
@@ -792,7 +792,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -825,7 +825,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .As<SynonymResponse>()
                                 .Result;
@@ -856,7 +856,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -895,7 +895,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateSynonym>(body)
                                 .As<SynonymResponse>()
@@ -926,7 +926,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateValue>(body)
                                 .As<ValueResponse>()
@@ -958,7 +958,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -989,7 +989,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<ValueExportResponse>()
@@ -1019,7 +1019,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .WithArgument("pageLimit", pageLimit)
@@ -1057,7 +1057,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateValue>(body)
                                 .As<ValueResponse>()
@@ -1110,7 +1110,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -1137,7 +1137,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<WorkspaceExportResponse>()
@@ -1194,7 +1194,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateWorkspace>(body)
                                 .As<WorkspaceResponse>()

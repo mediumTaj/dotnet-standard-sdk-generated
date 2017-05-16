@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSynonym**](SynonymsAPI.md#createsynonym) | **POST** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms | Add entity value synonym.
-[**DeleteSynonym**](SynonymsAPI.md#deletesynonym) | **DELETE** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym} | Delete entity value synonym.
-[**GetSynonym**](SynonymsAPI.md#getsynonym) | **GET** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym} | Get entity value synonym.
-[**ListSynonyms**](SynonymsAPI.md#listsynonyms) | **GET** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms | List entity value synonyms.
-[**UpdateSynonym**](SynonymsAPI.md#updatesynonym) | **POST** /v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym} | Update entity value synonym.
+[**CreateSynonym**](SynonymsAPI.md#createsynonym) | **POST** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms | Add entity value synonym.
+[**DeleteSynonym**](SynonymsAPI.md#deletesynonym) | **DELETE** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym} | Delete entity value synonym.
+[**GetSynonym**](SynonymsAPI.md#getsynonym) | **GET** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym} | Get entity value synonym.
+[**ListSynonyms**](SynonymsAPI.md#listsynonyms) | **GET** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms | List entity value synonyms.
+[**UpdateSynonym**](SynonymsAPI.md#updatesynonym) | **POST** /v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym} | Update entity value synonym.
 
 
 <a name="createsynonym"></a>

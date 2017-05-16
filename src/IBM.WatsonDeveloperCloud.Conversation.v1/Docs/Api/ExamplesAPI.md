@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateExample**](ExamplesAPI.md#createexample) | **POST** /v1/workspaces/{workspace_id}/intents/{intent}/examples | Create user input example.
-[**DeleteExample**](ExamplesAPI.md#deleteexample) | **DELETE** /v1/workspaces/{workspace_id}/intents/{intent}/examples/{text} | Delete user input example.
-[**GetExample**](ExamplesAPI.md#getexample) | **GET** /v1/workspaces/{workspace_id}/intents/{intent}/examples/{text} | Get user input example.
-[**ListExamples**](ExamplesAPI.md#listexamples) | **GET** /v1/workspaces/{workspace_id}/intents/{intent}/examples | List user input examples.
-[**UpdateExample**](ExamplesAPI.md#updateexample) | **POST** /v1/workspaces/{workspace_id}/intents/{intent}/examples/{text} | Update user input example.
+[**CreateExample**](ExamplesAPI.md#createexample) | **POST** /v1/workspaces/{workspaceId}/intents/{intent}/examples | Create user input example.
+[**DeleteExample**](ExamplesAPI.md#deleteexample) | **DELETE** /v1/workspaces/{workspaceId}/intents/{intent}/examples/{text} | Delete user input example.
+[**GetExample**](ExamplesAPI.md#getexample) | **GET** /v1/workspaces/{workspaceId}/intents/{intent}/examples/{text} | Get user input example.
+[**ListExamples**](ExamplesAPI.md#listexamples) | **GET** /v1/workspaces/{workspaceId}/intents/{intent}/examples | List user input examples.
+[**UpdateExample**](ExamplesAPI.md#updateexample) | **POST** /v1/workspaces/{workspaceId}/intents/{intent}/examples/{text} | Update user input example.
 
 
 <a name="createexample"></a>

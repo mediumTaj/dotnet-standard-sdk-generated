@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIntent**](IntentsAPI.md#createintent) | **POST** /v1/workspaces/{workspace_id}/intents | Create intent.
-[**DeleteIntent**](IntentsAPI.md#deleteintent) | **DELETE** /v1/workspaces/{workspace_id}/intents/{intent} | Delete intent.
-[**GetIntent**](IntentsAPI.md#getintent) | **GET** /v1/workspaces/{workspace_id}/intents/{intent} | Get intent.
-[**ListIntents**](IntentsAPI.md#listintents) | **GET** /v1/workspaces/{workspace_id}/intents | List intents.
-[**UpdateIntent**](IntentsAPI.md#updateintent) | **POST** /v1/workspaces/{workspace_id}/intents/{intent} | Update intent.
+[**CreateIntent**](IntentsAPI.md#createintent) | **POST** /v1/workspaces/{workspaceId}/intents | Create intent.
+[**DeleteIntent**](IntentsAPI.md#deleteintent) | **DELETE** /v1/workspaces/{workspaceId}/intents/{intent} | Delete intent.
+[**GetIntent**](IntentsAPI.md#getintent) | **GET** /v1/workspaces/{workspaceId}/intents/{intent} | Get intent.
+[**ListIntents**](IntentsAPI.md#listintents) | **GET** /v1/workspaces/{workspaceId}/intents | List intents.
+[**UpdateIntent**](IntentsAPI.md#updateintent) | **POST** /v1/workspaces/{workspaceId}/intents/{intent} | Update intent.
 
 
 <a name="createintent"></a>

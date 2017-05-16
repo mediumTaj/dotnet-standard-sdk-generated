@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEntity**](EntitiesAPI.md#createentity) | **POST** /v1/workspaces/{workspace_id}/entities | Create entity.
-[**DeleteEntity**](EntitiesAPI.md#deleteentity) | **DELETE** /v1/workspaces/{workspace_id}/entities/{entity} | Delete entity.
-[**GetEntity**](EntitiesAPI.md#getentity) | **GET** /v1/workspaces/{workspace_id}/entities/{entity} | Get entity.
-[**ListEntities**](EntitiesAPI.md#listentities) | **GET** /v1/workspaces/{workspace_id}/entities | List entities.
-[**UpdateEntity**](EntitiesAPI.md#updateentity) | **POST** /v1/workspaces/{workspace_id}/entities/{entity} | Update entity.
+[**CreateEntity**](EntitiesAPI.md#createentity) | **POST** /v1/workspaces/{workspaceId}/entities | Create entity.
+[**DeleteEntity**](EntitiesAPI.md#deleteentity) | **DELETE** /v1/workspaces/{workspaceId}/entities/{entity} | Delete entity.
+[**GetEntity**](EntitiesAPI.md#getentity) | **GET** /v1/workspaces/{workspaceId}/entities/{entity} | Get entity.
+[**ListEntities**](EntitiesAPI.md#listentities) | **GET** /v1/workspaces/{workspaceId}/entities | List entities.
+[**UpdateEntity**](EntitiesAPI.md#updateentity) | **POST** /v1/workspaces/{workspaceId}/entities/{entity} | Update entity.
 
 
 <a name="createentity"></a>

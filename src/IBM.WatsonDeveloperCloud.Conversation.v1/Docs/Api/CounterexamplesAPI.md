@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCounterexample**](CounterexamplesAPI.md#createcounterexample) | **POST** /v1/workspaces/{workspace_id}/counterexamples | Create counterexample.
-[**DeleteCounterexample**](CounterexamplesAPI.md#deletecounterexample) | **DELETE** /v1/workspaces/{workspace_id}/counterexamples/{text} | Delete counterexample.
-[**GetCounterexample**](CounterexamplesAPI.md#getcounterexample) | **GET** /v1/workspaces/{workspace_id}/counterexamples/{text} | Get counterexample.
-[**ListCounterexamples**](CounterexamplesAPI.md#listcounterexamples) | **GET** /v1/workspaces/{workspace_id}/counterexamples | List counterexamples.
-[**UpdateCounterexample**](CounterexamplesAPI.md#updatecounterexample) | **POST** /v1/workspaces/{workspace_id}/counterexamples/{text} | Update counterexample.
+[**CreateCounterexample**](CounterexamplesAPI.md#createcounterexample) | **POST** /v1/workspaces/{workspaceId}/counterexamples | Create counterexample.
+[**DeleteCounterexample**](CounterexamplesAPI.md#deletecounterexample) | **DELETE** /v1/workspaces/{workspaceId}/counterexamples/{text} | Delete counterexample.
+[**GetCounterexample**](CounterexamplesAPI.md#getcounterexample) | **GET** /v1/workspaces/{workspaceId}/counterexamples/{text} | Get counterexample.
+[**ListCounterexamples**](CounterexamplesAPI.md#listcounterexamples) | **GET** /v1/workspaces/{workspaceId}/counterexamples | List counterexamples.
+[**UpdateCounterexample**](CounterexamplesAPI.md#updatecounterexample) | **POST** /v1/workspaces/{workspaceId}/counterexamples/{text} | Update counterexample.
 
 
 <a name="createcounterexample"></a>

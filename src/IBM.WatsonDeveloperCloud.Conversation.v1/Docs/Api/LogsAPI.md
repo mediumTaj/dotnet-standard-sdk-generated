@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost/conversation/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListLogs**](LogsAPI.md#listlogs) | **GET** /v1/workspaces/{workspace_id}/logs | List log events.
+[**ListLogs**](LogsAPI.md#listlogs) | **GET** /v1/workspaces/{workspaceId}/logs | List log events.
 
 
 <a name="listlogs"></a>
