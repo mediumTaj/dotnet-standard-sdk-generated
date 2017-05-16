@@ -69,9 +69,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse CreateCounterexample(string workspaceId, CreateExample body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -99,9 +99,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteCounterexample(string workspaceId, string text)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -128,9 +128,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse GetCounterexample(string workspaceId, string text)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -157,7 +157,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public CounterexampleCollectionResponse ListCounterexamples(string workspaceId, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -188,11 +188,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse UpdateCounterexample(string workspaceId, string text, UpdateExample body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -219,9 +219,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public EntityResponse CreateEntity(string workspaceId, CreateEntity body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -249,9 +249,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteEntity(string workspaceId, string entity)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -278,9 +278,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public EntityExportResponse GetEntity(string workspaceId, string entity, bool? export = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -308,7 +308,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public EntityCollectionResponse ListEntities(string workspaceId, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -340,11 +340,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public EntityResponse UpdateEntity(string workspaceId, string entity, UpdateEntity body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -371,11 +371,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public ExampleResponse CreateExample(string workspaceId, string intent, CreateExample body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -403,11 +403,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteExample(string workspaceId, string intent, string text)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-                if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -434,11 +434,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse GetExample(string workspaceId, string intent, string text)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-                if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -465,9 +465,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleCollectionResponse ListExamples(string workspaceId, string intent, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -498,13 +498,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse UpdateExample(string workspaceId, string intent, string text, UpdateExample body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-                if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -531,9 +531,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public IntentResponse CreateIntent(string workspaceId, CreateIntent body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -561,9 +561,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteIntent(string workspaceId, string intent)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -590,9 +590,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public IntentExportResponse GetIntent(string workspaceId, string intent, bool? export = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -620,7 +620,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public IntentCollectionResponse ListIntents(string workspaceId, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -652,11 +652,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public IntentResponse UpdateIntent(string workspaceId, string intent, UpdateIntent body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(intent))
+            if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -683,7 +683,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public LogCollectionResponse ListLogs(string workspaceId, string sort = null, string filter = null, int? pageLimit = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -713,7 +713,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public MessageResponse Message(string workspaceId, MessageRequest body = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -740,13 +740,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public SynonymResponse CreateSynonym(string workspaceId, string entity, string value, CreateSynonym body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -774,13 +774,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteSynonym(string workspaceId, string entity, string value, string synonym)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-                if (string.IsNullOrEmpty(synonym))
+            if (string.IsNullOrEmpty(synonym))
                 throw new ArgumentNullException(nameof(synonym));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -807,13 +807,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public SynonymResponse GetSynonym(string workspaceId, string entity, string value, string synonym)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-                if (string.IsNullOrEmpty(synonym))
+            if (string.IsNullOrEmpty(synonym))
                 throw new ArgumentNullException(nameof(synonym));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -840,11 +840,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public SynonymCollectionResponse ListSynonyms(string workspaceId, string entity, string value, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -875,15 +875,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public SynonymResponse UpdateSynonym(string workspaceId, string entity, string value, string synonym, UpdateSynonym body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-                if (string.IsNullOrEmpty(synonym))
+            if (string.IsNullOrEmpty(synonym))
                 throw new ArgumentNullException(nameof(synonym));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -910,11 +910,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public ValueResponse CreateValue(string workspaceId, string entity, CreateValue body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -942,11 +942,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteValue(string workspaceId, string entity, string value)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -973,11 +973,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ValueExportResponse GetValue(string workspaceId, string entity, string value, bool? export = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1005,9 +1005,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ValueCollectionResponse ListValues(string workspaceId, string entity, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1039,13 +1039,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ValueResponse UpdateValue(string workspaceId, string entity, string value, UpdateValue body)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-                if (string.IsNullOrEmpty(entity))
+            if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-                if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-                if (body == null)
+            if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1098,7 +1098,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteWorkspace(string workspaceId)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1125,7 +1125,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public WorkspaceExportResponse GetWorkspace(string workspaceId, bool? export = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1182,7 +1182,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public WorkspaceResponse UpdateWorkspace(string workspaceId, UpdateWorkspace body = null)
         {
-                if (string.IsNullOrEmpty(workspaceId))
+            if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
