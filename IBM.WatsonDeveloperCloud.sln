@@ -40,7 +40,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IBM.WatsonDeveloperCloud.Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConversationV1", "ConversationV1", "{75A9464C-6B1F-421C-895F-5D44D75F3777}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IBM.WatsonDeveloperCloud.Conversation.v1.Example", "IBM.WatsonDeveloperCloud.Conversation.v1.Example\IBM.WatsonDeveloperCloud.Conversation.v1.Example.xproj", "{16272A2F-F4BC-4903-A232-1604AE109F99}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IBM.WatsonDeveloperCloud.Conversation.v1.Example", "examples\IBM.WatsonDeveloperCloud.Conversation.v1.Example\IBM.WatsonDeveloperCloud.Conversation.v1.Example.xproj", "{16272A2F-F4BC-4903-A232-1604AE109F99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

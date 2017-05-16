@@ -69,9 +69,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse CreateCounterexample(string workspaceId, CreateExample body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -83,7 +83,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/counterexamples")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateExample>(body)
                                 .As<ExampleResponse>()
@@ -99,9 +99,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteCounterexample(string workspaceId, string text)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (text == null)
+                if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -113,7 +113,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/counterexamples/{text}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -128,9 +128,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse GetCounterexample(string workspaceId, string text)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (text == null)
+                if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -142,7 +142,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/counterexamples/{text}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<ExampleResponse>()
                                 .Result;
@@ -157,7 +157,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public CounterexampleCollectionResponse ListCounterexamples(string workspaceId, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -169,7 +169,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/counterexamples")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -188,11 +188,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse UpdateCounterexample(string workspaceId, string text, UpdateExample body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (text == null)
+                if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -204,7 +204,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/counterexamples/{text}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateExample>(body)
                                 .As<ExampleResponse>()
@@ -219,9 +219,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public EntityResponse CreateEntity(string workspaceId, CreateEntity body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -233,7 +233,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateEntity>(body)
                                 .As<EntityResponse>()
@@ -249,9 +249,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteEntity(string workspaceId, string entity)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -263,7 +263,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -278,9 +278,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public EntityExportResponse GetEntity(string workspaceId, string entity, bool? export = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -292,7 +292,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<EntityExportResponse>()
@@ -308,7 +308,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public EntityCollectionResponse ListEntities(string workspaceId, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -320,7 +320,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .WithArgument("pageLimit", pageLimit)
@@ -340,11 +340,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public EntityResponse UpdateEntity(string workspaceId, string entity, UpdateEntity body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -356,7 +356,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateEntity>(body)
                                 .As<EntityResponse>()
@@ -371,11 +371,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public ExampleResponse CreateExample(string workspaceId, string intent, CreateExample body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -387,7 +387,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}/examples")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateExample>(body)
                                 .As<ExampleResponse>()
@@ -403,11 +403,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteExample(string workspaceId, string intent, string text)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-            if (text == null)
+                if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -419,7 +419,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -434,11 +434,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse GetExample(string workspaceId, string intent, string text)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-            if (text == null)
+                if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -450,7 +450,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .As<ExampleResponse>()
                                 .Result;
@@ -465,9 +465,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleCollectionResponse ListExamples(string workspaceId, string intent, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -479,7 +479,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}/examples")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -498,13 +498,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ExampleResponse UpdateExample(string workspaceId, string intent, string text, UpdateExample body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-            if (text == null)
+                if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -516,7 +516,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateExample>(body)
                                 .As<ExampleResponse>()
@@ -531,9 +531,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public IntentResponse CreateIntent(string workspaceId, CreateIntent body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -545,7 +545,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateIntent>(body)
                                 .As<IntentResponse>()
@@ -561,9 +561,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteIntent(string workspaceId, string intent)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -575,7 +575,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -590,9 +590,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public IntentExportResponse GetIntent(string workspaceId, string intent, bool? export = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -604,7 +604,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<IntentExportResponse>()
@@ -620,7 +620,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public IntentCollectionResponse ListIntents(string workspaceId, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -632,7 +632,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .WithArgument("pageLimit", pageLimit)
@@ -652,11 +652,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public IntentResponse UpdateIntent(string workspaceId, string intent, UpdateIntent body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (intent == null)
+                if (string.IsNullOrEmpty(intent))
                 throw new ArgumentNullException(nameof(intent));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -668,7 +668,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/intents/{intent}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateIntent>(body)
                                 .As<IntentResponse>()
@@ -683,7 +683,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public LogCollectionResponse ListLogs(string workspaceId, string sort = null, string filter = null, int? pageLimit = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -695,7 +695,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/logs")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/logs")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("sort", sort)
                                 .WithArgument("filter", filter)
@@ -713,7 +713,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public MessageResponse Message(string workspaceId, MessageRequest body = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -725,7 +725,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/message")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/message")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<MessageRequest>(body)
                                 .As<MessageResponse>()
@@ -740,13 +740,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public SynonymResponse CreateSynonym(string workspaceId, string entity, string value, CreateSynonym body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -758,7 +758,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateSynonym>(body)
                                 .As<SynonymResponse>()
@@ -774,13 +774,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteSynonym(string workspaceId, string entity, string value, string synonym)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-            if (synonym == null)
+                if (string.IsNullOrEmpty(synonym))
                 throw new ArgumentNullException(nameof(synonym));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -792,7 +792,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -807,13 +807,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public SynonymResponse GetSynonym(string workspaceId, string entity, string value, string synonym)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-            if (synonym == null)
+                if (string.IsNullOrEmpty(synonym))
                 throw new ArgumentNullException(nameof(synonym));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -825,7 +825,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .As<SynonymResponse>()
                                 .Result;
@@ -840,11 +840,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public SynonymCollectionResponse ListSynonyms(string workspaceId, string entity, string value, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -856,7 +856,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -875,15 +875,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public SynonymResponse UpdateSynonym(string workspaceId, string entity, string value, string synonym, UpdateSynonym body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-            if (synonym == null)
+                if (string.IsNullOrEmpty(synonym))
                 throw new ArgumentNullException(nameof(synonym));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -895,7 +895,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateSynonym>(body)
                                 .As<SynonymResponse>()
@@ -910,11 +910,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         }
         public ValueResponse CreateValue(string workspaceId, string entity, CreateValue body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -926,7 +926,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateValue>(body)
                                 .As<ValueResponse>()
@@ -942,11 +942,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteValue(string workspaceId, string entity, string value)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -958,7 +958,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -973,11 +973,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ValueExportResponse GetValue(string workspaceId, string entity, string value, bool? export = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -989,7 +989,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<ValueExportResponse>()
@@ -1005,9 +1005,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ValueCollectionResponse ListValues(string workspaceId, string entity, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1019,7 +1019,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .WithArgument("pageLimit", pageLimit)
@@ -1039,13 +1039,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public ValueResponse UpdateValue(string workspaceId, string entity, string value, UpdateValue body)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
-            if (entity == null)
+                if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (value == null)
+                if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1057,7 +1057,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateValue>(body)
                                 .As<ValueResponse>()
@@ -1082,7 +1082,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateWorkspace>(body)
                                 .As<WorkspaceResponse>()
@@ -1098,7 +1098,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public object DeleteWorkspace(string workspaceId)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1110,7 +1110,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .DeleteAsync(this.Endpoint + "/v1/workspaces/{workspace_id}")
+                                .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}")
                                 .WithArgument("version", VersionDate)
                                 .As<object>()
                                 .Result;
@@ -1125,7 +1125,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public WorkspaceExportResponse GetWorkspace(string workspaceId, bool? export = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1137,7 +1137,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces/{workspace_id}")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("export", export)
                                 .As<WorkspaceExportResponse>()
@@ -1163,7 +1163,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .GetAsync(this.Endpoint + "/v1/workspaces")
+                                .GetAsync($"{this.Endpoint}/v1/workspaces")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("pageLimit", pageLimit)
                                 .WithArgument("includeCount", includeCount)
@@ -1182,7 +1182,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
         public WorkspaceResponse UpdateWorkspace(string workspaceId, UpdateWorkspace body = null)
         {
-            if (workspaceId == null)
+                if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -1194,7 +1194,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v1/workspaces/{workspace_id}")
+                                .PostAsync($"{this.Endpoint}/v1/workspaces/{workspace_id}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateWorkspace>(body)
                                 .As<WorkspaceResponse>()

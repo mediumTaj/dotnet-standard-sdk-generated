@@ -66,11 +66,11 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
 
         public Profile Profile(string contentType, string accept, ContentListContainer body, string contentLanguage = null, string acceptLanguage = null, bool? rawScores = null, bool? csvHeaders = null, bool? consumptionPreferences = null)
         {
-            if (contentType == null)
+                if (string.IsNullOrEmpty(contentType))
                 throw new ArgumentNullException(nameof(contentType));
-            if (accept == null)
+                if (string.IsNullOrEmpty(accept))
                 throw new ArgumentNullException(nameof(accept));
-            if (body == null)
+                if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
@@ -82,7 +82,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
             {
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v3/profile")
+                                .PostAsync($"{this.Endpoint}/v3/profile")
                                 .WithArgument("version", VersionDate)
                                 .WithHeader("contentType", contentType)
                                 .WithHeader("contentLanguage", contentLanguage)
