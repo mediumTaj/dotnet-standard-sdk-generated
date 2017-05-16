@@ -31,6 +31,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             _conversation = new ConversationService(username, password, ConversationService.CONVERSATION_VERSION_DATE_2017_04_21);
             _workspaceID = workspaceID;
 
+            ListWorkspaces();
             Message();
         }
 
@@ -42,10 +43,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
                 Input = new InputData()
                 {
                     Text = _inputString
-                }
+                },
+                AlternateIntents = true
             };
 
-            Console.WriteLine(string.Format("Calling Message(\"{0}\")...", _inputString));
+            Console.WriteLine(string.Format("\nCalling Message(\"{0}\")...", _inputString));
             var result = _conversation.Message(_workspaceID, messageRequest);
 
             if (result != null)
@@ -82,6 +84,24 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             else
             {
                 Console.WriteLine("Failed to message.");
+            }
+        }
+        #endregion
+
+        #region Get Workspaces
+        private void ListWorkspaces()
+        {
+            Console.WriteLine("\nCalling ListWorkspaces()...");
+            var result = _conversation.ListWorkspaces();
+
+            if (result != null)
+            {
+                foreach(WorkspaceResponse workspace in result.Workspaces)
+                    Console.WriteLine(string.Format("Workspace name: {0} | WorkspaceID: {1}", workspace.Name, workspace.WorkspaceId));
+            }
+            else
+            {
+                Console.WriteLine("Workspaces are null.");
             }
         }
         #endregion
