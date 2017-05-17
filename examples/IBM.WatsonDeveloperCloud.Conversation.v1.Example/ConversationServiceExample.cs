@@ -32,7 +32,8 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         private string _createdWorkspaceDescription = "A Workspace created by the .NET SDK Conversation example script.";
         private string _createdWorkspaceLanguage = "en";
         private string _createdWorkspaceId;
-        private string _createdEntityName;
+        private string _createdEntity = "entity";
+        private string _createdEntityDescription = "Entity created by the .NET SDK Conversation example script.";
         private string _createdValueName;
         private string _createdIntentName;
         private string _createdCounterExampleText = "Example text";
@@ -356,8 +357,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
             if (result != null)
             {
-                foreach (EntityExportResponse entity in result.Entities)
-                    Console.WriteLine(string.Format("Entity: {0} | Created: {1}", entity.Entity, entity.Description));
+                if (result.Entities != null && result.Entities.Count > 0)
+                {
+                    foreach (EntityExportResponse entity in result.Entities)
+                        Console.WriteLine(string.Format("Entity: {0} | Created: {1}", entity.Entity, entity.Description));
+                }
+                else
+                {
+                    Console.WriteLine("There are no entities.");
+                }
             }
             else
             {
@@ -366,12 +374,18 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateEntity()
         {
-            Console.WriteLine("\nCalling CreateEntity()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling CreateEntity({0}, {1})...", _createdWorkspaceId, _createdEntity));
+            CreateEntity entity = new CreateEntity()
+            {
+                Entity = _createdEntity,
+                Description = _createdEntityDescription
+            };
+
+            var result = _conversation.CreateEntity(_createdWorkspaceId, entity);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("entity: {0} | description: {1}", result.Entity, result.Description));
             }
             else
             {
@@ -381,12 +395,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetEntity()
         {
-            Console.WriteLine("\nCalling GetEntity()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling GetEntity({0}, {1})...", _createdWorkspaceId, _createdEntity));
+            var result = _conversation.GetEntity(_createdWorkspaceId, _createdEntity);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("entity: {0} | description: {1}", result.Entity, result.Description));
             }
             else
             {
@@ -396,12 +410,18 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateEntity()
         {
-            Console.WriteLine("\nCalling UpdateEntity()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling UpdateEntity()..."));
+            UpdateEntity entity = new UpdateEntity()
+            {
+                Entity = _createdEntity + "-updated",
+                Description = _createdEntityDescription + "-updated"
+            };
+
+            var result = _conversation.UpdateEntity(_createdWorkspaceId, _createdEntity, entity);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("entity: {0} | description: {1}", result.Entity, result.Description));
             }
             else
             {
@@ -411,12 +431,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteEntity()
         {
-            Console.WriteLine("\nCalling DeleteEntity()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling DeleteEntity()..."));
+            var result = _conversation.DeleteEntity(_createdWorkspaceId, _createdEntity + "-updated");
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("entity {0}, {1} deleted.", _createdWorkspaceId, _createdEntity + "-updated"));
             }
             else
             {
@@ -428,8 +448,8 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         #region Values
         private void ListValues()
         {
-            Console.WriteLine(string.Format("\nCalling ListValues({0}, {1})...", _createdWorkspaceId, _createdEntityName));
-            var result = _conversation.ListValues(_createdWorkspaceId, _createdEntityName);
+            Console.WriteLine(string.Format("\nCalling ListValues({0}, {1})...", _createdWorkspaceId, _createdEntity));
+            var result = _conversation.ListValues(_createdWorkspaceId, _createdEntity);
 
             if (result != null)
             {
@@ -443,7 +463,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateValue()
         {
-            Console.WriteLine("\nCalling CreateValue()...");
+            Console.WriteLine(string.Format("\nCalling CreateValue()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -458,7 +478,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetValue()
         {
-            Console.WriteLine("\nCalling GetValue()...");
+            Console.WriteLine(string.Format("\nCalling GetValue()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -473,7 +493,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateValue()
         {
-            Console.WriteLine("\nCalling UpdateValue()...");
+            Console.WriteLine(string.Format("\nCalling UpdateValue()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -488,7 +508,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteValue()
         {
-            Console.WriteLine("\nCalling DeleteValue()...");
+            Console.WriteLine(string.Format("\nCalling DeleteValue()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -505,8 +525,8 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         #region Synonyms
         private void ListSynonyms()
         {
-            Console.WriteLine(string.Format("\nCalling ListSynonyms({0}, {1}, {2})...", _createdWorkspaceId, _createdEntityName, _createdValueName));
-            var result = _conversation.ListSynonyms(_createdWorkspaceId, _createdEntityName, _createdValueName);
+            Console.WriteLine(string.Format("\nCalling ListSynonyms({0}, {1}, {2})...", _createdWorkspaceId, _createdEntity, _createdValueName));
+            var result = _conversation.ListSynonyms(_createdWorkspaceId, _createdEntity, _createdValueName);
 
             if (result != null)
             {
@@ -520,7 +540,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateSynonym()
         {
-            Console.WriteLine("\nCalling CreateSynonym()...");
+            Console.WriteLine(string.Format("\nCalling CreateSynonym()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -535,7 +555,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetSynonym()
         {
-            Console.WriteLine("\nCalling GetSynonym()...");
+            Console.WriteLine(string.Format("\nCalling GetSynonym()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -550,7 +570,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateSynonym()
         {
-            Console.WriteLine("\nCalling UpdateSynonym()...");
+            Console.WriteLine(string.Format("\nCalling UpdateSynonym()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -565,7 +585,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteSynonym()
         {
-            Console.WriteLine("\nCalling DeleteSynonym()...");
+            Console.WriteLine(string.Format("\nCalling DeleteSynonym()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -597,7 +617,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateIntent()
         {
-            Console.WriteLine("\nCalling CreateIntent()...");
+            Console.WriteLine(string.Format("\nCalling CreateIntent()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -612,7 +632,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetIntent()
         {
-            Console.WriteLine("\nCalling GetIntent()...");
+            Console.WriteLine(string.Format("\nCalling GetIntent()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -627,7 +647,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateIntent()
         {
-            Console.WriteLine("\nCalling UpdateIntent()...");
+            Console.WriteLine(string.Format("\nCalling UpdateIntent()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -642,7 +662,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteIntent()
         {
-            Console.WriteLine("\nCalling DeleteIntent()...");
+            Console.WriteLine(string.Format("\nCalling DeleteIntent()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -674,7 +694,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateExample()
         {
-            Console.WriteLine("\nCalling CreateExample()...");
+            Console.WriteLine(string.Format("\nCalling CreateExample()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -689,7 +709,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetExample()
         {
-            Console.WriteLine("\nCalling GetExample()...");
+            Console.WriteLine(string.Format("\nCalling GetExample()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -704,7 +724,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateExample()
         {
-            Console.WriteLine("\nCalling UpdateExample()...");
+            Console.WriteLine(string.Format("\nCalling UpdateExample()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
@@ -719,7 +739,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteExample()
         {
-            Console.WriteLine("\nCalling DeleteExample()...");
+            Console.WriteLine(string.Format("\nCalling DeleteExample()..."));
             var result = _conversation.CreateWorkspace();
 
             if (result != null)
