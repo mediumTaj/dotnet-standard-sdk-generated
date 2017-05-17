@@ -35,6 +35,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         private string _createdEntityName;
         private string _createdValueName;
         private string _createdIntentName;
+        private string _createdCounterExampleText = "Example text";
 
         #region Constructor
         public ConversationServiceExample(string username, string password, string workspaceID)
@@ -47,14 +48,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             CreateWorkspace();
             GetWorkspace();
             UpdateWorkspace();
-            DeleteWorkspace();
 
             Message();
-            //ListCounterExamples();
-            //CreateCounterExample();
-            //GetCounterExample();
-            //UpdateCounterExample();
-            //DeleteCounterExample();
+
+            ListCounterExamples();
+            CreateCounterExample();
+            GetCounterExample();
+            UpdateCounterExample();
 
             //ListEntities();
             //CreateEntity();
@@ -87,6 +87,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             //DeleteExample();
 
             //ListLogEvents();
+
+            DeleteCounterExample();
+            DeleteWorkspace();
+
 
             Console.WriteLine("\n~ Conversation examples complete.");
         }
@@ -153,8 +157,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
             if (result != null)
             {
-                foreach(WorkspaceResponse workspace in result.Workspaces)
-                    Console.WriteLine(string.Format("Workspace name: {0} | WorkspaceID: {1}", workspace.Name, workspace.WorkspaceId));
+                if (result.Workspaces != null && result.Workspaces.Count > 0)
+                {
+                    foreach (WorkspaceResponse workspace in result.Workspaces)
+                        Console.WriteLine(string.Format("Workspace name: {0} | WorkspaceID: {1}", workspace.Name, workspace.WorkspaceId));
+                }
+                else
+                {
+                    Console.WriteLine("There are no workspaces.");
+                }
             }
             else
             {
@@ -245,12 +256,20 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         private void ListCounterExamples()
         {
             Console.WriteLine(string.Format("\nCalling ListCounterExamples({0})...", _createdWorkspaceId));
+            
             var result = _conversation.ListCounterexamples(_createdWorkspaceId);
 
             if (result != null)
             {
-                foreach (ExampleResponse counterExample in result.Counterexamples)
-                    Console.WriteLine(string.Format("CounterExample name: {0} | Created: {1}", counterExample.Text, counterExample.Created));
+                if (result.Counterexamples.Count > 0)
+                {
+                    foreach (ExampleResponse counterExample in result.Counterexamples)
+                        Console.WriteLine(string.Format("CounterExample name: {0} | Created: {1}", counterExample.Text, counterExample.Created));
+                }
+                else
+                {
+                    Console.WriteLine("There are no counter examples.");
+                }
             }
             else
             {
@@ -260,11 +279,17 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         private void CreateCounterExample()
         {
             Console.WriteLine("\nCalling CreateCounterExample()...");
-            var result = _conversation.CreateWorkspace();
+
+            CreateExample example = new CreateExample()
+            {
+                Text = _createdCounterExampleText
+            };
+
+            var result = _conversation.CreateCounterexample(_createdWorkspaceId, example);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("CounterExample name: {0}, created: {1}", result.Text, result.Created));
             }
             else
             {
@@ -274,12 +299,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetCounterExample()
         {
-            Console.WriteLine("\nCalling GetCounterExample()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling GetCounterExample({0}, {1})...", _createdWorkspaceId, _createdCounterExampleText));
+            var result = _conversation.GetCounterexample(_createdWorkspaceId, _createdCounterExampleText);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("CounterExample name: {0}, created: {1}", result.Text, result.Created));
             }
             else
             {
@@ -289,12 +314,17 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateCounterExample()
         {
-            Console.WriteLine("\nCalling UpdateCounterExample()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling UpdateCounterExample({0}, {1})...", _createdWorkspaceId, _createdCounterExampleText + "-updated"));
+            UpdateExample example = new UpdateExample()
+            {
+                Text = _createdCounterExampleText + "-updated"
+            };
+
+            var result = _conversation.UpdateCounterexample(_createdWorkspaceId, _createdCounterExampleText, example);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("CounterExample name: {0}, created: {1}", result.Text, result.Created));
             }
             else
             {
@@ -304,12 +334,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteCounterExample()
         {
-            Console.WriteLine("\nCalling DeleteCounterExample()...");
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling DeleteCounterExample({0}, {1})...", _createdWorkspaceId, _createdCounterExampleText + "-updated"));
+            var result = _conversation.DeleteCounterexample(_createdWorkspaceId, _createdCounterExampleText + "-updated");
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("CounterExample {0}, {1} deleted.", _createdWorkspaceId, _createdCounterExampleText + "-updated"));
             }
             else
             {
