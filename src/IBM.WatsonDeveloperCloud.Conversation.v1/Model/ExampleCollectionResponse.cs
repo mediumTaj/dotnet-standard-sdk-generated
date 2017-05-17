@@ -29,12 +29,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of ExampleResponse objects describing the examples defined for the intent.
         /// </summary>
         /// <value>An array of ExampleResponse objects describing the examples defined for the intent.</value>
-        [JsonProperty("examples")]
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
         public List<ExampleResponse> Examples { get; set; }
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [JsonProperty("pagination")]
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
         public PaginationResponse Pagination { get; set; }
     }
 }

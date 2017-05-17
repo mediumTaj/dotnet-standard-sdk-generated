@@ -28,19 +28,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The name of the workspace.
         /// </summary>
         /// <value>The name of the workspace.</value>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
         /// <summary>
         /// The description of the workspace.
         /// </summary>
         /// <value>The description of the workspace.</value>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
         /// The language of the workspace.
         /// </summary>
         /// <value>The language of the workspace.</value>
-        [JsonProperty("language")]
+        [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
         public string Language { get; set; }
     }
 }

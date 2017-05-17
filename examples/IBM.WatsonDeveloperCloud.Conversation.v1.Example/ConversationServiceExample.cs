@@ -30,8 +30,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         {
             _conversation = new ConversationService(username, password, ConversationService.CONVERSATION_VERSION_DATE_2017_04_21);
             _workspaceID = workspaceID;
-
-            ListWorkspaces();
             Message();
         }
 

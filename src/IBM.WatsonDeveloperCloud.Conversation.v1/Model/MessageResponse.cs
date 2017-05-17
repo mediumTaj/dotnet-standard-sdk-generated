@@ -29,37 +29,37 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The user input from the request.
         /// </summary>
         /// <value>The user input from the request.</value>
-        [JsonProperty("input")]
+        [JsonProperty("input", NullValueHandling = NullValueHandling.Ignore)]
         public MessageInput Input { get; set; }
         /// <summary>
         /// An array of intents recognized in the user input, sorted in descending order of confidence.
         /// </summary>
         /// <value>An array of intents recognized in the user input, sorted in descending order of confidence.</value>
-        [JsonProperty("intents")]
+        [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
         public List<RuntimeIntent> Intents { get; set; }
         /// <summary>
         /// An array of entities identified in the user input.
         /// </summary>
         /// <value>An array of entities identified in the user input.</value>
-        [JsonProperty("entities")]
+        [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
         public List<RuntimeEntity> Entities { get; set; }
         /// <summary>
         /// Whether to return more than one intent. `true` indicates that all matching intents are returned.
         /// </summary>
         /// <value>Whether to return more than one intent. `true` indicates that all matching intents are returned.</value>
-        [JsonProperty("alternate_intents")]
+        [JsonProperty("alternate_intents", NullValueHandling = NullValueHandling.Ignore)]
         public bool? AlternateIntents { get; set; }
         /// <summary>
         /// State information for the conversation.
         /// </summary>
         /// <value>State information for the conversation.</value>
-        [JsonProperty("context")]
+        [JsonProperty("context", NullValueHandling = NullValueHandling.Ignore)]
         public RuntimeContext Context { get; set; }
         /// <summary>
         /// Output from the dialog, including the response to the user, the nodes that were triggered, and log messages.
         /// </summary>
         /// <value>Output from the dialog, including the response to the user, the nodes that were triggered, and log messages.</value>
-        [JsonProperty("output")]
+        [JsonProperty("output", NullValueHandling = NullValueHandling.Ignore)]
         public RuntimeOutput Output { get; set; }
     }
 }

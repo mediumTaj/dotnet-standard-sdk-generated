@@ -29,37 +29,37 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The name of the entity.
         /// </summary>
         /// <value>The name of the entity.</value>
-        [JsonProperty("entity")]
+        [JsonProperty("entity", NullValueHandling = NullValueHandling.Ignore)]
         public string Entity { get; set; }
         /// <summary>
         /// The timestamp for creation of the entity.
         /// </summary>
         /// <value>The timestamp for creation of the entity.</value>
-        [JsonProperty("created")]
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Created { get; set; }
         /// <summary>
         /// The timestamp for the last update to the entity.
         /// </summary>
         /// <value>The timestamp for the last update to the entity.</value>
-        [JsonProperty("updated")]
+        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Updated { get; set; }
         /// <summary>
         /// The description of the entity.
         /// </summary>
         /// <value>The description of the entity.</value>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
         /// Any metadata related to the entity.
         /// </summary>
         /// <value>Any metadata related to the entity.</value>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public object Metadata { get; set; }
         /// <summary>
         /// Whether fuzzy matching is used for the entity.
         /// </summary>
         /// <value>Whether fuzzy matching is used for the entity.</value>
-        [JsonProperty("fuzzy_match")]
+        [JsonProperty("fuzzy_match", NullValueHandling = NullValueHandling.Ignore)]
         public bool? FuzzyMatch { get; set; }
     }
 }

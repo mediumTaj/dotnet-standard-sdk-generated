@@ -29,25 +29,25 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The recognized entity from a term in the input.
         /// </summary>
         /// <value>The recognized entity from a term in the input.</value>
-        [JsonProperty("entity")]
+        [JsonProperty("entity", NullValueHandling = NullValueHandling.Ignore)]
         public string Entity { get; set; }
         /// <summary>
         /// Zero-based character offsets that indicate where the entity value begins and ends in the input text.
         /// </summary>
         /// <value>Zero-based character offsets that indicate where the entity value begins and ends in the input text.</value>
-        [JsonProperty("location")]
+        [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
         public List<int?> Location { get; set; }
         /// <summary>
         /// The term in the input text that was recognized.
         /// </summary>
         /// <value>The term in the input text that was recognized.</value>
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
         /// <summary>
         /// A decimal percentage that represents Watson's confidence in the entity.
         /// </summary>
         /// <value>A decimal percentage that represents Watson's confidence in the entity.</value>
-        [JsonProperty("confidence")]
+        [JsonProperty("confidence", NullValueHandling = NullValueHandling.Ignore)]
         public float? Confidence { get; set; }
     }
 }

@@ -29,19 +29,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The timestamp for creation of the example.
         /// </summary>
         /// <value>The timestamp for creation of the example.</value>
-        [JsonProperty("created")]
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Created { get; set; }
         /// <summary>
         /// The timestamp for the last update to the example.
         /// </summary>
         /// <value>The timestamp for the last update to the example.</value>
-        [JsonProperty("updated")]
+        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Updated { get; set; }
         /// <summary>
         /// The text of the example.
         /// </summary>
         /// <value>The text of the example.</value>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
     }
 }

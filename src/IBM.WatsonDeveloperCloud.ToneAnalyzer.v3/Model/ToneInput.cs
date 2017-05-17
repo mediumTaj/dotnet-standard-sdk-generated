@@ -28,7 +28,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// The content to be analyzed. The Tone Analyzer service supports up to 128 KB of text, or about 1000 sentences. Sentences with less than three words cannot be analyzed.
         /// </summary>
         /// <value>The content to be analyzed. The Tone Analyzer service supports up to 128 KB of text, or about 1000 sentences. Sentences with less than three words cannot be analyzed.</value>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
     }
 }

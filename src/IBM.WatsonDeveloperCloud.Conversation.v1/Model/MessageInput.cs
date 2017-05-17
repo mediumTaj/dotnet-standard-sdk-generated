@@ -28,7 +28,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The user's input.
         /// </summary>
         /// <value>The user's input.</value>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
     }
 }

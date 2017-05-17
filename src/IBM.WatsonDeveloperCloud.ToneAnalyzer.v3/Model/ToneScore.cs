@@ -28,19 +28,19 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// The name of the tone. Human-readable, localized.
         /// </summary>
         /// <value>The name of the tone. Human-readable, localized.</value>
-        [JsonProperty("tone_name")]
+        [JsonProperty("tone_name", NullValueHandling = NullValueHandling.Ignore)]
         public string ToneName { get; set; }
         /// <summary>
         /// Identifier of this tone. It does not vary across languages and localizations.
         /// </summary>
         /// <value>Identifier of this tone. It does not vary across languages and localizations.</value>
-        [JsonProperty("tone_id")]
+        [JsonProperty("tone_id", NullValueHandling = NullValueHandling.Ignore)]
         public string ToneId { get; set; }
         /// <summary>
         /// A raw score computed by the algorithms. This can be compared to other raw scores and used to build your own normalizations.
         /// </summary>
         /// <value>A raw score computed by the algorithms. This can be compared to other raw scores and used to build your own normalizations.</value>
-        [JsonProperty("score")]
+        [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
         public double? Score { get; set; }
     }
 }

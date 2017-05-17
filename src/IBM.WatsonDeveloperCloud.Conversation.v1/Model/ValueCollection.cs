@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of entity values.
         /// </summary>
         /// <value>An array of entity values.</value>
-        [JsonProperty("values")]
+        [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<ValueExportResponse> Values { get; set; }
     }
 }

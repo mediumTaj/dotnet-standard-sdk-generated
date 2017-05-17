@@ -35,9 +35,6 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
             set { _versionDate = value; }
         }
 
-        /** The Constant PERSONALITY_INSIGHTS_VERSION_DATE_2016_10_20. */
-        public static string PERSONALITY_INSIGHTS_VERSION_DATE_2016_10_20 = "2016-10-20";
-
         public PersonalityInsightsService() : base(SERVICE_NAME, URL)
         {
             if(!string.IsNullOrEmpty(this.Endpoint))
@@ -54,7 +51,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
 
             this.SetCredential(userName, password);
             if(string.IsNullOrEmpty(versionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use 'PERSONALITY_INSIGHTS_VERSION_DATE_2016_10_20'");
+                throw new ArgumentNullException("versionDate cannot be null.");
 
             VersionDate = versionDate;
         }
@@ -69,23 +66,22 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
 
         public Profile Profile(string contentType, string accept, ContentListContainer body, string contentLanguage = null, string acceptLanguage = null, bool? rawScores = null, bool? csvHeaders = null, bool? consumptionPreferences = null)
         {
-            if (contentType == null)
+            if (string.IsNullOrEmpty(contentType))
                 throw new ArgumentNullException(nameof(contentType));
-            if (accept == null)
+            if (string.IsNullOrEmpty(accept))
                 throw new ArgumentNullException(nameof(accept));
             if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use to 'PERSONALITY_INSIGHTS_VERSION_DATE_2016_10_20'");
+                throw new ArgumentNullException("versionDate cannot be null.");
 
             Profile result = null;
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
-                                .PostAsync(this.Endpoint + "/v3/profile")
+                                .PostAsync($"{this.Endpoint}/v3/profile")
                                 .WithArgument("version", VersionDate)
                                 .WithHeader("contentType", contentType)
                                 .WithHeader("contentLanguage", contentLanguage)

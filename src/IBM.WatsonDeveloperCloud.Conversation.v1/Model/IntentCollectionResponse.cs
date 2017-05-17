@@ -29,13 +29,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of intents.
         /// </summary>
         /// <value>An array of intents.</value>
-        [JsonProperty("intents")]
+        [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
         public List<IntentExportResponse> Intents { get; set; }
         /// <summary>
         /// An object defining the pagination data for the returned objects.
         /// </summary>
         /// <value>An object defining the pagination data for the returned objects.</value>
-        [JsonProperty("pagination")]
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
         public PaginationResponse Pagination { get; set; }
     }
 }

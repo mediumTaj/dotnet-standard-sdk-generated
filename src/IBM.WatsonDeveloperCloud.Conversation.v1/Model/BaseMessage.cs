@@ -28,23 +28,23 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// <summary>
         /// Gets or Sets Input
         /// </summary>
-        [JsonProperty("input")]
+        [JsonProperty("input", NullValueHandling = NullValueHandling.Ignore)]
         public MessageInput Input { get; set; }
         /// <summary>
         /// Gets or Sets Intents
         /// </summary>
-        [JsonProperty("intents")]
+        [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
         public List<RuntimeIntent> Intents { get; set; }
         /// <summary>
         /// Gets or Sets Entities
         /// </summary>
-        [JsonProperty("entities")]
+        [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
         public List<RuntimeEntity> Entities { get; set; }
         /// <summary>
         /// Whether to return more than one intent. `true` indicates that all matching intents are returned.
         /// </summary>
         /// <value>Whether to return more than one intent. `true` indicates that all matching intents are returned.</value>
-        [JsonProperty("alternate_intents")]
+        [JsonProperty("alternate_intents", NullValueHandling = NullValueHandling.Ignore)]
         public bool? AlternateIntents { get; set; }
     }
 }

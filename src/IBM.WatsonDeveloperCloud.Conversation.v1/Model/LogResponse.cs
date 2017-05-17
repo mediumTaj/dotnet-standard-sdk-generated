@@ -27,30 +27,30 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// <summary>
         /// Gets or Sets Request
         /// </summary>
-        [JsonProperty("request")]
+        [JsonProperty("request", NullValueHandling = NullValueHandling.Ignore)]
         public MessageRequest Request { get; set; }
         /// <summary>
         /// Gets or Sets Response
         /// </summary>
-        [JsonProperty("response")]
+        [JsonProperty("response", NullValueHandling = NullValueHandling.Ignore)]
         public MessageResponse Response { get; set; }
         /// <summary>
         /// A unique identifier for the logged message.
         /// </summary>
         /// <value>A unique identifier for the logged message.</value>
-        [JsonProperty("log_id")]
+        [JsonProperty("log_id", NullValueHandling = NullValueHandling.Ignore)]
         public string LogId { get; set; }
         /// <summary>
         /// The timestamp for receipt of the message.
         /// </summary>
         /// <value>The timestamp for receipt of the message.</value>
-        [JsonProperty("request_timestamp")]
+        [JsonProperty("request_timestamp", NullValueHandling = NullValueHandling.Ignore)]
         public string RequestTimestamp { get; set; }
         /// <summary>
         /// The timestamp for the system response to the message.
         /// </summary>
         /// <value>The timestamp for the system response to the message.</value>
-        [JsonProperty("response_timestamp")]
+        [JsonProperty("response_timestamp", NullValueHandling = NullValueHandling.Ignore)]
         public string ResponseTimestamp { get; set; }
     }
 }

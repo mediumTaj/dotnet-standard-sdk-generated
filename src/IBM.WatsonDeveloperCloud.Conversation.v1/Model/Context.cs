@@ -28,12 +28,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The unique identifier of the conversation.
         /// </summary>
         /// <value>The unique identifier of the conversation.</value>
-        [JsonProperty("conversation_id")]
+        [JsonProperty("conversation_id", NullValueHandling = NullValueHandling.Ignore)]
         public string ConversationId { get; set; }
         /// <summary>
         /// Gets or Sets System
         /// </summary>
-        [JsonProperty("system")]
+        [JsonProperty("system", NullValueHandling = NullValueHandling.Ignore)]
         public SystemResponse System { get; set; }
     }
 }

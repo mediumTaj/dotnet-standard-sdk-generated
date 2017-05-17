@@ -30,31 +30,31 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The text of the entity value.
         /// </summary>
         /// <value>The text of the entity value.</value>
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
         /// <summary>
         /// Any metadata related to the entity value.
         /// </summary>
         /// <value>Any metadata related to the entity value.</value>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public object Metadata { get; set; }
         /// <summary>
         /// The timestamp for creation of the entity value.
         /// </summary>
         /// <value>The timestamp for creation of the entity value.</value>
-        [JsonProperty("created")]
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Created { get; set; }
         /// <summary>
         /// The timestamp for the last update to the entity value.
         /// </summary>
         /// <value>The timestamp for the last update to the entity value.</value>
-        [JsonProperty("updated")]
+        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Updated { get; set; }
         /// <summary>
         /// An array of synonyms.
         /// </summary>
         /// <value>An array of synonyms.</value>
-        [JsonProperty("synonyms")]
+        [JsonProperty("synonyms", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Synonyms { get; set; }
     }
 }

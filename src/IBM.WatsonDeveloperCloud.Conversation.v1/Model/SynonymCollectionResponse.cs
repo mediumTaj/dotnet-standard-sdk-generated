@@ -29,12 +29,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of synonyms.
         /// </summary>
         /// <value>An array of synonyms.</value>
-        [JsonProperty("synonyms")]
+        [JsonProperty("synonyms", NullValueHandling = NullValueHandling.Ignore)]
         public List<SynonymResponse> Synonyms { get; set; }
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [JsonProperty("pagination")]
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
         public PaginationResponse Pagination { get; set; }
     }
 }

@@ -29,55 +29,55 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         /// The language model that was used to process the input; for example, `en`.
         /// </summary>
         /// <value>The language model that was used to process the input; for example, `en`.</value>
-        [JsonProperty("processed_language")]
+        [JsonProperty("processed_language", NullValueHandling = NullValueHandling.Ignore)]
         public string ProcessedLanguage { get; set; }
         /// <summary>
         /// The number of words that were found in the input.
         /// </summary>
         /// <value>The number of words that were found in the input.</value>
-        [JsonProperty("word_count")]
+        [JsonProperty("word_count", NullValueHandling = NullValueHandling.Ignore)]
         public int? WordCount { get; set; }
         /// <summary>
         /// When guidance is appropriate, a string that provides a message that indicates the number of words found and where that value falls in the range of required or suggested number of words.
         /// </summary>
         /// <value>When guidance is appropriate, a string that provides a message that indicates the number of words found and where that value falls in the range of required or suggested number of words.</value>
-        [JsonProperty("word_count_message")]
+        [JsonProperty("word_count_message", NullValueHandling = NullValueHandling.Ignore)]
         public string WordCountMessage { get; set; }
         /// <summary>
         /// Detailed results for the Big Five personality characteristics (dimensions and facets) inferred from the input text.
         /// </summary>
         /// <value>Detailed results for the Big Five personality characteristics (dimensions and facets) inferred from the input text.</value>
-        [JsonProperty("personality")]
+        [JsonProperty("personality", NullValueHandling = NullValueHandling.Ignore)]
         public List<TraitTreeNode> Personality { get; set; }
         /// <summary>
         /// Detailed results for the Needs characteristics inferred from the input text.
         /// </summary>
         /// <value>Detailed results for the Needs characteristics inferred from the input text.</value>
-        [JsonProperty("values")]
+        [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<TraitTreeNode> Values { get; set; }
         /// <summary>
         /// Detailed results for the Values characteristics inferred from the input text.
         /// </summary>
         /// <value>Detailed results for the Values characteristics inferred from the input text.</value>
-        [JsonProperty("needs")]
+        [JsonProperty("needs", NullValueHandling = NullValueHandling.Ignore)]
         public List<TraitTreeNode> Needs { get; set; }
         /// <summary>
         /// For JSON content that is timestamped, detailed results about the social behavior disclosed by the input in terms of temporal characteristics. The results include information about the distribution of the content over the days of the week and the hours of the day.
         /// </summary>
         /// <value>For JSON content that is timestamped, detailed results about the social behavior disclosed by the input in terms of temporal characteristics. The results include information about the distribution of the content over the days of the week and the hours of the day.</value>
-        [JsonProperty("behavior")]
+        [JsonProperty("behavior", NullValueHandling = NullValueHandling.Ignore)]
         public List<BehaviorNode> Behavior { get; set; }
         /// <summary>
         /// If the `consumption_preferences` query parameter is `true`, detailed results for each category of consumption preferences. Each element of the array provides information inferred from the input text for the individual preferences of that category.
         /// </summary>
         /// <value>If the `consumption_preferences` query parameter is `true`, detailed results for each category of consumption preferences. Each element of the array provides information inferred from the input text for the individual preferences of that category.</value>
-        [JsonProperty("consumption_preferences")]
+        [JsonProperty("consumption_preferences", NullValueHandling = NullValueHandling.Ignore)]
         public List<ConsumptionPreferencesCategoryNode> ConsumptionPreferences { get; set; }
         /// <summary>
         /// Warning messages associated with the input text submitted with the request. The array is empty if the input generated no warnings.
         /// </summary>
         /// <value>Warning messages associated with the input text submitted with the request. The array is empty if the input generated no warnings.</value>
-        [JsonProperty("warnings")]
+        [JsonProperty("warnings", NullValueHandling = NullValueHandling.Ignore)]
         public List<Warning> Warnings { get; set; }
     }
 }

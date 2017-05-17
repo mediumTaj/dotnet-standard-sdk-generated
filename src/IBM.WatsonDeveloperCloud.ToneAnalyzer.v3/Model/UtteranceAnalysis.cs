@@ -29,19 +29,19 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// The ID of the text being analyzed.
         /// </summary>
         /// <value>The ID of the text being analyzed.</value>
-        [JsonProperty("utterance_id")]
+        [JsonProperty("utterance_id", NullValueHandling = NullValueHandling.Ignore)]
         public string UtteranceId { get; set; }
         /// <summary>
         /// The text being analyzed.
         /// </summary>
         /// <value>The text being analyzed.</value>
-        [JsonProperty("utterance_text")]
+        [JsonProperty("utterance_text", NullValueHandling = NullValueHandling.Ignore)]
         public string UtteranceText { get; set; }
         /// <summary>
         /// Tone analysis results from seven possible categories: Sad, Frustrated, Satisfied, Excited, Polite, Impolite, Sympathetic.
         /// </summary>
         /// <value>Tone analysis results from seven possible categories: Sad, Frustrated, Satisfied, Excited, Polite, Impolite, Sympathetic.</value>
-        [JsonProperty("tones")]
+        [JsonProperty("tones", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneScore> Tones { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The dialog node ID.
         /// </summary>
         /// <value>The dialog node ID.</value>
-        [JsonProperty("dialog_node")]
+        [JsonProperty("dialog_node", NullValueHandling = NullValueHandling.Ignore)]
         public string DialogNode { get; set; }
     }
 }

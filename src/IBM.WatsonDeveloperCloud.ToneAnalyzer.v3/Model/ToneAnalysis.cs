@@ -28,13 +28,13 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// <summary>
         /// Gets or Sets DocumentTone
         /// </summary>
-        [JsonProperty("document_tone")]
+        [JsonProperty("document_tone", NullValueHandling = NullValueHandling.Ignore)]
         public ToneAnalysisDocumentTone DocumentTone { get; set; }
         /// <summary>
         /// List of sentences contained in the document, with individual Tone analysis results for each sentence.
         /// </summary>
         /// <value>List of sentences contained in the document, with individual Tone analysis results for each sentence.</value>
-        [JsonProperty("sentences_tone")]
+        [JsonProperty("sentences_tone", NullValueHandling = NullValueHandling.Ignore)]
         public List<SentenceAnalysis> SentencesTone { get; set; }
     }
 }

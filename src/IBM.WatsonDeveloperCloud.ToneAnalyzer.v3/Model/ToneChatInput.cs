@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// The content to be analyzed.
         /// </summary>
         /// <value>The content to be analyzed.</value>
-        [JsonProperty("utterances")]
+        [JsonProperty("utterances", NullValueHandling = NullValueHandling.Ignore)]
         public List<Utterance> Utterances { get; set; }
     }
 }

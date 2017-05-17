@@ -29,12 +29,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of workspaces.
         /// </summary>
         /// <value>An array of workspaces.</value>
-        [JsonProperty("workspaces")]
+        [JsonProperty("workspaces", NullValueHandling = NullValueHandling.Ignore)]
         public List<WorkspaceResponse> Workspaces { get; set; }
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [JsonProperty("pagination")]
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
         public PaginationResponse Pagination { get; set; }
     }
 }

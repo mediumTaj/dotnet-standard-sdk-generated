@@ -29,31 +29,31 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The name of the entity.
         /// </summary>
         /// <value>The name of the entity.</value>
-        [JsonProperty("entity")]
+        [JsonProperty("entity", NullValueHandling = NullValueHandling.Ignore)]
         public string Entity { get; set; }
         /// <summary>
         /// The description of the entity.
         /// </summary>
         /// <value>The description of the entity.</value>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
         /// Any metadata related to the value.
         /// </summary>
         /// <value>Any metadata related to the value.</value>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public object Metadata { get; set; }
         /// <summary>
         /// An array of entity values.
         /// </summary>
         /// <value>An array of entity values.</value>
-        [JsonProperty("values")]
+        [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<CreateValue> Values { get; set; }
         /// <summary>
         /// Whether to use fuzzy matching for the entity.
         /// </summary>
         /// <value>Whether to use fuzzy matching for the entity.</value>
-        [JsonProperty("fuzzy_match")]
+        [JsonProperty("fuzzy_match", NullValueHandling = NullValueHandling.Ignore)]
         public bool? FuzzyMatch { get; set; }
     }
 }

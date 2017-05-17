@@ -28,12 +28,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// <summary>
         /// Gets or Sets Entities
         /// </summary>
-        [JsonProperty("entities")]
+        [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
         public List<EntityExportResponse> Entities { get; set; }
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [JsonProperty("pagination")]
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
         public PaginationResponse Pagination { get; set; }
     }
 }

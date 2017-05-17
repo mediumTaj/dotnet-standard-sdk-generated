@@ -27,12 +27,12 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// <summary>
         /// Gets or Sets Text
         /// </summary>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [JsonProperty("user")]
+        [JsonProperty("user", NullValueHandling = NullValueHandling.Ignore)]
         public string User { get; set; }
     }
 }

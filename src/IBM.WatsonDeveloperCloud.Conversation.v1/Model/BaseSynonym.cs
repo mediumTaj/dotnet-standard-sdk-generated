@@ -28,7 +28,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The text of the synonym.
         /// </summary>
         /// <value>The text of the synonym.</value>
-        [JsonProperty("synonym")]
+        [JsonProperty("synonym", NullValueHandling = NullValueHandling.Ignore)]
         public string Synonym { get; set; }
     }
 }

@@ -28,19 +28,19 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         /// The unique identifier of the consumption preference to which the results pertain. IDs have the form `consumption_preferences_{preference}`.
         /// </summary>
         /// <value>The unique identifier of the consumption preference to which the results pertain. IDs have the form `consumption_preferences_{preference}`.</value>
-        [JsonProperty("consumption_preference_id")]
+        [JsonProperty("consumption_preference_id", NullValueHandling = NullValueHandling.Ignore)]
         public string ConsumptionPreferenceId { get; set; }
         /// <summary>
         /// The user-visible name of the consumption preference.
         /// </summary>
         /// <value>The user-visible name of the consumption preference.</value>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
         /// <summary>
         /// The score for the consumption preference: `0.0` indicates unlikely, `0.5` indicates neutrality, and `1.0` indicates likely. The scores for some preferences are binary and do not allow a neutral value. The score is an indication of preference based on the results inferred from the input text, not a normalized percentile.
         /// </summary>
         /// <value>The score for the consumption preference: `0.0` indicates unlikely, `0.5` indicates neutrality, and `1.0` indicates likely. The scores for some preferences are binary and do not allow a neutral value. The score is an indication of preference based on the results inferred from the input text, not a normalized percentile.</value>
-        [JsonProperty("score")]
+        [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
         public double? Score { get; set; }
     }
 }

@@ -29,19 +29,19 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// Name of this tone category: one of Emotion, Social or Language Tone. Human-readable, localized.
         /// </summary>
         /// <value>Name of this tone category: one of Emotion, Social or Language Tone. Human-readable, localized.</value>
-        [JsonProperty("category_name")]
+        [JsonProperty("category_name", NullValueHandling = NullValueHandling.Ignore)]
         public string CategoryName { get; set; }
         /// <summary>
         /// Identifier of this category. It does not vary across languages or localizations.
         /// </summary>
         /// <value>Identifier of this category. It does not vary across languages or localizations.</value>
-        [JsonProperty("category_id")]
+        [JsonProperty("category_id", NullValueHandling = NullValueHandling.Ignore)]
         public string CategoryId { get; set; }
         /// <summary>
         /// All individual tone results within this category. For example, the Social Tones category contains one element for each of the dimensions in Big 5 model: Agreeableness, Openness, etc.
         /// </summary>
         /// <value>All individual tone results within this category. For example, the Social Tones category contains one element for each of the dimensions in Big 5 model: Agreeableness, Openness, etc.</value>
-        [JsonProperty("tones")]
+        [JsonProperty("tones", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneScore> Tones { get; set; }
     }
 }

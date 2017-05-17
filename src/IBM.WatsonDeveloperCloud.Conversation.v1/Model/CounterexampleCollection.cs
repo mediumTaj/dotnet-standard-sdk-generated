@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of counterexamples.
         /// </summary>
         /// <value>An array of counterexamples.</value>
-        [JsonProperty("counterexamples")]
+        [JsonProperty("counterexamples", NullValueHandling = NullValueHandling.Ignore)]
         public List<ExampleResponse> Counterexamples { get; set; }
     }
 }

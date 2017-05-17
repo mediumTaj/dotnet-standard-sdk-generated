@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of user input examples.
         /// </summary>
         /// <value>An array of user input examples.</value>
-        [JsonProperty("examples")]
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
         public List<ExampleResponse> Examples { get; set; }
     }
 }

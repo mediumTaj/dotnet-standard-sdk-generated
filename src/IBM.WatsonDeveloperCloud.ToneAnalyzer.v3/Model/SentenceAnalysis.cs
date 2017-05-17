@@ -29,31 +29,31 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// A unique number identifying this sentence within this document. Reserved for future use (when sentences need to be referred from different places).
         /// </summary>
         /// <value>A unique number identifying this sentence within this document. Reserved for future use (when sentences need to be referred from different places).</value>
-        [JsonProperty("sentence_id")]
+        [JsonProperty("sentence_id", NullValueHandling = NullValueHandling.Ignore)]
         public int? SentenceId { get; set; }
         /// <summary>
         /// Index of the character in the document where this sentence starts.
         /// </summary>
         /// <value>Index of the character in the document where this sentence starts.</value>
-        [JsonProperty("input_from")]
+        [JsonProperty("input_from", NullValueHandling = NullValueHandling.Ignore)]
         public int? InputFrom { get; set; }
         /// <summary>
         /// Index of the character in the document after the end of this sentence (input_to minus input_from is the length of this sentence in characters).
         /// </summary>
         /// <value>Index of the character in the document after the end of this sentence (input_to minus input_from is the length of this sentence in characters).</value>
-        [JsonProperty("input_to")]
+        [JsonProperty("input_to", NullValueHandling = NullValueHandling.Ignore)]
         public int? InputTo { get; set; }
         /// <summary>
         /// The text in this sentence - as just taken from the input text from input_from to input_to.
         /// </summary>
         /// <value>The text in this sentence - as just taken from the input text from input_from to input_to.</value>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
         /// <summary>
         /// Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.
         /// </summary>
         /// <value>Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.</value>
-        [JsonProperty("tone_categories")]
+        [JsonProperty("tone_categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneCategory> ToneCategories { get; set; }
     }
 }

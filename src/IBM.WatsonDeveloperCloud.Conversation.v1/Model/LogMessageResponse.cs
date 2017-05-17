@@ -57,13 +57,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The severity of the message.
         /// </summary>
         /// <value>The severity of the message.</value>
-        [JsonProperty("level")]
+        [JsonProperty("level", NullValueHandling = NullValueHandling.Ignore)]
         public LevelEnum? Level { get; set; }
         /// <summary>
         /// The text of the message.
         /// </summary>
         /// <value>The text of the message.</value>
-        [JsonProperty("msg")]
+        [JsonProperty("msg", NullValueHandling = NullValueHandling.Ignore)]
         public string Msg { get; set; }
     }
 }

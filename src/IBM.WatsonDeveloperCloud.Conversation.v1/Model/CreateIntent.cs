@@ -29,19 +29,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The name of the intent.
         /// </summary>
         /// <value>The name of the intent.</value>
-        [JsonProperty("intent")]
+        [JsonProperty("intent", NullValueHandling = NullValueHandling.Ignore)]
         public string Intent { get; set; }
         /// <summary>
         /// The description of the intent.
         /// </summary>
         /// <value>The description of the intent.</value>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
         /// An array of user input examples.
         /// </summary>
         /// <value>An array of user input examples.</value>
-        [JsonProperty("examples")]
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
         public List<CreateExample> Examples { get; set; }
     }
 }

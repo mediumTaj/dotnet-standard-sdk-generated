@@ -29,19 +29,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The text of the synonym.
         /// </summary>
         /// <value>The text of the synonym.</value>
-        [JsonProperty("synonym")]
+        [JsonProperty("synonym", NullValueHandling = NullValueHandling.Ignore)]
         public string Synonym { get; set; }
         /// <summary>
         /// The timestamp for creation of the synonym.
         /// </summary>
         /// <value>The timestamp for creation of the synonym.</value>
-        [JsonProperty("created")]
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Created { get; set; }
         /// <summary>
         /// The timestamp for the most recent update to the synonym.
         /// </summary>
         /// <value>The timestamp for the most recent update to the synonym.</value>
-        [JsonProperty("updated")]
+        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Updated { get; set; }
     }
 }

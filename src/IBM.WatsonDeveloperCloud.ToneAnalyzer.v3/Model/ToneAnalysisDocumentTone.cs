@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         /// Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.
         /// </summary>
         /// <value>Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.</value>
-        [JsonProperty("tone_categories")]
+        [JsonProperty("tone_categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneCategory> ToneCategories { get; set; }
     }
 }

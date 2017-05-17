@@ -70,49 +70,49 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The current status of the workspace.
         /// </summary>
         /// <value>The current status of the workspace.</value>
-        [JsonProperty("status")]
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// The name of the workspace.
         /// </summary>
         /// <value>The name of the workspace.</value>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
         /// <summary>
         /// The description of the workspace.
         /// </summary>
         /// <value>The description of the workspace.</value>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
         /// The language of the workspace.
         /// </summary>
         /// <value>The language of the workspace.</value>
-        [JsonProperty("language")]
+        [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
         public string Language { get; set; }
         /// <summary>
         /// Any metadata that is required by the workspace.
         /// </summary>
         /// <value>Any metadata that is required by the workspace.</value>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public object Metadata { get; set; }
         /// <summary>
         /// The timestamp for creation of the workspace.
         /// </summary>
         /// <value>The timestamp for creation of the workspace.</value>
-        [JsonProperty("created")]
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Created { get; set; }
         /// <summary>
         /// The timestamp for the last update to the workspace.
         /// </summary>
         /// <value>The timestamp for the last update to the workspace.</value>
-        [JsonProperty("updated")]
+        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Updated { get; set; }
         /// <summary>
         /// The workspace ID.
         /// </summary>
         /// <value>The workspace ID.</value>
-        [JsonProperty("workspace_id")]
+        [JsonProperty("workspace_id", NullValueHandling = NullValueHandling.Ignore)]
         public string WorkspaceId { get; set; }
     }
 }

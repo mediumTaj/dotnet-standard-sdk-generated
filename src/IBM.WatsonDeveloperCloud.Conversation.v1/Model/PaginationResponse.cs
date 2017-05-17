@@ -28,25 +28,25 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The URL that will return the same page of results.
         /// </summary>
         /// <value>The URL that will return the same page of results.</value>
-        [JsonProperty("refresh_url")]
+        [JsonProperty("refresh_url", NullValueHandling = NullValueHandling.Ignore)]
         public string RefreshUrl { get; set; }
         /// <summary>
         /// The URL that will return the next page of results.
         /// </summary>
         /// <value>The URL that will return the next page of results.</value>
-        [JsonProperty("next_url")]
+        [JsonProperty("next_url", NullValueHandling = NullValueHandling.Ignore)]
         public string NextUrl { get; set; }
         /// <summary>
         /// Reserved for future use.
         /// </summary>
         /// <value>Reserved for future use.</value>
-        [JsonProperty("total")]
+        [JsonProperty("total", NullValueHandling = NullValueHandling.Ignore)]
         public int? Total { get; set; }
         /// <summary>
         /// Reserved for future use.
         /// </summary>
         /// <value>Reserved for future use.</value>
-        [JsonProperty("matched")]
+        [JsonProperty("matched", NullValueHandling = NullValueHandling.Ignore)]
         public int? Matched { get; set; }
     }
 }

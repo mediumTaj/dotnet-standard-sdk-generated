@@ -81,7 +81,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples")
                                 .WithArgument("version", VersionDate)
@@ -111,7 +110,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
@@ -140,7 +138,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
@@ -167,7 +164,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples")
                                 .WithArgument("version", VersionDate)
@@ -202,7 +198,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/counterexamples/{text}")
                                 .WithArgument("version", VersionDate)
@@ -231,7 +226,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities")
                                 .WithArgument("version", VersionDate)
@@ -261,7 +255,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
@@ -290,7 +283,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
@@ -318,7 +310,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities")
                                 .WithArgument("version", VersionDate)
@@ -354,7 +345,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}")
                                 .WithArgument("version", VersionDate)
@@ -385,7 +375,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
@@ -417,7 +406,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
@@ -448,7 +436,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
@@ -477,7 +464,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples")
                                 .WithArgument("version", VersionDate)
@@ -514,7 +500,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}/examples/{text}")
                                 .WithArgument("version", VersionDate)
@@ -543,7 +528,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents")
                                 .WithArgument("version", VersionDate)
@@ -573,7 +557,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
@@ -602,7 +585,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
@@ -630,7 +612,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents")
                                 .WithArgument("version", VersionDate)
@@ -666,7 +647,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/intents/{intent}")
                                 .WithArgument("version", VersionDate)
@@ -693,7 +673,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/logs")
                                 .WithArgument("version", VersionDate)
@@ -723,7 +702,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/message")
                                 .WithArgument("version", VersionDate)
@@ -756,7 +734,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
@@ -790,7 +767,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
@@ -823,7 +799,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
@@ -854,7 +829,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms")
                                 .WithArgument("version", VersionDate)
@@ -893,7 +867,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}/synonyms/{synonym}")
                                 .WithArgument("version", VersionDate)
@@ -924,7 +897,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
@@ -956,7 +928,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
@@ -987,7 +958,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
@@ -1017,7 +987,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
@@ -1055,7 +1024,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
@@ -1080,7 +1048,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces")
                                 .WithArgument("version", VersionDate)
@@ -1108,7 +1075,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
@@ -1135,7 +1101,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)
@@ -1161,7 +1126,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/workspaces")
                                 .WithArgument("version", VersionDate)
@@ -1192,7 +1156,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             try
             {
-
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}")
                                 .WithArgument("version", VersionDate)

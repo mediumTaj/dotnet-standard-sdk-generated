@@ -28,13 +28,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// The severity of the message (info, error, or warn).
         /// </summary>
         /// <value>The severity of the message (info, error, or warn).</value>
-        [JsonProperty("level")]
+        [JsonProperty("level", NullValueHandling = NullValueHandling.Ignore)]
         public string Level { get; set; }
         /// <summary>
         /// The text of the message.
         /// </summary>
         /// <value>The text of the message.</value>
-        [JsonProperty("msg")]
+        [JsonProperty("msg", NullValueHandling = NullValueHandling.Ignore)]
         public string Msg { get; set; }
     }
 }

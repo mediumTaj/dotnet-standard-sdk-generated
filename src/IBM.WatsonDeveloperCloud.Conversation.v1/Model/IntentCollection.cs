@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// An array of intents.
         /// </summary>
         /// <value>An array of intents.</value>
-        [JsonProperty("intents")]
+        [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
         public List<IntentExportResponse> Intents { get; set; }
     }
 }
