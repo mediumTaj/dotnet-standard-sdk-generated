@@ -34,9 +34,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         private string _createdWorkspaceId;
         private string _createdEntity = "entity";
         private string _createdEntityDescription = "Entity created by the .NET SDK Conversation example script.";
-        private string _createdValueName;
-        private string _createdIntentName;
+        private string _createdValue = "value";
+        private string _createdIntent = "intent";
+        private string _createdIntentDescription = "Intent created by the .NET SDK Conversation example script.";
         private string _createdCounterExampleText = "Example text";
+        private string _createdSynonym = "synonym";
+        private string _createdExample = "example";
 
         #region Constructor
         public ConversationServiceExample(string username, string password, string workspaceID)
@@ -57,38 +60,38 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             GetCounterExample();
             UpdateCounterExample();
 
-            //ListEntities();
-            //CreateEntity();
-            //GetEntity();
-            //UpdateEntity();
-            //DeleteEntity();
+            ListEntities();
+            CreateEntity();
+            GetEntity();
+            UpdateEntity();
 
-            //ListValues();
-            //CreateValue();
-            //GetValue();
-            //UpdateValue();
-            //DeleteValue();
+            ListValues();
+            CreateValue();
+            GetValue();
+            UpdateValue();
 
-            //ListSynonyms();
-            //CreateSynonym();
-            //GetSynonym();
-            //UpdateSynonym();
-            //DeleteSynonym();
+            ListSynonyms();
+            CreateSynonym();
+            GetSynonym();
+            UpdateSynonym();
 
-            //ListIntents();
-            //CreateIntent();
-            //GetIntent();
-            //UpdateIntent();
-            //DeleteIntent();
+            ListIntents();
+            CreateIntent();
+            GetIntent();
+            UpdateIntent();
 
-            //ListExamples();
-            //CreateExample();
-            //GetExample();
-            //UpdateExample();
-            //DeleteExample();
+            ListExamples();
+            CreateExample();
+            GetExample();
+            UpdateExample();
 
-            //ListLogEvents();
+            ListLogEvents();
 
+            DeleteExample();
+            DeleteIntent();
+            DeleteSynonym();
+            DeleteValue();
+            DeleteEntity();
             DeleteCounterExample();
             DeleteWorkspace();
 
@@ -315,10 +318,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateCounterExample()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateCounterExample({0}, {1})...", _createdWorkspaceId, _createdCounterExampleText + "-updated"));
+            string updatedCounterExampleText = _createdCounterExampleText + "-updated";
+            Console.WriteLine(string.Format("\nCalling UpdateCounterExample({0}, {1})...", _createdWorkspaceId, updatedCounterExampleText));
             UpdateExample example = new UpdateExample()
             {
-                Text = _createdCounterExampleText + "-updated"
+                Text = updatedCounterExampleText
             };
 
             var result = _conversation.UpdateCounterexample(_createdWorkspaceId, _createdCounterExampleText, example);
@@ -326,6 +330,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             if (result != null)
             {
                 Console.WriteLine(string.Format("CounterExample name: {0}, created: {1}", result.Text, result.Created));
+                _createdCounterExampleText = updatedCounterExampleText;
             }
             else
             {
@@ -335,12 +340,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteCounterExample()
         {
-            Console.WriteLine(string.Format("\nCalling DeleteCounterExample({0}, {1})...", _createdWorkspaceId, _createdCounterExampleText + "-updated"));
-            var result = _conversation.DeleteCounterexample(_createdWorkspaceId, _createdCounterExampleText + "-updated");
+            Console.WriteLine(string.Format("\nCalling DeleteCounterExample({0}, {1})...", _createdWorkspaceId, _createdCounterExampleText));
+            var result = _conversation.DeleteCounterexample(_createdWorkspaceId, _createdCounterExampleText);
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("CounterExample {0}, {1} deleted.", _createdWorkspaceId, _createdCounterExampleText + "-updated"));
+                Console.WriteLine(string.Format("Deleted counterExample {0}.", _createdCounterExampleText));
             }
             else
             {
@@ -410,11 +415,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateEntity()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateEntity()..."));
+            string updatedEntity = _createdEntity + "-updated";
+            string updatedEntityDescription = _createdEntityDescription + "-updated";
+
+            Console.WriteLine(string.Format("\nCalling UpdateEntity({0}, {1})...", _createdWorkspaceId, _createdEntity, updatedEntity));
             UpdateEntity entity = new UpdateEntity()
             {
-                Entity = _createdEntity + "-updated",
-                Description = _createdEntityDescription + "-updated"
+                Entity = updatedEntity,
+                Description = updatedEntityDescription
             };
 
             var result = _conversation.UpdateEntity(_createdWorkspaceId, _createdEntity, entity);
@@ -422,6 +430,8 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
             if (result != null)
             {
                 Console.WriteLine(string.Format("entity: {0} | description: {1}", result.Entity, result.Description));
+                _createdEntity = updatedEntity;
+                _createdEntityDescription = updatedEntityDescription;
             }
             else
             {
@@ -431,12 +441,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteEntity()
         {
-            Console.WriteLine(string.Format("\nCalling DeleteEntity()..."));
-            var result = _conversation.DeleteEntity(_createdWorkspaceId, _createdEntity + "-updated");
+            Console.WriteLine(string.Format("\nCalling DeleteEntity({0}, {1})...", _createdWorkspaceId, _createdEntity));
+            var result = _conversation.DeleteEntity(_createdWorkspaceId, _createdEntity);
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("entity {0}, {1} deleted.", _createdWorkspaceId, _createdEntity + "-updated"));
+                Console.WriteLine(string.Format("Deleted entity {0}.", _createdEntity));
             }
             else
             {
@@ -453,8 +463,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
             if (result != null)
             {
-                foreach (ValueExportResponse value in result.Values)
-                    Console.WriteLine(string.Format("value: {0} | Created: {1}", value.Value, value.Created));
+                if (result.Values != null && result.Values.Count > 0)
+                {
+                    foreach (ValueExportResponse value in result.Values)
+                        Console.WriteLine(string.Format("value: {0} | Created: {1}", value.Value, value.Created));
+                }
+                else
+                {
+                    Console.WriteLine("There are no values.");
+                }
             }
             else
             {
@@ -463,12 +480,17 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateValue()
         {
-            Console.WriteLine(string.Format("\nCalling CreateValue()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling CreateValue({0}, {1}, {2})...", _createdWorkspaceId, _createdEntity, _createdValue));
+            CreateValue value = new CreateValue()
+            {
+                Value = _createdValue
+            };
+
+            var result = _conversation.CreateValue(_createdWorkspaceId, _createdEntity, value);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("value: {0}", result.Value));
             }
             else
             {
@@ -478,12 +500,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetValue()
         {
-            Console.WriteLine(string.Format("\nCalling GetValue()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling GetValue({0}, {1}, {2})...", _createdWorkspaceId, _createdEntity, _createdValue));
+            var result = _conversation.GetValue(_createdWorkspaceId, _createdEntity, _createdValue);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("value: {0}", result.Value));
             }
             else
             {
@@ -493,12 +515,21 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateValue()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateValue()..."));
-            var result = _conversation.CreateWorkspace();
+            string updatedValue = _createdValue + "-updated";
+
+            Console.WriteLine(string.Format("\nCalling UpdateValue({0}, {1}, {2}, {3})...", _createdWorkspaceId, _createdEntity, _createdValue, updatedValue));
+
+            UpdateValue value = new UpdateValue()
+            {
+                Value = updatedValue
+            };
+
+            var result = _conversation.UpdateValue(_createdWorkspaceId, _createdEntity, _createdValue, value);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("value: {0}", result.Value));
+                _createdValue = updatedValue;
             }
             else
             {
@@ -508,12 +539,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteValue()
         {
-            Console.WriteLine(string.Format("\nCalling DeleteValue()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling DeleteValue({0}, {1}, {2})...", _createdWorkspaceId, _createdEntity, _createdValue));
+            var result = _conversation.DeleteValue(_createdWorkspaceId, _createdEntity, _createdValue);
 
             if (result != null)
             {
-
+                Console.WriteLine("Deleted value {0}", _createdValue);
             }
             else
             {
@@ -525,13 +556,20 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         #region Synonyms
         private void ListSynonyms()
         {
-            Console.WriteLine(string.Format("\nCalling ListSynonyms({0}, {1}, {2})...", _createdWorkspaceId, _createdEntity, _createdValueName));
-            var result = _conversation.ListSynonyms(_createdWorkspaceId, _createdEntity, _createdValueName);
+            Console.WriteLine(string.Format("\nCalling ListSynonyms({0}, {1}, {2})...", _createdWorkspaceId, _createdEntity, _createdValue));
+            var result = _conversation.ListSynonyms(_createdWorkspaceId, _createdEntity, _createdValue);
 
             if (result != null)
             {
-                foreach (SynonymResponse synonym in result.Synonyms)
-                    Console.WriteLine(string.Format("Synonym: {0} | Created: {1}", synonym.Synonym, synonym.Created));
+                if (result.Synonyms != null && result.Synonyms.Count > 0)
+                {
+                    foreach (SynonymResponse synonym in result.Synonyms)
+                        Console.WriteLine(string.Format("Synonym: {0} | Created: {1}", synonym.Synonym, synonym.Created));
+                }
+                else
+                {
+                    Console.WriteLine("There are no synonyms.");
+                }
             }
             else
             {
@@ -540,12 +578,17 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateSynonym()
         {
-            Console.WriteLine(string.Format("\nCalling CreateSynonym()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling CreateSynonym({0}, {1}, {2}, {3})...", _createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym));
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = _createdSynonym
+            };
+
+            var result = _conversation.CreateSynonym(_createdWorkspaceId, _createdEntity, _createdValue, synonym);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("synonym: {0}", result.Synonym));
             }
             else
             {
@@ -555,12 +598,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetSynonym()
         {
-            Console.WriteLine(string.Format("\nCalling GetSynonym()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling GetSynonym({0}, {1}, {2}, {3})...", _createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym));
+            var result = _conversation.GetSynonym(_createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("synonym: {0}", result.Synonym));
             }
             else
             {
@@ -570,12 +613,20 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateSynonym()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateSynonym()..."));
-            var result = _conversation.CreateWorkspace();
+            string updatedSynonym = _createdSynonym + "-updated";
+            Console.WriteLine(string.Format("\nCalling UpdateSynonym({0}, {1}, {2}, {3}, {4})...", _createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym, updatedSynonym));
+
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = updatedSynonym
+            };
+
+            var result = _conversation.UpdateSynonym(_createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym, synonym);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("synonym: {0}", result.Synonym));
+                _createdSynonym = updatedSynonym;
             }
             else
             {
@@ -585,12 +636,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteSynonym()
         {
-            Console.WriteLine(string.Format("\nCalling DeleteSynonym()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling DeleteSynonym({0}, {1}, {2}, {3})...", _createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym));
+            var result = _conversation.DeleteSynonym(_createdWorkspaceId, _createdEntity, _createdValue, _createdSynonym);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("Deleted synonym {0}", _createdSynonym));
             }
             else
             {
@@ -607,8 +658,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
             if (result != null)
             {
-                foreach (IntentExportResponse intent in result.Intents)
-                    Console.WriteLine(string.Format("Intent: {0} | Created: {1}", intent.Intent, intent.Created));
+                if (result.Intents != null && result.Intents.Count > 0)
+                {
+                    foreach (IntentExportResponse intent in result.Intents)
+                        Console.WriteLine(string.Format("Intent: {0} | Created: {1}", intent.Intent, intent.Created));
+                }
+                else
+                {
+                    Console.WriteLine("There are no intents.");
+                }
             }
             else
             {
@@ -617,12 +675,18 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateIntent()
         {
-            Console.WriteLine(string.Format("\nCalling CreateIntent()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling CreateIntent({0}, {1})...", _createdWorkspaceId, _createdIntent));
+            CreateIntent intent = new CreateIntent()
+            {
+                Intent = _createdIntent,
+                Description = _createdIntentDescription
+            };
+
+            var result = _conversation.CreateIntent(_createdWorkspaceId, intent);
 
             if (result != null)
             {
-
+                Console.WriteLine("intent: {0} | description: {1}", result.Intent, result.Description);
             }
             else
             {
@@ -632,12 +696,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetIntent()
         {
-            Console.WriteLine(string.Format("\nCalling GetIntent()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling GetIntent({0}, {1})...", _createdWorkspaceId, _createdIntent));
+            var result = _conversation.GetIntent(_createdWorkspaceId, _createdIntent);
 
             if (result != null)
             {
-
+                Console.WriteLine("intent: {0} | description: {1}", result.Intent, result.Description);
             }
             else
             {
@@ -647,12 +711,23 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateIntent()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateIntent()..."));
-            var result = _conversation.CreateWorkspace();
+            string updatedIntent = _createdIntent + "-updated";
+            string updatedIntentDescription = _createdIntentDescription + "-updated";
+            Console.WriteLine(string.Format("\nCalling UpdateIntent({0}, {1}, {2})...", _createdWorkspaceId, _createdIntent, updatedIntent));
+
+            UpdateIntent intent = new UpdateIntent()
+            {
+                Intent = updatedIntent,
+                Description = updatedIntentDescription
+            };
+
+            var result = _conversation.UpdateIntent(_createdWorkspaceId, _createdIntent, intent);
 
             if (result != null)
             {
-
+                Console.WriteLine("intent: {0} | description: {1}", result.Intent, result.Description);
+                _createdIntent = updatedIntent;
+                _createdIntentDescription = updatedIntentDescription;
             }
             else
             {
@@ -662,12 +737,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteIntent()
         {
-            Console.WriteLine(string.Format("\nCalling DeleteIntent()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling DeleteIntent({0}, {1})...", _createdWorkspaceId, _createdIntent));
+            var result = _conversation.DeleteIntent(_createdWorkspaceId, _createdIntent);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("Deleted intent {0}", _createdIntent));
             }
             else
             {
@@ -679,13 +754,20 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         #region Examples
         private void ListExamples()
         {
-            Console.WriteLine(string.Format("\nCalling ListExamples({0}, {1})...", _createdWorkspaceId, _createdIntentName));
-            var result = _conversation.ListExamples(_createdWorkspaceId, _createdIntentName);
+            Console.WriteLine(string.Format("\nCalling ListExamples({0}, {1})...", _createdWorkspaceId, _createdIntent));
+            var result = _conversation.ListExamples(_createdWorkspaceId, _createdIntent);
 
             if (result != null)
             {
-                foreach (ExampleResponse example in result.Examples)
-                    Console.WriteLine(string.Format("Example: {0} | Created: {1}", example.Text, example.Created));
+                if (result.Examples != null && result.Examples.Count > 0)
+                {
+                    foreach (ExampleResponse example in result.Examples)
+                        Console.WriteLine(string.Format("Example: {0} | Created: {1}", example.Text, example.Created));
+                }
+                else
+                {
+                    Console.WriteLine("There are no examples.");
+                }
             }
             else
             {
@@ -694,12 +776,18 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
         }
         private void CreateExample()
         {
-            Console.WriteLine(string.Format("\nCalling CreateExample()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling CreateExample({0}, {1}, {2})...", _createdWorkspaceId, _createdIntent, _createdExample));
+
+            CreateExample example = new CreateExample()
+            {
+                Text = _createdExample
+            };
+
+            var result = _conversation.CreateExample(_createdWorkspaceId, _createdIntent, example);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("example: {0}", result.Text));
             }
             else
             {
@@ -709,12 +797,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void GetExample()
         {
-            Console.WriteLine(string.Format("\nCalling GetExample()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling GetExample({0}, {1}, {2})...", _createdWorkspaceId, _createdIntent, _createdExample));
+            var result = _conversation.GetExample(_createdWorkspaceId, _createdIntent, _createdExample);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("example: {0}", result.Text));
             }
             else
             {
@@ -724,12 +812,20 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void UpdateExample()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateExample()..."));
-            var result = _conversation.CreateWorkspace();
+            string updatedExample = _createdExample + "-updated";
+            Console.WriteLine(string.Format("\nCalling UpdateExample({0}, {1}, {2}, {3})...", _createdWorkspaceId, _createdIntent, _createdExample, updatedExample));
+
+            UpdateExample example = new UpdateExample()
+            {
+                Text = updatedExample
+            };
+
+            var result = _conversation.UpdateExample(_createdWorkspaceId, _createdIntent, _createdExample, example);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("example: {0}", result.Text));
+                _createdExample = updatedExample;
             }
             else
             {
@@ -739,12 +835,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
         private void DeleteExample()
         {
-            Console.WriteLine(string.Format("\nCalling DeleteExample()..."));
-            var result = _conversation.CreateWorkspace();
+            Console.WriteLine(string.Format("\nCalling DeleteExample({0}, {1}, {2})...", _createdWorkspaceId, _createdIntent, _createdExample));
+            var result = _conversation.DeleteExample(_createdWorkspaceId, _createdIntent, _createdExample);
 
             if (result != null)
             {
-
+                Console.WriteLine(string.Format("Deleted example {0}.", _createdExample));
             }
             else
             {
@@ -761,8 +857,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Example
 
             if (result != null)
             {
-                foreach (LogExportResponse log in result.Logs)
-                    Console.WriteLine(string.Format("Log: {0} | Request timestamp: {1}", log.LogId, log.RequestTimestamp));
+                if (result.Logs != null && result.Logs.Count > 0)
+                {
+                    foreach (LogExportResponse log in result.Logs)
+                        Console.WriteLine(string.Format("Log: {0} | Request timestamp: {1}", log.LogId, log.RequestTimestamp));
+                }
+                else
+                {
+                    Console.WriteLine("There are no logs.");
+                }
             }
             else
             {
