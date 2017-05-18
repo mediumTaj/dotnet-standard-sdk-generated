@@ -17,8 +17,7 @@
     "OpenCover": "4.6.519",
     "coveralls.net": "0.7.0",
     "ReportGenerator": "2.4.5",
-    "IBM.WatsonDeveloperCloud.ToneAnalyzer.v3": "0.2.0",
-    "IBM.WatsonDeveloperCloud": "0.2.0"
+    "IBM.WatsonDeveloperCloud.ToneAnalyzer.v3": "0.2.0"
   },
 
   "frameworks": {

@@ -15,14 +15,12 @@
 *
 */
 
-using IBM.WatsonDeveloperCloud.ToneAnalyzer.v3;
 using IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
 {
