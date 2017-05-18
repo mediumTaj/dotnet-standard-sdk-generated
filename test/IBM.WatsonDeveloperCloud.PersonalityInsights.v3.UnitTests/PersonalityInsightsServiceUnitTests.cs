@@ -27,7 +27,7 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace IBM.WatsonDeveloperCloud.PersonalityInsights.UnitTests
+namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.UnitTests
 {
     [TestClass]
     public class PersonalityInsightsServiceUnitTests
