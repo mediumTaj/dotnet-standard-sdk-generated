@@ -44,6 +44,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IBM.WatsonDeveloperCloud.Co
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests", "test\IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests\IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests.xproj", "{F4448D3D-913D-4FE0-85F6-60F04EB7C134}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests", "test\IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests\IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests.xproj", "{7DA05E71-3503-4982-AAB6-26C9B76BDD5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,10 @@ Global
 		{F4448D3D-913D-4FE0-85F6-60F04EB7C134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4448D3D-913D-4FE0-85F6-60F04EB7C134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4448D3D-913D-4FE0-85F6-60F04EB7C134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA05E71-3503-4982-AAB6-26C9B76BDD5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA05E71-3503-4982-AAB6-26C9B76BDD5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA05E71-3503-4982-AAB6-26C9B76BDD5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA05E71-3503-4982-AAB6-26C9B76BDD5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,5 +126,6 @@ Global
 		{75A9464C-6B1F-421C-895F-5D44D75F3777} = {28E61676-E9FF-4DA9-99CC-5E0D16F02380}
 		{16272A2F-F4BC-4903-A232-1604AE109F99} = {75A9464C-6B1F-421C-895F-5D44D75F3777}
 		{F4448D3D-913D-4FE0-85F6-60F04EB7C134} = {75A9464C-6B1F-421C-895F-5D44D75F3777}
+		{7DA05E71-3503-4982-AAB6-26C9B76BDD5F} = {75A9464C-6B1F-421C-895F-5D44D75F3777}
 	EndGlobalSection
 EndGlobal

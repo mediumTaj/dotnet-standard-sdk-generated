@@ -17,7 +17,6 @@
 
 using System;
 using IBM.WatsonDeveloperCloud.Http;
-using IBM.WatsonDeveloperCloud.PersonalityInsights.v3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model;
