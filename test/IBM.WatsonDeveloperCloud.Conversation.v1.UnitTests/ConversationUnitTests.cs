@@ -3331,5 +3331,592 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
         }
         #endregion
         #endregion
+
+        #region Values
+        #region Create Value
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateValue_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            CreateValue value = new CreateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.CreateValue(null, "entity", value);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateValue_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            CreateValue value = new CreateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.CreateValue("workspaceId", null, value);
+        }
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateValue_No_Bpdu()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.CreateValue("workspaceId", "entity", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateValue_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            CreateValue value = new CreateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.CreateValue("workspaceId", "entity", value);
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void CreateValue_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            CreateValue value = new CreateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.CreateValue("workspaceId", "entity", value);
+        }
+
+        [TestMethod]
+        public void CreateValue_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            ValueResponse response = new ValueResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Value = "value",
+                Metadata = new object() { }
+            };
+            #endregion
+
+            CreateValue value = new CreateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<CreateValue>(value)
+                .Returns(request);
+            request.As<ValueResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.CreateValue("workspaceId", "entity", value);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.Value == "value");
+            Assert.IsNotNull(result.Metadata);
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Updated);
+        }
+        #endregion
+
+        #region Delete Value
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteValue_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteValue(null, "entity", "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteValue_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteValue("workspaceId", null, "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteValue_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteValue("workspaceId", "entity", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteValue_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.DeleteValue("workspaceId", "entity", "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void DeleteValue_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.DeleteValue("workspaceId", "entity", "example");
+        }
+
+        [TestMethod]
+        public void DeleteValue_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            object response = new object() { };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<object>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.DeleteValue("workspaceId", "entity", "example");
+
+            Assert.IsNotNull(result);
+            client.Received().DeleteAsync(Arg.Any<string>());
+        }
+        #endregion
+
+        #region Get Value
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetValue_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetValue(null, "entity", "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetValue_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetValue("workspaceId", null, "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetValue_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetValue("workspaceId", "entity", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetValue_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.GetValue("workspaceId", "entity", "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void GetValue_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+            service.GetValue("workspaceId","entity", "value");
+        }
+
+        [TestMethod]
+        public void GetValue_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            ValueExportResponse response = new ValueExportResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<ValueExportResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.GetValue("workspaceId", "entity", "value");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Updated);
+            Assert.IsNotNull(result.Metadata);
+            Assert.IsNotNull(result.Synonyms);
+            Assert.IsTrue(result.Value == "value");
+            Assert.IsTrue(result.Synonyms.Count > 0);
+            Assert.IsTrue(result.Synonyms[0] == "synonym");
+        }
+        #endregion
+
+        #region List Value
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListValues_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.ListValues(null, "entity");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListValues_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.ListValues("workspaceId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListValues_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.ListValues("workspaceId", "entity");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void ListValues_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+            service.ListValues("workspaceId", "entity");
+        }
+
+        [TestMethod]
+        public void ListValues_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            ValueCollectionResponse response = new ValueCollectionResponse()
+            {
+                Values = new List<ValueExportResponse>()
+                {
+                    new ValueExportResponse()
+                    {
+                        Value = "value",
+                        Metadata = new object() { },
+                        Created = DateTime.Now,
+                        Updated = DateTime.Now,
+                        Synonyms = new List<string>()
+                        {
+                            "synonym"
+                        }
+                    }
+                },
+                Pagination = new PaginationResponse()
+                {
+                    RefreshUrl = "refreshUrl",
+                    NextUrl = "nextUrl",
+                    Total = 1,
+                    Matched = 1
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<int?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<ValueCollectionResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.ListValues("workspaceId", "entity");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Values);
+            Assert.IsTrue(result.Values.Count > 0);
+            Assert.IsTrue(result.Values[0].Value == "value");
+            Assert.IsNotNull(result.Values[0].Metadata);
+            Assert.IsNotNull(result.Values[0].Created);
+            Assert.IsNotNull(result.Values[0].Updated);
+            Assert.IsNotNull(result.Values[0].Synonyms);
+            Assert.IsTrue(result.Values[0].Synonyms.Count > 0);
+            Assert.IsTrue(result.Values[0].Synonyms[0] == "synonym");
+            Assert.IsTrue(result.Pagination.RefreshUrl == "refreshUrl");
+            Assert.IsTrue(result.Pagination.NextUrl == "nextUrl");
+            Assert.IsTrue(result.Pagination.Total == 1);
+            Assert.IsTrue(result.Pagination.Matched == 1);
+        }
+        #endregion
+
+        #region Update Value
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateValue_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateValue value = new UpdateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.UpdateValue(null, "entity", "value", value);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateValue_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateValue value = new UpdateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.UpdateValue("workspaceId", null, "value", value);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateValue_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateValue value = new UpdateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.UpdateValue("workspaceId", "entity", null, value);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateValue_No_UpdateValue()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.UpdateValue("workspaceId", "entity", "value", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateValue_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            UpdateValue value = new UpdateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            service.UpdateValue("workspaceId", "entity", "value", value);
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void UpdateValue_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            UpdateValue value = new UpdateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.UpdateValue("workspaceId", "entity", "value", value);
+        }
+
+        [TestMethod]
+        public void UpdateValue_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            ValueResponse response = new ValueResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Value = "value",
+                Metadata = new object() { }
+            };
+            #endregion
+
+            UpdateValue value = new UpdateValue()
+            {
+                Value = "value",
+                Metadata = new object() { },
+                Synonyms = new List<string>()
+                {
+                    "synonym"
+                }
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<UpdateValue>(value)
+                .Returns(request);
+            request.As<ValueResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.UpdateValue("workspaceId", "entity", "value", value);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Value == "value");
+            Assert.IsNotNull(result.Metadata);
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Updated);
+        }
+        #endregion
+        #endregion
     }
 }
