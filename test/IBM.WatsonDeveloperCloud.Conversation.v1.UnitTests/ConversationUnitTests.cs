@@ -3918,5 +3918,548 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
         }
         #endregion
         #endregion
+
+        #region Workspaces
+        #region Create Workspace
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateWorkspace_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            CreateWorkspace workspace = new CreateWorkspace()
+            {
+                Name = "name",
+                Description = "description",
+                Language = "en",
+                Metadata = new object()
+            };
+
+            service.CreateWorkspace(workspace);
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void CreateWorkspace_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            CreateWorkspace workspace = new CreateWorkspace()
+            {
+                Name = "name",
+                Description = "description",
+                Language = "en",
+                Metadata = new object()
+            };
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.CreateWorkspace(workspace);
+        }
+
+        [TestMethod]
+        public void CreateWorkspace_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            WorkspaceResponse response = new WorkspaceResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Name = "name",
+                Language = "en",
+                Metadata = new object() { },
+                WorkspaceId = "workspaceId",
+                Description = "description"
+            };
+            #endregion
+
+            CreateWorkspace workspace = new CreateWorkspace()
+            {
+                Name = "name",
+                Description = "description",
+                Language = "en",
+                Metadata = new object()
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<CreateWorkspace>(workspace)
+                .Returns(request);
+            request.As<WorkspaceResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.CreateWorkspace(workspace);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Metadata);
+            Assert.IsTrue(result.Name == "name");
+            Assert.IsTrue(result.Description == "description");
+            Assert.IsTrue(result.Language == "en");
+            Assert.IsTrue(result.WorkspaceId == "workspaceId");
+            Assert.IsTrue(result.Description == "description");
+        }
+        #endregion
+
+        #region Delete Workspace
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteWorkspace_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteWorkspace(null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteWorkspace_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.DeleteWorkspace("workspaceId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void DeleteWorkspace_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.DeleteWorkspace("workspaceId");
+        }
+
+        [TestMethod]
+        public void DeleteWorkspace_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            object response = new object() { };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<object>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.DeleteWorkspace("workspaceId");
+
+            Assert.IsNotNull(result);
+            client.Received().DeleteAsync(Arg.Any<string>());
+        }
+        #endregion
+
+        #region Get Workspace
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetWorkspace_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetWorkspace(null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetWorkspace_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.GetWorkspace("workspaceId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void GetWorkspace_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+            service.GetWorkspace("workspaceId");
+        }
+
+        [TestMethod]
+        public void GetWorkspace_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            WorkspaceExportResponse response = new WorkspaceExportResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Name = "name",
+                Language = "en",
+                Metadata = new object() { },
+                WorkspaceId = "workspaceId",
+                Description = "description",
+                Intents = new List<IntentExportResponse>()
+                {
+                    new IntentExportResponse()
+                    {
+                        Intent = "intent",
+                        Created = DateTime.Now,
+                        Updated = DateTime.Now,
+                        Description = "description",
+                        Examples = new List<ExampleResponse>()
+                        {
+                            new ExampleResponse()
+                            {
+                                Created = DateTime.Now,
+                                Updated = DateTime.Now,
+                                Text = "text"
+                            }
+                        }
+                    }
+                },
+                Entities = new List<EntityExportResponse>()
+                {
+                    new EntityExportResponse()
+                    {
+                        Entity = "entity",
+                        Created = DateTime.Now,
+                        Updated = DateTime.Now,
+                        Description = "description",
+                        Metadata = new object() { },
+                        FuzzyMatch = true,
+                        Values = new List<ValueExportResponse>()
+                        {
+                            new ValueExportResponse()
+                            {
+                                Created = DateTime.Now,
+                                Updated = DateTime.Now,
+                                Value = "value",
+                                Metadata = new object() { },
+                                Synonyms = new List<string>()
+                                {
+                                    "synonym"
+                                }
+                            }
+                        }
+                    }
+                },
+                Counterexamples = new List<ExampleResponse>()
+                {
+                    new ExampleResponse()
+                    {
+                        Created = DateTime.Now,
+                        Updated = DateTime.Now,
+                        Text = "text"
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool?>())
+                .Returns(request);
+            request.As<WorkspaceExportResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.GetWorkspace("workspaceId");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Metadata);
+            Assert.IsTrue(result.Name == "name");
+            Assert.IsTrue(result.Description == "description");
+            Assert.IsTrue(result.Language == "en");
+            Assert.IsTrue(result.WorkspaceId == "workspaceId");
+            Assert.IsTrue(result.Description == "description");
+        }
+        #endregion
+
+        #region List Workspace
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListWorkspaces_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.ListWorkspaces();
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void ListWorkspaces_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+            service.ListWorkspaces();
+        }
+
+        [TestMethod]
+        public void ListWorkspaces_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            WorkspaceCollectionResponse response = new WorkspaceCollectionResponse()
+            {
+                Workspaces = new List<WorkspaceResponse>()
+                {
+                    new WorkspaceResponse()
+                    {
+                        Created = DateTime.Now,
+                        Updated = DateTime.Now,
+                        Name = "name",
+                        Language = "en",
+                        Metadata = new object() { },
+                        WorkspaceId = "workspaceId",
+                        Description = "description"
+                    }
+                },
+                Pagination = new PaginationResponse()
+                {
+                    RefreshUrl = "refreshUrl",
+                    NextUrl = "nextUrl",
+                    Total = 1,
+                    Matched = 1
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<int?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<WorkspaceCollectionResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.ListWorkspaces();
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsTrue(result.Pagination.RefreshUrl == "refreshUrl");
+            Assert.IsTrue(result.Pagination.NextUrl == "nextUrl");
+            Assert.IsTrue(result.Pagination.Total == 1);
+            Assert.IsTrue(result.Pagination.Matched == 1);
+            Assert.IsNotNull(result.Workspaces[0].Created);
+            Assert.IsNotNull(result.Workspaces[0].Created);
+            Assert.IsNotNull(result.Workspaces[0].Metadata);
+            Assert.IsTrue(result.Workspaces[0].Name == "name");
+            Assert.IsTrue(result.Workspaces[0].Description == "description");
+            Assert.IsTrue(result.Workspaces[0].Language == "en");
+            Assert.IsTrue(result.Workspaces[0].WorkspaceId == "workspaceId");
+            Assert.IsTrue(result.Workspaces[0].Description == "description");
+        }
+        #endregion
+
+        #region Update Workspace
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateWorkspace_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.UpdateWorkspace(null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateWorkspace_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            service.UpdateWorkspace("workspaceId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void UpdateWorkspace_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+            
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.UpdateWorkspace("workspaceId");
+        }
+
+        [TestMethod]
+        public void UpdateWorkspace_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            WorkspaceResponse response = new WorkspaceResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Name = "name",
+                Language = "en",
+                Metadata = new object() { },
+                WorkspaceId = "workspaceId",
+                Description = "description"
+            };
+            #endregion
+
+            UpdateWorkspace workspace = new UpdateWorkspace()
+            {
+                Name = "name",
+                Language = "en",
+                Metadata = new object() { },
+                Description = "description",
+                DialogNodes = new List<CreateDialogNode>()
+                {
+                    new CreateDialogNode()
+                    {
+                        DialogNode = "dialogNode"
+                    }
+                },
+                Intents = new List<CreateIntent>()
+                {
+                    new CreateIntent()
+                    {
+                        Intent = "intent",
+                        Description = "description",
+                        Examples = new List<CreateExample>()
+                        {
+                            new CreateExample()
+                            {
+                                Text = "text"
+                            }
+                        }
+                    }
+                },
+                Entities = new List<CreateEntity>()
+                {
+                    new CreateEntity()
+                    {
+                        Entity = "entity",
+                        Description = "description",
+                        Metadata = new object() { },
+                        FuzzyMatch = true,
+                        Values = new List<CreateValue>()
+                        {
+                            new CreateValue()
+                            {
+                                Value = "value",
+                                Metadata = new object() { },
+                                Synonyms = new List<string>()
+                                {
+                                    "synonym"
+                                }
+                            }
+                        }
+                    }
+                },
+                Counterexamples = new List<CreateExample>()
+                {
+                    new CreateExample()
+                    {
+                        Text = "text"
+                    }
+                }
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<UpdateWorkspace>(workspace)
+                .Returns(request);
+            request.As<WorkspaceResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.UpdateWorkspace("workspaceId", workspace);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Metadata);
+            Assert.IsTrue(result.Name == "name");
+            Assert.IsTrue(result.Description == "description");
+            Assert.IsTrue(result.Language == "en");
+            Assert.IsTrue(result.WorkspaceId == "workspaceId");
+            Assert.IsTrue(result.Description == "description");
+        }
+        #endregion
+        #endregion
     }
 }
