@@ -3,6 +3,8 @@
   rm coverage -r -force
 }
 
+dotnet restore
+
 New-Item -path . -name coverage -itemtype directory
 
 $openCover = '.\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe'
