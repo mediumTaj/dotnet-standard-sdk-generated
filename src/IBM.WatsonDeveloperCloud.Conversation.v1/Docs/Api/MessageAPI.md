@@ -13,8 +13,6 @@ Method | HTTP request | Description
 
 Get a response to a user's input.
 
-Send a user's message and receive a response.
-
 ### Example
 ```csharp
 using System;

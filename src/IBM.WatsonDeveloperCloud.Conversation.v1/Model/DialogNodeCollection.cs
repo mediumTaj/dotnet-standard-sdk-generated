@@ -15,12 +15,21 @@
 *
 */
 
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// An object describing a dialog node.
+    /// DialogNodeCollection.
     /// </summary>
-    public class CreateDialogNode
+    public class DialogNodeCollection
     {
+        /// <summary>
+        /// An array of objects describing the dialog nodes in the workspace.
+        /// </summary>
+        /// <value>An array of objects describing the dialog nodes in the workspace.</value>
+        [JsonProperty("dialog_nodes", NullValueHandling = NullValueHandling.Ignore)]
+        public List<DialogNodeResponse> DialogNodes { get; set; }
     }
 }

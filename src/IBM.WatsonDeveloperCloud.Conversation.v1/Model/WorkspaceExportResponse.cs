@@ -133,5 +133,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// <value>An array of counterexamples.</value>
         [JsonProperty("counterexamples", NullValueHandling = NullValueHandling.Ignore)]
         public List<ExampleResponse> Counterexamples { get; set; }
+        /// <summary>
+        /// An array of objects describing the dialog nodes in the workspace.
+        /// </summary>
+        /// <value>An array of objects describing the dialog nodes in the workspace.</value>
+        [JsonProperty("dialog_nodes", NullValueHandling = NullValueHandling.Ignore)]
+        public List<DialogNodeResponse> DialogNodes { get; set; }
     }
 }

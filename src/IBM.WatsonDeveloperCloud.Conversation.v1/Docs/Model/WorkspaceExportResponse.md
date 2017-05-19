@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Intents** | [**List<IntentExportResponse>**](IntentExportResponse.md) | An array of intents. | [optional] 
 **Entities** | [**List<EntityExportResponse>**](EntityExportResponse.md) | An array of entities. | [optional] 
 **Counterexamples** | [**List<ExampleResponse>**](ExampleResponse.md) | An array of counterexamples. | [optional] 
+**DialogNodes** | [**List<DialogNodeResponse>**](DialogNodeResponse.md) | An array of objects describing the dialog nodes in the workspace. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

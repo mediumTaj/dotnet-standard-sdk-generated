@@ -203,7 +203,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         /// <returns><see cref="IntentResponse" />IntentResponse</returns>
         IntentResponse UpdateIntent(string workspaceId, string intent, UpdateIntent body);
         /// <summary>
-        /// List log events. List log events associated with the given workspace.
+        /// List log events. 
         /// </summary>
         /// <param name="workspaceId">The workspace ID.</param>
         /// <param name="sort">Sorts the response according to the value of the specified property, in ascending or descending order. (optional)</param>
@@ -213,7 +213,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         /// <returns><see cref="LogCollectionResponse" />LogCollectionResponse</returns>
         LogCollectionResponse ListLogs(string workspaceId, string sort = null, string filter = null, int? pageLimit = null, string cursor = null);
         /// <summary>
-        /// Get a response to a user's input. Send a user's message and receive a response.
+        /// Get a response to a user's input. 
         /// </summary>
         /// <param name="workspaceId">Unique identifier of the workspace.</param>
         /// <param name="body">The user's input, with optional intents, entities, and other properties from the response. (optional)</param>

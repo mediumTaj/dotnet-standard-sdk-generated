@@ -20,7 +20,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
     /// <summary>
     /// An object describing a dialog node.
     /// </summary>
-    public class CreateDialogNode
+    public class DialogNodeResponse
     {
     }
 }

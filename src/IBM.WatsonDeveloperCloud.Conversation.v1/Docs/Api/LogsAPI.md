@@ -13,8 +13,6 @@ Method | HTTP request | Description
 
 List log events.
 
-List log events associated with the given workspace.
-
 ### Example
 ```csharp
 using System;

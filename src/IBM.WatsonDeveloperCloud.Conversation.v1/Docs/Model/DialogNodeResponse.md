@@ -1,4 +1,4 @@
-# .IBM.WatsonDeveloperCloud.Conversation.v1.Model.CreateDialogNode
+# .IBM.WatsonDeveloperCloud.Conversation.v1.Model.DialogNodeResponse
 ## Properties
 
 Name | Type | Description | Notes

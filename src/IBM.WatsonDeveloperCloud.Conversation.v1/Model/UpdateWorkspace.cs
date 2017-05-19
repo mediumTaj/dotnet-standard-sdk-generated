@@ -44,27 +44,27 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
         public string Language { get; set; }
         /// <summary>
-        /// An array of CreateIntent objects defining the intents for the workspace.
+        /// An array of objects defining the intents for the workspace.
         /// </summary>
-        /// <value>An array of CreateIntent objects defining the intents for the workspace.</value>
+        /// <value>An array of objects defining the intents for the workspace.</value>
         [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
         public List<CreateIntent> Intents { get; set; }
         /// <summary>
-        /// An array of CreateEntity objects defining the entities for the workspace.
+        /// An array of objects defining the entities for the workspace.
         /// </summary>
-        /// <value>An array of CreateEntity objects defining the entities for the workspace.</value>
+        /// <value>An array of objects defining the entities for the workspace.</value>
         [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
         public List<CreateEntity> Entities { get; set; }
         /// <summary>
-        /// An array of CreateDialogNode objects defining the nodes in the workspace dialog.
+        /// An array of objects defining the nodes in the workspace dialog.
         /// </summary>
-        /// <value>An array of CreateDialogNode objects defining the nodes in the workspace dialog.</value>
+        /// <value>An array of objects defining the nodes in the workspace dialog.</value>
         [JsonProperty("dialog_nodes", NullValueHandling = NullValueHandling.Ignore)]
         public List<CreateDialogNode> DialogNodes { get; set; }
         /// <summary>
-        /// An array of CreateExample objects defining input examples that have been marked as irrelevant input.
+        /// An array of objects defining input examples that have been marked as irrelevant input.
         /// </summary>
-        /// <value>An array of CreateExample objects defining input examples that have been marked as irrelevant input.</value>
+        /// <value>An array of objects defining input examples that have been marked as irrelevant input.</value>
         [JsonProperty("counterexamples", NullValueHandling = NullValueHandling.Ignore)]
         public List<CreateExample> Counterexamples { get; set; }
         /// <summary>

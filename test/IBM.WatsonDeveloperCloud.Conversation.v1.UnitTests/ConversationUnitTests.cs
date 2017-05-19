@@ -3957,7 +3957,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 Name = "name",
                 Description = "description",
                 Language = "en",
-                Metadata = new object()
+                Metadata = new object() { },
+                DialogNodes = new List<CreateDialogNode>()
+                {
+                    new CreateDialogNode() { }
+                }
             };
             ConversationService service = new ConversationService(client);
             service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
@@ -4191,6 +4195,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                         Updated = DateTime.Now,
                         Text = "text"
                     }
+                },
+                DialogNodes = new List<DialogNodeResponse>()
+                {
+                    new DialogNodeResponse() { }
                 }
             };
             #endregion
@@ -4385,10 +4393,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 Description = "description",
                 DialogNodes = new List<CreateDialogNode>()
                 {
-                    new CreateDialogNode()
-                    {
-                        DialogNode = "dialogNode"
-                    }
+                    new CreateDialogNode() { }
                 },
                 Intents = new List<CreateIntent>()
                 {
