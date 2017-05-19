@@ -2773,5 +2773,563 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsNotNull(result.Output);
         }
         #endregion
+
+        #region Synonyms
+        #region Create Synonym
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateSynonym_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.CreateSynonym(null, "entity", "value", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateSynonym_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.CreateSynonym("workspaceId", null, "value", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateSynonym_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.CreateSynonym("workspaceId", "entity", null, synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateSynonym_No_Body()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.CreateSynonym("workspaceId", "entity", "value", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateSynonym_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.CreateSynonym("workspaceId", "entity", "value", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void CreateSynonym_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = "synonym"
+            };
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.CreateSynonym("workspaceId", "entity", "value", synonym);
+        }
+
+        [TestMethod]
+        public void CreateSynonym_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            SynonymResponse response = new SynonymResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Synonym = "synonym"
+            };
+            #endregion
+
+            CreateSynonym synonym = new CreateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<CreateSynonym>(synonym)
+                .Returns(request);
+            request.As<SynonymResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.CreateSynonym("workspaceId", "entity", "value", synonym);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Synonym);
+            Assert.IsTrue(result.Synonym == "synonym");
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Updated);
+        }
+        #endregion
+
+        #region Delete Synonym
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteSynonym_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteSynonym(null, "entity", "value", "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteSynonym_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteSynonym("workspaceId", null, "value", "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteSynonym_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteSynonym("workspaceId", "entity", null, "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteSynonym_No_Synonym()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.DeleteSynonym("workspaceId", "entity", "value", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteSynonym_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.DeleteSynonym("workspaceId", "entity", "value", "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void DeleteSynonym_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.DeleteSynonym("workspaceId", "entity", "value", "synonym");
+        }
+
+        [TestMethod]
+        public void DeleteSynonym_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            object response = new object() { };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<object>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.DeleteSynonym("workspaceId", "entity", "value", "synonym");
+
+            Assert.IsNotNull(result);
+            client.Received().DeleteAsync(Arg.Any<string>());
+        }
+        #endregion
+
+        #region Get Synonym
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetSynonym_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetSynonym(null, "entity", "value", "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetSynonym_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetSynonym("workspaceId", null, "value", "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetSynonym_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetSynonym("workspaceId", "entity", null, "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetSynonym_No_Synonym()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.GetSynonym("workspaceId", "entity", "value", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetSynonym_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.GetSynonym("workspaceId", "entity", "value", "synonym");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void GetSynonym_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+            service.GetSynonym("workspaceId", "entity", "value", "synonym");
+        }
+
+        [TestMethod]
+        public void GetSynonym_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            SynonymResponse response = new SynonymResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Synonym = "synonym"
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<SynonymResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.GetSynonym("workspaceId", "entity", "value", "synonym");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Synonym);
+            Assert.IsTrue(result.Synonym == "synonym");
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Updated);
+        }
+        #endregion
+
+        #region List Synonyms
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListSynonyms_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.ListSynonyms(null, "entity", "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListSynonyms_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.ListSynonyms("workspaceId", null, "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListSynonyms_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.ListSynonyms("workspaceId", "entity", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListSynonyms_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.ListSynonyms("workspaceId", "entity", "value");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void ListSynonyms_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+            service.ListSynonyms("workspaceId", "entity", "value");
+        }
+
+        [TestMethod]
+        public void ListSynonyms_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            SynonymCollectionResponse response = new SynonymCollectionResponse()
+            {
+                Synonyms = new List<SynonymResponse>()
+                {
+                    new SynonymResponse()
+                    {
+                        Synonym = "synonym",
+                        Created = DateTime.Now,
+                        Updated = DateTime.Now
+                    }
+                },
+                Pagination = new PaginationResponse()
+                {
+                    RefreshUrl = "refreshUrl",
+                    NextUrl = "nextUrl",
+                    Total = 1,
+                    Matched = 1
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<int?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool?>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<SynonymCollectionResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.ListSynonyms("workspaceId", "entity", "value");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Synonyms);
+            Assert.IsTrue(result.Synonyms.Count > 0);
+            Assert.IsNotNull(result.Synonyms[0].Created);
+            Assert.IsNotNull(result.Synonyms[0].Updated);
+            Assert.IsTrue(!string.IsNullOrEmpty(result.Synonyms[0].Synonym));
+            Assert.IsTrue(result.Synonyms[0].Synonym == "synonym");
+            Assert.IsTrue(result.Pagination.RefreshUrl == "refreshUrl");
+            Assert.IsTrue(result.Pagination.NextUrl == "nextUrl");
+            Assert.IsTrue(result.Pagination.Total == 1);
+            Assert.IsTrue(result.Pagination.Matched == 1);
+        }
+        #endregion
+
+        #region Update Synonym
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateSynonym_No_WorkspaceId()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.UpdateSynonym(null, "entity", "value", "synonym", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateSynonym_No_Entity()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.UpdateSynonym("workspaceId", null, "value", "synonym", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateSynonym_No_Value()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.UpdateSynonym("workspaceId", "entity", null, "synonym", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateSynonym_No_Synonym()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.UpdateSynonym("workspaceId", "entity", "value", null, synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateSynonym_No_Body()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.UpdateSynonym("workspaceId", "entity", "value", "synonym", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateSynonym_No_VersionDate()
+        {
+            ConversationService service = new ConversationService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            service.UpdateSynonym("workspaceId", "entity", "value", "synonym", synonym);
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void UpdateSynonym_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = ConversationService.CONVERSATION_VERSION_DATE_2017_04_21;
+
+            service.UpdateSynonym("workspaceId", "entity", "value", "synonym", synonym);
+        }
+
+        [TestMethod]
+        public void UpdateSynonym_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            SynonymResponse response = new SynonymResponse()
+            {
+                Created = DateTime.Now,
+                Updated = DateTime.Now,
+                Synonym = "synonym"
+            };
+            #endregion
+
+            UpdateSynonym synonym = new UpdateSynonym()
+            {
+                Synonym = "synonym"
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<UpdateSynonym>(synonym)
+                .Returns(request);
+            request.As<SynonymResponse>()
+                .Returns(Task.FromResult(response));
+
+            ConversationService service = new ConversationService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.UpdateSynonym("workspaceId", "entity", "value", "synonym", synonym);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsNotNull(result.Created);
+            Assert.IsNotNull(result.Updated);
+            Assert.IsTrue(result.Synonym == "synonym");
+        }
+        #endregion
+        #endregion
     }
 }
