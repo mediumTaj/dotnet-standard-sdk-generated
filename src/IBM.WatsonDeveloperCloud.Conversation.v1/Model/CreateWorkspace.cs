@@ -21,7 +21,7 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// Createrkspace.
+    /// CreateWorkspace.
     /// </summary>
     public class CreateWorkspace
     {

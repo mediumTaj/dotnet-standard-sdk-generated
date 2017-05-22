@@ -26,8 +26,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
     public class EntityCollectionResponse
     {
         /// <summary>
-        /// Gets or Sets Entities
+        /// An array of entities.
         /// </summary>
+        /// <value>An array of entities.</value>
         [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
         public List<EntityExportResponse> Entities { get; set; }
         /// <summary>

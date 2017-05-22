@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Entities** | [**List<EntityExportResponse>**](EntityExportResponse.md) |  | 
+**Entities** | [**List<EntityExportResponse>**](EntityExportResponse.md) | An array of entities. | 
 **Pagination** | [**PaginationResponse**](PaginationResponse.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
