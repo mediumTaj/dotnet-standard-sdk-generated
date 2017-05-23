@@ -15,11 +15,9 @@
 *
 */
 
-using System.Collections.Generic;
 using IBM.WatsonDeveloperCloud.Http;
 using IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model;
 using IBM.WatsonDeveloperCloud.Service;
-using Newtonsoft.Json;
 using System;
 
 namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3
