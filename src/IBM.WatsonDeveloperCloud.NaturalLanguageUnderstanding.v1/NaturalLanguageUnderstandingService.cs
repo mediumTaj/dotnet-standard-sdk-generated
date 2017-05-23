@@ -25,7 +25,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
     public class NaturalLanguageUnderstandingService : WatsonService, INaturalLanguageUnderstandingService
     {
         const string SERVICE_NAME = "natural_language_understanding";
-        const string URL = "https://gateway-a.watsonplatform.net/natural-language-understanding/api";
+        const string URL = "https://gateway.watsonplatform.net/natural-language-understanding/api";
         private string _versionDate;
         public string VersionDate
         {
