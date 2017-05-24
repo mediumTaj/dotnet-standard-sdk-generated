@@ -34,6 +34,8 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Example
             //_naturalLanguageUnderstandingService.Endpoint = "http://localhost:1234";
 
             Analyze();
+            ListModels();
+            DeleteModel();
             Console.WriteLine("\n~ Natural Language Understanding examples complete.");
         }
         #endregion
@@ -273,6 +275,40 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Example
             {
                 Console.WriteLine("Result is null.");
             }
+        }
+        #endregion
+
+        #region List Models
+        private void ListModels()
+        {
+            Console.WriteLine(string.Format("\nCalling ListModels()..."));
+            var result = _naturalLanguageUnderstandingService.GetModels();
+
+            if(result != null)
+            {
+                if(result.Models != null && result.Models.Count > 0)
+                {
+                    foreach(Model.Model model in result.Models)
+                    {
+                        Console.WriteLine(string.Format("Model id: {0} | status: {1} | language: {3} | description: {4}", model.ModelId, model.Status, model.Language, model.Description));
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("There are no models.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Result is null.");
+            }
+        }
+        #endregion
+
+        #region Delete Model
+        private void DeleteModel()
+        {
+
         }
         #endregion
     }
