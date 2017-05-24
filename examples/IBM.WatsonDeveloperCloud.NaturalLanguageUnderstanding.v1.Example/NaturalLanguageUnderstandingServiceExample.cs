@@ -1,8 +1,4 @@
-﻿
-
-
-using IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model;
-/**
+﻿/**
 * Copyright 2017 IBM Corp. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +15,7 @@ using IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model;
 *
 */
 using System;
+using IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model;
 
 namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Example
 {

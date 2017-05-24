@@ -19,6 +19,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model;
 
 namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.IntegrationTests
 {
@@ -29,6 +30,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.IntegrationTe
         public string _password;
         public string _endpoint;
         public NaturalLanguageUnderstandingService naturalLanguageUnderstanding;
+        public string _nluText = "Analyze various features of text content at scale. Provide text, raw HTML, or a public URL, and IBM Watson Natural Language Understanding will give you results for the features you request. The service cleans HTML content before analysis by default, so the results can ignore most advertisements and other unwanted content.";
 
         [TestInitialize]
         public void Setup()
@@ -48,5 +50,41 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.IntegrationTe
 
             naturalLanguageUnderstanding = new NaturalLanguageUnderstandingService(_username, _password, NaturalLanguageUnderstandingService.NATURAL_LANGUAGE_UNDERSTANDING_VERSION_DATE_2017_02_27);
         }
+
+        [TestMethod]
+        public void Analyze_Success()
+        {
+            Parameters parameters = new Parameters()
+            {
+                Text = _nluText,
+                Features = new Features()
+                {
+                    Keywords = new KeywordsOptions()
+                    {
+                        Limit = 8,
+                        Sentiment = true,
+                        Emotion = true
+                    }
+                }
+            };
+
+            var result = naturalLanguageUnderstanding.Analyze(parameters);
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void ListModels_Success()
+        {
+            var result = naturalLanguageUnderstanding.GetModels();
+
+            Assert.IsNotNull(result);
+        }
+
+        //[TestMethod]
+        //public void DeleteModel_Success()
+        //{
+
+        //}
     }
 }
