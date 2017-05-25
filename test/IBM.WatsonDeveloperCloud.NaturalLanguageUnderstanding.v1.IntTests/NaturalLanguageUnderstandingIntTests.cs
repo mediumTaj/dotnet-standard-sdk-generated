@@ -24,7 +24,7 @@ using IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model;
 namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.IntegrationTests
 {
     [TestClass]
-    public class NaturalLanguageUnderstandingIntegrationTests
+    public class NaturalLanguageUnderstandingIntTests
     {
         public string _username;
         public string _password;
