@@ -208,6 +208,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
                         new TargetedEmotionResults()
                         {
                             Emotion = new EmotionScores() { Anger = 1.0f, Disgust = 1.0f, Fear = 1.0f, Joy = 1.0f, Sadness = 1.0f },
+                            Text = "text"
                         }
                     }
                 },
@@ -270,6 +271,27 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
                                     Text = "text"
                                 }
                             }
+                        },
+                        Action = new SemanticRolesAction()
+                        {
+                            Normalized = "normalized",
+                            Text = "text",
+                            Verb = new SemanticRolesVerb()
+                            {
+                                Text = "text",
+                                Tense = "tense"
+                            }
+                        },
+                        Object = new SemanticRolesObject()
+                        {
+                            Text = "text",
+                            Keywords = new List<SemanticRolesKeyword>()
+                            {
+                                new SemanticRolesKeyword()
+                                {
+                                    Text = "text"
+                                }
+                            }
                         }
                     }
                 },
@@ -291,11 +313,67 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             };
             #endregion
 
+            #region parameters
             Parameters parameters = new Parameters()
             {
-                Text = "textToAnalyze"
-                
+                Text = "text",
+                Html = "html",
+                Url = "url",
+                Features = new Features()
+                {
+                    Concepts = new ConceptsOptions()
+                    {
+                        Limit = 1
+                    },
+                    Emotion = new EmotionOptions()
+                    {
+                        Document = true,
+                        Targets = new List<string>()
+                        {
+                            "target"
+                        }
+                    },
+                    Entities = new EntitiesOptions()
+                    {
+                        Model = "model",
+                        Sentiment = true,
+                        Emotion = true,
+                        Limit = 1
+                    },
+                    Keywords = new KeywordsOptions()
+                    {
+                        Limit = 1,
+                        Sentiment = true,
+                        Emotion = true
+                    },
+                    Metadata = new MetadataOptions() {},
+                    Relations = new RelationsOptions()
+                    {
+                        Model = "model"
+                    },
+                    SemanticRoles = new SemanticRolesOptions()
+                    {
+                        Limit = 1,
+                        Keywords = true,
+                        Entities = true
+                    },
+                    Sentiment = new SentimentOptions()
+                    {
+                        Document = true,
+                        Targets = new List<string>()
+                        {
+                            "target"
+                        }
+                    },
+                    Categories = new CategoriesOptions() {}
+                },
+                Clean = true,
+                Xpath = "xpath",
+                FallbackToRaw = true,
+                ReturnAnalyzedText = true,
+                Language = "en"
             };
+            #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
@@ -330,7 +408,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             NaturalLanguageUnderstandingService service = new NaturalLanguageUnderstandingService("username", "password", "versionDate");
             service.VersionDate = null;
 
-            service.DeleteModel(null);
+            service.DeleteModel("modelId");
         }
 
         [TestMethod, ExpectedException(typeof(AggregateException))]
