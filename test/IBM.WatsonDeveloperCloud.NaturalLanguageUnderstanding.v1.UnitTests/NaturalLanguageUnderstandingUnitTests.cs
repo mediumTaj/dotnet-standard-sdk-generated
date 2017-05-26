@@ -183,41 +183,110 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
                 {
                     new KeywordsResult()
                     {
-                        Relevance
+                        Relevance = 1.0f,
+                        Text = "text",
+                        Emotion = new EmotionScores() { Anger = 1.0f, Disgust = 1.0f, Fear = 1.0f, Joy = 1.0f, Sadness = 1.0f },
+                        Sentiment = new FeatureSentimentResults() { Score = 1.0f }
                     }
                 },
                 Categories = new List<CategoriesResult>()
                 {
                     new CategoriesResult()
                     {
-
+                        Label = "label",
+                        Score = 1.0f
                     }
                 },
                 Emotion = new EmotionResult()
                 {
-
+                    Document = new DocumentEmotionResults()
+                    {
+                        Emotion = new EmotionScores() { Anger = 1.0f, Disgust = 1.0f, Fear = 1.0f, Joy = 1.0f, Sadness = 1.0f },
+                    },
+                    Targets = new List<TargetedEmotionResults>()
+                    {
+                        new TargetedEmotionResults()
+                        {
+                            Emotion = new EmotionScores() { Anger = 1.0f, Disgust = 1.0f, Fear = 1.0f, Joy = 1.0f, Sadness = 1.0f },
+                        }
+                    }
                 },
                 Metadata = new MetadataResult()
                 {
-
+                    Authors = new List<Author>()
+                    {
+                        new Author()
+                        {
+                            Name = "name"
+                        }
+                    },
+                    PublicationDate = "publicationDate",
+                    Title = "title"
                 },
                 Relations = new List<RelationsResult>()
                 {
                     new RelationsResult()
                     {
-
+                        Score = 1.0f,
+                        Sentence = "sentence",
+                        Type = "type",
+                        Arguments = new List<RelationArgument>()
+                        {
+                            new RelationArgument()
+                            {
+                                Entities = new List<RelationEntity>()
+                                {
+                                    new RelationEntity()
+                                    {
+                                        Text = "text",
+                                        Type = "type"
+                                    }
+                                },
+                                Text = "text"
+                            }
+                        }
                     }
                 },
                 SemanticRoles = new List<SemanticRolesResult>()
                 {
                     new SemanticRolesResult()
                     {
-
+                        Sentence = "sentence",
+                        Subject = new SemanticRolesSubject()
+                        {
+                            Text = "text",
+                            Entities = new List<SemanticRolesEntity>()
+                            {
+                                new SemanticRolesEntity()
+                                {
+                                    Text = "text",
+                                    Type = "type"
+                                }
+                            },
+                            Keywords = new List<SemanticRolesKeyword>()
+                            {
+                                new SemanticRolesKeyword()
+                                {
+                                    Text = "text"
+                                }
+                            }
+                        }
                     }
                 },
                 Sentiment = new SentimentResult()
                 {
-
+                    Document = new DocumentSentimentResults()
+                    {
+                        Score = 1.0f
+                    },
+                    Targets = new List<TargetedSentimentResults>()
+                    {
+                        new TargetedSentimentResults()
+                        {
+                            Score = 1.0f,
+                            Text = "text"
+                        }
+                    }
                 }
             };
             #endregion
@@ -225,6 +294,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             Parameters parameters = new Parameters()
             {
                 Text = "textToAnalyze"
+                
             };
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
