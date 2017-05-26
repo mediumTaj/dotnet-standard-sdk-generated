@@ -31,7 +31,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Example
             var _username = vcapServices["natural_language_understanding"][0]["credentials"]["username"];
             var _password = vcapServices["natural_language_understanding"][0]["credentials"]["password"];
 
-            NaturalLanguageUnderstandingServiceExample _naturalLanguageUnderstandingExample = new NaturalLanguageUnderstandingServiceExample(_username.ToString(), _password.ToString());
+            NaturalLanguageUnderstandingExample _naturalLanguageUnderstandingExample = new NaturalLanguageUnderstandingExample(_username.ToString(), _password.ToString());
             Console.ReadKey();
         }
     }

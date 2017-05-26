@@ -19,13 +19,13 @@ using IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model;
 
 namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Example
 {
-    public class NaturalLanguageUnderstandingServiceExample
+    public class NaturalLanguageUnderstandingExample
     {
         private NaturalLanguageUnderstandingService _naturalLanguageUnderstandingService;
 
         private string _nluText = "Analyze various features of text content at scale. Provide text, raw HTML, or a public URL, and IBM Watson Natural Language Understanding will give you results for the features you request. The service cleans HTML content before analysis by default, so the results can ignore most advertisements and other unwanted content.";
         #region Constructor
-        public NaturalLanguageUnderstandingServiceExample(string username, string password)
+        public NaturalLanguageUnderstandingExample(string username, string password)
         {
             _naturalLanguageUnderstandingService = new NaturalLanguageUnderstandingService(username, password, NaturalLanguageUnderstandingService.NATURAL_LANGUAGE_UNDERSTANDING_VERSION_DATE_2017_02_27);
             //_naturalLanguageUnderstandingService.Endpoint = "http://localhost:1234";
