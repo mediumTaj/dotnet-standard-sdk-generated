@@ -33,7 +33,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ContenttypeEnum
         {
-        
+            
             /// <summary>
             /// Enum TEXT_PLAIN for text/plain
             /// </summary>
@@ -54,7 +54,7 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum LanguageEnum
         {
-        
+            
             /// <summary>
             /// Enum AR for ar
             /// </summary>

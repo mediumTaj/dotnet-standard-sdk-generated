@@ -33,7 +33,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum LevelEnum
         {
-        
+            
             /// <summary>
             /// Enum INFO for info
             /// </summary>

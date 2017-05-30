@@ -35,7 +35,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum StatusEnum
         {
-        
+            
             /// <summary>
             /// Enum NON_EXISTENT for Non Existent
             /// </summary>
