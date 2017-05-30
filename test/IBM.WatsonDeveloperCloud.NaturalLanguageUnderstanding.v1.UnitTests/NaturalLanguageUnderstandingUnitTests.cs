@@ -501,9 +501,9 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
             #region Response
             ListModelsResults response = new ListModelsResults()
             {
-                Models = new List<Model.Model>()
+                Models = new List<CustomModel>()
                 {
-                    new Model.Model()
+                    new CustomModel()
                     {
                         Status = "status",
                         ModelId = "modelId",

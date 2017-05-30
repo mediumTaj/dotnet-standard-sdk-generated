@@ -35,6 +35,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// Gets or Sets Pagination
         /// </summary>
         [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
-        public PaginationResponse Pagination { get; set; }
+        public LogPaginationResponse Pagination { get; set; }
     }
 }

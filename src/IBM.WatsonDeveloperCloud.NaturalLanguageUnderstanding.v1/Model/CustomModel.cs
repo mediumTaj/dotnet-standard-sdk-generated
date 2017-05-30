@@ -20,9 +20,9 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
 {
     /// <summary>
-    /// Model.
+    /// CustomModel.
     /// </summary>
-    public class Model
+    public class CustomModel
     {
         /// <summary>
         /// Shows as available if the model is ready for use.

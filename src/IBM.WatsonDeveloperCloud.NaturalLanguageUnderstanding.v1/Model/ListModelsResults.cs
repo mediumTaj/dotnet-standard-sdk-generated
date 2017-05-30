@@ -29,6 +29,6 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         /// Gets or Sets Models
         /// </summary>
         [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Model> Models { get; set; }
+        public List<CustomModel> Models { get; set; }
     }
 }

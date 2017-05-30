@@ -15,21 +15,26 @@
 *
 */
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
+namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// ElementTone.
+    /// The pagination data for the returned objects.
     /// </summary>
-    public class ElementTone
+    public class LogPaginationResponse
     {
         /// <summary>
-        /// Tone analysis results divided into three categories: Social Tone, Emotion Tone and Language Tone.
+        /// The URL that will return the next page of results.
         /// </summary>
-        /// <value>Tone analysis results divided into three categories: Social Tone, Emotion Tone and Language Tone.</value>
-        [JsonProperty("tone_categories", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ToneCategory> ToneCategories { get; set; }
+        /// <value>The URL that will return the next page of results.</value>
+        [JsonProperty("next_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string NextUrl { get; set; }
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        /// <value>Reserved for future use.</value>
+        [JsonProperty("matched", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Matched { get; set; }
     }
 }

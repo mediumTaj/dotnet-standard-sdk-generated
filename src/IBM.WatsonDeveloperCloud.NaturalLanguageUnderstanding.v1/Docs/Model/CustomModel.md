@@ -1,4 +1,4 @@
-# .IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model.Model
+# .IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model.CustomModel
 ## Properties
 
 Name | Type | Description | Notes

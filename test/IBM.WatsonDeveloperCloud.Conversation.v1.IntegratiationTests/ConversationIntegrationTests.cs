@@ -64,7 +64,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
             _password = vcapServices["conversation"][0]["credentials"]["password"].Value<string>();
             _workspaceID = vcapServices["conversation"][0]["credentials"]["workspaceId"].Value<string>();
 
-            conversation = new ConversationService(_username, _password, ConversationService.CONVERSATION_VERSION_DATE_2017_04_21);
+            conversation = new ConversationService(_username, _password, ConversationService.CONVERSATION_VERSION_DATE_2017_05_26);
         }
 
 
