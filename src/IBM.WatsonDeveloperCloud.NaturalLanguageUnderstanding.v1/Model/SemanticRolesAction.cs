@@ -42,4 +42,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("verb", NullValueHandling = NullValueHandling.Ignore)]
         public SemanticRolesVerb Verb { get; set; }
     }
+
 }

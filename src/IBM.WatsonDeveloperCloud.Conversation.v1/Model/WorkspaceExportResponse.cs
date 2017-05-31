@@ -140,4 +140,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("dialog_nodes", NullValueHandling = NullValueHandling.Ignore)]
         public List<DialogNodeResponse> DialogNodes { get; set; }
     }
+
 }

@@ -37,4 +37,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("confidence", NullValueHandling = NullValueHandling.Ignore)]
         public double? Confidence { get; set; }
     }
+
 }

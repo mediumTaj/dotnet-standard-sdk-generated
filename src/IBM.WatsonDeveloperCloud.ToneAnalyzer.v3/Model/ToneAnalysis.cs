@@ -37,4 +37,5 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         [JsonProperty("sentences_tone", NullValueHandling = NullValueHandling.Ignore)]
         public List<SentenceAnalysis> SentencesTone { get; set; }
     }
+
 }

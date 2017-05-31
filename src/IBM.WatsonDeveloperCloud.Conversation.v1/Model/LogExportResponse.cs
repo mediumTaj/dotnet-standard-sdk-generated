@@ -53,4 +53,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("response_timestamp", NullValueHandling = NullValueHandling.Ignore)]
         public string ResponseTimestamp { get; set; }
     }
+
 }

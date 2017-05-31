@@ -49,4 +49,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("object", NullValueHandling = NullValueHandling.Ignore)]
         public SemanticRolesObject Object { get; set; }
     }
+
 }

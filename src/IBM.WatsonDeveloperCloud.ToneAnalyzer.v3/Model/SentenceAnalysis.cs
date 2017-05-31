@@ -56,4 +56,5 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         [JsonProperty("tone_categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneCategory> ToneCategories { get; set; }
     }
+
 }

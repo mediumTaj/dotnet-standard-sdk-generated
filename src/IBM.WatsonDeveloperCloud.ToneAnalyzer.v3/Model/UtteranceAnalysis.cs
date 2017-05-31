@@ -44,4 +44,5 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         [JsonProperty("tones", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneScore> Tones { get; set; }
     }
+
 }

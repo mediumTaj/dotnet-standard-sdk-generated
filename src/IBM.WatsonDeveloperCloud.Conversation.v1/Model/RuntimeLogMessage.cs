@@ -37,4 +37,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("msg", NullValueHandling = NullValueHandling.Ignore)]
         public string Msg { get; set; }
     }
+
 }
