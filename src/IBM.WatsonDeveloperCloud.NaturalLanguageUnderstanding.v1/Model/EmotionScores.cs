@@ -55,5 +55,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("sadness", NullValueHandling = NullValueHandling.Ignore)]
         public float? Sadness { get; set; }
     }
-
 }

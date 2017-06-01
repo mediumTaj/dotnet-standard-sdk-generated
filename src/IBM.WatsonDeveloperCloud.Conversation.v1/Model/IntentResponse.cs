@@ -50,5 +50,4 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
     }
-
 }

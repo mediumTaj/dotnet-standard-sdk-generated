@@ -56,5 +56,4 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("fuzzy_match", NullValueHandling = NullValueHandling.Ignore)]
         public bool? FuzzyMatch { get; set; }
     }
-
 }

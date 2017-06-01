@@ -23,5 +23,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
     public class CategoriesOptions
     {
     }
-
 }

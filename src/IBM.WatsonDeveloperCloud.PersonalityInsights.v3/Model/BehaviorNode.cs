@@ -49,5 +49,4 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("percentage", NullValueHandling = NullValueHandling.Ignore)]
         public double? Percentage { get; set; }
     }
-
 }

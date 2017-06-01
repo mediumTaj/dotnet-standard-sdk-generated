@@ -44,5 +44,4 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Updated { get; set; }
     }
-
 }

@@ -30,5 +30,4 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("SystemResponseObject", NullValueHandling = NullValueHandling.Ignore)]
         public object SystemResponseObject { get; set; }
     }
-
 }

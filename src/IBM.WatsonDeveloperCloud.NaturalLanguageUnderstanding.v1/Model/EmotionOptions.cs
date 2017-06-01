@@ -38,5 +38,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("targets", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Targets { get; set; }
     }
-
 }

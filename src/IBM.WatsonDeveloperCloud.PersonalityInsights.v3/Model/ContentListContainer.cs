@@ -32,5 +32,4 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("contentItems", NullValueHandling = NullValueHandling.Ignore)]
         public List<ContentItem> ContentItems { get; set; }
     }
-
 }

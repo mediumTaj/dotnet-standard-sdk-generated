@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Entities** | [**List<CreateEntity>**](CreateEntity.md) | An array of objects defining the entities for the workspace. | [optional] 
 **DialogNodes** | [**List<CreateDialogNode>**](CreateDialogNode.md) | An array of objects defining the nodes in the workspace dialog. | [optional] 
 **Counterexamples** | [**List<CreateExample>**](CreateExample.md) | An array of objects defining input examples that have been marked as irrelevant input. | [optional] 
-**Metadata** | **object** | Any metadata related to the workspace. | [optional] 
+**Metadata** | [**object**](Object.md) | Any metadata related to the workspace. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

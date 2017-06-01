@@ -35,5 +35,4 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
         [JsonProperty("user", NullValueHandling = NullValueHandling.Ignore)]
         public string User { get; set; }
     }
-
 }

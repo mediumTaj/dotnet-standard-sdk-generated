@@ -23,5 +23,4 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
     public class CreateDialogNode
     {
     }
-
 }

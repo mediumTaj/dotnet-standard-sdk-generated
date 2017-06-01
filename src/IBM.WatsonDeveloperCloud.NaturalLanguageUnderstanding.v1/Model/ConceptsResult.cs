@@ -42,5 +42,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("dbpedia_resource", NullValueHandling = NullValueHandling.Ignore)]
         public string DbpediaResource { get; set; }
     }
-
 }

@@ -31,5 +31,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("features", NullValueHandling = NullValueHandling.Ignore)]
         public int? Features { get; set; }
     }
-
 }

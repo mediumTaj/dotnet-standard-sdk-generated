@@ -50,5 +50,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("arguments", NullValueHandling = NullValueHandling.Ignore)]
         public List<RelationArgument> Arguments { get; set; }
     }
-
 }

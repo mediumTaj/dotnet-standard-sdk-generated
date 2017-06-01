@@ -31,5 +31,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
         public List<CustomModel> Models { get; set; }
     }
-
 }

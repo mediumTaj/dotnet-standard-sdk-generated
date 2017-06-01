@@ -43,5 +43,4 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("subtype", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Subtype { get; set; }
     }
-
 }

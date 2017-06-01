@@ -44,5 +44,4 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("consumption_preferences", NullValueHandling = NullValueHandling.Ignore)]
         public List<ConsumptionPreferencesNode> ConsumptionPreferences { get; set; }
     }
-
 }

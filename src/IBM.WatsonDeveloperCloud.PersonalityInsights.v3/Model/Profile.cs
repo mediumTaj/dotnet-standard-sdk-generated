@@ -80,5 +80,4 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("warnings", NullValueHandling = NullValueHandling.Ignore)]
         public List<Warning> Warnings { get; set; }
     }
-
 }

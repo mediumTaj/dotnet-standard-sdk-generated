@@ -69,5 +69,4 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
         public List<ValueExportResponse> Values { get; set; }
     }
-
 }
