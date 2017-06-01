@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Updated** | [**DateTime**](DateTime.md) | The timestamp for the last update to the workspace. | 
 **WorkspaceId** | **string** | The workspace ID. | 
 **Description** | **string** | The description of the workspace. | [optional] 
-**Metadata** | [**object**](Object.md) | Any metadata that is required by the workspace. | [optional] 
+**Metadata** | **object** | Any metadata that is required by the workspace. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
