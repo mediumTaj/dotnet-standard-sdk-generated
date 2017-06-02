@@ -67,4 +67,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("disambiguation", NullValueHandling = NullValueHandling.Ignore)]
         public DisambiguationResult Disambiguation { get; set; }
     }
+
 }

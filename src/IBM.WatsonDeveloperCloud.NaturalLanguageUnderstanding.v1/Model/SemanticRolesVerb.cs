@@ -37,4 +37,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("tense", NullValueHandling = NullValueHandling.Ignore)]
         public string Tense { get; set; }
     }
+
 }

@@ -44,4 +44,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("nodes_visited", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> NodesVisited { get; set; }
     }
+
 }

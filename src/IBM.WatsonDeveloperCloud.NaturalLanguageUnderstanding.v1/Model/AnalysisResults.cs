@@ -104,4 +104,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("sentiment", NullValueHandling = NullValueHandling.Ignore)]
         public SentimentResult Sentiment { get; set; }
     }
+
 }

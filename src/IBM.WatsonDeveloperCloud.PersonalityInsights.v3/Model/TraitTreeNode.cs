@@ -62,4 +62,5 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("children", NullValueHandling = NullValueHandling.Ignore)]
         public List<TraitTreeNode> Children { get; set; }
     }
+
 }

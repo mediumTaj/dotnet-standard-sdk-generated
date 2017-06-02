@@ -49,4 +49,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("matched", NullValueHandling = NullValueHandling.Ignore)]
         public int? Matched { get; set; }
     }
+
 }

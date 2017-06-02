@@ -31,4 +31,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("synonym", NullValueHandling = NullValueHandling.Ignore)]
         public string Synonym { get; set; }
     }
+
 }

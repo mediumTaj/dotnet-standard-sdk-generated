@@ -43,4 +43,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Entities { get; set; }
     }
+
 }

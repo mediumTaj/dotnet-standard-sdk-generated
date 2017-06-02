@@ -42,4 +42,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("keywords", NullValueHandling = NullValueHandling.Ignore)]
         public List<SemanticRolesKeyword> Keywords { get; set; }
     }
+
 }

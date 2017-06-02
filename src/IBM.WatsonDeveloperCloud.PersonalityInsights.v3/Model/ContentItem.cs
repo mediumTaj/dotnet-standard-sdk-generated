@@ -135,4 +135,5 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("forward", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Forward { get; set; }
     }
+
 }

@@ -57,4 +57,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
         public List<ExampleResponse> Examples { get; set; }
     }
+
 }

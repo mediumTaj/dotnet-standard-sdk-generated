@@ -62,4 +62,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("output", NullValueHandling = NullValueHandling.Ignore)]
         public RuntimeOutput Output { get; set; }
     }
+
 }

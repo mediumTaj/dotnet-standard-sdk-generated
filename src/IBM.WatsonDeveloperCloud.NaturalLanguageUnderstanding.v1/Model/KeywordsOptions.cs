@@ -43,4 +43,5 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("emotion", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Emotion { get; set; }
     }
+
 }

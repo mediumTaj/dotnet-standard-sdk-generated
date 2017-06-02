@@ -30,4 +30,5 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("RuntimeSystemContextObject", NullValueHandling = NullValueHandling.Ignore)]
         public object RuntimeSystemContextObject { get; set; }
     }
+
 }
