@@ -20,28 +20,28 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
 {
     /// <summary>
-    /// The score of a particular tone.
+    /// ToneScore.
     /// </summary>
     public class ToneScore
     {
         /// <summary>
-        /// The name of the tone. Human-readable, localized.
+        /// The score for the tone in the range of 0 to 1. A score less than 0.5 indicates that the tone is unlikely to be perceived in the content; a score greater than 0.75 indicates a high likelihood that the tone is perceived.
         /// </summary>
-        /// <value>The name of the tone. Human-readable, localized.</value>
-        [JsonProperty("tone_name", NullValueHandling = NullValueHandling.Ignore)]
-        public string ToneName { get; set; }
+        /// <value>The score for the tone in the range of 0 to 1. A score less than 0.5 indicates that the tone is unlikely to be perceived in the content; a score greater than 0.75 indicates a high likelihood that the tone is perceived.</value>
+        [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Score { get; set; }
         /// <summary>
-        /// Identifier of this tone. It does not vary across languages and localizations.
+        /// The unique, non-localized identifier of the tone for the results. The service can return results for the following tone IDs of the different categories: * For the `emotion` category: `anger`, `disgust`, `fear`, `joy`, and `sadness` * For the `language` category: `analytical`, `confident`, and `tentative` * For the `social` category: `openness_big5`, `conscientiousness_big5`, `extraversion_big5`, `agreeableness_big5`, and `emotional_range_big5`   The service returns scores for all tones of a category, regardless of their values.
         /// </summary>
-        /// <value>Identifier of this tone. It does not vary across languages and localizations.</value>
+        /// <value>The unique, non-localized identifier of the tone for the results. The service can return results for the following tone IDs of the different categories: * For the `emotion` category: `anger`, `disgust`, `fear`, `joy`, and `sadness` * For the `language` category: `analytical`, `confident`, and `tentative` * For the `social` category: `openness_big5`, `conscientiousness_big5`, `extraversion_big5`, `agreeableness_big5`, and `emotional_range_big5`   The service returns scores for all tones of a category, regardless of their values.</value>
         [JsonProperty("tone_id", NullValueHandling = NullValueHandling.Ignore)]
         public string ToneId { get; set; }
         /// <summary>
-        /// A raw score computed by the algorithms. This can be compared to other raw scores and used to build your own normalizations.
+        /// The user-visible, localized name of the tone.
         /// </summary>
-        /// <value>A raw score computed by the algorithms. This can be compared to other raw scores and used to build your own normalizations.</value>
-        [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Score { get; set; }
+        /// <value>The user-visible, localized name of the tone.</value>
+        [JsonProperty("tone_name", NullValueHandling = NullValueHandling.Ignore)]
+        public string ToneName { get; set; }
     }
 
 }

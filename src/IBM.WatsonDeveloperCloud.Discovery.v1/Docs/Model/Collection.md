@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Updated** | [**DateTime**](DateTime.md) | The timestamp of when the collection was last updated in the format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'. | [optional] 
 **Status** | **string** | The status of the collection. | [optional] 
 **ConfigurationId** | **string** | The unique identifier of the collection's configuration. | [optional] 
-**Language** | **string** | The language of the documents stored in the collection. The only currently accepted value is en_us (U.S. English). | [optional] 
+**Language** | **string** | The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code. | [optional] 
 **DocumentCounts** | [**DocumentCounts**](DocumentCounts.md) | The object providing information about the documents in the collection. Present only when retrieving details of a collection. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -32,8 +32,9 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Example
             var vcapServices = JObject.Parse(fileContent);
             var _username = vcapServices["tone_analyzer"][0]["credentials"]["username"];
             var _password = vcapServices["tone_analyzer"][0]["credentials"]["password"];
+            string versionDate = "2016-05-19";
 
-            ToneAnalyzerService _toneAnalyzer = new ToneAnalyzerService(_username.ToString(), _password.ToString(), ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService _toneAnalyzer = new ToneAnalyzerService(_username.ToString(), _password.ToString(), versionDate);
 
             //  Test PostTone
             ToneInput toneInput = new ToneInput()

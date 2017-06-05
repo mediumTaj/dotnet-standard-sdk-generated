@@ -33,6 +33,8 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
     [TestClass]
     public class ToneAnalyzerServiceUnitTests
     {
+        private string versionDate = "2016-05-19";
+
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_HttpClient_Null()
         {
@@ -44,14 +46,14 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
         public void Constructor_UserName_Null()
         {
             ToneAnalyzerService service =
-                new ToneAnalyzerService(null, "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+                new ToneAnalyzerService(null, "password", versionDate);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_Password_Null()
         {
             ToneAnalyzerService service =
-                new ToneAnalyzerService("username", null, ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+                new ToneAnalyzerService("username", null, versionDate);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -65,7 +67,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
         public void Constructor_With_UserName_Password()
         {
             ToneAnalyzerService service =
-                new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+                new ToneAnalyzerService("username", "password", versionDate);
 
             Assert.IsNotNull(service);
         }
@@ -133,7 +135,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                         }
                     }
                 },
-                DocumentTone = new ToneAnalysisDocumentTone()
+                DocumentTone = new DocumentAnalysis()
                 {
                     ToneCategories = new List<ToneCategory>()
                     {
@@ -173,7 +175,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                    .Returns(Task.FromResult(response));
 
             ToneAnalyzerService service = new ToneAnalyzerService(client);
-            service.VersionDate = ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19;
+            service.VersionDate = "2016-05-19";
 
             ToneInput toneInput = new ToneInput()
             {
@@ -219,7 +221,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             #endregion
 
             ToneAnalyzerService service = new ToneAnalyzerService(client);
-            service.VersionDate = ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19;
+            service.VersionDate = versionDate;
 
             ToneInput toneInput = new ToneInput()
             {
@@ -262,7 +264,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                         }
                     }
                 },
-                DocumentTone = new ToneAnalysisDocumentTone()
+                DocumentTone = new DocumentAnalysis()
                 {
                     ToneCategories = new List<ToneCategory>()
                     {
@@ -285,14 +287,14 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             };
             #endregion
 
-            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", versionDate);
             var analyzeTone = service.Tone(null, "tones", true);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void Tone_Empty_Version()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", versionDate);
             service.VersionDate = null;
 
             ToneInput toneInput = new ToneInput()
@@ -317,9 +319,9 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                     {
                         UtteranceId = "utteranceID",
                         UtteranceText = "utteranceText",
-                        Tones = new List<ToneScore>()
+                        Tones = new List<ToneChatScore>()
                         {
-                            new ToneScore()
+                            new ToneChatScore()
                             {
                                 ToneName = "string",
                                 ToneId = "string",
@@ -356,7 +358,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                    .Returns(Task.FromResult(response));
 
             ToneAnalyzerService service = new ToneAnalyzerService(client);
-            service.VersionDate = ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19;
+            service.VersionDate = versionDate;
 
             var result = service.ToneChat(toneChatInput);
 
@@ -370,7 +372,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void ToneChat_ToneChatInputEmpty()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", versionDate);
             var result = service.ToneChat(null);
         }
 
@@ -399,7 +401,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             #endregion
 
             ToneAnalyzerService service = new ToneAnalyzerService(client);
-            service.VersionDate = ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19;
+            service.VersionDate = versionDate;
 
             ToneChatInput toneChatInput = new ToneChatInput()
             {
@@ -418,7 +420,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void ToneChat_Empty_Version()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService service = new ToneAnalyzerService("username", "password", versionDate);
             service.VersionDate = null;
 
             ToneChatInput toneChatInput = new ToneChatInput()

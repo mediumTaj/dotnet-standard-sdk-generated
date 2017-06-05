@@ -21,38 +21,38 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
 {
     /// <summary>
-    /// The result of analyzing a sentence within a document.
+    /// SentenceAnalysis.
     /// </summary>
     public class SentenceAnalysis
     {
         /// <summary>
-        /// A unique number identifying this sentence within this document. Reserved for future use (when sentences need to be referred from different places).
+        /// The unique identifier of a sentence of the input content. The first sentence has ID 0, and the ID of each subsequent sentence is incremented by one.
         /// </summary>
-        /// <value>A unique number identifying this sentence within this document. Reserved for future use (when sentences need to be referred from different places).</value>
+        /// <value>The unique identifier of a sentence of the input content. The first sentence has ID 0, and the ID of each subsequent sentence is incremented by one.</value>
         [JsonProperty("sentence_id", NullValueHandling = NullValueHandling.Ignore)]
         public int? SentenceId { get; set; }
         /// <summary>
-        /// Index of the character in the document where this sentence starts.
+        /// The text of the input sentence.
         /// </summary>
-        /// <value>Index of the character in the document where this sentence starts.</value>
-        [JsonProperty("input_from", NullValueHandling = NullValueHandling.Ignore)]
-        public int? InputFrom { get; set; }
-        /// <summary>
-        /// Index of the character in the document after the end of this sentence (input_to minus input_from is the length of this sentence in characters).
-        /// </summary>
-        /// <value>Index of the character in the document after the end of this sentence (input_to minus input_from is the length of this sentence in characters).</value>
-        [JsonProperty("input_to", NullValueHandling = NullValueHandling.Ignore)]
-        public int? InputTo { get; set; }
-        /// <summary>
-        /// The text in this sentence - as just taken from the input text from input_from to input_to.
-        /// </summary>
-        /// <value>The text in this sentence - as just taken from the input text from input_from to input_to.</value>
+        /// <value>The text of the input sentence.</value>
         [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
         /// <summary>
-        /// Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.
+        /// The offset of the first character of the sentence in the overall input content.
         /// </summary>
-        /// <value>Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.</value>
+        /// <value>The offset of the first character of the sentence in the overall input content.</value>
+        [JsonProperty("input_from", NullValueHandling = NullValueHandling.Ignore)]
+        public int? InputFrom { get; set; }
+        /// <summary>
+        /// The offset of the last character of the sentence in the overall input content.
+        /// </summary>
+        /// <value>The offset of the last character of the sentence in the overall input content.</value>
+        [JsonProperty("input_to", NullValueHandling = NullValueHandling.Ignore)]
+        public int? InputTo { get; set; }
+        /// <summary>
+        /// An array of `ToneCategory` objects that provides the results for the tone analysis of the sentence. The service returns results only for the tones specified with the `tones` parameter of the request.
+        /// </summary>
+        /// <value>An array of `ToneCategory` objects that provides the results for the tone analysis of the sentence. The service returns results only for the tones specified with the `tones` parameter of the request.</value>
         [JsonProperty("tone_categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneCategory> ToneCategories { get; set; }
     }

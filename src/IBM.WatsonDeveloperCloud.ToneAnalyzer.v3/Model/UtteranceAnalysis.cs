@@ -21,28 +21,28 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
 {
     /// <summary>
-    /// Customer Engagement Tone analysis results performed on the entire document's text. This includes seven tone categories: Sad, Frustrated, Satisfied, Excited, Polite, Impolite, Sympathetic.
+    /// UtteranceAnalysis.
     /// </summary>
     public class UtteranceAnalysis
     {
         /// <summary>
-        /// The ID of the text being analyzed.
+        /// The unique identifier of the utterance. The first utterance has ID 0, and the ID of each subsequent utterance is incremented by one.
         /// </summary>
-        /// <value>The ID of the text being analyzed.</value>
+        /// <value>The unique identifier of the utterance. The first utterance has ID 0, and the ID of each subsequent utterance is incremented by one.</value>
         [JsonProperty("utterance_id", NullValueHandling = NullValueHandling.Ignore)]
         public string UtteranceId { get; set; }
         /// <summary>
-        /// The text being analyzed.
+        /// The text of the utterance.
         /// </summary>
-        /// <value>The text being analyzed.</value>
+        /// <value>The text of the utterance.</value>
         [JsonProperty("utterance_text", NullValueHandling = NullValueHandling.Ignore)]
         public string UtteranceText { get; set; }
         /// <summary>
-        /// Tone analysis results from seven possible categories: Sad, Frustrated, Satisfied, Excited, Polite, Impolite, Sympathetic.
+        /// An array of `ToneChatScore` objects that provides results for the most prevalent tones of the utterance. The array includes results for any tone whose score is at least 0.5. The array is empty if no tone has a score that meets this threshold.
         /// </summary>
-        /// <value>Tone analysis results from seven possible categories: Sad, Frustrated, Satisfied, Excited, Polite, Impolite, Sympathetic.</value>
+        /// <value>An array of `ToneChatScore` objects that provides results for the most prevalent tones of the utterance. The array includes results for any tone whose score is at least 0.5. The array is empty if no tone has a score that meets this threshold.</value>
         [JsonProperty("tones", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ToneScore> Tones { get; set; }
+        public List<ToneChatScore> Tones { get; set; }
     }
 
 }

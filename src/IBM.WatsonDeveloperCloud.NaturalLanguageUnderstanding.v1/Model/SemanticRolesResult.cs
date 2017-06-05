@@ -47,7 +47,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         /// </summary>
         /// <value>The extracted object from the sentence.</value>
         [JsonProperty("object", NullValueHandling = NullValueHandling.Ignore)]
-        public SemanticRolesObject Object { get; set; }
+        public SemanticRolesObject _Object { get; set; }
     }
 
 }

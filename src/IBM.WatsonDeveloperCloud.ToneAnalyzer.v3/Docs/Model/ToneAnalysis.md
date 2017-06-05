@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DocumentTone** | [**ToneAnalysisDocumentTone**](ToneAnalysisDocumentTone.md) |  | [optional] 
-**SentencesTone** | [**List<SentenceAnalysis>**](SentenceAnalysis.md) | List of sentences contained in the document, with individual Tone analysis results for each sentence. | [optional] 
+**DocumentTone** | [**DocumentAnalysis**](DocumentAnalysis.md) | An object of type `DocumentAnalysis` that provides the results for the full document of the input content. | 
+**SentencesTone** | [**List<SentenceAnalysis>**](SentenceAnalysis.md) | An array of `SentenceAnalysis` objects that provides the results for the individual sentences of the input content. The service returns results only for the first 100 sentences of the input. The field is omitted if the `sentences` parameter of the request is set to `false`. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

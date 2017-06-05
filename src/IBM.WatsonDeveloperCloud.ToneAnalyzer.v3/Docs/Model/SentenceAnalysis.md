@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SentenceId** | **int?** | A unique number identifying this sentence within this document. Reserved for future use (when sentences need to be referred from different places). | 
-**InputFrom** | **int?** | Index of the character in the document where this sentence starts. | 
-**InputTo** | **int?** | Index of the character in the document after the end of this sentence (input_to minus input_from is the length of this sentence in characters). | 
-**Text** | **string** | The text in this sentence - as just taken from the input text from input_from to input_to. | 
-**ToneCategories** | [**List<ToneCategory>**](ToneCategory.md) | Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone. | 
+**SentenceId** | **int?** | The unique identifier of a sentence of the input content. The first sentence has ID 0, and the ID of each subsequent sentence is incremented by one. | 
+**Text** | **string** | The text of the input sentence. | 
+**InputFrom** | **int?** | The offset of the first character of the sentence in the overall input content. | 
+**InputTo** | **int?** | The offset of the last character of the sentence in the overall input content. | 
+**ToneCategories** | [**List<ToneCategory>**](ToneCategory.md) | An array of `ToneCategory` objects that provides the results for the tone analysis of the sentence. The service returns results only for the tones specified with the `tones` parameter of the request. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

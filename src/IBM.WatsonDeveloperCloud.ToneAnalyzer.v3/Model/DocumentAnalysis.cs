@@ -21,14 +21,14 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
 {
     /// <summary>
-    /// Tone analysis results performed on the entire document's text. This includes three tone categories: Social Tone, Emotion Tone and Language Tone.
+    /// DocumentAnalysis.
     /// </summary>
-    public class ToneAnalysisDocumentTone
+    public class DocumentAnalysis
     {
         /// <summary>
-        /// Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.
+        /// An array of `ToneCategory` objects that provides the results of the tone analysis for the full document of the input content. The service returns results only for the tones specified with the `tones` parameter of the request.
         /// </summary>
-        /// <value>Tone analysis results for this sentence; divided in three Tone categories: Social Tone, Emotion Tone and Writing Tone.</value>
+        /// <value>An array of `ToneCategory` objects that provides the results of the tone analysis for the full document of the input content. The service returns results only for the tones specified with the `tones` parameter of the request.</value>
         [JsonProperty("tone_categories", NullValueHandling = NullValueHandling.Ignore)]
         public List<ToneCategory> ToneCategories { get; set; }
     }

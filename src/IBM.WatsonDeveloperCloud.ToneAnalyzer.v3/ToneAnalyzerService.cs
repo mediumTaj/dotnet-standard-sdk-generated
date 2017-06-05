@@ -35,9 +35,6 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             set { _versionDate = value; }
         }
 
-        /** The Constant TONE_ANALYZER_VERSION_DATE_2016_05_19. */
-        public static string TONE_ANALYZER_VERSION_DATE_2016_05_19 = "2016-05-19";
-
         public ToneAnalyzerService() : base(SERVICE_NAME, URL)
         {
             if(!string.IsNullOrEmpty(this.Endpoint))
@@ -54,7 +51,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
 
             this.SetCredential(userName, password);
             if(string.IsNullOrEmpty(versionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
+                throw new ArgumentNullException("versionDate cannot be null.");
 
             VersionDate = versionDate;
         }
@@ -67,13 +64,13 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             this.Client = httpClient;
         }
 
-        public ToneAnalysis Tone(ToneInput text, string tones = null, bool? sentences = null)
+        public ToneAnalysis Tone(ToneInput body, string tones = null, bool? sentences = null)
         {
-            if (text == null)
-                throw new ArgumentNullException(nameof(text));
+            if (body == null)
+                throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
+                throw new ArgumentNullException("versionDate cannot be null.");
 
             ToneAnalysis result = null;
 
@@ -84,7 +81,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("tones", tones)
                                 .WithArgument("sentences", sentences)
-                                .WithBody<ToneInput>(text)
+                                .WithBody<ToneInput>(body)
                                 .As<ToneAnalysis>()
                                 .Result;
             }
@@ -102,7 +99,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
                 throw new ArgumentNullException(nameof(utterances));
 
             if(string.IsNullOrEmpty(VersionDate))
-                throw new ArgumentNullException("versionDate cannot be null. Use 'TONE_ANALYZER_VERSION_DATE_2016_05_19'");
+                throw new ArgumentNullException("versionDate cannot be null.");
 
             UtteranceAnalyses result = null;
 

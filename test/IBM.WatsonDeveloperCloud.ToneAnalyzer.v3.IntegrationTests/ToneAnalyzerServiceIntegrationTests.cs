@@ -33,6 +33,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
         private string _endpoint;
         private string inputText = "Hello! Welcome to IBM Watson! How can I help you?";
         private string chatUser = "testChatUser";
+        private string versionDate = "2016-05-19";
 
         [TestInitialize]
         public void Setup()
@@ -54,7 +55,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
         [TestMethod]
         public void PostTone_Success()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, versionDate);
 
             ToneInput toneInput = new ToneInput()
             {
@@ -71,7 +72,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
         [TestMethod]
         public void ToneChat_Success()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, ToneAnalyzerService.TONE_ANALYZER_VERSION_DATE_2016_05_19);
+            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, versionDate);
 
             ToneChatInput toneChatInput = new ToneChatInput()
             {

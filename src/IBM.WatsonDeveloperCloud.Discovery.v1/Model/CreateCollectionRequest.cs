@@ -15,7 +15,9 @@
 *
 */
 
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
@@ -24,6 +26,39 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
     /// </summary>
     public class CreateCollectionRequest
     {
+        /// <summary>
+        /// The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code.
+        /// </summary>
+        /// <value>The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum LanguageEnum
+        {
+            
+            /// <summary>
+            /// Enum EN for en
+            /// </summary>
+            [EnumMember(Value = "en")]
+            EN,
+            
+            /// <summary>
+            /// Enum ES for es
+            /// </summary>
+            [EnumMember(Value = "es")]
+            ES,
+            
+            /// <summary>
+            /// Enum DE for de
+            /// </summary>
+            [EnumMember(Value = "de")]
+            DE
+        }
+
+        /// <summary>
+        /// The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code.
+        /// </summary>
+        /// <value>The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code.</value>
+        [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
+        public LanguageEnum? Language { get; set; }
         /// <summary>
         /// The name of the collection to be created.
         /// </summary>

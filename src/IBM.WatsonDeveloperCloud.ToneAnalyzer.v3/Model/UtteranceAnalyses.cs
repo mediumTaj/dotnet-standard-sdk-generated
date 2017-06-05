@@ -21,13 +21,14 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
 {
     /// <summary>
-    /// Utterance analysis results.
+    /// UtteranceAnalyses.
     /// </summary>
     public class UtteranceAnalyses
     {
         /// <summary>
-        /// Gets or Sets UtterancesTone
+        /// An array of `UtteranceAnalysis` objects that provides the results for each utterance of the input.
         /// </summary>
+        /// <value>An array of `UtteranceAnalysis` objects that provides the results for each utterance of the input.</value>
         [JsonProperty("utterances_tone", NullValueHandling = NullValueHandling.Ignore)]
         public List<UtteranceAnalysis> UtterancesTone { get; set; }
     }

@@ -282,7 +282,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.UnitTests
                                 Tense = "tense"
                             }
                         },
-                        Object = new SemanticRolesObject()
+                        _Object = new SemanticRolesObject()
                         {
                             Text = "text",
                             Keywords = new List<SemanticRolesKeyword>()

@@ -21,19 +21,20 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model
 {
     /// <summary>
-    /// The results of performing tone analysis on a document.
+    /// ToneAnalysis.
     /// </summary>
     public class ToneAnalysis
     {
         /// <summary>
-        /// Gets or Sets DocumentTone
+        /// An object of type `DocumentAnalysis` that provides the results for the full document of the input content.
         /// </summary>
+        /// <value>An object of type `DocumentAnalysis` that provides the results for the full document of the input content.</value>
         [JsonProperty("document_tone", NullValueHandling = NullValueHandling.Ignore)]
-        public ToneAnalysisDocumentTone DocumentTone { get; set; }
+        public DocumentAnalysis DocumentTone { get; set; }
         /// <summary>
-        /// List of sentences contained in the document, with individual Tone analysis results for each sentence.
+        /// An array of `SentenceAnalysis` objects that provides the results for the individual sentences of the input content. The service returns results only for the first 100 sentences of the input. The field is omitted if the `sentences` parameter of the request is set to `false`.
         /// </summary>
-        /// <value>List of sentences contained in the document, with individual Tone analysis results for each sentence.</value>
+        /// <value>An array of `SentenceAnalysis` objects that provides the results for the individual sentences of the input content. The service returns results only for the first 100 sentences of the input. The field is omitted if the `sentences` parameter of the request is set to `false`.</value>
         [JsonProperty("sentences_tone", NullValueHandling = NullValueHandling.Ignore)]
         public List<SentenceAnalysis> SentencesTone { get; set; }
     }

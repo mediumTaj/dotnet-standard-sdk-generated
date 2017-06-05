@@ -91,9 +91,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         [JsonProperty("configuration_id", NullValueHandling = NullValueHandling.Ignore)]
         public string ConfigurationId { get; set; }
         /// <summary>
-        /// The language of the documents stored in the collection. The only currently accepted value is en_us (U.S. English).
+        /// The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code.
         /// </summary>
-        /// <value>The language of the documents stored in the collection. The only currently accepted value is en_us (U.S. English).</value>
+        /// <value>The language of the documents stored in the collection. The value should be in the form of an ISO 639-1 language code.</value>
         [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
         public string Language { get; set; }
         /// <summary>

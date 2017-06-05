@@ -237,13 +237,13 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Example
                             }
                         }
 
-                        if (semanticRoleResult.Object != null)
+                        if (semanticRoleResult._Object != null)
                         {
-                            Console.WriteLine(string.Format("object text: {0}", semanticRoleResult.Object.Text));
+                            Console.WriteLine(string.Format("object text: {0}", semanticRoleResult._Object.Text));
 
-                            if(semanticRoleResult.Object.Keywords != null && semanticRoleResult.Object.Keywords.Count > 0)
+                            if(semanticRoleResult._Object.Keywords != null && semanticRoleResult._Object.Keywords.Count > 0)
                             {
-                                foreach(SemanticRolesKeyword keyword in semanticRoleResult.Object.Keywords)
+                                foreach(SemanticRolesKeyword keyword in semanticRoleResult._Object.Keywords)
                                 {
                                     Console.WriteLine("keyword: " + keyword.Text);
                                 }
