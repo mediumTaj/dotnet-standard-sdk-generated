@@ -106,10 +106,10 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public TypeEnum? Type { get; set; }
         /// <summary>
-        /// Gets or Sets Field
+        /// Gets or Sets FieldName
         /// </summary>
         [JsonProperty("field", NullValueHandling = NullValueHandling.Ignore)]
-        public string Field { get; set; }
+        public string FieldName { get; set; }
     }
 
 }

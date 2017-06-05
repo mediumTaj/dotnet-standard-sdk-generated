@@ -53,7 +53,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>Name of the enrichment service to call. Currently the only valid value is `alchemy_language`.</value>
         [JsonProperty("enrichment", NullValueHandling = NullValueHandling.Ignore)]
-        public string Enrichment { get; set; }
+        public string EnrichmentName { get; set; }
         /// <summary>
         /// If true, then most errors generated during the enrichment process will be treated as warnings and will not cause the document to fail processing.
         /// </summary>

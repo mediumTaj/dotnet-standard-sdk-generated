@@ -16,8 +16,12 @@
 */
 
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Text;
 using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
 using IBM.WatsonDeveloperCloud.Http;
+using IBM.WatsonDeveloperCloud.Http.Extensions;
 using IBM.WatsonDeveloperCloud.Service;
 using Newtonsoft.Json;
 using System;
@@ -389,11 +393,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
 
             try
             {
-                if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+                var formData = new MultipartFormDataContent();
 
-                if (metadata != null) localVarFormParams.Add("metadata", Configuration.ApiClient.ParameterToString(metadata)); // form parameter
+                if (file != null)
+                {
+                    var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
+                }
 
-                if (configuration != null) localVarFormParams.Add("configuration", Configuration.ApiClient.ParameterToString(configuration)); // form parameter
+                if (metadata != null)
+                {
+                    var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                }
+
+                if (configuration != null)
+                {
+                    var configurationContent = new StringContent(configuration, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents")
@@ -486,11 +501,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
 
             try
             {
-                if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+                var formData = new MultipartFormDataContent();
 
-                if (metadata != null) localVarFormParams.Add("metadata", Configuration.ApiClient.ParameterToString(metadata)); // form parameter
+                if (file != null)
+                {
+                    var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
+                }
 
-                if (configuration != null) localVarFormParams.Add("configuration", Configuration.ApiClient.ParameterToString(configuration)); // form parameter
+                if (metadata != null)
+                {
+                    var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                }
+
+                if (configuration != null)
+                {
+                    var configurationContent = new StringContent(configuration, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
@@ -725,11 +751,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
 
             try
             {
-                if (configuration != null) localVarFormParams.Add("configuration", Configuration.ApiClient.ParameterToString(configuration)); // form parameter
+                var formData = new MultipartFormDataContent();
 
-                if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+                if (configuration != null)
+                {
+                    var configurationContent = new StringContent(configuration, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                }
 
-                if (metadata != null) localVarFormParams.Add("metadata", Configuration.ApiClient.ParameterToString(metadata)); // form parameter
+                if (file != null)
+                {
+                    var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
+                }
+
+                if (metadata != null)
+                {
+                    var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/preview")
