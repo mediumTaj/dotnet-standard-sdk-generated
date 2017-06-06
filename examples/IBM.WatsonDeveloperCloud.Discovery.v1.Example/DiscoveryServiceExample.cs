@@ -1,7 +1,4 @@
-﻿
-
-using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
-/**
+﻿/**
 * Copyright 2017 IBM Corp. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +14,9 @@ using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
 * limitations under the License.
 *
 */
+
 using System;
+using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 {
@@ -30,9 +29,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         public DiscoveryServiceExample(string username, string password)
         {
             _discovery = new DiscoveryService(username, password, DiscoveryService.DISCOVERY_VERSION_DATE_2016_12_01);
-            //_discovery.Endpoint = "http://localhost:1234";
+            _discovery.Endpoint = "http://localhost:1234";
 
-            GetEnvironments();
+            //GetEnvironments();
             CreateEnvironment();
             GetEnvironment();
             UpdateEnvironment();
