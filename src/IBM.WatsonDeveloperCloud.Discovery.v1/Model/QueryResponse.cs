@@ -29,7 +29,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// Gets or Sets MatchingResults
         /// </summary>
         [JsonProperty("matching_results", NullValueHandling = NullValueHandling.Ignore)]
-        public int? MatchingResults { get; set; }
+        public long? MatchingResults { get; set; }
         /// <summary>
         /// Gets or Sets Results
         /// </summary>

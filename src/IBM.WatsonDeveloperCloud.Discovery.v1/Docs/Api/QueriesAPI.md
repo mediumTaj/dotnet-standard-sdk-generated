@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="query"></a>
 # **Query**
-> QueryResponse Query (string environmentId, string collectionId, string filter, string query, string naturalLanguageQuery, bool? passages, string aggregation, int? count, List<string> _return, int? offset, string sort, bool? highlight)
+> QueryResponse Query (string environmentId, string collectionId, string filter, string query, string naturalLanguageQuery, bool? passages, string aggregation, long? count, List<string> _return, long? offset, string sort, bool? highlight)
 
 Query documents.
 
@@ -39,9 +39,9 @@ namespace Example
             var naturalLanguageQuery = naturalLanguageQuery_example;  // string | A natural language query that returns relevant documents by utilizing training data and natural language understanding. You cannot use `natural_language_query` and `query` at the same time. (optional) 
             var passages = true;  // bool? | A passages query that returns the most relevant passages from the document. (optional) 
             var aggregation = aggregation_example;  // string | An aggregation search uses combinations of filters and query search to return an exact answer. Aggregations are useful for building applications, because you can use them to build lists, tables, and time series. For a full list of possible aggregrations, see the Query reference. (optional) 
-            var count = 56;  // int? | Number of documents to return (optional)  (default to 10)
+            var count = 56;  // long? | Number of documents to return (optional)  (default to 10)
             var _return = new List<string>(); // List<string> | A comma separated list of the portion of the document hierarchy to return. (optional) 
-            var offset = 56;  // int? | The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. (optional) 
+            var offset = 56;  // long? | The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. (optional) 
             var sort = sort_example;  // string | A comma separated list of fields in the document to sort on. You can optionally specify a sort direction by prefixing the field with `-` for descending or `+` for ascending. Ascending is the default sort direction if no prefix is specified. (optional) 
             var highlight = true;  // bool? | When true a highlight field is returned for each result which contains the fields that match the query with `<em></em>` tags around the matching query terms. Defaults to false. (optional) 
 
@@ -71,9 +71,9 @@ Name | Type | Description  | Notes
  **naturalLanguageQuery** | **string**| A natural language query that returns relevant documents by utilizing training data and natural language understanding. You cannot use `natural_language_query` and `query` at the same time. | [optional] 
  **passages** | **bool?**| A passages query that returns the most relevant passages from the document. | [optional] 
  **aggregation** | **string**| An aggregation search uses combinations of filters and query search to return an exact answer. Aggregations are useful for building applications, because you can use them to build lists, tables, and time series. For a full list of possible aggregrations, see the Query reference. | [optional] 
- **count** | **int?**| Number of documents to return | [optional] [default to 10]
+ **count** | **long?**| Number of documents to return | [optional] [default to 10]
  **_return** | [**List<string>**](string.md)| A comma separated list of the portion of the document hierarchy to return. | [optional] 
- **offset** | **int?**| The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. | [optional] 
+ **offset** | **long?**| The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. | [optional] 
  **sort** | **string**| A comma separated list of fields in the document to sort on. You can optionally specify a sort direction by prefixing the field with `-` for descending or `+` for ascending. Ascending is the default sort direction if no prefix is specified. | [optional] 
  **highlight** | **bool?**| When true a highlight field is returned for each result which contains the fields that match the query with `<em></em>` tags around the matching query terms. Defaults to false. | [optional] 
 
@@ -94,7 +94,7 @@ No authorization required
 
 <a name="querynotices"></a>
 # **QueryNotices**
-> QueryNoticesResponse QueryNotices (string environmentId, string collectionId, string filter, string query, string naturalLanguageQuery, bool? passages, string aggregation, int? count, List<string> _return, int? offset, string sort, bool? highlight)
+> QueryNoticesResponse QueryNotices (string environmentId, string collectionId, string filter, string query, string naturalLanguageQuery, bool? passages, string aggregation, long? count, List<string> _return, long? offset, string sort, bool? highlight)
 
 
 
@@ -123,9 +123,9 @@ namespace Example
             var naturalLanguageQuery = naturalLanguageQuery_example;  // string | A natural language query that returns relevant documents by utilizing training data and natural language understanding. You cannot use `natural_language_query` and `query` at the same time. (optional) 
             var passages = true;  // bool? | A passages query that returns the most relevant passages from the document. (optional) 
             var aggregation = aggregation_example;  // string | An aggregation search uses combinations of filters and query search to return an exact answer. Aggregations are useful for building applications, because you can use them to build lists, tables, and time series. For a full list of possible aggregrations, see the Query reference. (optional) 
-            var count = 56;  // int? | Number of documents to return (optional)  (default to 10)
+            var count = 56;  // long? | Number of documents to return (optional)  (default to 10)
             var _return = new List<string>(); // List<string> | A comma separated list of the portion of the document hierarchy to return. (optional) 
-            var offset = 56;  // int? | The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. (optional) 
+            var offset = 56;  // long? | The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. (optional) 
             var sort = sort_example;  // string | A comma separated list of fields in the document to sort on. You can optionally specify a sort direction by prefixing the field with `-` for descending or `+` for ascending. Ascending is the default sort direction if no prefix is specified. (optional) 
             var highlight = true;  // bool? | When true a highlight field is returned for each result which contains the fields that match the query with `<em></em>` tags around the matching query terms. Defaults to false. (optional) 
 
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
  **naturalLanguageQuery** | **string**| A natural language query that returns relevant documents by utilizing training data and natural language understanding. You cannot use `natural_language_query` and `query` at the same time. | [optional] 
  **passages** | **bool?**| A passages query that returns the most relevant passages from the document. | [optional] 
  **aggregation** | **string**| An aggregation search uses combinations of filters and query search to return an exact answer. Aggregations are useful for building applications, because you can use them to build lists, tables, and time series. For a full list of possible aggregrations, see the Query reference. | [optional] 
- **count** | **int?**| Number of documents to return | [optional] [default to 10]
+ **count** | **long?**| Number of documents to return | [optional] [default to 10]
  **_return** | [**List<string>**](string.md)| A comma separated list of the portion of the document hierarchy to return. | [optional] 
- **offset** | **int?**| The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. | [optional] 
+ **offset** | **long?**| The number of query results to skip at the beginning. For example, if the total number of results that are returned is 10, and the offset is 8, it returns the last two results. | [optional] 
  **sort** | **string**| A comma separated list of fields in the document to sort on. You can optionally specify a sort direction by prefixing the field with `-` for descending or `+` for ascending. Ascending is the default sort direction if no prefix is specified. | [optional] 
  **highlight** | **bool?**| When true a highlight field is returned for each result which contains the fields that match the query with `<em></em>` tags around the matching query terms. Defaults to false. | [optional] 
 

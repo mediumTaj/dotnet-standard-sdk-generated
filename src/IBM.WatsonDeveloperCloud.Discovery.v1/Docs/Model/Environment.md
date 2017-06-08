@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Updated** | [**DateTime**](DateTime.md) | Date of most recent environment update, in the format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'. | [optional] 
 **Status** | **string** | Status of the environment. | [optional] 
 **_ReadOnly** | **bool?** | If true, then the environment contains read-only collections which are maintained by IBM. | [optional] 
-**Size** | **int?** | Size of the environment. | [optional] [default to 1]
+**Size** | [**long?**](Long.md) | Size of the environment. | [optional] [default to 1]
 **IndexCapacity** | [**IndexCapacity**](IndexCapacity.md) | Object containing information about disk and memory usage. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

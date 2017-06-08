@@ -95,7 +95,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>Size of the environment.</value>
         [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Size { get; set; }
+        public long? Size { get; set; }
         /// <summary>
         /// Object containing information about disk and memory usage.
         /// </summary>

@@ -29,9 +29,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         public DiscoveryServiceExample(string username, string password)
         {
             _discovery = new DiscoveryService(username, password, DiscoveryService.DISCOVERY_VERSION_DATE_2016_12_01);
-            _discovery.Endpoint = "http://localhost:1234";
+            //_discovery.Endpoint = "http://localhost:1234";
 
-            //GetEnvironments();
+            GetEnvironments();
             CreateEnvironment();
             GetEnvironment();
             UpdateEnvironment();

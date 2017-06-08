@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MatchingResults** | **int?** |  | [optional] 
+**MatchingResults** | [**long?**](Long.md) |  | [optional] 
 **Results** | [**List<QueryNoticesResult>**](QueryNoticesResult.md) |  | [optional] 
 **Aggregations** | [**List<QueryAggregation>**](QueryAggregation.md) |  | [optional] 
 

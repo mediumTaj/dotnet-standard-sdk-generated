@@ -36,7 +36,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>Number of matching results.</value>
         [JsonProperty("matching_results", NullValueHandling = NullValueHandling.Ignore)]
-        public int? MatchingResults { get; set; }
+        public long? MatchingResults { get; set; }
         /// <summary>
         /// Aggregations returned in the case of chained aggregations.
         /// </summary>

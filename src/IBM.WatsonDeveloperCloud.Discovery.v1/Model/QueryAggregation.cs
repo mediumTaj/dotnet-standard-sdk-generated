@@ -53,7 +53,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>Number of matching results.</value>
         [JsonProperty("matching_results", NullValueHandling = NullValueHandling.Ignore)]
-        public int? MatchingResults { get; set; }
+        public long? MatchingResults { get; set; }
         /// <summary>
         /// Aggregations returned by the Discovery service.
         /// </summary>
@@ -65,7 +65,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>Interval specified by using aggregation type 'timeslice'.</value>
         [JsonProperty("interval", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Interval { get; set; }
+        public long? Interval { get; set; }
         /// <summary>
         /// Value of the aggregation. (For 'max' and 'min' type).
         /// </summary>

@@ -664,7 +664,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
 
             return result;
         }
-        public QueryResponse Query(string environmentId, string collectionId, string filter = null, string query = null, string naturalLanguageQuery = null, bool? passages = null, string aggregation = null, int? count = null, List<string> _return = null, int? offset = null, string sort = null, bool? highlight = null)
+        public QueryResponse Query(string environmentId, string collectionId, string filter = null, string query = null, string naturalLanguageQuery = null, bool? passages = null, string aggregation = null, long? count = null, List<string> _return = null, long? offset = null, string sort = null, bool? highlight = null)
         {
             if (string.IsNullOrEmpty(environmentId))
                 throw new ArgumentNullException(nameof(environmentId));
@@ -702,7 +702,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             return result;
         }
 
-        public QueryNoticesResponse QueryNotices(string environmentId, string collectionId, string filter = null, string query = null, string naturalLanguageQuery = null, bool? passages = null, string aggregation = null, int? count = null, List<string> _return = null, int? offset = null, string sort = null, bool? highlight = null)
+        public QueryNoticesResponse QueryNotices(string environmentId, string collectionId, string filter = null, string query = null, string naturalLanguageQuery = null, bool? passages = null, string aggregation = null, long? count = null, List<string> _return = null, long? offset = null, string sort = null, bool? highlight = null)
         {
             if (string.IsNullOrEmpty(environmentId))
                 throw new ArgumentNullException(nameof(environmentId));

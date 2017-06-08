@@ -29,13 +29,13 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>Number of bytes used on the environment's disk capacity.</value>
         [JsonProperty("used_bytes", NullValueHandling = NullValueHandling.Ignore)]
-        public int? UsedBytes { get; private set; }
+        public long? UsedBytes { get; private set; }
         /// <summary>
         /// Total number of bytes available in the environment's disk capacity.
         /// </summary>
         /// <value>Total number of bytes available in the environment's disk capacity.</value>
         [JsonProperty("total_bytes", NullValueHandling = NullValueHandling.Ignore)]
-        public int? TotalBytes { get; private set; }
+        public long? TotalBytes { get; private set; }
         /// <summary>
         /// Amount of disk capacity used, in KB or GB format.
         /// </summary>
