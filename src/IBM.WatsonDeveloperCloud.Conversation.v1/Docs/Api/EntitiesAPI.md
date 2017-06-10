@@ -207,7 +207,7 @@ No authorization required
 
 <a name="listentities"></a>
 # **ListEntities**
-> EntityCollectionResponse ListEntities (string workspaceId, bool? export, int? pageLimit, bool? includeCount, string sort, string cursor)
+> EntityCollectionResponse ListEntities (string workspaceId, bool? export, long? pageLimit, bool? includeCount, string sort, string cursor)
 
 List entities.
 
@@ -231,7 +231,7 @@ namespace Example
             var apiInstance = new EntitiesAPI();
             var workspaceId = workspaceId_example;  // string | The workspace ID.
             var export = true;  // bool? | Whether to include all element content in the returned data. If export=`false`, the returned data includes only information about the element itself. If export=`true`, all content, including subelements, is included. The default value is `false`. (optional)  (default to false)
-            var pageLimit = 56;  // int? | The number of records to return in each page of results. The default page limit is 100. (optional) 
+            var pageLimit = 56;  // long? | The number of records to return in each page of results. The default page limit is 100. (optional) 
             var includeCount = true;  // bool? | Whether to include information about the number of records returned. (optional)  (default to false)
             var sort = sort_example;  // string | Sorts the response according to the value of the specified property, in ascending or descending order. (optional) 
             var cursor = cursor_example;  // string | A token identifying the last value from the previous page of results. (optional) 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspaceId** | **string**| The workspace ID. | 
  **export** | **bool?**| Whether to include all element content in the returned data. If export=`false`, the returned data includes only information about the element itself. If export=`true`, all content, including subelements, is included. The default value is `false`. | [optional] [default to false]
- **pageLimit** | **int?**| The number of records to return in each page of results. The default page limit is 100. | [optional] 
+ **pageLimit** | **long?**| The number of records to return in each page of results. The default page limit is 100. | [optional] 
  **includeCount** | **bool?**| Whether to include information about the number of records returned. | [optional] [default to false]
  **sort** | **string**| Sorts the response according to the value of the specified property, in ascending or descending order. | [optional] 
  **cursor** | **string**| A token identifying the last value from the previous page of results. | [optional] 

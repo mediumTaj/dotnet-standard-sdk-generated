@@ -25,6 +25,7 @@ using IBM.WatsonDeveloperCloud.Http.Extensions;
 using IBM.WatsonDeveloperCloud.Service;
 using Newtonsoft.Json;
 using System;
+using System.Net.Http.Headers;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1
 {
@@ -398,22 +399,26 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 if (file != null)
                 {
                     var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
+                    formData.Add(fileContent, "file");
                 }
 
                 if (metadata != null)
                 {
                     var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                    formData.Add(metadataContent, "metadata");
                 }
 
                 if (configuration != null)
                 {
                     var configurationContent = new StringContent(configuration, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                    formData.Add(configurationContent, "configuration");
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("configurationId", configurationId)
+                                .WithBodyContent(formData)
                                 .As<DocumentAccepted>()
                                 .Result;
             }
@@ -506,22 +511,26 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 if (file != null)
                 {
                     var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
+                    formData.Add(fileContent, "file");
                 }
 
                 if (metadata != null)
                 {
                     var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                    formData.Add(metadataContent, "metadata");
                 }
 
                 if (configuration != null)
                 {
                     var configurationContent = new StringContent(configuration, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                    formData.Add(configurationContent, "configuration");
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/environments/{environmentId}/collections/{collectionId}/documents/{documentId}")
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("configurationId", configurationId)
+                                .WithBodyContent(formData)
                                 .As<DocumentAccepted>()
                                 .Result;
             }
@@ -756,16 +765,20 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 if (configuration != null)
                 {
                     var configurationContent = new StringContent(configuration, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                    formData.Add(configurationContent, "configuration");
                 }
 
                 if (file != null)
                 {
                     var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
+                    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/html");
+                    formData.Add(fileContent, "file");
                 }
 
                 if (metadata != null)
                 {
                     var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
+                    formData.Add(metadataContent, "metadata");
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
@@ -773,6 +786,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                                 .WithArgument("version", VersionDate)
                                 .WithArgument("step", step)
                                 .WithArgument("configurationId", configurationId)
+                                .WithBodyContent(formData)
                                 .As<TestDocument>()
                                 .Result;
             }

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Limit** | **int?** | Maximum number of keywords to return. | [optional] 
+**Limit** | [**long?**](Long.md) | Maximum number of keywords to return. | [optional] 
 **Sentiment** | **bool?** | Set this to true to return sentiment information for detected keywords. | [optional] [default to false]
 **Emotion** | **bool?** | Set this to true to analyze emotion for detected keywords. | [optional] [default to false]
 

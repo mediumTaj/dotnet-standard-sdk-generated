@@ -217,7 +217,7 @@ No authorization required
 
 <a name="listsynonyms"></a>
 # **ListSynonyms**
-> SynonymCollectionResponse ListSynonyms (string workspaceId, string entity, string value, int? pageLimit, bool? includeCount, string sort, string cursor)
+> SynonymCollectionResponse ListSynonyms (string workspaceId, string entity, string value, long? pageLimit, bool? includeCount, string sort, string cursor)
 
 List entity value synonyms.
 
@@ -242,7 +242,7 @@ namespace Example
             var workspaceId = workspaceId_example;  // string | The workspace ID.
             var entity = entity_example;  // string | The name of the entity.
             var value = value_example;  // string | The text of the entity value.
-            var pageLimit = 56;  // int? | The number of records to return in each page of results. The default page limit is 100. (optional) 
+            var pageLimit = 56;  // long? | The number of records to return in each page of results. The default page limit is 100. (optional) 
             var includeCount = true;  // bool? | Whether to include information about the number of records returned. (optional)  (default to false)
             var sort = sort_example;  // string | Sorts the response according to the value of the specified property, in ascending or descending order. (optional) 
             var cursor = cursor_example;  // string | A token identifying the last value from the previous page of results. (optional) 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
  **workspaceId** | **string**| The workspace ID. | 
  **entity** | **string**| The name of the entity. | 
  **value** | **string**| The text of the entity value. | 
- **pageLimit** | **int?**| The number of records to return in each page of results. The default page limit is 100. | [optional] 
+ **pageLimit** | **long?**| The number of records to return in each page of results. The default page limit is 100. | [optional] 
  **includeCount** | **bool?**| Whether to include information about the number of records returned. | [optional] [default to false]
  **sort** | **string**| Sorts the response according to the value of the specified property, in ascending or descending order. | [optional] 
  **cursor** | **string**| A token identifying the last value from the previous page of results. | [optional] 

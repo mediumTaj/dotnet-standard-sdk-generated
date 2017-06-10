@@ -152,7 +152,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public CounterexampleCollectionResponse ListCounterexamples(string workspaceId, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public CounterexampleCollectionResponse ListCounterexamples(string workspaceId, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -298,7 +298,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public EntityCollectionResponse ListEntities(string workspaceId, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public EntityCollectionResponse ListEntities(string workspaceId, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -450,7 +450,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ExampleCollectionResponse ListExamples(string workspaceId, string intent, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public ExampleCollectionResponse ListExamples(string workspaceId, string intent, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -600,7 +600,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public IntentCollectionResponse ListIntents(string workspaceId, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public IntentCollectionResponse ListIntents(string workspaceId, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -661,7 +661,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public LogCollectionResponse ListLogs(string workspaceId, string sort = null, string filter = null, int? pageLimit = null, string cursor = null)
+        public LogCollectionResponse ListLogs(string workspaceId, string sort = null, string filter = null, long? pageLimit = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -813,7 +813,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public SynonymCollectionResponse ListSynonyms(string workspaceId, string entity, string value, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public SynonymCollectionResponse ListSynonyms(string workspaceId, string entity, string value, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -973,7 +973,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public ValueCollectionResponse ListValues(string workspaceId, string entity, bool? export = null, int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public ValueCollectionResponse ListValues(string workspaceId, string entity, bool? export = null, long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -1116,7 +1116,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public WorkspaceCollectionResponse ListWorkspaces(int? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
+        public WorkspaceCollectionResponse ListWorkspaces(long? pageLimit = null, bool? includeCount = null, string sort = null, string cursor = null)
         {
 
             if(string.IsNullOrEmpty(VersionDate))

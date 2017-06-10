@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Limit** | **int?** | Maximum number of entities to return. | [optional] 
+**Limit** | [**long?**](Long.md) | Maximum number of entities to return. | [optional] 
 **Model** | **string** | Enter a custom model ID to override the standard entity detection model. | [optional] [default to "alchemy"]
 **Sentiment** | **bool?** | Set this to true to return sentiment information for detected entities. | [optional] [default to false]
 **Emotion** | **bool?** | Set this to true to analyze emotion for detected keywords. | [optional] [default to false]

@@ -211,7 +211,7 @@ No authorization required
 
 <a name="listexamples"></a>
 # **ListExamples**
-> ExampleCollectionResponse ListExamples (string workspaceId, string intent, int? pageLimit, bool? includeCount, string sort, string cursor)
+> ExampleCollectionResponse ListExamples (string workspaceId, string intent, long? pageLimit, bool? includeCount, string sort, string cursor)
 
 List user input examples.
 
@@ -235,7 +235,7 @@ namespace Example
             var apiInstance = new ExamplesAPI();
             var workspaceId = workspaceId_example;  // string | The workspace ID.
             var intent = intent_example;  // string | The intent name (for example, `pizza_order`).
-            var pageLimit = 56;  // int? | The number of records to return in each page of results. The default page limit is 100. (optional) 
+            var pageLimit = 56;  // long? | The number of records to return in each page of results. The default page limit is 100. (optional) 
             var includeCount = true;  // bool? | Whether to include information about the number of records returned. (optional)  (default to false)
             var sort = sort_example;  // string | Sorts the response according to the value of the specified property, in ascending or descending order. (optional) 
             var cursor = cursor_example;  // string | A token identifying the last value from the previous page of results. (optional) 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspaceId** | **string**| The workspace ID. | 
  **intent** | **string**| The intent name (for example, `pizza_order`). | 
- **pageLimit** | **int?**| The number of records to return in each page of results. The default page limit is 100. | [optional] 
+ **pageLimit** | **long?**| The number of records to return in each page of results. The default page limit is 100. | [optional] 
  **includeCount** | **bool?**| Whether to include information about the number of records returned. | [optional] [default to false]
  **sort** | **string**| Sorts the response according to the value of the specified property, in ascending or descending order. | [optional] 
  **cursor** | **string**| A token identifying the last value from the previous page of results. | [optional] 

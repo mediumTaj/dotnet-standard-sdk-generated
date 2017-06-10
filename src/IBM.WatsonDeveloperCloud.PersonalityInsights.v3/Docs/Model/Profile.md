@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProcessedLanguage** | **string** | The language model that was used to process the input; for example, `en`. | 
-**WordCount** | **int?** | The number of words that were found in the input. | 
+**WordCount** | [**long?**](Long.md) | The number of words that were found in the input. | 
 **WordCountMessage** | **string** | When guidance is appropriate, a string that provides a message that indicates the number of words found and where that value falls in the range of required or suggested number of words. | [optional] 
 **Personality** | [**List<TraitTreeNode>**](TraitTreeNode.md) | Detailed results for the Big Five personality characteristics (dimensions and facets) inferred from the input text. | 
 **Values** | [**List<TraitTreeNode>**](TraitTreeNode.md) | Detailed results for the Needs characteristics inferred from the input text. | 

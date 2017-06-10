@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Limit** | **int?** | Maximum number of semantic_roles results to return. | [optional] 
+**Limit** | [**long?**](Long.md) | Maximum number of semantic_roles results to return. | [optional] 
 **Keywords** | **bool?** | Set this to true to return keyword information for subjects and objects. | [optional] [default to false]
 **Entities** | **bool?** | Set this to true to return entity information for subjects and objects. | [optional] [default to false]
 
