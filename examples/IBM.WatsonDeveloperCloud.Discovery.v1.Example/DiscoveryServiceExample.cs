@@ -22,17 +22,29 @@ using System.Threading;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using IBM.WatsonDeveloperCloud.Http.Extensions;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 {
     public class DiscoveryServiceExample
     {
-        private DiscoveryService _discovery;
-        private string _createdEnvironmentId = "3f8a7134-a575-4d53-8cfa-ed826e57b5e1";
+        public string _username;
+        public string _password;
+        public string _endpoint;
+        public DiscoveryService _discovery;
 
-        private string _createdConfigurationId = "da22b889-0ecb-470c-905f-876ddb3c27c7";
+        private static string _createdEnvironmentId;
+        private static string _createdConfigurationId;
+        private static string _createdCollectionId;
+        private static string _createdDocumentId;
+
+        private string _createdEnvironmentName = "dotnet-test-environment";
+        private string _createdEnvironmentDescription = "Environment created in the .NET SDK Examples";
+        private int _createdEnvironmentSize = 1;
+        private string _updatedEnvironmentName = "dotnet-test-environment-updated";
+        private string _updatedEnvironmentDescription = "Environment created in the .NET SDK Examples - updated";
         private string _createdConfigurationName = "configName";
-        private string _createdConfigurationNameUpdated = "configName-updated";
+        private string _updatedConfigurationName = "configName-updated";
         private string _createdConfigurationDescription = "configDescription";
         private string _createdConfigurationSourceField = "sourceField";
         private string _createdConfigurationDestinationField = "destionationField";
@@ -48,6 +60,12 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         private string _metadata = "{\"Creator\": \"DotnetSDK Test\",\"Subject\": \"Discovery service\"}";
         private string _defaultConfigurationName = "Default Configuration";
 
+        private string _createdCollectionName = "createdCollectionName";
+        private string _createdCollectionDescription = "createdCollectionDescription";
+        private string _updatedCollectionName = "updatedCollectionName";
+        private CreateCollectionRequest.LanguageEnum _createdCollectionLanguage = CreateCollectionRequest.LanguageEnum.EN;
+
+        private string _naturalLanguageQuery = "Who beat Ken Jennings in Jeopardy!";
         AutoResetEvent autoEvent = new AutoResetEvent(false);
 
         #region Constructor
@@ -67,30 +85,29 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
             autoEvent.WaitOne();
             GetEnvironment();
             UpdateEnvironment();
-
-
+            
             GetConfigurations();
             CreateConfiguration();
             GetConfiguration();
             UpdateConfiguration();
 
-            PreviewEnvironment();
+            //PreviewEnvironment();
 
-            //GetCollections();
-            //CreateCollection();
-            //GetCollection();
-            //GetCollectionFields();
-            //UpdateCollection();
+            GetCollections();
+            CreateCollection();
+            GetCollection();
+            GetCollectionFields();
+            UpdateCollection();
 
-            //AddDocument();
-            //GetDocument();
-            //UpdateDocument();
+            AddDocument();
+            GetDocument();
+            UpdateDocument();
 
-            //Query();
-            //GetNotices();
+            Query();
+            GetNotices();
 
-            //DeleteDocument();
-            //DeleteCollection();
+            DeleteDocument();
+            DeleteCollection();
             DeleteConfiguration();
             DeleteEnvironment();
 
@@ -251,7 +268,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 
             using (FileStream fs = File.OpenRead(_filepathToIngest))
             {
-                var result = _discovery.TestConfigurationInEnvironment(_createdEnvironmentId, null, "html_input", _createdConfigurationId, fs, _metadata);
+                var result = _discovery.TestConfigurationInEnvironment(_createdEnvironmentId, null, "html_input", _createdConfigurationId, fs as Stream);
 
                 if (result != null)
                 {
@@ -328,7 +345,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 
             Configuration configuration = new Configuration()
             {
-                Name = _createdConfigurationNameUpdated
+                Name = _updatedConfigurationName
             };
 
             var result = _discovery.UpdateConfiguration(_createdEnvironmentId, _createdConfigurationId, configuration);
@@ -347,7 +364,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         {
             Console.WriteLine(string.Format("\nCalling DeleteConfiguration()..."));
 
-            var result = _discovery.DeleteCollection(_createdEnvironmentId, _createdConfigurationId);
+            var result = _discovery.DeleteConfiguration(_createdEnvironmentId, _createdConfigurationId);
 
             if (result != null)
             {
@@ -364,67 +381,229 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         private void GetCollections()
         {
             Console.WriteLine(string.Format("\nCalling GetCollections()..."));
+
+            var result = _discovery.ListCollections(_createdEnvironmentId);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
 
         private void CreateCollection()
         {
             Console.WriteLine(string.Format("\nCalling CreateCollection()..."));
+
+            CreateCollectionRequest createCollectionRequest = new CreateCollectionRequest()
+            {
+                Language = _createdCollectionLanguage,
+                Name = _createdCollectionName,
+                Description = _createdCollectionDescription,
+                ConfigurationId = _createdConfigurationId
+            };
+
+            var result = _discovery.CreateCollection(_createdEnvironmentId, createCollectionRequest);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                _createdCollectionId = result.CollectionId;
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
 
         private void GetCollection()
         {
             Console.WriteLine(string.Format("\nCalling GetCollection()..."));
+
+            var result = _discovery.GetCollection(_createdEnvironmentId, _createdCollectionId);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
 
         private void UpdateCollection()
         {
             Console.WriteLine(string.Format("\nCalling UpdateCollection()..."));
+
+            UpdateCollectionRequest updateCollectionRequest = new UpdateCollectionRequest()
+            {
+                Name = _updatedCollectionName,
+            };
+
+            var result = _discovery.UpdateCollection(_createdEnvironmentId, _createdCollectionId, updateCollectionRequest);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
 
         private void GetCollectionFields()
         {
             Console.WriteLine(string.Format("\nCalling GetCollectionFields()..."));
+
+            var result = _discovery.ListCollectionFields(_createdEnvironmentId, _createdCollectionId);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
 
         private void DeleteCollection()
         {
             Console.WriteLine(string.Format("\nCalling DeleteCollection()..."));
+
+            if (string.IsNullOrEmpty(_createdEnvironmentId))
+                throw new ArgumentNullException("_createdEnvironmentId is null");
+
+            if (string.IsNullOrEmpty(_createdCollectionId))
+                throw new ArgumentNullException("_createdCollectionId is null");
+
+            var result = _discovery.DeleteCollection(_createdEnvironmentId, _createdCollectionId);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                _createdCollectionId = null;
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
         #endregion
 
-        #region Documents
+            #region Documents
         private void AddDocument()
         {
-            Console.WriteLine(string.Format("\nCalling AddDocument()..."));
+            using (FileStream fs = File.OpenRead(_filepathToIngest))
+            {
+                var result = _discovery.AddDocument(_createdEnvironmentId, _createdCollectionId, _createdConfigurationId, fs as Stream, _metadata);
+
+                if (result != null)
+                {
+                    Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                    _createdDocumentId = result.DocumentId;
+                }
+                else
+                {
+                    Console.WriteLine("result is null.");
+                }
+            }
         }
 
         private void GetDocument()
         {
             Console.WriteLine(string.Format("\nCalling GetDocument()..."));
+
+            var result = _discovery.GetDocument(_createdEnvironmentId, _createdCollectionId, _createdDocumentId);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
 
         private void UpdateDocument()
         {
-            Console.WriteLine(string.Format("\nCalling UpdateDocument()..."));
+            using (FileStream fs = File.OpenRead(_filepathToIngest))
+            {
+                var result = _discovery.UpdateDocument(_createdEnvironmentId, _createdCollectionId, _createdDocumentId, _createdConfigurationId, fs as Stream, _metadata);
+
+                if (result != null)
+                {
+                    Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                }
+                else
+                {
+                    Console.WriteLine("result is null.");
+                }
+            }
         }
 
         private void DeleteDocument()
         {
             Console.WriteLine(string.Format("\nCalling DeleteDocument()..."));
+
+            if (string.IsNullOrEmpty(_createdEnvironmentId))
+                throw new ArgumentNullException("_createdEnvironmentId is null");
+
+            if (string.IsNullOrEmpty(_createdCollectionId))
+                throw new ArgumentNullException("_createdCollectionId is null");
+
+            if (string.IsNullOrEmpty(_createdDocumentId))
+                throw new ArgumentNullException("_createdDocumentId is null");
+
+            var result = _discovery.DeleteDocument(_createdEnvironmentId, _createdCollectionId, _createdDocumentId);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                _createdDocumentId = null;
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
         #endregion
 
         #region Query
         private void Query()
         {
-            Console.WriteLine(string.Format("\nCalling Query()..."));
+            var result = _discovery.Query(_createdEnvironmentId, _createdCollectionId, null, null, _naturalLanguageQuery, true);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
         #endregion
 
         #region Notices
         private void GetNotices()
         {
-            Console.WriteLine(string.Format("\nCalling GetNoticies()..."));
+            var result = _discovery.QueryNotices(_createdEnvironmentId, _createdCollectionId, null, null, _naturalLanguageQuery, true);
+
+            if (result != null)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+            }
+            else
+            {
+                Console.WriteLine("result is null.");
+            }
         }
         #endregion
     }

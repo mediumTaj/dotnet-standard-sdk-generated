@@ -772,7 +772,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 {
                     var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
                     fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/html");
-                    formData.Add(fileContent, "file");
+                    formData.Add(fileContent, "file", "watson_beats_jeoparday.html");
                 }
 
                 if (metadata != null)
