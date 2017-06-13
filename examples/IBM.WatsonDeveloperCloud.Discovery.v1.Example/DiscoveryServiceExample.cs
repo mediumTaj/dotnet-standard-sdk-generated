@@ -496,9 +496,10 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         }
         #endregion
 
-            #region Documents
+         #region Documents
         private void AddDocument()
         {
+            Console.WriteLine(string.Format("\nCalling AddDocument()..."));
             using (FileStream fs = File.OpenRead(_filepathToIngest))
             {
                 var result = _discovery.AddDocument(_createdEnvironmentId, _createdCollectionId, _createdConfigurationId, fs as Stream, _metadata);
@@ -533,6 +534,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 
         private void UpdateDocument()
         {
+            Console.WriteLine(string.Format("\nCalling UpdateDocument()..."));
             using (FileStream fs = File.OpenRead(_filepathToIngest))
             {
                 var result = _discovery.UpdateDocument(_createdEnvironmentId, _createdCollectionId, _createdDocumentId, _createdConfigurationId, fs as Stream, _metadata);

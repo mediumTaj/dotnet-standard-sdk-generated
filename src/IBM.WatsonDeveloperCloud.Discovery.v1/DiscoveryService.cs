@@ -25,7 +25,6 @@ using IBM.WatsonDeveloperCloud.Http.Extensions;
 using IBM.WatsonDeveloperCloud.Service;
 using Newtonsoft.Json;
 using System;
-using System.Net.Http.Headers;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1
 {
@@ -771,8 +770,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 if (file != null)
                 {
                     var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
-                    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/html");
-                    formData.Add(fileContent, "file", "watson_beats_jeoparday.html");
+                    formData.Add(fileContent, "file");
                 }
 
                 if (metadata != null)

@@ -48,8 +48,6 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
         private string _createdConfigurationName = "configName";
         private string _updatedConfigurationName = "configName-updated";
         private string _createdConfigurationDescription = "configDescription";
-        private string _createdConfigurationSourceField = "sourceField";
-        private string _createdConfigurationDestinationField = "destionationField";
         private string _createdConfigurationPdfFontName = "font";
         private string _createdConfigurationWordStyleName = "style";
         private string _createdConfigurationHtmlExcludeTag = "tag";
