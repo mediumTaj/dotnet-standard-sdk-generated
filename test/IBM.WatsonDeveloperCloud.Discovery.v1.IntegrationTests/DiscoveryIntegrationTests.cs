@@ -145,26 +145,6 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
         }
 
         #region Is Environment Ready
-        //[TestMethod]
-        //public void IsEnvironmentReady(string environmentId)
-        //{
-        //    var result = _discovery.GetEnvironment(environmentId);
-        //    Console.WriteLine(string.Format("\tEnvironment {0} status is {1}.", environmentId, result.Status));
-
-        //    if (result.Status == ModelEnvironment.StatusEnum.ACTIVE)
-        //    {
-        //        autoEvent.Set();
-        //    }
-        //    else
-        //    {
-        //        Task.Factory.StartNew(() =>
-        //        {
-        //            System.Threading.Thread.Sleep(30000);
-        //            IsEnvironmentReady(environmentId);
-        //        });
-        //    }
-        //}
-
         [TestMethod]
         public void WaitForEnvironment()
         {
