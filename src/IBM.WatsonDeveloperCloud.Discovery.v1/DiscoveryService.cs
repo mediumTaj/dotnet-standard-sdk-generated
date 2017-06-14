@@ -25,7 +25,6 @@ using IBM.WatsonDeveloperCloud.Http.Extensions;
 using IBM.WatsonDeveloperCloud.Service;
 using Newtonsoft.Json;
 using System;
-using System.Net.Http.Headers;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1
 {
@@ -771,21 +770,13 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                 if (file != null)
                 {
                     var fileContent = new ByteArrayContent((file as Stream).ReadAllBytes());
-                    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/html");
-                    fileContent.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"watson_beats_jeopardy.html\"");
-                    formData.Add(fileContent, "file", "watson_beats_jeopardy.html");
+                    formData.Add(fileContent, "file");
                 }
 
                 if (metadata != null)
                 {
                     var metadataContent = new StringContent(metadata, Encoding.UTF8, HttpMediaType.TEXT_PLAIN);
                     formData.Add(metadataContent, "metadata");
-                }
-
-                foreach(var param in formData.Headers.ContentType.Parameters)
-                {
-                    if (param.Name == "boundary")
-                        param.Value = param.Value.Replace("\"", String.Empty);
                 }
 
                 result = this.Client.WithAuthentication(this.UserName, this.Password)

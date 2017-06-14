@@ -35,7 +35,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 
         private static string _createdEnvironmentId = "63c537e0-cfac-4d85-aaff-a293baafab75";
         private static string _createdConfigurationId = "4c7ed399-d155-4d71-aa7d-cd1e656235cb";
-        private static string _createdCollectionId;
+        private static string _createdCollectionId = "test collection";
         private static string _createdDocumentId;
 
         private string _createdEnvironmentName = "dotnet-test-environment";
@@ -74,7 +74,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
             _discovery = new DiscoveryService(username, password, DiscoveryService.DISCOVERY_VERSION_DATE_2016_12_01);
             //_discovery.Endpoint = "http://localhost:1234";
 
-            //GetEnvironments();
+            GetEnvironments();
             //CreateEnvironment();
             //Task.Factory.StartNew(() =>
             //{
@@ -268,7 +268,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 
             using (FileStream fs = File.OpenRead(_filepathToIngest))
             {
-                var result = _discovery.TestConfigurationInEnvironment(_createdEnvironmentId, null, "html_input", _createdConfigurationId, fs as Stream);
+                var result = _discovery.TestConfigurationInEnvironment(_createdEnvironmentId, null, "enrich", _createdConfigurationId, fs as Stream, _metadata);
 
                 if (result != null)
                 {
