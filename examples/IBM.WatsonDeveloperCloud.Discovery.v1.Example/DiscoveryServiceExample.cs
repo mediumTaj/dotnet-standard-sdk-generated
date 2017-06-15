@@ -20,9 +20,7 @@ using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
 using System.Threading.Tasks;
 using System.Threading;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
-using IBM.WatsonDeveloperCloud.Http.Extensions;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 {
@@ -33,9 +31,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         public string _endpoint;
         public DiscoveryService _discovery;
 
-        private static string _createdEnvironmentId = "63c537e0-cfac-4d85-aaff-a293baafab75";
-        private static string _createdConfigurationId = "4c7ed399-d155-4d71-aa7d-cd1e656235cb";
-        private static string _createdCollectionId = "test collection";
+        private static string _createdEnvironmentId;
+        private static string _createdConfigurationId;
+        private static string _createdCollectionId;
         private static string _createdDocumentId;
 
         private string _createdEnvironmentName = "dotnet-test-environment";
@@ -75,41 +73,41 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
             //_discovery.Endpoint = "http://localhost:1234";
 
             GetEnvironments();
-            //CreateEnvironment();
-            //Task.Factory.StartNew(() =>
-            //{
-            //    Console.WriteLine("\nChecking environment status in 30 seconds.");
-            //    System.Threading.Thread.Sleep(30000);
-            //    IsEnvironmentReady(_createdEnvironmentId);
-            //});
-            //autoEvent.WaitOne();
-            //GetEnvironment();
-            //UpdateEnvironment();
+            CreateEnvironment();
+            Task.Factory.StartNew(() =>
+            {
+                Console.WriteLine("\nChecking environment status in 30 seconds.");
+                System.Threading.Thread.Sleep(30000);
+                IsEnvironmentReady(_createdEnvironmentId);
+            });
+            autoEvent.WaitOne();
+            GetEnvironment();
+            UpdateEnvironment();
 
-            //GetConfigurations();
-            //CreateConfiguration();
-            //GetConfiguration();
-            //UpdateConfiguration();
+            GetConfigurations();
+            CreateConfiguration();
+            GetConfiguration();
+            UpdateConfiguration();
 
-            PreviewEnvironment();
+            //PreviewEnvironment();
 
-            //GetCollections();
-            //CreateCollection();
-            //GetCollection();
-            //GetCollectionFields();
-            //UpdateCollection();
+            GetCollections();
+            CreateCollection();
+            GetCollection();
+            GetCollectionFields();
+            UpdateCollection();
 
-            //AddDocument();
-            //GetDocument();
-            //UpdateDocument();
+            AddDocument();
+            GetDocument();
+            UpdateDocument();
 
-            //Query();
-            //GetNotices();
+            Query();
+            GetNotices();
 
-            //DeleteDocument();
-            //DeleteCollection();
-            //DeleteConfiguration();
-            //DeleteEnvironment();
+            DeleteDocument();
+            DeleteCollection();
+            DeleteConfiguration();
+            DeleteEnvironment();
 
             Console.WriteLine("\n~ Discovery examples complete.");
         }
