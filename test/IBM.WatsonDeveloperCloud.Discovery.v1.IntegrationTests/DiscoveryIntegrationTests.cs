@@ -48,17 +48,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
         private string _createdConfigurationName = "configName";
         private string _updatedConfigurationName = "configName-updated";
         private string _createdConfigurationDescription = "configDescription";
-        private string _createdConfigurationPdfFontName = "font";
-        private string _createdConfigurationWordStyleName = "style";
-        private string _createdConfigurationHtmlExcludeTag = "tag";
-        private string _createdConfigurationHtmlXpath = "xpath";
-        private string _createdConfigurationEnrichmentDescription = "enrichmentDescription";
-        private string _createdConfigurationEnrichmentDestinationField = "destinationField";
-        private string _createdConfigurationEnrichmentSourceField = "sourceField";
-        private string _createdConfigurationEnrichmentName = "sourceField";
         private string _filepathToIngest = @"DiscoveryTestData\watson_beats_jeopardy.html";
         private string _metadata = "{\"Creator\": \"DotnetSDK Test\",\"Subject\": \"Discovery service\"}";
-        private string _defaultConfigurationName = "Default Configuration";
 
         private string _createdCollectionName = "createdCollectionName";
         private string _createdCollectionDescription = "createdCollectionDescription";

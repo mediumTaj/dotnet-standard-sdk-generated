@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 {
@@ -650,6 +651,204 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
         }
+
+        [TestMethod]
+        public void TestConfigurationInEnvronment_Success_WithConfiguration()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            TestDocument response = new TestDocument()
+            {
+                ConfigurationId = "configurationId",
+                Status = "status",
+                EnrichedFieldUnits = 1,
+                OriginalMediaType = "originalMediaType",
+                Snapshots = new List<DocumentSnapshot>()
+                {
+                    new DocumentSnapshot()
+                    {
+                        Step = DocumentSnapshot.StepEnum.HTML_INPUT,
+                        Snapshot = new object() { }
+                    }
+                },
+                Notices = new List<Notice>()
+                {
+                    new Notice()
+                    {
+                        Severity = Notice.SeverityEnum.ERROR,
+                        NoticeId = "noticeId",
+                        Created = DateTime.Today,
+                        DocumentId = "documentId",
+                        Step = "step",
+                        Description = "description"
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBodyContent(Arg.Any<MultipartFormDataContent>())
+                .Returns(request);
+            request.As<TestDocument>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.TestConfigurationInEnvironment("environmentId", configuration:"configuration");
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.ConfigurationId == "configurationId");
+            Assert.IsTrue(result.Status == "status");
+            Assert.IsTrue(result.EnrichedFieldUnits == 1);
+            Assert.IsTrue(result.OriginalMediaType == "originalMediaType");
+            Assert.IsNotNull(result.Snapshots);
+            Assert.IsTrue(result.Snapshots.Count > 0);
+            Assert.IsNotNull(result.Notices);
+            Assert.IsTrue(result.Notices.Count > 0);
+        }
+
+        [TestMethod]
+        public void TestConfigurationInEnvronment_Success_WithFile()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            TestDocument response = new TestDocument()
+            {
+                ConfigurationId = "configurationId",
+                Status = "status",
+                EnrichedFieldUnits = 1,
+                OriginalMediaType = "originalMediaType",
+                Snapshots = new List<DocumentSnapshot>()
+                {
+                    new DocumentSnapshot()
+                    {
+                        Step = DocumentSnapshot.StepEnum.HTML_INPUT,
+                        Snapshot = new object() { }
+                    }
+                },
+                Notices = new List<Notice>()
+                {
+                    new Notice()
+                    {
+                        Severity = Notice.SeverityEnum.ERROR,
+                        NoticeId = "noticeId",
+                        Created = DateTime.Today,
+                        DocumentId = "documentId",
+                        Step = "step",
+                        Description = "description"
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBodyContent(Arg.Any<MultipartFormDataContent>())
+                .Returns(request);
+            request.As<TestDocument>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+            var result = service.TestConfigurationInEnvironment("environmentId", file: Substitute.For<FileStream>("any_file", FileMode.Create));
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.ConfigurationId == "configurationId");
+            Assert.IsTrue(result.Status == "status");
+            Assert.IsTrue(result.EnrichedFieldUnits == 1);
+            Assert.IsTrue(result.OriginalMediaType == "originalMediaType");
+            Assert.IsNotNull(result.Snapshots);
+            Assert.IsTrue(result.Snapshots.Count > 0);
+            Assert.IsNotNull(result.Notices);
+            Assert.IsTrue(result.Notices.Count > 0);
+        }
+
+        [TestMethod]
+        public void TestConfigurationInEnvronment_Success_WithMetadata()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            TestDocument response = new TestDocument()
+            {
+                ConfigurationId = "configurationId",
+                Status = "status",
+                EnrichedFieldUnits = 1,
+                OriginalMediaType = "originalMediaType",
+                Snapshots = new List<DocumentSnapshot>()
+                {
+                    new DocumentSnapshot()
+                    {
+                        Step = DocumentSnapshot.StepEnum.HTML_INPUT,
+                        Snapshot = new object() { }
+                    }
+                },
+                Notices = new List<Notice>()
+                {
+                    new Notice()
+                    {
+                        Severity = Notice.SeverityEnum.ERROR,
+                        NoticeId = "noticeId",
+                        Created = DateTime.Today,
+                        DocumentId = "documentId",
+                        Step = "step",
+                        Description = "description"
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBodyContent(Arg.Any<MultipartFormDataContent>())
+                .Returns(request);
+            request.As<TestDocument>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.TestConfigurationInEnvironment("environmentId", metadata:"metadata");
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.ConfigurationId == "configurationId");
+            Assert.IsTrue(result.Status == "status");
+            Assert.IsTrue(result.EnrichedFieldUnits == 1);
+            Assert.IsTrue(result.OriginalMediaType == "originalMediaType");
+            Assert.IsNotNull(result.Snapshots);
+            Assert.IsTrue(result.Snapshots.Count > 0);
+            Assert.IsNotNull(result.Notices);
+            Assert.IsTrue(result.Notices.Count > 0);
+        }
         #endregion
 
         #region Configrations
@@ -724,6 +923,75 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                                            Name = "name"
                                        }
                                    }
+                               }
+                           },
+                           Word = new WordSettings()
+                           {
+                               Heading = new WordHeadingDetection()
+                               {
+                                   Fonts = new List<FontSetting>()
+                                   {
+                                       new FontSetting()
+                                       {
+                                           Level = 1f,
+                                           MinSize = 1f,
+                                           MaxSize = 1f,
+                                           Bold = false,
+                                           Italic = false,
+                                           Name = "name"
+                                       }
+                                   },
+                                   Styles = new List<WordStyle>()
+                                   {
+                                       new WordStyle()
+                                       {
+                                           Level = 1.0f,
+                                           Names = new List<string>
+                                           {
+                                               "name"
+                                           }
+                                       }
+                                   }
+                               }
+                           },
+                           Html = new HtmlSettings()
+                           {
+                               ExcludeTagsCompletely = new List<string>()
+                               {
+                                   "exclude"
+                               }, 
+                               ExcludeTagsKeepContent = new List<string>()
+                               {
+                                   "exclude but keep content"
+                               },
+                               KeepContent = new XPathPatterns()
+                               {
+                                   Xpaths = new List<string>()
+                                   {
+                                       "keepContent"
+                                   }
+                               },
+                               ExcludeContent = new XPathPatterns()
+                               {
+                                   Xpaths = new List<string>()
+                                   {
+                                       "excludeContent"
+                                   }
+                               },
+                               KeepTagAttributes = new List<string>()
+                               {
+                                   "keepTagAttributes"
+                               },
+                               ExcludeTagAttributes = new List<string>()
+                               {
+                                   "excludeTagAttributes"
+                               }
+                           },
+                           JsonNormalizations = new List<NormalizationOperation>()
+                           {
+                               new NormalizationOperation()
+                               {
+
                                }
                            }
                        },
@@ -1799,7 +2067,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         }
 
         [TestMethod]
-        public void CreateDocument_Success()
+        public void AddDocument_Success()
         {
             IClient client = CreateClient();
 
@@ -1851,6 +2119,61 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsTrue(result.Notices[0].DocumentId == "documentId");
             Assert.IsTrue(result.Notices[0].Step== "step");
             Assert.IsTrue(result.Notices[0].Description== "description");
+        }
+
+        [TestMethod]
+        public void AddDocument_Success_WithConfiguration()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            DocumentAccepted documentAccepted = new DocumentAccepted()
+            {
+                Status = DocumentAccepted.StatusEnum.PROCESSING,
+                DocumentId = "documentId",
+                Notices = new List<Notice>()
+                {
+                    new Notice()
+                    {
+                        Severity = Notice.SeverityEnum.ERROR,
+                        NoticeId = "noticeId",
+                        Created = DateTime.Today,
+                        DocumentId = "documentId",
+                        Step = "step",
+                        Description = "description"
+                    }
+                }
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBodyContent(Arg.Any<MultipartFormDataContent>())
+                .Returns(request);
+            request.As<DocumentAccepted>()
+                .Returns(Task.FromResult(documentAccepted));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.AddDocument("environmentId", "collectionId", configuration:"configuration");
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.Status == DocumentAccepted.StatusEnum.PROCESSING);
+            Assert.IsTrue(result.DocumentId == "documentId");
+            Assert.IsNotNull(result.Notices);
+            Assert.IsTrue(result.Notices.Count > 0);
+            Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsTrue(result.Notices[0].NoticeId == "noticeId");
+            Assert.IsTrue(result.Notices[0].Created == DateTime.Today);
+            Assert.IsTrue(result.Notices[0].DocumentId == "documentId");
+            Assert.IsTrue(result.Notices[0].Step == "step");
+            Assert.IsTrue(result.Notices[0].Description == "description");
         }
         #endregion
 
@@ -2138,6 +2461,59 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             service.VersionDate = "versionDate";
 
             var result = service.UpdateDocument("environmentId", "collectionId", "documentId");
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.Status == DocumentAccepted.StatusEnum.PROCESSING);
+            Assert.IsTrue(result.DocumentId == "documentId");
+            Assert.IsNotNull(result.Notices);
+            Assert.IsTrue(result.Notices.Count > 0);
+            Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsTrue(result.Notices[0].NoticeId == "noticeId");
+            Assert.IsTrue(result.Notices[0].Created == DateTime.Today);
+            Assert.IsTrue(result.Notices[0].DocumentId == "documentId");
+            Assert.IsTrue(result.Notices[0].Step == "step");
+            Assert.IsTrue(result.Notices[0].Description == "description");
+        }
+
+        [TestMethod]
+        public void UpdateDocument_Success_WithConfiguration()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            DocumentAccepted documentAccepted = new DocumentAccepted()
+            {
+                Status = DocumentAccepted.StatusEnum.PROCESSING,
+                DocumentId = "documentId",
+                Notices = new List<Notice>()
+                {
+                    new Notice()
+                    {
+                        Severity = Notice.SeverityEnum.ERROR,
+                        NoticeId = "noticeId",
+                        Created = DateTime.Today,
+                        DocumentId = "documentId",
+                        Step = "step",
+                        Description = "description"
+                    }
+                }
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBodyContent(Arg.Any<MultipartFormDataContent>())
+                .Returns(request);
+            request.As<DocumentAccepted>()
+                .Returns(Task.FromResult(documentAccepted));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.UpdateDocument("environmentId", "collectionId", "documentId", configuration:"configuration");
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
