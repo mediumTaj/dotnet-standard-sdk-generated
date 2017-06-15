@@ -25,6 +25,7 @@ using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
 using System.Threading.Tasks;
 using System.Net;
 using System.Collections.Generic;
+using System.Text;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 {
@@ -547,6 +548,108 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         #endregion
 
         #region Preview Environment
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void TestConfigurationInEnvronment_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.TestConfigurationInEnvironment(null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void TestConfigurationInEnvronment_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            
+            service.TestConfigurationInEnvironment("envronmentId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void TestConfigurationInEnvronment_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2016_12_01;
+
+            service.TestConfigurationInEnvironment("environmentId");
+        }
+
+        [TestMethod]
+        public void TestConfigurationInEnvronment_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            TestDocument response = new TestDocument()
+            {
+                ConfigurationId = "configurationId",
+                Status = "status",
+                EnrichedFieldUnits = 1,
+                OriginalMediaType = "originalMediaType",
+                Snapshots = new List<DocumentSnapshot>()
+                {
+                    new DocumentSnapshot()
+                    {
+                        Step = DocumentSnapshot.StepEnum.HTML_INPUT,
+                        Snapshot = new object() { }
+                    }
+                },
+                Notices = new List<Notice>()
+                {
+                    new Notice()
+                    {
+                        Severity = Notice.SeverityEnum.ERROR,
+                        NoticeId = "noticeId",
+                        Created = DateTime.Today,
+                        DocumentId = "documentId",
+                        Step = "step",
+                        Description = "description"
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBodyContent(Arg.Any<MultipartFormDataContent>())
+                .Returns(request);
+            request.As<TestDocument>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.TestConfigurationInEnvironment("environmentId");
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.ConfigurationId == "configurationId");
+            Assert.IsTrue(result.Status == "status");
+            Assert.IsTrue(result.EnrichedFieldUnits == 1);
+            Assert.IsTrue(result.OriginalMediaType == "originalMediaType");
+            Assert.IsNotNull(result.Snapshots);
+            Assert.IsTrue(result.Snapshots.Count > 0);
+            Assert.IsNotNull(result.Notices);
+            Assert.IsTrue(result.Notices.Count > 0);
+        }
         #endregion
 
         #region Confugrations
