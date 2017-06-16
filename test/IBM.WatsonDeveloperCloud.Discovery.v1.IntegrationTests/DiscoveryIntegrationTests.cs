@@ -509,7 +509,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
         {
             Console.WriteLine(string.Format("\nCalling GetDocument()..."));
 
-            var result = _discovery.GetDocument(_createdEnvironmentId, _createdCollectionId, _createdDocumentId);
+            var result = _discovery.GetDocumentStatus(_createdEnvironmentId, _createdCollectionId, _createdDocumentId);
 
             if (result != null)
             {

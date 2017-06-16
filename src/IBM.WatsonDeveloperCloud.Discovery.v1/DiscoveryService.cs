@@ -71,10 +71,12 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             this.Client = httpClient;
         }
 
-        public Collection CreateCollection(string environmentId, CreateCollectionRequest body = null)
+        public Collection CreateCollection(string environmentId, CreateCollectionRequest body)
         {
             if (string.IsNullOrEmpty(environmentId))
                 throw new ArgumentNullException(nameof(environmentId));
+            if (body == null)
+                throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'DISCOVERY_VERSION_DATE_2016_12_01'");
@@ -459,7 +461,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             return result;
         }
 
-        public DocumentStatus GetDocument(string environmentId, string collectionId, string documentId)
+        public DocumentStatus GetDocumentStatus(string environmentId, string collectionId, string documentId)
         {
             if (string.IsNullOrEmpty(environmentId))
                 throw new ArgumentNullException(nameof(environmentId));

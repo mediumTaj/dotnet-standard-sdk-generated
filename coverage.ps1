@@ -1,12 +1,22 @@
 ﻿if((Test-Path -Path coverage))
 {
-  rm coverage -r -force
+  Remove-Item .\coverage -recurse
 }
 
 dotnet restore
 
+if((Test-Path -Path packages))
+{
+    Remove-Item .\packages -recurse
+}
+
+New-Item -path . -name packages -itemtype directory
+nuget install -Verbosity quiet -OutputDirectory packages -Version 4.6.519 OpenCover
+nuget install -Verbosity quiet -OutputDirectory packages -Version 2.4.5.0 ReportGenerator
+
 New-Item -path . -name coverage -itemtype directory
 Copy-Item .\test\IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests\DiscoveryTestData .\DiscoveryTestData -recurse
+
 
 $openCover = '.\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe'
 
@@ -27,7 +37,9 @@ ForEach ($folder in (Get-ChildItem -Path .\test -Directory))
     }
 }
 
-Remove-Item .\DiscoveryTestData -recurse
 
 $reportGenerator = '.\packages\ReportGenerator.2.4.5.0\tools\ReportGenerator.exe'
 & $reportGenerator -reports:coverage\coverage.xml -targetdir:coverage -verbosity:Error
+
+Remove-Item .\DiscoveryTestData -recurse
+Remove-Item .\packages -recurse

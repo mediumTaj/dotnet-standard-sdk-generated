@@ -26,9 +26,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
         /// Create a collection. 
         /// </summary>
         /// <param name="environmentId">the ID of your environment</param>
-        /// <param name="body">Input a JSON object that allows you to add a collection. (optional)</param>
+        /// <param name="body">Input a JSON object that allows you to add a collection.</param>
         /// <returns><see cref="Collection" />Collection</returns>
-        Collection CreateCollection(string environmentId, CreateCollectionRequest body = null);
+        Collection CreateCollection(string environmentId, CreateCollectionRequest body);
 
         /// <summary>
         /// Delete a collection. 
@@ -138,7 +138,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
         /// <param name="collectionId">the ID of your collection</param>
         /// <param name="documentId">the ID of your document</param>
         /// <returns><see cref="DocumentStatus" />DocumentStatus</returns>
-        DocumentStatus GetDocument(string environmentId, string collectionId, string documentId);
+        DocumentStatus GetDocumentStatus(string environmentId, string collectionId, string documentId);
 
         /// <summary>
         /// Update a document. Replace an existing document. Starts ingesting a document with optional metadata and optional configurations.

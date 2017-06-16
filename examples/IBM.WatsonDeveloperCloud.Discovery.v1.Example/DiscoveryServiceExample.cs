@@ -44,19 +44,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         private string _createdConfigurationName = "configName";
         private string _updatedConfigurationName = "configName-updated";
         private string _createdConfigurationDescription = "configDescription";
-        private string _createdConfigurationSourceField = "sourceField";
-        private string _createdConfigurationDestinationField = "destionationField";
-        private string _createdConfigurationPdfFontName = "font";
-        private string _createdConfigurationWordStyleName = "style";
-        private string _createdConfigurationHtmlExcludeTag = "tag";
-        private string _createdConfigurationHtmlXpath = "xpath";
-        private string _createdConfigurationEnrichmentDescription = "enrichmentDescription";
-        private string _createdConfigurationEnrichmentDestinationField = "destinationField";
-        private string _createdConfigurationEnrichmentSourceField = "sourceField";
-        private string _createdConfigurationEnrichmentName = "sourceField";
         private string _filepathToIngest = @"DiscoveryTestData\watson_beats_jeopardy.html";
         private string _metadata = "{\"Creator\": \"DotnetSDK Test\",\"Subject\": \"Discovery service\"}";
-        private string _defaultConfigurationName = "Default Configuration";
 
         private string _createdCollectionName = "createdCollectionName";
         private string _createdCollectionDescription = "createdCollectionDescription";
@@ -133,9 +122,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         {
             CreateEnvironmentRequest createEnvironmentRequest = new CreateEnvironmentRequest()
             {
-                Name = "dotnet-test-environment",
-                Description = "Environment created in the .NET SDK Examples",
-                Size = 1
+                Name = _createdEnvironmentName,
+                Description = _createdEnvironmentDescription,
+                Size = _createdEnvironmentSize
             };
 
             Console.WriteLine(string.Format("\nCalling CreateEnvironment()..."));
@@ -188,8 +177,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
 
             UpdateEnvironmentRequest updateEnvironmentRequest = new UpdateEnvironmentRequest()
             {
-                Name = "dotnet-test-environment-updated",
-                Description = "Environment created in the .NET SDK Examples-updated"
+                Name = _updatedEnvironmentName,
+                Description = _updatedEnvironmentDescription
             };
 
             var result = _discovery.UpdateEnvironment(_createdEnvironmentId, updateEnvironmentRequest);
@@ -518,7 +507,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
         {
             Console.WriteLine(string.Format("\nCalling GetDocument()..."));
 
-            var result = _discovery.GetDocument(_createdEnvironmentId, _createdCollectionId, _createdDocumentId);
+            var result = _discovery.GetDocumentStatus(_createdEnvironmentId, _createdCollectionId, _createdDocumentId);
 
             if (result != null)
             {

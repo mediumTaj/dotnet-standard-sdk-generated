@@ -26,35 +26,39 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
     public class TestDocument
     {
         /// <summary>
-        /// Gets or Sets ConfigurationId
+        /// The unique identifier for the configuration.
         /// </summary>
+        /// <value>The unique identifier for the configuration.</value>
         [JsonProperty("configuration_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string ConfigurationId { get; set; }
+        public string ConfigurationId { get; private set; }
         /// <summary>
-        /// Gets or Sets Status
+        /// Status of the preview operation.
         /// </summary>
+        /// <value>Status of the preview operation.</value>
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
-        public string Status { get; set; }
+        public string Status { get; private set; }
         /// <summary>
         /// The number of 10 Kilobytes of field data that was enriched. This can be used to estimate the cost of running a real ingestion.
         /// </summary>
         /// <value>The number of 10 Kilobytes of field data that was enriched. This can be used to estimate the cost of running a real ingestion.</value>
         [JsonProperty("enriched_field_units", NullValueHandling = NullValueHandling.Ignore)]
-        public float? EnrichedFieldUnits { get; set; }
+        public float? EnrichedFieldUnits { get; private set; }
         /// <summary>
         /// Format of the test document.
         /// </summary>
         /// <value>Format of the test document.</value>
         [JsonProperty("original_media_type", NullValueHandling = NullValueHandling.Ignore)]
-        public string OriginalMediaType { get; set; }
+        public string OriginalMediaType { get; private set; }
         /// <summary>
-        /// Gets or Sets Snapshots
+        /// An array of objects that describe each step in the preview process.
         /// </summary>
+        /// <value>An array of objects that describe each step in the preview process.</value>
         [JsonProperty("snapshots", NullValueHandling = NullValueHandling.Ignore)]
         public List<DocumentSnapshot> Snapshots { get; set; }
         /// <summary>
-        /// Gets or Sets Notices
+        /// An array of notice messages about the preview operation.
         /// </summary>
+        /// <value>An array of notice messages about the preview operation.</value>
         [JsonProperty("notices", NullValueHandling = NullValueHandling.Ignore)]
         public List<Notice> Notices { get; set; }
     }

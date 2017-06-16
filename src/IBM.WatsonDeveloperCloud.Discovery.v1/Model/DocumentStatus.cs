@@ -72,28 +72,31 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
         /// </summary>
         /// <value>The unique identifier of the document.</value>
         [JsonProperty("document_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string DocumentId { get; set; }
+        public string DocumentId { get; private set; }
         /// <summary>
-        /// Gets or Sets ConfigurationId
+        /// The unique identifier for the configuration.
         /// </summary>
+        /// <value>The unique identifier for the configuration.</value>
         [JsonProperty("configuration_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string ConfigurationId { get; set; }
+        public string ConfigurationId { get; private set; }
         /// <summary>
-        /// Gets or Sets Created
+        /// The creation date of the document in the format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.
         /// </summary>
+        /// <value>The creation date of the document in the format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
-        /// Gets or Sets Updated
+        /// Date of the most recent document update, in the format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.
         /// </summary>
+        /// <value>Date of the most recent document update, in the format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
         /// <summary>
         /// Description of the document status.
         /// </summary>
         /// <value>Description of the document status.</value>
         [JsonProperty("status_description", NullValueHandling = NullValueHandling.Ignore)]
-        public string StatusDescription { get; set; }
+        public string StatusDescription { get; private set; }
         /// <summary>
         /// Array of notices produced by the document-ingestion process.
         /// </summary>

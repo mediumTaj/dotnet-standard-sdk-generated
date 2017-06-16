@@ -26,8 +26,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
     public class ListCollectionFieldsResponse
     {
         /// <summary>
-        /// Gets or Sets Fields
+        /// An array containing information about each field in the collection.
         /// </summary>
+        /// <value>An array containing information about each field in the collection.</value>
         [JsonProperty("fields", NullValueHandling = NullValueHandling.Ignore)]
         public List<Field> Fields { get; set; }
     }
