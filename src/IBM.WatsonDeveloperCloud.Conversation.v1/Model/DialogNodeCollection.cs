@@ -15,13 +15,27 @@
 *
 */
 
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// An object describing a dialog node.
+    /// DialogNodeCollection.
     /// </summary>
-    public class DialogNodeResponse
+    public class DialogNodeCollection
     {
+        /// <summary>
+        /// Gets or Sets DialogNodes
+        /// </summary>
+        [JsonProperty("dialog_nodes", NullValueHandling = NullValueHandling.Ignore)]
+        public List<DialogNode> DialogNodes { get; set; }
+        /// <summary>
+        /// An object defining the pagination data for the returned objects.
+        /// </summary>
+        /// <value>An object defining the pagination data for the returned objects.</value>
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
+        public Pagination Pagination { get; set; }
     }
 
 }

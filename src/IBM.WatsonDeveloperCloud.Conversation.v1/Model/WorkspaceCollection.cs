@@ -15,26 +15,28 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// For internal use only.
+    /// WorkspaceCollection.
     /// </summary>
-    public class RuntimeContext
+    public class WorkspaceCollection
     {
         /// <summary>
-        /// The unique identifier of the conversation.
+        /// An array of workspaces.
         /// </summary>
-        /// <value>The unique identifier of the conversation.</value>
-        [JsonProperty("conversation_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string ConversationId { get; set; }
+        /// <value>An array of workspaces.</value>
+        [JsonProperty("workspaces", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Workspace> Workspaces { get; set; }
         /// <summary>
-        /// Gets or Sets System
+        /// An object defining the pagination data for the returned objects.
         /// </summary>
-        [JsonProperty("system", NullValueHandling = NullValueHandling.Ignore)]
-        public RuntimeSystemContext System { get; set; }
+        /// <value>An object defining the pagination data for the returned objects.</value>
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
+        public Pagination Pagination { get; set; }
     }
 
 }

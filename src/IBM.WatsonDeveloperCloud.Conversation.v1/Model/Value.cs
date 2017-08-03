@@ -15,23 +15,22 @@
 *
 */
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// ValueExportResponse.
+    /// Value.
     /// </summary>
-    public class ValueExportResponse
+    public class Value
     {
         /// <summary>
         /// The text of the entity value.
         /// </summary>
         /// <value>The text of the entity value.</value>
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
-        public string Value { get; set; }
+        public string EntityValue { get; set; }
         /// <summary>
         /// Any metadata related to the entity value.
         /// </summary>
@@ -43,19 +42,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The timestamp for creation of the entity value.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the last update to the entity value.
         /// </summary>
         /// <value>The timestamp for the last update to the entity value.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
-        /// <summary>
-        /// An array of synonyms.
-        /// </summary>
-        /// <value>An array of synonyms.</value>
-        [JsonProperty("synonyms", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Synonyms { get; set; }
+        public DateTime Updated { get; private set; }
     }
 
 }

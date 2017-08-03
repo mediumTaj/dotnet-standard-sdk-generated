@@ -16,31 +16,18 @@
 */
 
 using Newtonsoft.Json;
-using System;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// ExampleResponse.
+    /// CreateCounterexample.
     /// </summary>
-    public class ExampleResponse
+    public class CreateCounterexample
     {
         /// <summary>
-        /// The timestamp for creation of the example.
+        /// The text of a user input marked as irrelevant input.
         /// </summary>
-        /// <value>The timestamp for creation of the example.</value>
-        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
-        /// <summary>
-        /// The timestamp for the last update to the example.
-        /// </summary>
-        /// <value>The timestamp for the last update to the example.</value>
-        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
-        /// <summary>
-        /// The text of the example.
-        /// </summary>
-        /// <value>The text of the example.</value>
+        /// <value>The text of a user input marked as irrelevant input.</value>
         [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
     }

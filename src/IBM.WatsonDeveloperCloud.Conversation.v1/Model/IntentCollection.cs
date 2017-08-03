@@ -15,27 +15,28 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// RuntimeLogMessage.
+    /// IntentCollection.
     /// </summary>
-    public class RuntimeLogMessage
+    public class IntentCollection
     {
         /// <summary>
-        /// The severity of the message (info, error, or warn).
+        /// An array of intents.
         /// </summary>
-        /// <value>The severity of the message (info, error, or warn).</value>
-        [JsonProperty("level", NullValueHandling = NullValueHandling.Ignore)]
-        public string Level { get; set; }
+        /// <value>An array of intents.</value>
+        [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
+        public List<IntentExport> Intents { get; set; }
         /// <summary>
-        /// The text of the message.
+        /// An object defining the pagination data for the returned objects.
         /// </summary>
-        /// <value>The text of the message.</value>
-        [JsonProperty("msg", NullValueHandling = NullValueHandling.Ignore)]
-        public string Msg { get; set; }
+        /// <value>An object defining the pagination data for the returned objects.</value>
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
+        public Pagination Pagination { get; set; }
     }
 
 }

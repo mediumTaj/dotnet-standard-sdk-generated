@@ -21,34 +21,28 @@ using System;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// ValueResponse.
+    /// Counterexample.
     /// </summary>
-    public class ValueResponse
+    public class Counterexample
     {
         /// <summary>
-        /// The text of the entity value.
+        /// The text of the counterexample.
         /// </summary>
-        /// <value>The text of the entity value.</value>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
-        public string Value { get; set; }
+        /// <value>The text of the counterexample.</value>
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
         /// <summary>
-        /// Any metadata related to the entity value.
+        /// The timestamp for creation of the counterexample.
         /// </summary>
-        /// <value>Any metadata related to the entity value.</value>
-        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
-        public object Metadata { get; set; }
-        /// <summary>
-        /// The timestamp for creation of the entity value.
-        /// </summary>
-        /// <value>The timestamp for creation of the entity value.</value>
+        /// <value>The timestamp for creation of the counterexample.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
-        /// The timestamp for the last update to the entity value.
+        /// The timestamp for the last update to the counterexample.
         /// </summary>
-        /// <value>The timestamp for the last update to the entity value.</value>
+        /// <value>The timestamp for the last update to the counterexample.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
     }
 
 }

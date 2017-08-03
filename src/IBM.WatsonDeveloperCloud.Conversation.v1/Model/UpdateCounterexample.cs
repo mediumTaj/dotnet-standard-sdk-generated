@@ -20,15 +20,16 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// For internal use only.
+    /// UpdateCounterexample.
     /// </summary>
-    public class RuntimeSystemContext
+    public class UpdateCounterexample
     {
         /// <summary>
-        /// Gets or Sets RuntimeSystemContextObject
+        /// The text of the example to be marked as irrelevant input.
         /// </summary>
-        [JsonProperty("RuntimeSystemContextObject", NullValueHandling = NullValueHandling.Ignore)]
-        public object RuntimeSystemContextObject { get; set; }
+        /// <value>The text of the example to be marked as irrelevant input.</value>
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
     }
 
 }

@@ -24,9 +24,9 @@ using System;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// WorkspaceExportResponse.
+    /// WorkspaceExport.
     /// </summary>
-    public class WorkspaceExportResponse
+    public class WorkspaceExport
     {
         /// <summary>
         /// The current status of the workspace.
@@ -102,43 +102,43 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The timestamp for creation of the workspace.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the last update to the workspace.
         /// </summary>
         /// <value>The timestamp for the last update to the workspace.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
         /// <summary>
         /// The workspace ID.
         /// </summary>
         /// <value>The workspace ID.</value>
         [JsonProperty("workspace_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; private set; }
         /// <summary>
         /// An array of intents.
         /// </summary>
         /// <value>An array of intents.</value>
         [JsonProperty("intents", NullValueHandling = NullValueHandling.Ignore)]
-        public List<IntentExportResponse> Intents { get; set; }
+        public List<IntentExport> Intents { get; set; }
         /// <summary>
         /// An array of entities.
         /// </summary>
         /// <value>An array of entities.</value>
         [JsonProperty("entities", NullValueHandling = NullValueHandling.Ignore)]
-        public List<EntityExportResponse> Entities { get; set; }
+        public List<EntityExport> Entities { get; set; }
         /// <summary>
         /// An array of counterexamples.
         /// </summary>
         /// <value>An array of counterexamples.</value>
         [JsonProperty("counterexamples", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ExampleResponse> Counterexamples { get; set; }
+        public List<Counterexample> Counterexamples { get; set; }
         /// <summary>
         /// An array of objects describing the dialog nodes in the workspace.
         /// </summary>
         /// <value>An array of objects describing the dialog nodes in the workspace.</value>
         [JsonProperty("dialog_nodes", NullValueHandling = NullValueHandling.Ignore)]
-        public List<DialogNodeResponse> DialogNodes { get; set; }
+        public List<DialogNode> DialogNodes { get; set; }
     }
 
 }

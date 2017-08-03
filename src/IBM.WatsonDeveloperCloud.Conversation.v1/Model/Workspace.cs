@@ -21,9 +21,9 @@ using System;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// WorkspaceResponse.
+    /// Workspace.
     /// </summary>
-    public class WorkspaceResponse
+    public class Workspace
     {
         /// <summary>
         /// The name of the workspace.
@@ -42,19 +42,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The timestamp for creation of the workspace.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the last update to the workspace.
         /// </summary>
         /// <value>The timestamp for the last update to the workspace.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
         /// <summary>
         /// The workspace ID.
         /// </summary>
         /// <value>The workspace ID.</value>
         [JsonProperty("workspace_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; private set; }
         /// <summary>
         /// The description of the workspace.
         /// </summary>

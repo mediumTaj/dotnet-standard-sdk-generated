@@ -19,13 +19,14 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// CreateDialogNode.
+    /// DialogNode.
     /// </summary>
-    public class CreateDialogNode
+    public class DialogNode
     {
         /// <summary>
         /// How the dialog node is processed.
@@ -140,7 +141,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The dialog node ID.</value>
         [JsonProperty("dialog_node", NullValueHandling = NullValueHandling.Ignore)]
-        public string DialogNode { get; set; }
+        public string DialogNodeId { get; set; }
         /// <summary>
         /// The description of the dialog node.
         /// </summary>
@@ -148,21 +149,21 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
-        /// The condition that will trigger the dialog node.
+        /// The condition that triggers the dialog node.
         /// </summary>
-        /// <value>The condition that will trigger the dialog node.</value>
+        /// <value>The condition that triggers the dialog node.</value>
         [JsonProperty("conditions", NullValueHandling = NullValueHandling.Ignore)]
         public string Conditions { get; set; }
         /// <summary>
-        /// The ID of the parent dialog node (if any).
+        /// The ID of the parent dialog node.
         /// </summary>
-        /// <value>The ID of the parent dialog node (if any).</value>
+        /// <value>The ID of the parent dialog node.</value>
         [JsonProperty("parent", NullValueHandling = NullValueHandling.Ignore)]
         public string Parent { get; set; }
         /// <summary>
-        /// The previous dialog node.
+        /// The ID of the previous sibling dialog node.
         /// </summary>
-        /// <value>The previous dialog node.</value>
+        /// <value>The ID of the previous sibling dialog node.</value>
         [JsonProperty("previous_sibling", NullValueHandling = NullValueHandling.Ignore)]
         public string PreviousSibling { get; set; }
         /// <summary>
@@ -172,15 +173,15 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("output", NullValueHandling = NullValueHandling.Ignore)]
         public object Output { get; set; }
         /// <summary>
-        /// The context for the dialog node.
+        /// The context (if defined) for the dialog node.
         /// </summary>
-        /// <value>The context for the dialog node.</value>
+        /// <value>The context (if defined) for the dialog node.</value>
         [JsonProperty("context", NullValueHandling = NullValueHandling.Ignore)]
         public object Context { get; set; }
         /// <summary>
-        /// The metadata for the dialog node.
+        /// The metadata (if any) for the dialog node.
         /// </summary>
-        /// <value>The metadata for the dialog node.</value>
+        /// <value>The metadata (if any) for the dialog node.</value>
         [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public object Metadata { get; set; }
         /// <summary>
@@ -188,6 +189,18 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         [JsonProperty("next_step", NullValueHandling = NullValueHandling.Ignore)]
         public DialogNodeNextStep NextStep { get; set; }
+        /// <summary>
+        /// The timestamp for creation of the dialog node.
+        /// </summary>
+        /// <value>The timestamp for creation of the dialog node.</value>
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTime Created { get; private set; }
+        /// <summary>
+        /// The timestamp for the most recent update to the dialog node.
+        /// </summary>
+        /// <value>The timestamp for the most recent update to the dialog node.</value>
+        [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTime Updated { get; private set; }
         /// <summary>
         /// The actions for the dialog node.
         /// </summary>

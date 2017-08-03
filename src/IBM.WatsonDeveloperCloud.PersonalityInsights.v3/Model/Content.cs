@@ -18,24 +18,19 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
+namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
 {
     /// <summary>
-    /// SynonymCollectionResponse.
+    /// Content.
     /// </summary>
-    public class SynonymCollectionResponse
+    public class Content
     {
         /// <summary>
-        /// An array of synonyms.
+        /// An array of `ContentItem` objects that provides the text that is to be analyzed.
         /// </summary>
-        /// <value>An array of synonyms.</value>
-        [JsonProperty("synonyms", NullValueHandling = NullValueHandling.Ignore)]
-        public List<SynonymResponse> Synonyms { get; set; }
-        /// <summary>
-        /// Gets or Sets Pagination
-        /// </summary>
-        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
-        public PaginationResponse Pagination { get; set; }
+        /// <value>An array of `ContentItem` objects that provides the text that is to be analyzed.</value>
+        [JsonProperty("contentItems", NullValueHandling = NullValueHandling.Ignore)]
+        public List<ContentItem> ContentItems { get; set; }
     }
 
 }

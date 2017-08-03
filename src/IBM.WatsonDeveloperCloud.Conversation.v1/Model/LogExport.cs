@@ -20,18 +20,20 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// LogExportResponse.
+    /// LogExport.
     /// </summary>
-    public class LogExportResponse
+    public class LogExport
     {
         /// <summary>
-        /// Gets or Sets Request
+        /// A request formatted for the Conversation service.
         /// </summary>
+        /// <value>A request formatted for the Conversation service.</value>
         [JsonProperty("request", NullValueHandling = NullValueHandling.Ignore)]
         public MessageRequest Request { get; set; }
         /// <summary>
-        /// Gets or Sets Response
+        /// A response from the Conversation service.
         /// </summary>
+        /// <value>A response from the Conversation service.</value>
         [JsonProperty("response", NullValueHandling = NullValueHandling.Ignore)]
         public MessageResponse Response { get; set; }
         /// <summary>

@@ -21,28 +21,28 @@ using System;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// SynonymResponse.
+    /// Synonym.
     /// </summary>
-    public class SynonymResponse
+    public class Synonym
     {
         /// <summary>
         /// The text of the synonym.
         /// </summary>
         /// <value>The text of the synonym.</value>
         [JsonProperty("synonym", NullValueHandling = NullValueHandling.Ignore)]
-        public string Synonym { get; set; }
+        public string SynonymText { get; set; }
         /// <summary>
         /// The timestamp for creation of the synonym.
         /// </summary>
         /// <value>The timestamp for creation of the synonym.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the most recent update to the synonym.
         /// </summary>
         /// <value>The timestamp for the most recent update to the synonym.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
     }
 
 }

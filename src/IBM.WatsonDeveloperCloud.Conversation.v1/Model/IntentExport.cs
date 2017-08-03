@@ -15,52 +15,47 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
 
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// EntityResponse.
+    /// IntentExport.
     /// </summary>
-    public class EntityResponse
+    public class IntentExport
     {
         /// <summary>
-        /// The name of the entity.
+        /// The name of the intent.
         /// </summary>
-        /// <value>The name of the entity.</value>
-        [JsonProperty("entity", NullValueHandling = NullValueHandling.Ignore)]
-        public string Entity { get; set; }
+        /// <value>The name of the intent.</value>
+        [JsonProperty("intent", NullValueHandling = NullValueHandling.Ignore)]
+        public string IntentName { get; set; }
         /// <summary>
-        /// The timestamp for creation of the entity.
+        /// The timestamp for creation of the intent.
         /// </summary>
-        /// <value>The timestamp for creation of the entity.</value>
+        /// <value>The timestamp for creation of the intent.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
-        /// The timestamp for the last update to the entity.
+        /// The timestamp for the last update to the intent.
         /// </summary>
-        /// <value>The timestamp for the last update to the entity.</value>
+        /// <value>The timestamp for the last update to the intent.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
         /// <summary>
-        /// The description of the entity.
+        /// The description of the intent.
         /// </summary>
-        /// <value>The description of the entity.</value>
+        /// <value>The description of the intent.</value>
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>
-        /// Any metadata related to the entity.
+        /// An array of user input examples.
         /// </summary>
-        /// <value>Any metadata related to the entity.</value>
-        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
-        public object Metadata { get; set; }
-        /// <summary>
-        /// Whether fuzzy matching is used for the entity.
-        /// </summary>
-        /// <value>Whether fuzzy matching is used for the entity.</value>
-        [JsonProperty("fuzzy_match", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? FuzzyMatch { get; set; }
+        /// <value>An array of user input examples.</value>
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Example> Examples { get; set; }
     }
 
 }

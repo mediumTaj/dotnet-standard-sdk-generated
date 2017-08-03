@@ -21,21 +21,22 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// ValueCollectionResponse.
+    /// ExampleCollection.
     /// </summary>
-    public class ValueCollectionResponse
+    public class ExampleCollection
     {
         /// <summary>
-        /// An array of entity values.
+        /// An array of Example objects describing the examples defined for the intent.
         /// </summary>
-        /// <value>An array of entity values.</value>
-        [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ValueExportResponse> Values { get; set; }
+        /// <value>An array of Example objects describing the examples defined for the intent.</value>
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Example> Examples { get; set; }
         /// <summary>
-        /// Gets or Sets Pagination
+        /// An object defining the pagination data for the returned objects.
         /// </summary>
+        /// <value>An object defining the pagination data for the returned objects.</value>
         [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
-        public PaginationResponse Pagination { get; set; }
+        public Pagination Pagination { get; set; }
     }
 
 }

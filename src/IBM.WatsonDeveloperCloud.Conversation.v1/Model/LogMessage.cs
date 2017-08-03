@@ -24,7 +24,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
     /// <summary>
     /// Log message details.
     /// </summary>
-    public class LogMessageResponse
+    public class LogMessage
     {
         /// <summary>
         /// The severity of the message.

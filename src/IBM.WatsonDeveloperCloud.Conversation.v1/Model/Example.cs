@@ -21,34 +21,28 @@ using System;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// IntentResponse.
+    /// Example.
     /// </summary>
-    public class IntentResponse
+    public class Example
     {
         /// <summary>
-        /// The name of the intent.
+        /// The text of the example.
         /// </summary>
-        /// <value>The name of the intent.</value>
-        [JsonProperty("intent", NullValueHandling = NullValueHandling.Ignore)]
-        public string Intent { get; set; }
+        /// <value>The text of the example.</value>
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public string Text { get; set; }
         /// <summary>
-        /// The timestamp for creation of the intent.
+        /// The timestamp for creation of the example.
         /// </summary>
-        /// <value>The timestamp for creation of the intent.</value>
+        /// <value>The timestamp for creation of the example.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
-        /// The timestamp for the last update to the intent.
+        /// The timestamp for the last update to the example.
         /// </summary>
-        /// <value>The timestamp for the last update to the intent.</value>
+        /// <value>The timestamp for the last update to the example.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
-        /// <summary>
-        /// The description of the intent.
-        /// </summary>
-        /// <value>The description of the intent.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public DateTime Updated { get; private set; }
     }
 
 }

@@ -22,28 +22,28 @@ using System;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// EntityExportResponse.
+    /// EntityExport.
     /// </summary>
-    public class EntityExportResponse
+    public class EntityExport
     {
         /// <summary>
         /// The name of the entity.
         /// </summary>
         /// <value>The name of the entity.</value>
         [JsonProperty("entity", NullValueHandling = NullValueHandling.Ignore)]
-        public string Entity { get; set; }
+        public string EntityName { get; set; }
         /// <summary>
         /// The timestamp for creation of the entity.
         /// </summary>
         /// <value>The timestamp for creation of the entity.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the last update to the entity.
         /// </summary>
         /// <value>The timestamp for the last update to the entity.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; private set; }
         /// <summary>
         /// The description of the entity.
         /// </summary>
@@ -67,7 +67,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>An array of entity values.</value>
         [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ValueExportResponse> Values { get; set; }
+        public List<ValueExport> Values { get; set; }
     }
 
 }

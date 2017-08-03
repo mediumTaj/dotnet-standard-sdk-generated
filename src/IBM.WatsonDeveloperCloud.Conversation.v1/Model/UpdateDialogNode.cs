@@ -23,14 +23,14 @@ using Newtonsoft.Json.Converters;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// CreateDialogNode.
+    /// UpdateDialogNode.
     /// </summary>
-    public class CreateDialogNode
+    public class UpdateDialogNode
     {
         /// <summary>
-        /// How the dialog node is processed.
+        /// How the node is processed.
         /// </summary>
-        /// <value>How the dialog node is processed.</value>
+        /// <value>How the node is processed.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum NodeTypeEnum
         {
@@ -124,9 +124,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         }
 
         /// <summary>
-        /// How the dialog node is processed.
+        /// How the node is processed.
         /// </summary>
-        /// <value>How the dialog node is processed.</value>
+        /// <value>How the node is processed.</value>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public NodeTypeEnum? NodeType { get; set; }
         /// <summary>
@@ -189,12 +189,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         [JsonProperty("next_step", NullValueHandling = NullValueHandling.Ignore)]
         public DialogNodeNextStep NextStep { get; set; }
         /// <summary>
-        /// The actions for the dialog node.
-        /// </summary>
-        /// <value>The actions for the dialog node.</value>
-        [JsonProperty("actions", NullValueHandling = NullValueHandling.Ignore)]
-        public List<DialogNodeAction> Actions { get; set; }
-        /// <summary>
         /// The alias used to identify the dialog node.
         /// </summary>
         /// <value>The alias used to identify the dialog node.</value>
@@ -206,6 +200,12 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// <value>The location in the dialog context where output is stored.</value>
         [JsonProperty("variable", NullValueHandling = NullValueHandling.Ignore)]
         public string Variable { get; set; }
+        /// <summary>
+        /// The actions for the dialog node.
+        /// </summary>
+        /// <value>The actions for the dialog node.</value>
+        [JsonProperty("actions", NullValueHandling = NullValueHandling.Ignore)]
+        public List<DialogNodeAction> Actions { get; set; }
     }
 
 }
