@@ -228,7 +228,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                 Text = "test"
             };
 
-            service.Tone(toneInput);
+            service.Tone(toneInput, "application/json");
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
