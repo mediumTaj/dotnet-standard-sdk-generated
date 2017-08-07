@@ -182,7 +182,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                 Text = Arg.Any<string>()
             };
 
-            var analyzeTone = service.Tone(toneInput, Arg.Any<string>(), Arg.Any<bool>());
+            var analyzeTone = service.Tone(toneInput, Arg.Any<string>());
 
             Assert.IsNotNull(analyzeTone);
             client.Received().PostAsync(Arg.Any<string>());
@@ -288,7 +288,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
             #endregion
 
             ToneAnalyzerService service = new ToneAnalyzerService("username", "password", versionDate);
-            var analyzeTone = service.Tone(null, "tones", true);
+            var analyzeTone = service.Tone(null, "appplication/json");
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -302,7 +302,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
                 Text = Arg.Any<string>()
             };
 
-            var analyzeTone = service.Tone(toneInput, Arg.Any<string>(), Arg.Any<bool>());
+            var analyzeTone = service.Tone(toneInput, Arg.Any<string>());
         }
 
         [TestMethod]
