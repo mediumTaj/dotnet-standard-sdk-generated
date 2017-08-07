@@ -165,11 +165,13 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                    .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+            request.WithHeader(Arg.Any<string>(), Arg.Any<string>())
+                   .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<List<string>>())
                    .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<bool>())
                    .Returns(request);
-            request.WithBody<ToneInput>(Arg.Any<ToneInput>(), Arg.Any<MediaTypeHeaderValue>())
+            request.WithBody<ToneInput>(Arg.Any<ToneInput>())
                    .Returns(request);
             request.As<ToneAnalysis>()
                    .Returns(Task.FromResult(response));
@@ -179,10 +181,10 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.UnitTests
 
             ToneInput toneInput = new ToneInput()
             {
-                Text = Arg.Any<string>()
+                Text = "text"
             };
 
-            var analyzeTone = service.Tone(toneInput, Arg.Any<string>());
+            var analyzeTone = service.Tone(toneInput, "contentType");
 
             Assert.IsNotNull(analyzeTone);
             client.Received().PostAsync(Arg.Any<string>());

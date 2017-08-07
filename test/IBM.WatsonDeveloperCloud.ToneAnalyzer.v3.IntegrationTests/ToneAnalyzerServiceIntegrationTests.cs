@@ -31,9 +31,10 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
         private string _userName;
         private string _password;
         private string _endpoint;
-        private string inputText = "Hello! Welcome to IBM Watson! How can I help you?";
-        private string chatUser = "testChatUser";
-        private string versionDate = "2016-05-19";
+        private string _inputText = "I was asked to sign a third party contract a week out from stay. If it wasn't an 8 person group that took a lot of wrangling I would have cancelled the booking straight away. Bathrooms - there are no stand alone bathrooms. Please consider this - you have to clear out the main bedroom to use that bathroom. Other option is you walk through a different bedroom to get to its en-suite. Signs all over the apartment - there are signs everywhere - some helpful - some telling you rules. Perhaps some people like this but It negatively affected our enjoyment of the accommodation. Stairs - lots of them - some had slightly bending wood which caused a minor injury.";
+        private string _utternaceText = "I was asked to sign a third party contract a week out from stay. If it wasn't an 8 person group that took a lot of wrangling I would have cancelled the booking straight away. Bathrooms - there are no stand alone bathrooms. Please consider this - you have to clear out the main bedroom to use that bathroom. Other option is you walk through a different bedroom to get to its en-suite. Signs all over the apartment - there are signs everywhere - some helpful - some telling you rules.";
+        private string _chatUser = "testChatUser";
+        private string _versionDate = "2016-05-19";
 
         [TestInitialize]
         public void Setup()
@@ -55,14 +56,14 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
         [TestMethod]
         public void PostTone_Success()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, versionDate);
+            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, _versionDate);
 
             ToneInput toneInput = new ToneInput()
             {
-                Text = inputText
+                Text = _inputText
             };
 
-            var result = service.Tone(toneInput, null, null);
+            var result = service.Tone(toneInput, "application/json", null);
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result.DocumentTone.ToneCategories.Count >= 1);
@@ -72,7 +73,7 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
         [TestMethod]
         public void ToneChat_Success()
         {
-            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, versionDate);
+            ToneAnalyzerService service = new ToneAnalyzerService(_userName, _password, _versionDate);
 
             ToneChatInput toneChatInput = new ToneChatInput()
             {
@@ -80,11 +81,12 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.IntegrationTests
                 {
                     new Utterance()
                     {
-                        Text = inputText,
-                        User = chatUser
+                        Text = _utternaceText,
+                        User = _chatUser
                     }
                 }
             };
+
             var result = service.ToneChat(toneChatInput);
 
             Assert.IsNotNull(result);
