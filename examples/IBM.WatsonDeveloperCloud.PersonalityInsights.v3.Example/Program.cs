@@ -16,6 +16,7 @@
 */
 
 using IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -50,9 +51,9 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Example
                 }
             };
 
-            var result = _personalityInsights.Profile(content, "text/plain", rawScores: true, consumptionPreferences:true, csvHeaders:true);
+            var result = _personalityInsights.Profile(content, "text/plain");
 
-            Console.WriteLine(string.Format("Profile result: {0}", result));
+            Console.WriteLine(string.Format("Profile result: {0}", JsonConvert.SerializeObject(result)));
 
             Console.ReadKey();
         }
