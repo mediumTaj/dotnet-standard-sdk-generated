@@ -15,33 +15,31 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// CreateEnvironmentRequest.
+    /// TrainingDataSet.
     /// </summary>
-    public class CreateEnvironmentRequest
+    public class TrainingDataSet
     {
         /// <summary>
-        /// Name that identifies the environment.
+        /// Gets or Sets EnvironmentId
         /// </summary>
-        /// <value>Name that identifies the environment.</value>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        [JsonProperty("environment_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string EnvironmentId { get; set; }
         /// <summary>
-        /// Description of the environment.
+        /// Gets or Sets CollectionId
         /// </summary>
-        /// <value>Description of the environment.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        [JsonProperty("collection_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string CollectionId { get; set; }
         /// <summary>
-        /// **Deprecated**: Size of the environment.
+        /// Gets or Sets Queries
         /// </summary>
-        /// <value>**Deprecated**: Size of the environment.</value>
-        [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        [JsonProperty("queries", NullValueHandling = NullValueHandling.Ignore)]
+        public List<TrainingQuery> Queries { get; set; }
     }
 
 }

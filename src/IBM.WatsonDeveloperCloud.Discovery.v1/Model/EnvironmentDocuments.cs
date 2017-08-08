@@ -20,28 +20,22 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// CreateEnvironmentRequest.
+    /// Summary of the document usage statistics for the environment.
     /// </summary>
-    public class CreateEnvironmentRequest
+    public class EnvironmentDocuments
     {
         /// <summary>
-        /// Name that identifies the environment.
+        /// Number of documents indexed for the environment.
         /// </summary>
-        /// <value>Name that identifies the environment.</value>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        /// <value>Number of documents indexed for the environment.</value>
+        [JsonProperty("indexed", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual long? Indexed { get; private set; }
         /// <summary>
-        /// Description of the environment.
+        /// Total number of documents allowed in the environment's capacity.
         /// </summary>
-        /// <value>Description of the environment.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
-        /// <summary>
-        /// **Deprecated**: Size of the environment.
-        /// </summary>
-        /// <value>**Deprecated**: Size of the environment.</value>
-        [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        /// <value>Total number of documents allowed in the environment's capacity.</value>
+        [JsonProperty("maximum_allowed", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual long? MaximumAllowed { get; private set; }
     }
 
 }

@@ -15,33 +15,36 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// CreateEnvironmentRequest.
+    /// TrainingQuery.
     /// </summary>
-    public class CreateEnvironmentRequest
+    public class TrainingQuery
     {
         /// <summary>
-        /// Name that identifies the environment.
+        /// Gets or Sets QueryId
         /// </summary>
-        /// <value>Name that identifies the environment.</value>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        [JsonProperty("query_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string QueryId { get; set; }
         /// <summary>
-        /// Description of the environment.
+        /// Gets or Sets NaturalLanguageQuery
         /// </summary>
-        /// <value>Description of the environment.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        [JsonProperty("natural_language_query", NullValueHandling = NullValueHandling.Ignore)]
+        public string NaturalLanguageQuery { get; set; }
         /// <summary>
-        /// **Deprecated**: Size of the environment.
+        /// Gets or Sets Filter
         /// </summary>
-        /// <value>**Deprecated**: Size of the environment.</value>
-        [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        [JsonProperty("filter", NullValueHandling = NullValueHandling.Ignore)]
+        public string Filter { get; set; }
+        /// <summary>
+        /// Gets or Sets Examples
+        /// </summary>
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
+        public List<TrainingExample> Examples { get; set; }
     }
 
 }

@@ -20,28 +20,25 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// CreateEnvironmentRequest.
+    /// TrainingExample.
     /// </summary>
-    public class CreateEnvironmentRequest
+    public class TrainingExample
     {
         /// <summary>
-        /// Name that identifies the environment.
+        /// Gets or Sets DocumentId
         /// </summary>
-        /// <value>Name that identifies the environment.</value>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        [JsonProperty("document_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string DocumentId { get; set; }
         /// <summary>
-        /// Description of the environment.
+        /// Gets or Sets CrossReference
         /// </summary>
-        /// <value>Description of the environment.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        [JsonProperty("cross_reference", NullValueHandling = NullValueHandling.Ignore)]
+        public string CrossReference { get; set; }
         /// <summary>
-        /// **Deprecated**: Size of the environment.
+        /// Gets or Sets Relevance
         /// </summary>
-        /// <value>**Deprecated**: Size of the environment.</value>
-        [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        [JsonProperty("relevance", NullValueHandling = NullValueHandling.Ignore)]
+        public float? Relevance { get; set; }
     }
 
 }
