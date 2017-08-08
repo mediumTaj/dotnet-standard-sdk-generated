@@ -36,13 +36,13 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The timestamp for creation of the counterexample.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; private set; }
+        public virtual DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the last update to the counterexample.
         /// </summary>
         /// <value>The timestamp for the last update to the counterexample.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; private set; }
+        public virtual DateTime Updated { get; private set; }
     }
 
 }

@@ -42,19 +42,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The timestamp for creation of the workspace.</value>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Created { get; private set; }
+        public virtual DateTime Created { get; private set; }
         /// <summary>
         /// The timestamp for the last update to the workspace.
         /// </summary>
         /// <value>The timestamp for the last update to the workspace.</value>
         [JsonProperty("updated", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime Updated { get; private set; }
+        public virtual DateTime Updated { get; private set; }
         /// <summary>
         /// The workspace ID.
         /// </summary>
         /// <value>The workspace ID.</value>
         [JsonProperty("workspace_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string WorkspaceId { get; private set; }
+        public virtual string WorkspaceId { get; private set; }
         /// <summary>
         /// The description of the workspace.
         /// </summary>

@@ -15,21 +15,21 @@
 *
 */
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// InlineResponse200.
     /// </summary>
-    public class ListModelsResults
+    public class InlineResponse200
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// model_id of the deleted model.
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        /// <value>model_id of the deleted model.</value>
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        public string Deleted { get; set; }
     }
 
 }

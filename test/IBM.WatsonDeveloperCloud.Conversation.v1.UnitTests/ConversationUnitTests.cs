@@ -170,7 +170,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Example response = new Example()
+            Counterexample response = new Counterexample()
             {
                 Text = "text"
             };
@@ -185,7 +185,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
             request.WithBody<CreateCounterexample>(example)
                 .Returns(request);
-            request.As<Example>()
+            request.As<Counterexample>()
                 .Returns(Task.FromResult(response));
 
             ConversationService service = new ConversationService(client);
@@ -1077,10 +1077,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             var response = Substitute.For<Entity>();
             response.Created.Returns(DateTime.MinValue);
             response.Updated.Returns(DateTime.MaxValue);
-            response.EntityName.Returns("entity");
-            response.Description.Returns("description");
-            response.Metadata.Returns(new object() { });
-            response.FuzzyMatch.Returns(true);
+            response.EntityName = "entity";
+            response.Description = "description";
+            response.Metadata = new object() { };
+            response.FuzzyMatch = true;
             #endregion
 
             UpdateEntity entity = new UpdateEntity()
@@ -3931,7 +3931,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            CreateWorkspace response = new CreateWorkspace()
+            Workspace response = new Workspace()
             {
                 Name = "name",
                 Language = "en",
@@ -3952,7 +3952,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
             request.WithBody<CreateWorkspace>(workspace)
                 .Returns(request);
-            request.As<CreateWorkspace>()
+            request.As<Workspace>()
                 .Returns(Task.FromResult(response));
 
             ConversationService service = new ConversationService(client);
@@ -3968,7 +3968,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Language == "en");
-            Assert.IsTrue(result.WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Description == "description");
         }
         #endregion
@@ -4159,7 +4158,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Language == "en");
-            Assert.IsTrue(result.WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Description == "description");
         }
         #endregion
@@ -4254,7 +4252,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Workspaces[0].Name == "name");
             Assert.IsTrue(result.Workspaces[0].Description == "description");
             Assert.IsTrue(result.Workspaces[0].Language == "en");
-            Assert.IsTrue(result.Workspaces[0].WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Workspaces[0].Description == "description");
         }
         #endregion
@@ -4391,7 +4388,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Language == "en");
-            Assert.IsTrue(result.WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Description == "description");
         }
         #endregion
