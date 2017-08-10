@@ -15,17 +15,28 @@
 *
 */
 
-namespace IBM.WatsonDeveloperCloud
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Threading.Tasks;
+
+namespace IBM.WatsonDeveloperCloud.Http
 {
-    /// <summary>
-    /// This class holds constant values for the SDK.
-    /// </summary>
-    public class Constants
+    public interface IResponse
     {
-        /// <summary>
-        /// The version number for this SDK build. Added to the header in 
-        /// each request as `User-Agent`.
-        /// </summary>
-        public const string SDK_VERSION = "watson-apis-dotnet-sdk/1.2.0";
+        MediaTypeFormatterCollection Formatters { get; }
+
+        Task<HttpResponseMessage> AsMessage();
+
+        Task<T> As<T>();
+
+        Task<List<T>> AsList<T>();
+
+        Task<byte[]> AsByteArray();
+
+        Task<string> AsString();
+
+        Task<Stream> AsStream();
     }
 }

@@ -15,17 +15,18 @@
 *
 */
 
-namespace IBM.WatsonDeveloperCloud
+using System;
+
+namespace IBM.WatsonDeveloperCloud.Util.Attributes
 {
-    /// <summary>
-    /// This class holds constant values for the SDK.
-    /// </summary>
-    public class Constants
+    [AttributeUsage(AttributeTargets.Field)]
+    public class DescriptionAttribute : Attribute
     {
-        /// <summary>
-        /// The version number for this SDK build. Added to the header in 
-        /// each request as `User-Agent`.
-        /// </summary>
-        public const string SDK_VERSION = "watson-apis-dotnet-sdk/1.2.0";
+        public string Description { get; protected set; }
+
+        public DescriptionAttribute(string description)
+        {
+            Description = description;
+        }
     }
 }

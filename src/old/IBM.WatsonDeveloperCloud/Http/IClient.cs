@@ -31,7 +31,11 @@ namespace IBM.WatsonDeveloperCloud.Http
 
         List<IHttpFilter> Filters { get; }
 
+        string VersionDate { get; }
+
         IClient WithAuthentication(string userName, string password);
+
+        IClient WithVersionDate(string versionDate);
 
         IRequest DeleteAsync(string resource);
 

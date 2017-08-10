@@ -15,17 +15,25 @@
 *
 */
 
-namespace IBM.WatsonDeveloperCloud
+using System.IO;
+
+namespace IBM.WatsonDeveloperCloud.Http.Extensions
 {
-    /// <summary>
-    /// This class holds constant values for the SDK.
-    /// </summary>
-    public class Constants
+    public static class StreamExtension
     {
-        /// <summary>
-        /// The version number for this SDK build. Added to the header in 
-        /// each request as `User-Agent`.
-        /// </summary>
-        public const string SDK_VERSION = "watson-apis-dotnet-sdk/1.2.0";
+        public static byte[] ReadAllBytes(this Stream _stream)
+        {
+            byte[] buffer = new byte[_stream.Length];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                while (true)
+                {
+                    int read = _stream.Read(buffer, 0, buffer.Length);
+                    if (read <= 0)
+                        return ms.ToArray();
+                    ms.Write(buffer, 0, read);
+                }
+            }
+        }
     }
 }

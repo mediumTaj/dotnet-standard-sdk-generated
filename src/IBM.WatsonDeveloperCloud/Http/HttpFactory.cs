@@ -44,13 +44,9 @@ namespace IBM.WatsonDeveloperCloud.Http
             HttpRequestMessage request = new HttpRequestMessage(method, resource);
 
             // add default headers
-            request.Headers.Add("accept", "*/*");
+            request.Headers.Add("accept", formatters.SelectMany(p => p.SupportedMediaTypes).Select(p => p.MediaType));
             request.Headers.Add("User-Agent", Constants.SDK_VERSION);
-            request.Headers.CacheControl = new CacheControlHeaderValue()
-            {
-                NoCache = true
-            };
-            
+
             return request;
         }
     }

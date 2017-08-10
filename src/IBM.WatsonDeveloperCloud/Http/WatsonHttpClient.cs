@@ -35,8 +35,6 @@ namespace IBM.WatsonDeveloperCloud.Http
 
         public MediaTypeFormatterCollection Formatters { get; protected set; }
 
-        public string VersionDate { get; protected set; }
-
         public WatsonHttpClient(string baseUri)
         {
             this.Filters = new List<IHttpFilter> { new ErrorFilter() };
@@ -80,14 +78,6 @@ namespace IBM.WatsonDeveloperCloud.Http
 
                 this.BaseClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth64);
             }
-
-            return this;
-        }
-
-        public IClient WithVersionDate(string versionDate)
-        {
-            if (!string.IsNullOrEmpty(versionDate))
-                VersionDate = versionDate;
 
             return this;
         }

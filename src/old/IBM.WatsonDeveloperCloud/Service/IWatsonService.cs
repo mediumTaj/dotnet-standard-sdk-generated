@@ -15,17 +15,20 @@
 *
 */
 
-namespace IBM.WatsonDeveloperCloud
+using IBM.WatsonDeveloperCloud.Http;
+
+namespace IBM.WatsonDeveloperCloud.Service
 {
-    /// <summary>
-    /// This class holds constant values for the SDK.
-    /// </summary>
-    public class Constants
+    public interface IWatsonService
     {
-        /// <summary>
-        /// The version number for this SDK build. Added to the header in 
-        /// each request as `User-Agent`.
-        /// </summary>
-        public const string SDK_VERSION = "watson-apis-dotnet-sdk/1.2.0";
+        IClient Client { get; set; }
+
+        string ServiceName { get; set; }
+        string ApiKey { get; set; }
+        string Endpoint { get; set; }
+        string UserName { get; set; }
+        string Password { get; set; }
+
+        void SetCredential(string userName, string password);
     }
 }

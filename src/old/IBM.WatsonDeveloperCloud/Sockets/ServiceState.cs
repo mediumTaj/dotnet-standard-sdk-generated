@@ -15,17 +15,13 @@
 *
 */
 
-namespace IBM.WatsonDeveloperCloud
+using Newtonsoft.Json;
+
+namespace IBM.WatsonDeveloperCloud.Sockets
 {
-    /// <summary>
-    /// This class holds constant values for the SDK.
-    /// </summary>
-    public class Constants
+    public class ServiceState
     {
-        /// <summary>
-        /// The version number for this SDK build. Added to the header in 
-        /// each request as `User-Agent`.
-        /// </summary>
-        public const string SDK_VERSION = "watson-apis-dotnet-sdk/1.2.0";
+        [JsonProperty("state")]
+        public string State = "";
     }
 }
