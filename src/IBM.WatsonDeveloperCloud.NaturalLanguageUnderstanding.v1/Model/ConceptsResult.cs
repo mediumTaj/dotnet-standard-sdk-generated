@@ -37,9 +37,8 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("relevance", NullValueHandling = NullValueHandling.Ignore)]
         public float? Relevance { get; set; }
         /// <summary>
-        /// Link to the corresponding DBpedia resource.
+        /// Gets or Sets DbpediaResource
         /// </summary>
-        /// <value>Link to the corresponding DBpedia resource.</value>
         [JsonProperty("dbpedia_resource", NullValueHandling = NullValueHandling.Ignore)]
         public string DbpediaResource { get; set; }
     }

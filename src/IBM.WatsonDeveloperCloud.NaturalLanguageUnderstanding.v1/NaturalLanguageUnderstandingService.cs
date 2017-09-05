@@ -89,7 +89,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
 
             return result;
         }
-        public InlineResponse200 DeleteModel(string modelId)
+        public object DeleteModel(string modelId)
         {
             if (string.IsNullOrEmpty(modelId))
                 throw new ArgumentNullException(nameof(modelId));
@@ -97,14 +97,14 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'NATURAL_LANGUAGE_UNDERSTANDING_VERSION_DATE_2017_02_27'");
 
-            InlineResponse200 result = null;
+            object result = null;
 
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .DeleteAsync($"{this.Endpoint}/v1/models/{modelId}")
                                 .WithArgument("version", VersionDate)
-                                .As<InlineResponse200>()
+                                .As<object>()
                                 .Result;
             }
             catch(AggregateException ae)
@@ -115,7 +115,7 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1
             return result;
         }
 
-        public ListModelsResults ListModels()
+        public ListModelsResults GetModels()
         {
 
             if(string.IsNullOrEmpty(VersionDate))

@@ -21,26 +21,26 @@ using Newtonsoft.Json;
 namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// An output object that includes the response to the user, the nodes that were hit, and messages from the log.
+    /// RuntimeOutput.
     /// </summary>
-    public class OutputData
+    public class RuntimeOutput
     {
+        /// <summary>
+        /// An array of responses to the user.
+        /// </summary>
+        /// <value>An array of responses to the user.</value>
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Text { get; set; }
         /// <summary>
         /// Up to 50 messages logged with the request.
         /// </summary>
         /// <value>Up to 50 messages logged with the request.</value>
         [JsonProperty("log_messages", NullValueHandling = NullValueHandling.Ignore)]
-        public List<LogMessageResponse> LogMessages { get; set; }
+        public List<RuntimeLogMessage> LogMessages { get; set; }
         /// <summary>
-        /// Responses to the user.
+        /// An array of the nodes that were triggered to create the response.
         /// </summary>
-        /// <value>Responses to the user.</value>
-        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Text { get; set; }
-        /// <summary>
-        /// The nodes that were executed to create the response.
-        /// </summary>
-        /// <value>The nodes that were executed to create the response.</value>
+        /// <value>An array of the nodes that were triggered to create the response.</value>
         [JsonProperty("nodes_visited", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> NodesVisited { get; set; }
     }

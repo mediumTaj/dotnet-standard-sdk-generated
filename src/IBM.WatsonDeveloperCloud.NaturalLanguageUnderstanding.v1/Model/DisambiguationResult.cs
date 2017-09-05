@@ -32,9 +32,8 @@ namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
         /// <summary>
-        /// Link to the corresponding DBpedia resource.
+        /// Gets or Sets DbpediaResource
         /// </summary>
-        /// <value>Link to the corresponding DBpedia resource.</value>
         [JsonProperty("dbpedia_resource", NullValueHandling = NullValueHandling.Ignore)]
         public string DbpediaResource { get; set; }
         /// <summary>

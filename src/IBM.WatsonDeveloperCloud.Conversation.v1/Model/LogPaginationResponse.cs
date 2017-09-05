@@ -17,19 +17,25 @@
 
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// An option specifying if the relationships found between entities in the analyzed content should be returned.
+    /// The pagination data for the returned objects.
     /// </summary>
-    public class RelationsOptions
+    public class LogPaginationResponse
     {
         /// <summary>
-        /// Enter a custom model ID to override the default model.
+        /// The URL that will return the next page of results.
         /// </summary>
-        /// <value>Enter a custom model ID to override the default model.</value>
-        [JsonProperty("model", NullValueHandling = NullValueHandling.Ignore)]
-        public string Model { get; set; }
+        /// <value>The URL that will return the next page of results.</value>
+        [JsonProperty("next_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string NextUrl { get; set; }
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        /// <value>Reserved for future use.</value>
+        [JsonProperty("matched", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Matched { get; set; }
     }
 
 }

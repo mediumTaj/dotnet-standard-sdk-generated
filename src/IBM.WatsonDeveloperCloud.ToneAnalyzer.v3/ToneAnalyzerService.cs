@@ -64,12 +64,10 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
             this.Client = httpClient;
         }
 
-        public ToneAnalysis Tone(ToneInput toneInput, string contentType, List<string> tones = null, bool? sentences = null)
+        public ToneAnalysis Tone(ToneInput body, string tones = null, bool? sentences = null)
         {
-            if (toneInput == null)
-                throw new ArgumentNullException(nameof(toneInput));
-            if (string.IsNullOrEmpty(contentType))
-                throw new ArgumentNullException(nameof(contentType));
+            if (body == null)
+                throw new ArgumentNullException(nameof(body));
 
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null.");
@@ -81,10 +79,9 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v3/tone")
                                 .WithArgument("version", VersionDate)
-                                .WithHeader("content-type", contentType)
                                 .WithArgument("tones", tones)
                                 .WithArgument("sentences", sentences)
-                                .WithBody<ToneInput>(toneInput)
+                                .WithBody<ToneInput>(body)
                                 .As<ToneAnalysis>()
                                 .Result;
             }

@@ -15,21 +15,27 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// An option specifying if the relationships found between entities in the analyzed content should be returned.
+    /// LogCollectionResponse.
     /// </summary>
-    public class RelationsOptions
+    public class LogCollectionResponse
     {
         /// <summary>
-        /// Enter a custom model ID to override the default model.
+        /// An array of log events.
         /// </summary>
-        /// <value>Enter a custom model ID to override the default model.</value>
-        [JsonProperty("model", NullValueHandling = NullValueHandling.Ignore)]
-        public string Model { get; set; }
+        /// <value>An array of log events.</value>
+        [JsonProperty("logs", NullValueHandling = NullValueHandling.Ignore)]
+        public List<LogExportResponse> Logs { get; set; }
+        /// <summary>
+        /// Gets or Sets Pagination
+        /// </summary>
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
+        public LogPaginationResponse Pagination { get; set; }
     }
 
 }

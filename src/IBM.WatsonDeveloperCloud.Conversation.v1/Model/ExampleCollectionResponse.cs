@@ -18,18 +18,24 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// ExampleCollectionResponse.
     /// </summary>
-    public class ListModelsResults
+    public class ExampleCollectionResponse
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// An array of ExampleResponse objects describing the examples defined for the intent.
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<CustomModel> Models { get; set; }
+        /// <value>An array of ExampleResponse objects describing the examples defined for the intent.</value>
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
+        public List<ExampleResponse> Examples { get; set; }
+        /// <summary>
+        /// Gets or Sets Pagination
+        /// </summary>
+        [JsonProperty("pagination", NullValueHandling = NullValueHandling.Ignore)]
+        public PaginationResponse Pagination { get; set; }
     }
 
 }

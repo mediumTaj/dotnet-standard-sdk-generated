@@ -15,21 +15,22 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
 {
     /// <summary>
-    /// An option specifying if the relationships found between entities in the analyzed content should be returned.
+    /// ContentListContainer.
     /// </summary>
-    public class RelationsOptions
+    public class ContentListContainer
     {
         /// <summary>
-        /// Enter a custom model ID to override the default model.
+        /// An array of `ContentItem` objects that provides the text that is to be analyzed.
         /// </summary>
-        /// <value>Enter a custom model ID to override the default model.</value>
-        [JsonProperty("model", NullValueHandling = NullValueHandling.Ignore)]
-        public string Model { get; set; }
+        /// <value>An array of `ContentItem` objects that provides the text that is to be analyzed.</value>
+        [JsonProperty("contentItems", NullValueHandling = NullValueHandling.Ignore)]
+        public List<ContentItem> ContentItems { get; set; }
     }
 
 }

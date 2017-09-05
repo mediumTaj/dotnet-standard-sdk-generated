@@ -17,19 +17,24 @@
 
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
 {
     /// <summary>
-    /// An option specifying if the relationships found between entities in the analyzed content should be returned.
+    /// For internal use only.
     /// </summary>
-    public class RelationsOptions
+    public class RuntimeContext
     {
         /// <summary>
-        /// Enter a custom model ID to override the default model.
+        /// The unique identifier of the conversation.
         /// </summary>
-        /// <value>Enter a custom model ID to override the default model.</value>
-        [JsonProperty("model", NullValueHandling = NullValueHandling.Ignore)]
-        public string Model { get; set; }
+        /// <value>The unique identifier of the conversation.</value>
+        [JsonProperty("conversation_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string ConversationId { get; set; }
+        /// <summary>
+        /// Gets or Sets System
+        /// </summary>
+        [JsonProperty("system", NullValueHandling = NullValueHandling.Ignore)]
+        public RuntimeSystemContext System { get; set; }
     }
 
 }
