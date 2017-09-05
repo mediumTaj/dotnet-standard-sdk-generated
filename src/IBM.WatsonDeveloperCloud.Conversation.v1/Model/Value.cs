@@ -30,7 +30,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The text of the entity value.</value>
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
-        public string EntityValue { get; set; }
+        public string ValueText { get; set; }
         /// <summary>
         /// Any metadata related to the entity value.
         /// </summary>

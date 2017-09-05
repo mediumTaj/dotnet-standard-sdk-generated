@@ -434,7 +434,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
                 if (result.Values != null && result.Values.Count > 0)
                 {
                     foreach (ValueExport value in result.Values)
-                        Console.WriteLine(string.Format("value: {0} | Created: {1}", value.EntityValue, value.Created));
+                        Console.WriteLine(string.Format("value: {0} | Created: {1}", value.ValueText, value.Created));
                 }
                 else
                 {
@@ -462,7 +462,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("value: {0}", result.EntityValue));
+                Console.WriteLine(string.Format("value: {0}", result.ValueText));
             }
             else
             {
@@ -480,7 +480,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("value: {0}", result.EntityValue));
+                Console.WriteLine(string.Format("value: {0}", result.ValueText));
             }
             else
             {
@@ -506,7 +506,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("value: {0}", result.EntityValue));
+                Console.WriteLine(string.Format("value: {0}", result.ValueText));
                 _createdValue = updatedValue;
             }
             else
@@ -724,7 +724,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
                 if (result.Examples != null && result.Examples.Count > 0)
                 {
                     foreach (Model.Example example in result.Examples)
-                        Console.WriteLine(string.Format("Example: {0} | Created: {1}", example.Text, example.Created));
+                        Console.WriteLine(string.Format("Example: {0} | Created: {1}", example.ExampleText, example.Created));
                 }
                 else
                 {
@@ -753,7 +753,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("example: {0}", result.Text));
+                Console.WriteLine(string.Format("example: {0}", result.ExampleText));
             }
             else
             {
@@ -771,7 +771,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("example: {0}", result.Text));
+                Console.WriteLine(string.Format("example: {0}", result.ExampleText));
             }
             else
             {
@@ -796,7 +796,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
 
             if (result != null)
             {
-                Console.WriteLine(string.Format("example: {0}", result.Text));
+                Console.WriteLine(string.Format("example: {0}", result.ExampleText));
                 _createdExample = updatedExample;
             }
             else

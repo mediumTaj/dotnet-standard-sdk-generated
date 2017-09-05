@@ -855,7 +855,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                         {
                             new ValueExport()
                             {
-                                EntityValue = "value",
+                                ValueText = "value",
                                 Metadata = new object() { },
                                 Synonyms = new List<string>()
                                 {
@@ -909,8 +909,8 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue((bool)result.Entities[0].FuzzyMatch);
             Assert.IsNotNull(result.Entities[0].Values);
             Assert.IsTrue(result.Entities[0].Values.Count > 0);
-            Assert.IsTrue(!string.IsNullOrEmpty(result.Entities[0].Values[0].EntityValue));
-            Assert.IsTrue(result.Entities[0].Values[0].EntityValue == "value");
+            Assert.IsTrue(!string.IsNullOrEmpty(result.Entities[0].Values[0].ValueText));
+            Assert.IsTrue(result.Entities[0].Values[0].ValueText == "value");
             Assert.IsNotNull(result.Entities[0].Values[0].Metadata);
             Assert.IsNotNull(result.Entities[0].Values[0].Created);
             Assert.IsNotNull(result.Entities[0].Values[0].Updated);
@@ -2673,7 +2673,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                     ConversationId = "conversationId",
                     System = new SystemResponse()
                     {
-                        SystemResponseObject = new object() { }
                     }
                 },
                 Entities = new List<RuntimeEntity>()
