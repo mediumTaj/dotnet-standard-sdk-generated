@@ -16,6 +16,7 @@
 */
 
 using System.Collections.Generic;
+using System.Text;
 using IBM.WatsonDeveloperCloud.Conversation.v1.Model;
 using IBM.WatsonDeveloperCloud.Http;
 using IBM.WatsonDeveloperCloud.Service;
@@ -1141,6 +1142,34 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
+        public LogCollection ListAllLogs(string sort = null, string filter = null, long? pageLimit = null, string cursor = null)
+        {
+
+            if(string.IsNullOrEmpty(VersionDate))
+                throw new ArgumentNullException("versionDate cannot be null. Use 'CONVERSATION_VERSION_DATE_2017_05_26'");
+
+            LogCollection result = null;
+
+            try
+            {
+                result = this.Client.WithAuthentication(this.UserName, this.Password)
+                                .GetAsync($"{this.Endpoint}/v1/logs")
+                                .WithArgument("version", VersionDate)
+                                .WithArgument("sort", sort)
+                                .WithArgument("filter", filter)
+                                .WithArgument("page_limit", pageLimit)
+                                .WithArgument("cursor", cursor)
+                                .As<LogCollection>()
+                                .Result;
+            }
+            catch(AggregateException ae)
+            {
+                throw ae.Flatten();
+            }
+
+            return result;
+        }
+
         public LogCollection ListLogs(string workspaceId, string sort = null, string filter = null, long? pageLimit = null, string cursor = null)
         {
             if (string.IsNullOrEmpty(workspaceId))

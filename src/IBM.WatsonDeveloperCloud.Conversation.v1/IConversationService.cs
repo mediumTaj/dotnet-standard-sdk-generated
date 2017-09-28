@@ -352,7 +352,17 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         /// <returns><see cref="DialogNode" />DialogNode</returns>
         DialogNode UpdateDialogNode(string workspaceId, string dialogNode, UpdateDialogNode properties);
         /// <summary>
-        /// List log events. 
+        /// List log events in all workspaces. List log events in all workspaces in the service instance.
+        /// </summary>
+        /// <param name="sort">Sorts the response according to the value of the specified property, in ascending or descending order. (optional)</param>
+        /// <param name="filter">A cacheable parameter that limits the results to those matching the specified filter. You must specify a filter query that includes a value for `language`, as well as a value for `workspace_id` or `request.context.metadata.deployment`. For more information, see the [documentation](https://console.bluemix.net/docs/services/conversation/filter-reference.html#filter-query-syntax). (optional)</param>
+        /// <param name="pageLimit">The number of records to return in each page of results. The default page limit is 100. (optional)</param>
+        /// <param name="cursor">A token identifying the last value from the previous page of results. (optional)</param>
+        /// <returns><see cref="LogCollection" />LogCollection</returns>
+        LogCollection ListAllLogs(string sort = null, string filter = null, long? pageLimit = null, string cursor = null);
+
+        /// <summary>
+        /// List log events in a workspace. List log events in a specific workspace.
         /// </summary>
         /// <param name="workspaceId">The workspace ID.</param>
         /// <param name="sort">Sorts the response according to the value of the specified property, in ascending or descending order. (optional)</param>

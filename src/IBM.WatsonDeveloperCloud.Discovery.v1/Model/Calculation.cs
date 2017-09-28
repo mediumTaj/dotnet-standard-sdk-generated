@@ -18,18 +18,19 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// Calculation.
     /// </summary>
-    public class ListModelsResults
+    public class Calculation
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// Value of the aggregation. (For 'max' and 'min' type).
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        /// <value>Value of the aggregation. (For 'max' and 'min' type).</value>
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual double? Value { get; private set; }
     }
 
 }

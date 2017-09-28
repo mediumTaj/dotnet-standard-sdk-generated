@@ -15,21 +15,27 @@
 *
 */
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// IdentifiableLanguage.
     /// </summary>
-    public class ListModelsResults
+    public class IdentifiableLanguage
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// The code for an identifiable language.
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        /// <value>The code for an identifiable language.</value>
+        [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
+        public string Language { get; set; }
+        /// <summary>
+        /// The name of the identifiable language.
+        /// </summary>
+        /// <value>The name of the identifiable language.</value>
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        public string Name { get; set; }
     }
 
 }

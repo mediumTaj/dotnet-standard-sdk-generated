@@ -18,18 +18,18 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// Term.
     /// </summary>
-    public class ListModelsResults
+    public class Term
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// Gets or Sets Count
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        [JsonProperty("count", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual long? Count { get; private set; }
     }
 
 }

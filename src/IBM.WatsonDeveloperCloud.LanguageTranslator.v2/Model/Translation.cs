@@ -15,21 +15,21 @@
 *
 */
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// Translation.
     /// </summary>
-    public class ListModelsResults
+    public class Translation
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// Translation output in UTF-8.
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        /// <value>Translation output in UTF-8.</value>
+        [JsonProperty("translation", NullValueHandling = NullValueHandling.Ignore)]
+        public string TranslationOutput { get; set; }
     }
 
 }

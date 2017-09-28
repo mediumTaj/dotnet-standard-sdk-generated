@@ -18,18 +18,19 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// IdentifiableLanguages.
     /// </summary>
-    public class ListModelsResults
+    public class IdentifiableLanguages
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// A list of all languages that the service can identify.
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        /// <value>A list of all languages that the service can identify.</value>
+        [JsonProperty("languages", NullValueHandling = NullValueHandling.Ignore)]
+        public List<IdentifiableLanguage> Languages { get; set; }
     }
 
 }

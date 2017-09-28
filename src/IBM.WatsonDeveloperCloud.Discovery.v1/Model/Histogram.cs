@@ -18,18 +18,19 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.NaturalLanguageUnderstanding.v1.Model
+namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// Models available for Relations and Entities features.
+    /// Histogram.
     /// </summary>
-    public class ListModelsResults
+    public class Histogram
     {
         /// <summary>
-        /// Gets or Sets Models
+        /// Interval of the aggregation. (For 'histogram' type).
         /// </summary>
-        [JsonProperty("models", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ModelModel> Models { get; set; }
+        /// <value>Interval of the aggregation. (For 'histogram' type).</value>
+        [JsonProperty("interval", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual long? Interval { get; private set; }
     }
 
 }
