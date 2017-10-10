@@ -85,42 +85,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
             var result = conversation.Message(_workspaceID, messageRequest);
 
             Assert.IsNotNull(result);
-
-            if (result != null)
-            {
-                if (result.Intents != null)
-                {
-                    foreach (RuntimeIntent intent in result.Intents)
-                    {
-                        Console.WriteLine(string.Format("intent: {0} | confidence: {1}", intent.Intent, intent.Confidence));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Intents is null.");
-                }
-
-                if (result.Output != null)
-                {
-                    if (result.Output.Text != null && result.Output.Text.Count > 0)
-                    {
-                        foreach (string output in result.Output.Text)
-                            Console.WriteLine(string.Format("Output: \"{0}\"", output));
-                    }
-                    else
-                    {
-                        Console.WriteLine("There is no output.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Output is null.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Failed to message.");
-            }
         }
         #endregion
 
@@ -723,7 +687,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.IntegratiationTests
             {
                 if (result.Examples != null && result.Examples.Count > 0)
                 {
-                    foreach (Model.Example example in result.Examples)
+                    foreach (Example example in result.Examples)
                         Console.WriteLine(string.Format("Example: {0} | Created: {1}", example.ExampleText, example.Created));
                 }
                 else

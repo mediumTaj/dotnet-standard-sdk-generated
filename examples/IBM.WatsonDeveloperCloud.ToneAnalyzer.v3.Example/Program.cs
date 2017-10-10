@@ -16,7 +16,6 @@
 */
 
 using IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Model;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -34,19 +33,17 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Example
             var _username = vcapServices["tone_analyzer"][0]["credentials"]["username"];
             var _password = vcapServices["tone_analyzer"][0]["credentials"]["password"];
             string versionDate = "2016-05-19";
-            string _inputText = "I was asked to sign a third party contract a week out from stay. If it wasn't an 8 person group that took a lot of wrangling I would have cancelled the booking straight away. Bathrooms - there are no stand alone bathrooms. Please consider this - you have to clear out the main bedroom to use that bathroom. Other option is you walk through a different bedroom to get to its en-suite. Signs all over the apartment - there are signs everywhere - some helpful - some telling you rules. Perhaps some people like this but It negatively affected our enjoyment of the accommodation. Stairs - lots of them - some had slightly bending wood which caused a minor injury.";
-            string _utternaceText = "I was asked to sign a third party contract a week out from stay. If it wasn't an 8 person group that took a lot of wrangling I would have cancelled the booking straight away. Bathrooms - there are no stand alone bathrooms. Please consider this - you have to clear out the main bedroom to use that bathroom. Other option is you walk through a different bedroom to get to its en-suite. Signs all over the apartment - there are signs everywhere - some helpful - some telling you rules.";
 
             ToneAnalyzerService _toneAnalyzer = new ToneAnalyzerService(_username.ToString(), _password.ToString(), versionDate);
 
             //  Test PostTone
             ToneInput toneInput = new ToneInput()
             {
-                Text = _inputText
+                Text = "How are you doing? My name is Taj!"
             };
 
-            var postToneResult = _toneAnalyzer.Tone(toneInput, "application/json");
-            Console.WriteLine(string.Format("postToneResult: {0}", JsonConvert.SerializeObject(postToneResult)));
+            var postToneResult = _toneAnalyzer.Tone(toneInput, null, null);
+            Console.WriteLine(string.Format("postToneResult: {0}", postToneResult.SentencesTone));
 
             //  Test ToneChat
             ToneChatInput toneChatInput = new ToneChatInput()
@@ -55,17 +52,17 @@ namespace IBM.WatsonDeveloperCloud.ToneAnalyzer.v3.Example
                 {
                     new Utterance()
                     {
-                        Text = _utternaceText
+                        Text = "Hello how are you?"
                     }
                 }
             };
 
             var toneChatResult = _toneAnalyzer.ToneChat(toneChatInput);
-            Console.WriteLine(string.Format("toneChatResult: {0}", JsonConvert.SerializeObject(toneChatResult)));
+            Console.WriteLine(string.Format("toneChatResult: {0}", toneChatResult));
 
 
             Console.ReadKey();
-
+            
         }
     }
 }

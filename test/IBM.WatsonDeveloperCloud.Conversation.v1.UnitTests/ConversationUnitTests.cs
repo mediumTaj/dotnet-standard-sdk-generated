@@ -170,10 +170,17 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Counterexample response = new Counterexample()
-            {
-                Text = "text"
-            };
+            //Example response = new Example()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    Text = "text"
+            //};
+
+            var response = Substitute.For<Counterexample>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MaxValue);
+            response.Text = "text";
             #endregion
 
             CreateCounterexample example = new CreateCounterexample()
@@ -322,10 +329,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Counterexample response = new Counterexample()
-            {
-                Text = "text"
-            };
+            var response = Substitute.For<Counterexample>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MaxValue);
+            response.Text = "text";
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -389,14 +396,16 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var counterexample = Substitute.For<Counterexample>();
+            counterexample.Created.Returns(DateTime.MinValue);
+            counterexample.Updated.Returns(DateTime.MaxValue);
+            counterexample.Text = "text";
+
             CounterexampleCollection response = new CounterexampleCollection()
             {
                 Counterexamples = new List<Counterexample>()
                 {
-                    new Counterexample()
-                    {
-                        Text = "text"
-                    }
+                    counterexample
                 }
             };
             #endregion
@@ -510,10 +519,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Counterexample response = new Counterexample()
-            {
-                Text = "text"
-            };
+            var response = Substitute.For<Counterexample>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MaxValue);
+            response.Text = "text";
             #endregion
 
             UpdateCounterexample example = new UpdateCounterexample()
@@ -613,11 +622,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Entity response = new Entity()
-            {
-                EntityName = "entity",
-                Description = "description"
-            };
+            var response = Substitute.For<Entity>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MaxValue);
+            response.EntityName = "entity";
+            response.Description = "description";
             #endregion
 
             CreateEntity entity = new CreateEntity()
@@ -770,11 +779,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            EntityExport response = new EntityExport ()
-            {
-                EntityName = "entity",
-                Description = "description"
-            };
+            var response = Substitute.For<EntityExport>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MaxValue);
+            response.EntityName = "entity";
+            response.Description = "description";
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -841,37 +850,39 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            EntityCollection response = new EntityCollection()
+            var valueExport = Substitute.For<ValueExport>();
+            valueExport.Created.Returns(DateTime.MinValue);
+            valueExport.Updated.Returns(DateTime.MinValue);
+            valueExport.ValueText = "value";
+            valueExport.Metadata = new object() { };
+            valueExport.Synonyms = new List<string>()
             {
-                Entities = new List<EntityExport>()
-                {
-                    new EntityExport()
-                    {
-                        EntityName = "entity",
-                        Description = "description",
-                        Metadata = new object() { },
-                        FuzzyMatch = true,
-                        Values = new List<ValueExport>()
-                        {
-                            new ValueExport()
-                            {
-                                ValueText = "value",
-                                Metadata = new object() { },
-                                Synonyms = new List<string>()
-                                {
-                                    "synonym"
-                                }
-                            }
-                        }
-                    }
-                },
-                Pagination = new Pagination()
-                {
-                    RefreshUrl = "refreshUrl",
-                    NextUrl = "nextUrl",
-                    Total = 1,
-                    Matched = 1
-                }
+                "synonym"
+            };
+
+            var entityExport = Substitute.For<EntityExport>();
+            entityExport.Created.Returns(DateTime.MinValue);
+            entityExport.Updated.Returns(DateTime.MinValue);
+            entityExport.EntityName = "entity";
+            entityExport.Description = "description";
+            entityExport.Metadata = new object() { };
+            entityExport.FuzzyMatch = true;
+            entityExport.Values = new List<ValueExport>()
+            {
+                valueExport
+            };
+
+            var response = Substitute.For<EntityCollection>();
+            response.Entities = new List<EntityExport>()
+            {
+                entityExport
+            };
+            response.Pagination = new Pagination()
+            {
+                RefreshUrl = "refreshUrl",
+                NextUrl = "nextUrl",
+                Total = 1,
+                Matched = 1
             };
             #endregion
 
@@ -1064,23 +1075,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            //Entity response = new Entity()
-            //{
-            //    Created = DateTime.Now,
-            //    Updated = DateTime.Now,
-            //    EntityName = "entity",
-            //    Description = "description",
-            //    Metadata = new object() { },
-            //    FuzzyMatch = true
-            //};
-
             var response = Substitute.For<Entity>();
             response.Created.Returns(DateTime.MinValue);
-            response.Updated.Returns(DateTime.MaxValue);
+            response.Updated.Returns(DateTime.MinValue);
             response.EntityName = "entity";
             response.Description = "description";
             response.Metadata = new object() { };
             response.FuzzyMatch = true;
+
             #endregion
 
             UpdateEntity entity = new UpdateEntity()
@@ -1210,10 +1212,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Example response = new Example()
-            {
-                Text = "text"
-            };
+            var response = Substitute.For<Example>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.ExampleText = "text";
             #endregion
 
             CreateExample example = new CreateExample()
@@ -1235,7 +1237,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
-            Assert.IsTrue(result.Text == "text");
+            Assert.IsTrue(result.ExampleText == "text");
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
         }
@@ -1379,10 +1381,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Example response = new Example()
-            {
-                Text = "text"
-            };
+            var response = Substitute.For<Example>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.ExampleText = "text";
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -1397,7 +1399,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
 
             Assert.IsNotNull(result);
             client.Received().GetAsync(Arg.Any<string>());
-            Assert.IsTrue(result.Text == "text");
+            Assert.IsTrue(result.ExampleText == "text");
         }
         #endregion
 
@@ -1453,14 +1455,16 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var example = Substitute.For<Example>();
+            example.Created.Returns(DateTime.MinValue);
+            example.Updated.Returns(DateTime.MinValue);
+            example.ExampleText = "text";
+
             ExampleCollection response = new ExampleCollection()
             {
                 Examples = new List<Example>()
                 {
-                    new Example()
-                    {
-                        Text = "text"
-                    }
+                    example
                 }
             };
             #endregion
@@ -1487,10 +1491,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             client.Received().GetAsync(Arg.Any<string>());
             Assert.IsNotNull(result.Examples);
             Assert.IsTrue(result.Examples.Count > 0);
-            Assert.IsTrue(!string.IsNullOrEmpty(result.Examples[0].Text));
+            Assert.IsTrue(!string.IsNullOrEmpty(result.Examples[0].ExampleText));
             Assert.IsNotNull(result.Examples[0].Created);
             Assert.IsNotNull(result.Examples[0].Updated);
-            Assert.IsTrue(result.Examples[0].Text == "text");
+            Assert.IsTrue(result.Examples[0].ExampleText == "text");
         }
         #endregion
 
@@ -1587,10 +1591,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Example response = new Example()
-            {
-                Text = "text"
-            };
+            var response = Substitute.For<Example>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.ExampleText = "text";
             #endregion
 
             UpdateExample example = new UpdateExample()
@@ -1612,7 +1616,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
-            Assert.IsTrue(result.Text == "text");
+            Assert.IsTrue(result.ExampleText == "text");
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
         }
@@ -1712,11 +1716,11 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Intent response = new Intent()
-            {
-                IntentName = "intent",
-                Description = "description"
-            };
+            var response = Substitute.For<Intent>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.IntentName = "intent";
+            response.Description = "description";
             #endregion
 
             CreateIntent Intent = new CreateIntent()
@@ -1876,17 +1880,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            IntentExport response = new IntentExport()
+            var example = Substitute.For<Example>();
+            example.Created.Returns(DateTime.MinValue);
+            example.Updated.Returns(DateTime.MinValue);
+            example.ExampleText = "text";
+
+            var response = Substitute.For<IntentExport>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.IntentName = "intent";
+            response.Description = "description";
+            response.Examples = new List<Example>()
             {
-                IntentName = "intent",
-                Description = "description",
-                Examples = new List<Example>()
-                {
-                    new Example()
-                    {
-                        Text = "text"
-                    }
-                }
+                example
             };
             #endregion
 
@@ -1912,7 +1918,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Examples.Count > 0);
             Assert.IsNotNull(result.Examples[0].Created);
             Assert.IsNotNull(result.Examples[0].Updated);
-            Assert.IsTrue(result.Examples[0].Text == "text");
+            Assert.IsTrue(result.Examples[0].ExampleText == "text");
         }
         #endregion
 
@@ -1961,24 +1967,52 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            IntentCollection response = new IntentCollection()
+            //IntentCollection response = new IntentCollection()
+            //{
+            //    Intents = new List<IntentExport>()
+            //    {
+            //        new IntentExport()
+            //        {
+            //            IntentName = "intent",
+            //            Description = "description",
+            //            Updated = DateTime.Now,
+            //            Created = DateTime.Now,
+            //            Examples = new List<Example>()
+            //            {
+            //                new Example()
+            //                {
+            //                    Text = "example",
+            //                    Created = DateTime.Now,
+            //                    Updated = DateTime.Now
+            //                }
+            //            }
+            //        }
+            //    }
+            //};
+
+            var example = Substitute.For<Example>();
+            example.Created.Returns(DateTime.MinValue);
+            example.Updated.Returns(DateTime.MinValue);
+            example.ExampleText = "example";
+
+            var intentExport = Substitute.For<IntentExport>();
+            intentExport.Created.Returns(DateTime.MinValue);
+            intentExport.Updated.Returns(DateTime.MinValue);
+            intentExport.IntentName = "intent";
+            intentExport.Description = "description";
+            intentExport.Examples = new List<Example>()
+            {
+                example
+            };
+
+            var response = new IntentCollection()
             {
                 Intents = new List<IntentExport>()
                 {
-                    new IntentExport()
-                    {
-                        IntentName = "intent",
-                        Description = "description",
-                        Examples = new List<Example>()
-                        {
-                            new Example()
-                            {
-                                Text = "example"
-                            }
-                        }
-                    }
+                    intentExport
                 }
             };
+
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -2013,7 +2047,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Intents[0].Description == "description");
             Assert.IsNotNull(result.Intents[0].Examples);
             Assert.IsTrue(result.Intents[0].Examples.Count > 0);
-            Assert.IsTrue(result.Intents[0].Examples[0].Text == "example");
+            Assert.IsTrue(result.Intents[0].Examples[0].ExampleText == "example");
             Assert.IsNotNull(result.Intents[0].Examples[0].Created);
             Assert.IsNotNull(result.Intents[0].Examples[0].Updated);
         }
@@ -2131,11 +2165,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Intent response = new Intent()
-            {
-                IntentName = "intent",
-                Description = "description"
-            };
+            //Intent response = new Intent()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    IntentName = "intent",
+            //    Description = "description"
+            //};
+
+            var response = Substitute.For<Intent>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.IntentName = "intent";
+            response.Description = "description";
             #endregion
 
             UpdateIntent intent = new UpdateIntent()
@@ -2233,9 +2275,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                             {
                                 ConversationId = "conversationId",
                                 System = new SystemResponse()
-                                {
-                                    SystemResponseObject = new object() { }
-                                }
                             },
                             Entities = new List<RuntimeEntity>()
                             {
@@ -2310,9 +2349,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                             {
                                 ConversationId = "conversationId",
                                 System = new SystemResponse()
-                                {
-                                    SystemResponseObject = new object() { }
-                                }
                             },
                             Output = new OutputData()
                             {
@@ -2396,9 +2432,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 {
                     ConversationId = "conversationId",
                     System = new SystemResponse()
-                    {
-                        SystemResponseObject = new object() { }
-                    }
                 },
                 Entities = new List<RuntimeEntity>()
                             {
@@ -2464,9 +2497,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 {
                     ConversationId = "conversationId",
                     System = new SystemResponse()
-                    {
-                        SystemResponseObject = new object() { }
-                    }
                 },
                 Entities = new List<RuntimeEntity>()
                             {
@@ -2540,9 +2570,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 {
                     ConversationId = "conversationId",
                     System = new SystemResponse()
-                    {
-                        SystemResponseObject = new object() { }
-                    }
                 },
                 Entities = new List<RuntimeEntity>()
                             {
@@ -2634,9 +2661,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 {
                     ConversationId = "conversationId",
                     System = new SystemResponse()
-                    {
-                        SystemResponseObject = new object() { }
-                    }
                 },
                 Output = new OutputData()
                 {
@@ -2672,8 +2696,6 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 {
                     ConversationId = "conversationId",
                     System = new SystemResponse()
-                    {
-                    }
                 },
                 Entities = new List<RuntimeEntity>()
                             {
@@ -2834,10 +2856,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Synonym response = new Synonym()
-            {
-                SynonymText = "synonym"
-            };
+            var response = Substitute.For<Synonym>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.SynonymText = "synonym";
             #endregion
 
             CreateSynonym synonym = new CreateSynonym()
@@ -3017,10 +3039,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Synonym response = new Synonym()
-            {
-                SynonymText = "synonym"
-            };
+            var response = Substitute.For<Synonym>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.SynonymText = "synonym";
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3101,14 +3123,16 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var synonym = Substitute.For<Synonym>();
+            synonym.Created.Returns(DateTime.MinValue);
+            synonym.Updated.Returns(DateTime.MinValue);
+            synonym.SynonymText = "synonym";
+
             SynonymCollection response = new SynonymCollection()
             {
                 Synonyms = new List<Synonym>()
                 {
-                    new Synonym()
-                    {
-                        SynonymText = "synonym"
-                    }
+                    synonym
                 },
                 Pagination = new Pagination()
                 {
@@ -3259,10 +3283,10 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Synonym response = new Synonym()
-            {
-                SynonymText = "synonym"
-            };
+            var response = Substitute.For<Synonym>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.SynonymText = "synonym";
             #endregion
 
             UpdateSynonym synonym = new UpdateSynonym()
@@ -3391,11 +3415,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Value response = new Value()
-            {
-                EntityValue = "value",
-                Metadata = new object() { }
-            };
+            //Value response = new Value()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    EntityValue = "value",
+            //    Metadata = new object() { }
+            //};
+
+            var response = Substitute.For<Value>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.ValueText = "value";
+            response.Metadata = new object() { };
             #endregion
 
             CreateValue value = new CreateValue()
@@ -3422,7 +3454,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
-            Assert.IsTrue(result.EntityValue == "value");
+            Assert.IsTrue(result.ValueText == "value");
             Assert.IsNotNull(result.Metadata);
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
@@ -3566,14 +3598,26 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            ValueExport response = new ValueExport()
+            //ValueExport response = new ValueExport()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    EntityValue = "value",
+            //    Metadata = new object() { },
+            //    Synonyms = new List<string>()
+            //    {
+            //        "synonym"
+            //    }
+            //};
+
+            var response = Substitute.For<ValueExport>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.ValueText = "value";
+            response.Metadata = new object() { };
+            response.Synonyms = new List<string>()
             {
-                EntityValue = "value",
-                Metadata = new object() { },
-                Synonyms = new List<string>()
-                {
-                    "synonym"
-                }
+                "synonym"
             };
             #endregion
 
@@ -3593,7 +3637,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsNotNull(result.Updated);
             Assert.IsNotNull(result.Metadata);
             Assert.IsNotNull(result.Synonyms);
-            Assert.IsTrue(result.EntityValue == "value");
+            Assert.IsTrue(result.ValueText == "value");
             Assert.IsTrue(result.Synonyms.Count > 0);
             Assert.IsTrue(result.Synonyms[0] == "synonym");
         }
@@ -3651,19 +3695,21 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var valueExport = Substitute.For<ValueExport>();
+            valueExport.Created.Returns(DateTime.MinValue);
+            valueExport.Updated.Returns(DateTime.MinValue);
+            valueExport.ValueText = "value";
+            valueExport.Metadata = new object() {  };
+            valueExport.Synonyms = new List<string>()
+            {
+                "synonym"
+            };
+
             ValueCollection response = new ValueCollection()
             {
                 Values = new List<ValueExport>()
                 {
-                    new ValueExport()
-                    {
-                        EntityValue = "value",
-                        Metadata = new object() { },
-                        Synonyms = new List<string>()
-                        {
-                            "synonym"
-                        }
-                    }
+                    valueExport
                 },
                 Pagination = new Pagination()
                 {
@@ -3673,6 +3719,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                     Matched = 1
                 }
             };
+
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -3699,7 +3746,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             client.Received().GetAsync(Arg.Any<string>());
             Assert.IsNotNull(result.Values);
             Assert.IsTrue(result.Values.Count > 0);
-            Assert.IsTrue(result.Values[0].EntityValue == "value");
+            Assert.IsTrue(result.Values[0].ValueText == "value");
             Assert.IsNotNull(result.Values[0].Metadata);
             Assert.IsNotNull(result.Values[0].Created);
             Assert.IsNotNull(result.Values[0].Updated);
@@ -3830,11 +3877,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Value response = new Value()
-            {
-                EntityValue = "value",
-                Metadata = new object() { }
-            };
+            //Value response = new Value()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    EntityValue = "value",
+            //    Metadata = new object() { }
+            //};
+
+            var response = Substitute.For<Value>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.ValueText = "value";
+            response.Metadata = new object() { };
             #endregion
 
             UpdateValue value = new UpdateValue()
@@ -3862,7 +3917,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.EntityValue == "value");
+            Assert.IsTrue(result.ValueText == "value");
             Assert.IsNotNull(result.Metadata);
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
@@ -3930,13 +3985,25 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Workspace response = new Workspace()
-            {
-                Name = "name",
-                Language = "en",
-                Metadata = new object() { },
-                Description = "description"
-            };
+            //Workspace response = new Workspace()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    Name = "name",
+            //    Language = "en",
+            //    Metadata = new object() { },
+            //    WorkspaceId = "workspaceId",
+            //    Description = "description"
+            //};
+
+            var response = Substitute.For<Workspace>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.WorkspaceId.Returns("workspaceId");
+            response.Name = "name";
+            response.Language = "en";
+            response.Description = "description";
+            response.Metadata = new object() { };
             #endregion
 
             CreateWorkspace workspace = new CreateWorkspace()
@@ -3967,6 +4034,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Language == "en");
+            Assert.IsTrue(result.WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Description == "description");
         }
         #endregion
@@ -4080,60 +4148,140 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            WorkspaceExport response = new WorkspaceExport()
+            //WorkspaceExport response = new WorkspaceExport()
+            //{
+            //    Created = DateTime.Now,
+            //    Updated = DateTime.Now,
+            //    Name = "name",
+            //    Language = "en",
+            //    Metadata = new object() { },
+            //    WorkspaceId = "workspaceId",
+            //    Description = "description",
+            //    Intents = new List<IntentExport>()
+            //    {
+            //        new IntentExport()
+            //        {
+            //            IntentName = "intent",
+            //            Created = DateTime.Now,
+            //            Updated = DateTime.Now,
+            //            Description = "description",
+            //            Examples = new List<Example>()
+            //            {
+            //                new Example()
+            //                {
+            //                    Created = DateTime.Now,
+            //                    Updated = DateTime.Now,
+            //                    Text = "text"
+            //                }
+            //            }
+            //        }
+            //    },
+            //    Entities = new List<EntityExport>()
+            //    {
+            //        new EntityExport()
+            //        {
+            //            EntityName = "entity",
+            //            Created = DateTime.Now,
+            //            Updated = DateTime.Now,
+            //            Description = "description",
+            //            Metadata = new object() { },
+            //            FuzzyMatch = true,
+            //            Values = new List<ValueExport>()
+            //            {
+            //                new ValueExport()
+            //                {
+            //                    Created = DateTime.Now,
+            //                    Updated = DateTime.Now,
+            //                    EntityValue = "value",
+            //                    Metadata = new object() { },
+            //                    Synonyms = new List<string>()
+            //                    {
+            //                        "synonym"
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    },
+            //    Counterexamples = new List<Counterexample>()
+            //    {
+            //        new Counterexample()
+            //        {
+            //            Created = DateTime.Now,
+            //            Updated = DateTime.Now,
+            //            Text = "text"
+            //        }
+            //    },
+            //    DialogNodes = new List<DialogNode>()
+            //    {
+            //        new DialogNode() { }
+            //    }
+            //};
+            
+            var example = Substitute.For<Example>();
+            example.Created.Returns(DateTime.MinValue);
+            example.Updated.Returns(DateTime.MinValue);
+            example.ExampleText = "text";
+
+            var intentExport = Substitute.For<IntentExport>();
+            intentExport.Created.Returns(DateTime.MinValue);
+            intentExport.Updated.Returns(DateTime.MinValue);
+            intentExport.IntentName = "intent";
+            intentExport.Description = "description";
+            intentExport.Examples = new List<Example>()
             {
-                Name = "name",
-                Language = "en",
-                Metadata = new object() { },
-                Description = "description",
-                Intents = new List<IntentExport>()
-                {
-                    new IntentExport()
-                    {
-                        IntentName = "intent",
-                        Description = "description",
-                        Examples = new List<Model.Example>()
-                        {
-                            new Example()
-                            {
-                                Text = "text"
-                            }
-                        }
-                    }
-                },
-                Entities = new List<EntityExport>()
-                {
-                    new EntityExport()
-                    {
-                        EntityName = "entity",
-                        Description = "description",
-                        Metadata = new object() { },
-                        FuzzyMatch = true,
-                        Values = new List<ValueExport>()
-                        {
-                            new ValueExport()
-                            {
-                                EntityValue = "value",
-                                Metadata = new object() { },
-                                Synonyms = new List<string>()
-                                {
-                                    "synonym"
-                                }
-                            }
-                        }
-                    }
-                },
-                Counterexamples = new List<Counterexample>()
-                {
-                    new Counterexample()
-                    {
-                        Text = "text"
-                    }
-                },
-                DialogNodes = new List<DialogNode>()
-                {
-                    new DialogNode() { }
-                }
+                example
+            };
+
+            var valueExport = Substitute.For<ValueExport>();
+            valueExport.Created.Returns(DateTime.MinValue);
+            valueExport.Updated.Returns(DateTime.MinValue);
+            valueExport.ValueText = "value";
+            valueExport.Metadata = new object() { };
+            valueExport.Synonyms = new List<string>()
+            {
+                "synonym"
+            };
+
+            var entityExport = Substitute.For<EntityExport>();
+            entityExport.Created.Returns(DateTime.MinValue);
+            entityExport.Updated.Returns(DateTime.MinValue);
+            entityExport.EntityName = "entity";
+            entityExport.Description = "description";
+            entityExport.Metadata = new object() { };
+            entityExport.FuzzyMatch = true;
+            entityExport.Values = new List<ValueExport>()
+            {
+                valueExport
+            };
+
+            var counterexample = Substitute.For<Counterexample>();
+            counterexample.Created.Returns(DateTime.MinValue);
+            counterexample.Updated.Returns(DateTime.MaxValue);
+            counterexample.Text = "text";
+            
+            var response = Substitute.For<WorkspaceExport>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.WorkspaceId.Returns("workspaceId");
+            response.Name = "name";
+            response.Language = "en";
+            response.Description = "description";
+            response.Metadata = new object() { };
+            response.Intents = new List<IntentExport>()
+            {
+                intentExport
+            };
+            response.Entities = new List<EntityExport>()
+            {
+                entityExport
+            };
+            response.Counterexamples = new List<Counterexample>()
+            {
+                counterexample
+            };
+            response.DialogNodes = new List<DialogNode>()
+            {
+                new DialogNode() { }
             };
             #endregion
 
@@ -4157,6 +4305,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Language == "en");
+            Assert.IsTrue(result.WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Description == "description");
         }
         #endregion
@@ -4199,19 +4348,22 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var workspace = Substitute.For<Workspace>();
+            workspace.Created.Returns(DateTime.MinValue);
+            workspace.Updated.Returns(DateTime.MaxValue);
+            workspace.WorkspaceId.Returns("workspaceId");
+            workspace.Name = "name";
+            workspace.Language = "en";
+            workspace.Description = "description";
+            workspace.Metadata = new object() { };
+
             WorkspaceCollection response = new WorkspaceCollection()
             {
                 Workspaces = new List<Workspace>()
                 {
-                    new Workspace()
-                    {
-                        Name = "name",
-                        Language = "en",
-                        Metadata = new object() { },
-                        Description = "description"
-                    }
+                    workspace
                 },
-                Pagination = new Pagination()
+                Pagination = new Pagination ()
                 {
                     RefreshUrl = "refreshUrl",
                     NextUrl = "nextUrl",
@@ -4251,6 +4403,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Workspaces[0].Name == "name");
             Assert.IsTrue(result.Workspaces[0].Description == "description");
             Assert.IsTrue(result.Workspaces[0].Language == "en");
+            Assert.IsTrue(result.Workspaces[0].WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Workspaces[0].Description == "description");
         }
         #endregion
@@ -4302,13 +4455,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            Workspace response = new Workspace()
-            {
-                Name = "name",
-                Language = "en",
-                Metadata = new object() { },
-                Description = "description"
-            };
+            var response = Substitute.For<Workspace>();
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MaxValue);
+            response.WorkspaceId.Returns("workspaceId");
+            response.Name = "name";
+            response.Language = "en";
+            response.Description = "description";
+            response.Metadata = new object() { };
             #endregion
 
             UpdateWorkspace workspace = new UpdateWorkspace()
@@ -4387,6 +4541,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.UnitTests
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Language == "en");
+            Assert.IsTrue(result.WorkspaceId == "workspaceId");
             Assert.IsTrue(result.Description == "description");
         }
         #endregion

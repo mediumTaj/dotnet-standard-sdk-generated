@@ -54,14 +54,14 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         public void Constructor_UserName_Null()
         {
             DiscoveryService service =
-                new DiscoveryService(null, "password", DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01);
+                new DiscoveryService(null, "password", DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_Password_Null()
         {
             DiscoveryService service =
-                new DiscoveryService("username", null, DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01);
+                new DiscoveryService("username", null, DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -75,7 +75,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         public void Constructor_With_UserName_Password()
         {
             DiscoveryService service =
-                new DiscoveryService("username", "password", DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01);
+                new DiscoveryService("username", "password", DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01);
 
             Assert.IsNotNull(service);
         }
@@ -127,7 +127,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.ListEnvironments();
         }
 
@@ -141,6 +141,21 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var memoryUsage = Substitute.For<MemoryUsage>();
+            memoryUsage.PercentUsed.Returns(100);
+            memoryUsage.Total.Returns("total");
+            memoryUsage.TotalBytes.Returns(0);
+            memoryUsage.Used.Returns("used");
+            memoryUsage.UsedBytes.Returns(100);
+
+            var diskUsage = Substitute.For<DiskUsage>();
+            diskUsage.UsedBytes.Returns(0);
+            diskUsage.MaximumAllowedBytes.Returns(0);
+            diskUsage.TotalBytes.Returns(0);
+            diskUsage.Used.Returns("used");
+            diskUsage.Total.Returns("total");
+            diskUsage.PercentUsed.Returns(0);
+
             ListEnvironmentsResponse response = new ListEnvironmentsResponse()
             {
                 Environments = new List<ModelEnvironment>()
@@ -153,8 +168,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                        Size = 1,
                        IndexCapacity = new IndexCapacity()
                        {
-                           DiskUsage = new DiskUsage(){},
-                           MemoryUsage = new MemoryUsage(){}
+                           DiskUsage = diskUsage,
+                           MemoryUsage = memoryUsage
                        }
                    }
                }
@@ -181,6 +196,18 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsTrue(result.Environments[0].Name == "name");
             Assert.IsTrue(result.Environments[0].Description == "description");
             Assert.IsTrue(result.Environments[0].Size == 1);
+            Assert.IsTrue(result.Environments[0].IndexCapacity.DiskUsage.PercentUsed == 0);
+            Assert.IsTrue(result.Environments[0].IndexCapacity.DiskUsage.Total == "total");
+            Assert.IsTrue(result.Environments[0].IndexCapacity.DiskUsage.Used == "used");
+            Assert.IsTrue(result.Environments[0].IndexCapacity.DiskUsage.TotalBytes == 0);
+            Assert.IsTrue(result.Environments[0].IndexCapacity.DiskUsage.MaximumAllowedBytes == 0);
+            Assert.IsTrue(result.Environments[0].IndexCapacity.DiskUsage.UsedBytes == 0);
+
+            Assert.IsTrue(result.Environments[0].IndexCapacity.MemoryUsage.PercentUsed == 100);
+            Assert.IsTrue(result.Environments[0].IndexCapacity.MemoryUsage.Total == "total");
+            Assert.IsTrue(result.Environments[0].IndexCapacity.MemoryUsage.Used == "used");
+            Assert.IsTrue(result.Environments[0].IndexCapacity.MemoryUsage.TotalBytes == 0);
+            Assert.IsTrue(result.Environments[0].IndexCapacity.MemoryUsage.UsedBytes == 100);
         }
         #endregion
 
@@ -229,7 +256,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 Size = 1
             };
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.CreateEnvironment(environment);
         }
@@ -252,8 +279,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 Size = 1,
                 IndexCapacity = new IndexCapacity()
                 {
-                    DiskUsage = new DiskUsage(){},
-                    MemoryUsage = new MemoryUsage(){}
+                    DiskUsage = new DiskUsage() { },
+                    MemoryUsage = new MemoryUsage() { }
                 }
             };
             #endregion
@@ -318,7 +345,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.DeleteEnvironment("environmentId");
         }
@@ -388,7 +415,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.GetEnvironment("EnvironmentId");
         }
 
@@ -410,8 +437,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 Size = 1,
                 IndexCapacity = new IndexCapacity()
                 {
-                    DiskUsage = new DiskUsage(){},
-                    MemoryUsage = new MemoryUsage(){}
+                    DiskUsage = new DiskUsage() { },
+                    MemoryUsage = new MemoryUsage() { }
                 }
             };
             #endregion
@@ -491,7 +518,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 Description = "description"
             };
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.UpdateEnvironment("environmentId", environment);
         }
@@ -561,7 +588,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         {
             DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
             service.VersionDate = null;
-            
+
             service.TestConfigurationInEnvironment("envronmentId");
         }
 
@@ -580,7 +607,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.TestConfigurationInEnvironment("environmentId");
         }
@@ -595,24 +622,33 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            TestDocument response = new TestDocument()
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
+            var response = Substitute.For<TestDocument>();
+            response.ConfigurationId.Returns("configurationId");
+            response.Status.Returns("status");
+            response.EnrichedFieldUnits.Returns(1);
+            response.OriginalMediaType.Returns("originalMediaType");
+            response.Snapshots = new List<DocumentSnapshot>()
             {
-                Snapshots = new List<DocumentSnapshot>()
+                new DocumentSnapshot()
                 {
-                    new DocumentSnapshot()
-                    {
-                        Step = DocumentSnapshot.StepEnum.HTML_INPUT,
-                        Snapshot = new object() { }
-                    }
-                },
-                Notices = new List<Notice>()
-                {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    Step = DocumentSnapshot.StepEnum.HTML_INPUT,
+                    Snapshot = new object() { }
                 }
             };
+            response.Notices = new List<Notice>()
+            {
+                notice
+            };
+
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -639,10 +675,16 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
-            Assert.IsNull(result.ConfigurationId);
-            Assert.IsNull(result.Status);
-            Assert.IsNull(result.EnrichedFieldUnits);
-            Assert.IsNull(result.OriginalMediaType);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
+            Assert.IsNotNull(result.Notices[0].QueryId);
+            Assert.IsNotNull(result.ConfigurationId);
+            Assert.IsNotNull(result.Status);
+            Assert.IsNotNull(result.EnrichedFieldUnits);
+            Assert.IsNotNull(result.OriginalMediaType);
         }
 
         [TestMethod]
@@ -655,6 +697,15 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             TestDocument response = new TestDocument()
             {
                 Snapshots = new List<DocumentSnapshot>()
@@ -667,10 +718,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 },
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
             #endregion
@@ -689,7 +737,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             DiscoveryService service = new DiscoveryService(client);
             service.VersionDate = "versionDate";
 
-            var result = service.TestConfigurationInEnvironment("environmentId", configuration:"configuration");
+            var result = service.TestConfigurationInEnvironment("environmentId", configuration: "configuration");
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
@@ -699,6 +747,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
 
         [TestMethod]
@@ -711,6 +764,15 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             TestDocument response = new TestDocument()
             {
                 Snapshots = new List<DocumentSnapshot>()
@@ -723,10 +785,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 },
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
             #endregion
@@ -753,6 +812,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
 
         [TestMethod]
@@ -765,6 +829,15 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             TestDocument response = new TestDocument()
             {
                 Snapshots = new List<DocumentSnapshot>()
@@ -777,10 +850,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 },
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
             #endregion
@@ -799,7 +869,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             DiscoveryService service = new DiscoveryService(client);
             service.VersionDate = "versionDate";
 
-            var result = service.TestConfigurationInEnvironment("environmentId", metadata:"metadata");
+            var result = service.TestConfigurationInEnvironment("environmentId", metadata: "metadata");
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
             Assert.IsNotNull(result.Snapshots);
@@ -808,6 +878,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
         #endregion
 
@@ -843,7 +918,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.ListConfigurations("environmentId");
         }
 
@@ -857,136 +932,143 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var configuration = Substitute.For<Configuration>();
+            configuration.ConfigurationId.Returns("configurationId");
+            configuration.Created.Returns(DateTime.MinValue);
+            configuration.Updated.Returns(DateTime.MinValue);
+            configuration.Name = "name";
+            configuration.Description = "description";
+            configuration.Conversions = new Conversions()
+            {
+                Pdf = new PdfSettings()
+                {
+                    Heading = new PdfHeadingDetection()
+                    {
+                        Fonts = new List<FontSetting>()
+                        {
+                            new FontSetting()
+                            {
+                                Level = 1,
+                                MinSize = 1,
+                                MaxSize = 1,
+                                Bold = false,
+                                Italic = false,
+                                Name = "name"
+                            }
+                        }
+                    }
+                },
+                Word = new WordSettings()
+                {
+                    Heading = new WordHeadingDetection()
+                    {
+                        Fonts = new List<FontSetting>()
+                        {
+                            new FontSetting()
+                            {
+                                Level = 1,
+                                MinSize = 1,
+                                MaxSize = 1,
+                                Bold = false,
+                                Italic = false,
+                                Name = "name"
+                            }
+                        },
+                        Styles = new List<WordStyle>()
+                        {
+                            new WordStyle()
+                            {
+                                Level = 1,
+                                Names = new List<string>
+                                {
+                                    "name"
+                                }
+                            }
+                        }
+                    }
+                },
+                Html = new HtmlSettings()
+                {
+                    ExcludeTagsCompletely = new List<string>()
+                    {
+                        "exclude"
+                    },
+                    ExcludeTagsKeepContent = new List<string>()
+                    {
+                        "exclude but keep content"
+                    },
+                    KeepContent = new XPathPatterns()
+                    {
+                        Xpaths = new List<string>()
+                        {
+                            "keepContent"
+                        }
+                    },
+                    ExcludeContent = new XPathPatterns()
+                    {
+                        Xpaths = new List<string>()
+                        {
+                            "excludeContent"
+                        }
+                    },
+                    KeepTagAttributes = new List<string>()
+                    {
+                        "keepTagAttributes"
+                    },
+                    ExcludeTagAttributes = new List<string>()
+                    {
+                        "excludeTagAttributes"
+                    }
+                },
+                JsonNormalizations = new List<NormalizationOperation>()
+                {
+                    new NormalizationOperation()
+                    {
+
+                    }
+                },
+
+            };
+            configuration.Enrichments = new List<Enrichment>()
+            {
+                new Enrichment()
+                {
+                    Description = "description",
+                    DestinationField = "destinationField",
+                    SourceField = "sourceField",
+                    Overwrite = false,
+                    EnrichmentName = "enrichmentName",
+                    IgnoreDownstreamErrors = false,
+                    Options = new EnrichmentOptions()
+                    {
+                        Language = EnrichmentOptions.LanguageEnum.EN,
+                        Extract = new List<string>()
+                        {
+                            "extract"
+                        },
+                        Sentiment = false,
+                        Quotations = false,
+                        ShowSourceText = false,
+                        HierarchicalTypedRelations = false,
+                        _Model= "model"
+                    }
+                }
+            };
+            configuration.Normalizations = new List<NormalizationOperation>()
+            {
+                new NormalizationOperation()
+                {
+                    Operation = NormalizationOperation.OperationEnum.MERGE,
+                    SourceField = "sourceField",
+                    DestinationField = "destinationField"
+                }
+            };
+
             ListConfigurationsResponse response = new ListConfigurationsResponse()
             {
                 Configurations = new List<Configuration>()
                {
-                   new Configuration()
-                   {
-                       Name = "name",
-                       Description = "description",
-                       Conversions = new Conversions()
-                       {
-                           Pdf = new PdfSettings()
-                           {
-                               Heading = new PdfHeadingDetection()
-                               {
-                                   Fonts = new List<FontSetting>()
-                                   {
-                                       new FontSetting()
-                                       {
-                                           Level = 1f,
-                                           MinSize = 1f,
-                                           MaxSize = 1f,
-                                           Bold = false,
-                                           Italic = false,
-                                           Name = "name"
-                                       }
-                                   }
-                               }
-                           },
-                           Word = new WordSettings()
-                           {
-                               Heading = new WordHeadingDetection()
-                               {
-                                   Fonts = new List<FontSetting>()
-                                   {
-                                       new FontSetting()
-                                       {
-                                           Level = 1f,
-                                           MinSize = 1f,
-                                           MaxSize = 1f,
-                                           Bold = false,
-                                           Italic = false,
-                                           Name = "name"
-                                       }
-                                   },
-                                   Styles = new List<WordStyle>()
-                                   {
-                                       new WordStyle()
-                                       {
-                                           Level = 1.0f,
-                                           Names = new List<string>
-                                           {
-                                               "name"
-                                           }
-                                       }
-                                   }
-                               }
-                           },
-                           Html = new HtmlSettings()
-                           {
-                               ExcludeTagsCompletely = new List<string>()
-                               {
-                                   "exclude"
-                               }, 
-                               ExcludeTagsKeepContent = new List<string>()
-                               {
-                                   "exclude but keep content"
-                               },
-                               KeepContent = new XPathPatterns()
-                               {
-                                   Xpaths = new List<string>()
-                                   {
-                                       "keepContent"
-                                   }
-                               },
-                               ExcludeContent = new XPathPatterns()
-                               {
-                                   Xpaths = new List<string>()
-                                   {
-                                       "excludeContent"
-                                   }
-                               },
-                               KeepTagAttributes = new List<string>()
-                               {
-                                   "keepTagAttributes"
-                               },
-                               ExcludeTagAttributes = new List<string>()
-                               {
-                                   "excludeTagAttributes"
-                               }
-                           },
-                           JsonNormalizations = new List<NormalizationOperation>()
-                           {
-                               new NormalizationOperation()
-                               {
-
-                               }
-                           }
-                       },
-                       Enrichments = new List<Enrichment>()
-                       {
-                           new Enrichment()
-                           {
-                               Description = "description",
-                               DestinationField = "destinationField",
-                               SourceField = "sourceField",
-                               Overwrite = false,
-                               EnrichmentName = "enrichmentName",
-                               IgnoreDownstreamErrors = false,
-                               Options = new EnrichmentOptions()
-                               {
-                                   Language = EnrichmentOptions.LanguageEnum.EN,
-                                   Extract = "extract",
-                                   Sentiment = false,
-                                   Quotations = false,
-                                   ShowSourceText = false,
-                                   HierarchicalTypedRelations = false,
-                                   _Model = "model"
-                               }
-                           }
-                       },
-                       Normalizations = new List<NormalizationOperation>()
-                       {
-                           new NormalizationOperation()
-                           {
-                               Operation = NormalizationOperation.OperationEnum.MERGE,
-                               SourceField = "sourceField",
-                               DestinationField = "destinationField"
-                           }
-                       }
-                   }
+                   configuration
                }
             };
             #endregion
@@ -1009,9 +1091,25 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsTrue(result.Configurations.Count > 0);
             Assert.IsTrue(result.Configurations[0].Name == "name");
             Assert.IsTrue(result.Configurations[0].Description == "description");
-            Assert.IsNull(result.Configurations[0].ConfigurationId);
+            Assert.IsNotNull(result.Configurations[0].ConfigurationId);
             Assert.IsNotNull(result.Configurations[0].Created);
             Assert.IsNotNull(result.Configurations[0].Updated);
+            Assert.IsNotNull(result.Configurations[0].Enrichments);
+            Assert.IsTrue(result.Configurations[0].Enrichments.Count > 0);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Description == "description");
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].SourceField == "sourceField");
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Overwrite == false);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].EnrichmentName == "enrichmentName");
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].IgnoreDownstreamErrors == false);
+            Assert.IsNotNull(result.Configurations[0].Enrichments[0].Options);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.Language == EnrichmentOptions.LanguageEnum.EN);
+            Assert.IsNotNull(result.Configurations[0].Enrichments[0].Options.Extract);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.Extract[0] == "extract");
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.Sentiment == false);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.Quotations == false);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.ShowSourceText == false);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.HierarchicalTypedRelations == false);
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options._Model == "model");
         }
         #endregion
 
@@ -1035,7 +1133,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         {
             DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
             service.VersionDate = null;
-            
+
             service.CreateConfiguration("environmentId", new Configuration());
         }
 
@@ -1054,7 +1152,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.CreateConfiguration("environmentId", new Configuration());
         }
@@ -1082,9 +1180,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                                    {
                                        new FontSetting()
                                        {
-                                           Level = 1f,
-                                           MinSize = 1f,
-                                           MaxSize = 1f,
+                                           Level = 1,
+                                           MinSize = 1,
+                                           MaxSize = 1,
                                            Bold = false,
                                            Italic = false,
                                            Name = "name"
@@ -1106,7 +1204,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                         Options = new EnrichmentOptions()
                         {
                             Language = EnrichmentOptions.LanguageEnum.EN,
-                            Extract = "extract",
+                            Extract = new List<string>() { "extract" },
                             Sentiment = false,
                             Quotations = false,
                             ShowSourceText = false,
@@ -1136,7 +1234,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             DiscoveryService service = new DiscoveryService(client);
             service.VersionDate = "versionDate";
 
-            var result = service.CreateConfiguration("environmentId",Configuration);
+            var result = service.CreateConfiguration("environmentId", Configuration);
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
@@ -1165,7 +1263,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
         {
             DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
             service.VersionDate = null;
-            service.DeleteConfiguration("environmentId","ConfigurationId");
+            service.DeleteConfiguration("environmentId", "ConfigurationId");
         }
 
         [TestMethod, ExpectedException(typeof(AggregateException))]
@@ -1183,7 +1281,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.DeleteConfiguration("environmentId", "configurationId");
         }
@@ -1198,16 +1296,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             DeleteConfigurationResponse response = new DeleteConfigurationResponse()
             {
                 ConfigurationId = "ConfigurationId",
                 Status = DeleteConfigurationResponse.StatusEnum.DELETED,
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
             #endregion
@@ -1229,6 +1333,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
         #endregion
 
@@ -1270,7 +1379,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.GetConfiguration("environmentId", "ConfigurationId");
         }
 
@@ -1298,9 +1407,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                                    {
                                        new FontSetting()
                                        {
-                                           Level = 1f,
-                                           MinSize = 1f,
-                                           MaxSize = 1f,
+                                           Level = 1,
+                                           MinSize = 1,
+                                           MaxSize = 1,
                                            Bold = false,
                                            Italic = false,
                                            Name = "name"
@@ -1322,7 +1431,10 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                         Options = new EnrichmentOptions()
                         {
                             Language = EnrichmentOptions.LanguageEnum.EN,
-                            Extract = "extract",
+                            Extract = new List<string>()
+                            {
+                                "extract"
+                            },
                             Sentiment = false,
                             Quotations = false,
                             ShowSourceText = false,
@@ -1404,9 +1516,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                                                                                Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
                                                                                string.Empty));
                  });
-            
+
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.UpdateConfiguration("environmentId", "ConfigurationId", new Configuration());
         }
@@ -1435,9 +1547,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                                    {
                                        new FontSetting()
                                        {
-                                           Level = 1f,
-                                           MinSize = 1f,
-                                           MaxSize = 1f,
+                                           Level = 1,
+                                           MinSize = 1,
+                                           MaxSize = 1,
                                            Bold = false,
                                            Italic = false,
                                            Name = "name"
@@ -1459,7 +1571,10 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                         Options = new EnrichmentOptions()
                         {
                             Language = EnrichmentOptions.LanguageEnum.EN,
-                            Extract = "extract",
+                            Extract = new List<string>()
+                            {
+                                "extract"
+                            },
                             Sentiment = false,
                             Quotations = false,
                             ShowSourceText = false,
@@ -1532,7 +1647,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.ListCollections("environmentId");
         }
 
@@ -1625,7 +1740,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.CreateCollection("environmentId", new CreateCollectionRequest());
         }
@@ -1646,7 +1761,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 Status = Collection.StatusEnum.PENDING,
                 ConfigurationId = "configurationId",
                 Language = "language",
-                DocumentCounts = new DocumentCounts() {}
+                DocumentCounts = new DocumentCounts() { }
             };
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -1709,7 +1824,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.DeleteCollection("environmentId", "collectionId");
         }
@@ -1786,7 +1901,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.GetCollection("environmentId", "collectionId");
         }
 
@@ -1869,7 +1984,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.UpdateCollection("environmentId", "collectionId", new UpdateCollectionRequest());
         }
@@ -1884,15 +1999,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region response
-            Collection response = new Collection()
-            {
-                Status = Collection.StatusEnum.PENDING,
-                Name = "name",
-                Description = "description",
-                ConfigurationId = "configurationId",
-                Language = "language",
-                DocumentCounts = new DocumentCounts() { }
-            };
+            var documentCounts = Substitute.For<DocumentCounts>();
+            documentCounts.Available.Returns(0);
+            documentCounts.Processing.Returns(0);
+            documentCounts.Failed.Returns(0);
+
+            var response = Substitute.For<Collection>();
+            response.Status = Collection.StatusEnum.PENDING;
+            response.Name = "name";
+            response.Description = "description";
+            response.ConfigurationId = "configurationId";
+            response.Language = "language";
+            response.DocumentCounts = documentCounts;
+            response.CollectionId.Returns("collectionId");
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+
             #endregion
 
             UpdateCollectionRequest updateCollectionRequest = new UpdateCollectionRequest()
@@ -1920,12 +2042,12 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.ConfigurationId == "configurationId");
             Assert.IsTrue(result.Language == "language");
-            Assert.IsNull(result.CollectionId);
+            Assert.IsTrue(result.CollectionId == "collectionId");
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
-            Assert.IsNull(result.DocumentCounts.Available);
-            Assert.IsNull(result.DocumentCounts.Processing);
-            Assert.IsNull(result.DocumentCounts.Failed);
+            Assert.IsNotNull(result.DocumentCounts.Available);
+            Assert.IsNotNull(result.DocumentCounts.Processing);
+            Assert.IsNotNull(result.DocumentCounts.Failed);
         }
         #endregion
 
@@ -1967,7 +2089,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.ListCollectionFields("environmentId", "collectionId");
         }
 
@@ -1981,14 +2103,15 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
+            var field = Substitute.For<Field>();
+            field.FieldName.Returns("field");
+            field.FieldType = Field.FieldTypeEnum.STRING;
+
             ListCollectionFieldsResponse response = new ListCollectionFieldsResponse()
             {
                 Fields = new List<Field>()
                 {
-                    new Field()
-                    {
-                        FieldType = Field.FieldTypeEnum.STRING
-                    }
+                    field
                 }
             };
             #endregion
@@ -2008,7 +2131,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Fields);
             Assert.IsTrue(result.Fields.Count > 0);
             Assert.IsTrue(result.Fields[0].FieldType == Field.FieldTypeEnum.STRING);
-            Assert.IsNull(result.Fields[0].FieldName);
+            Assert.IsTrue(result.Fields[0].FieldName == "field");
         }
         #endregion
         #endregion
@@ -2053,7 +2176,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.AddDocument("environmentId", "collectionId");
         }
@@ -2067,16 +2190,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             client.PostAsync(Arg.Any<string>())
                 .Returns(request);
 
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             DocumentAccepted documentAccepted = new DocumentAccepted()
             {
                 Status = DocumentAccepted.StatusEnum.PROCESSING,
                 DocumentId = "documentId",
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
 
@@ -2101,11 +2230,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
-            Assert.IsNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
             Assert.IsNotNull(result.Notices[0].Created);
-            Assert.IsNull(result.Notices[0].DocumentId);
-            Assert.IsNull(result.Notices[0].Step);
-            Assert.IsNull(result.Notices[0].Description);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
 
         [TestMethod]
@@ -2117,16 +2246,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             client.PostAsync(Arg.Any<string>())
                 .Returns(request);
 
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             DocumentAccepted documentAccepted = new DocumentAccepted()
             {
                 Status = DocumentAccepted.StatusEnum.PROCESSING,
                 DocumentId = "documentId",
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
 
@@ -2142,7 +2277,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             DiscoveryService service = new DiscoveryService(client);
             service.VersionDate = "versionDate";
 
-            var result = service.AddDocument("environmentId", "collectionId", configurationId:"configuration");
+            var result = service.AddDocument("environmentId", "collectionId");
 
             Assert.IsNotNull(result);
             client.Received().PostAsync(Arg.Any<string>());
@@ -2151,6 +2286,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
         #endregion
 
@@ -2199,7 +2339,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.DeleteDocument("environmentId", "collectionId", "doucmentId");
         }
@@ -2283,7 +2423,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.GetDocumentStatus("environmentId", "collectionId", "documentId");
         }
 
@@ -2297,17 +2437,39 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            DocumentStatus response = new DocumentStatus()
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
+            //DocumentStatus response = new DocumentStatus()
+            //{
+            //    Status = DocumentStatus.StatusEnum.AVAILABLE,
+            //    ConfigurationId = "",
+            //    Notices = new List<Notice>()
+            //    {
+            //        notice
+            //    }
+            //};
+
+            var response = Substitute.For<DocumentStatus>();
+            response.Status = DocumentStatus.StatusEnum.AVAILABLE;
+            response.FileType = DocumentStatus.FileTypeEnum.HTML;
+            response.Filename = "fileName";
+            response.Sha1 = "sha1";
+            response.Notices = new List<Notice>()
             {
-                Status = DocumentStatus.StatusEnum.AVAILABLE,
-                Notices = new List<Notice>()
-                {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
-                }
+                notice
             };
+            response.DocumentId.Returns("documentId");
+            response.ConfigurationId.Returns("configurationId");
+            response.Created.Returns(DateTime.MinValue);
+            response.Updated.Returns(DateTime.MinValue);
+            response.StatusDescription.Returns("statusDescription");
             #endregion
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
@@ -2326,11 +2488,16 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
-            Assert.IsNull(result.DocumentId);
-            Assert.IsNull(result.ConfigurationId);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
+            Assert.IsNotNull(result.DocumentId);
+            Assert.IsNotNull(result.ConfigurationId);
             Assert.IsNotNull(result.Created);
             Assert.IsNotNull(result.Updated);
-            Assert.IsNull(result.StatusDescription);
+            Assert.IsNotNull(result.StatusDescription);
         }
         #endregion
 
@@ -2380,7 +2547,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
 
             service.UpdateDocument("environmentId", "collectionId", "documentId");
         }
@@ -2394,16 +2561,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             client.PostAsync(Arg.Any<string>())
                 .Returns(request);
 
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             DocumentAccepted documentAccepted = new DocumentAccepted()
             {
                 Status = DocumentAccepted.StatusEnum.PROCESSING,
                 DocumentId = "documentId",
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
 
@@ -2426,6 +2599,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
 
         [TestMethod]
@@ -2437,16 +2615,22 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             client.PostAsync(Arg.Any<string>())
                 .Returns(request);
 
+            var notice = Substitute.For<Notice>();
+            notice.NoticeId.Returns("noticeId");
+            notice.Created.Returns(DateTime.MinValue);
+            notice.DocumentId.Returns("documentId");
+            notice.Step.Returns("step");
+            notice.Description.Returns("description");
+            notice.QueryId.Returns("queryId");
+            notice.Severity = Notice.SeverityEnum.ERROR;
+
             DocumentAccepted documentAccepted = new DocumentAccepted()
             {
                 Status = DocumentAccepted.StatusEnum.PROCESSING,
                 DocumentId = "documentId",
                 Notices = new List<Notice>()
                 {
-                    new Notice()
-                    {
-                        Severity = Notice.SeverityEnum.ERROR
-                    }
+                    notice
                 }
             };
 
@@ -2469,6 +2653,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsNotNull(result.Notices);
             Assert.IsTrue(result.Notices.Count > 0);
             Assert.IsTrue(result.Notices[0].Severity == Notice.SeverityEnum.ERROR);
+            Assert.IsNotNull(result.Notices[0].NoticeId);
+            Assert.IsNotNull(result.Notices[0].Created);
+            Assert.IsNotNull(result.Notices[0].DocumentId);
+            Assert.IsNotNull(result.Notices[0].Step);
+            Assert.IsNotNull(result.Notices[0].Description);
         }
         #endregion
         #endregion
@@ -2511,7 +2700,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.Query("environmentId", "collectionId");
         }
 
@@ -2566,15 +2755,19 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                             {
 
                             }
-                        },
-                        Interval = 1,
-                        Value = 1.0
+                        }
                     }
                 }
             };
             #endregion
 
+
+
+
+
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<List<string>>())
                 .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
@@ -2584,15 +2777,17 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<long>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<List<string>>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<long>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<List<string>>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<bool>())
                 .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
@@ -2647,7 +2842,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                  });
 
             DiscoveryService service = new DiscoveryService(client);
-            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_08_01;
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
             service.QueryNotices("environmentId", "collectionId");
         }
 
@@ -2702,9 +2897,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                             {
 
                             }
-                        },
-                        Interval = 1,
-                        Value = 1.0
+                        }
                     }
                 }
             };
@@ -2718,19 +2911,19 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<bool>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<long>())
-                .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<List<string>>())
-                .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<long>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<bool>())
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
             request.As<QueryNoticesResponse>()
                 .Returns(Task.FromResult(response));
@@ -2744,8 +2937,874 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             client.Received().GetAsync(Arg.Any<string>());
             Assert.IsNotNull(result.Results);
             Assert.IsTrue(result.Results.Count > 0);
-            Assert.IsTrue(result.Results[0].Id == "id");
+            Assert.IsNotNull(result.Results[0].Id);
+            Assert.IsNotNull(result.Results[0].Score);
+            Assert.IsNotNull(result.Results[0].Metadata);
         }
+        #endregion
+
+        #region Training Data
+        #region Delete Training Data
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteAllTrainingData_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteAllTrainingData(null, "collectionId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteAllTrainingData_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteAllTrainingData("environmentId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteAllTrainingData_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.DeleteAllTrainingData("environmentId", "collectionId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void DeleteAllTrainingData_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+
+            service.DeleteAllTrainingData("environmentId", "collectionId");
+        }
+
+        [TestMethod]
+        public void DeleteAllTrainingData_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            object response = new object();
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<object>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.DeleteAllTrainingData("environmentId", "collectionId");
+
+            Assert.IsNotNull(result);
+            client.Received().DeleteAsync(Arg.Any<string>());
+        }
+        #endregion
+
+        #region List Training Data
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListTrainingData_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.ListTrainingData(null, "collectionId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListTrainingData_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.ListTrainingData("environmentId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ListTrainingData_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.ListTrainingData("environmentId", "collectionId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void ListTrainingData_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+            service.ListTrainingData("environmentId", "collectionId");
+        }
+
+        [TestMethod]
+        public void ListTrainingData_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            var response = new TrainingDataSet()
+            {
+                EnvironmentId = "environmentId",
+                CollectionId = "collectionId",
+                Queries = new List<TrainingQuery>()
+                {
+                    new TrainingQuery()
+                    {
+                        QueryId = "queryId",
+                        NaturalLanguageQuery = "naturalLanguageQuery",
+                        Filter = "filter",
+                        Examples = new List<TrainingExample>()
+                        {
+                            new TrainingExample()
+                            {
+                                DocumentId = "documentId",
+                                CrossReference = "crossReference",
+                                Relevance = 1
+                            }
+                        }
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<TrainingDataSet>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.ListTrainingData("environmentId", "collectionId");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsTrue(response.EnvironmentId == "environmentId");
+            Assert.IsTrue(response.CollectionId == "collectionId");
+            Assert.IsNotNull(response.Queries);
+            Assert.IsTrue(response.Queries.Count > 0);
+            Assert.IsTrue(response.Queries[0].QueryId == "queryId");
+            Assert.IsTrue(response.Queries[0].NaturalLanguageQuery == "naturalLanguageQuery");
+            Assert.IsTrue(response.Queries[0].Filter == "filter");
+            Assert.IsNotNull(response.Queries[0].Examples);
+            Assert.IsTrue(response.Queries[0].Examples.Count > 0);
+            Assert.IsTrue(response.Queries[0].Examples[0].DocumentId == "documentId");
+            Assert.IsTrue(response.Queries[0].Examples[0].CrossReference == "crossReference");
+            Assert.IsTrue(response.Queries[0].Examples[0].Relevance == 1.0f);
+        }
+        #endregion
+
+        #region Add Training Data
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void AddTrainingData_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.AddTrainingData(null, "collectionId", new NewTrainingQuery());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void AddTrainingData_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.AddTrainingData("environmentId", null, new NewTrainingQuery());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void AddTrainingData_No_Body()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.AddTrainingData("environmentId", "collectionId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void AddTrainingData_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            service.AddTrainingData("environmentId", "collectionId", new NewTrainingQuery());
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void AddTrainingData_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+
+            service.AddTrainingData("environmentId", "collectionId", new NewTrainingQuery());
+        }
+
+        [TestMethod]
+        public void AddTrainingData_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region response
+            var response = new TrainingQuery()
+            {
+                QueryId = "queryId",
+                NaturalLanguageQuery = "naturalLanguageQuery",
+                Filter = "filter",
+                Examples = new List<TrainingExample>()
+                {
+                    new TrainingExample()
+                    {
+                        DocumentId = "documentId",
+                        CrossReference = "crossReference",
+                        Relevance = 1
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody(Arg.Any<NewTrainingQuery>())
+                .Returns(request);
+            request.As<TrainingQuery>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var newTrainingQuery = new NewTrainingQuery()
+            {
+                NaturalLanguageQuery = "naturalLanguageQuery",
+                Filter = "filter",
+                Examples = new List<TrainingExample>()
+                {
+                    new TrainingExample()
+                    {
+                        DocumentId = "documentId",
+                        CrossReference = "crossReference",
+                        Relevance = 1
+                    }
+                }
+            };
+
+            var result = service.AddTrainingData("environmentId", "collectionId", newTrainingQuery);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.QueryId == "queryId");
+            Assert.IsTrue(result.NaturalLanguageQuery == "naturalLanguageQuery");
+            Assert.IsTrue(result.Filter == "filter");
+            Assert.IsNotNull(result.Examples);
+            Assert.IsTrue(result.Examples.Count > 0);
+            Assert.IsTrue(result.Examples[0].DocumentId == "documentId");
+            Assert.IsTrue(result.Examples[0].CrossReference == "crossReference");
+            Assert.IsTrue(result.Examples[0].Relevance == 1.0f);
+        }
+        #endregion
+
+        #region Delete Query
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingData_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingData(null, "collectionId", "queryId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingData_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingData("environmentId", null, "queryId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingData_No_QueryId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingData("environmentId", "collectionId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingData_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.DeleteTrainingData("environmentId", "collectionId", "queryId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void DeleteTrainingData_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+
+            service.DeleteTrainingData("environmentId", "collectionId", "queryId");
+        }
+
+        [TestMethod]
+        public void DeleteTrainingData_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            object response = new object();
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<object>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.DeleteTrainingData("environmentId", "collectionId", "queryId");
+
+            Assert.IsNotNull(result);
+            client.Received().DeleteAsync(Arg.Any<string>());
+        }
+        #endregion
+
+        #region Get Training Data
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingData_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingData(null, "collectionId", "queryId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingData_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingData("environmentId", null, "queryId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingData_No_QueryId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingData("environmentId", "collectionId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingData_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.GetTrainingData("environmentId", "collectionId", "queryId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void GetTrainingData_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+            service.GetTrainingData("environmentId", "collectionId", "queryId");
+        }
+
+        [TestMethod]
+        public void GetTrainingData_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            var response = new TrainingQuery()
+            {
+                QueryId = "queryId",
+                NaturalLanguageQuery = "naturalLanguageQuery",
+                Filter = "filter",
+                Examples = new List<TrainingExample>()
+                {
+                    new TrainingExample()
+                    {
+                        DocumentId = "documentId",
+                        CrossReference = "crossReference",
+                        Relevance = 1
+                    }
+                }
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<TrainingQuery>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.GetTrainingData("environmentId", "collectionId", "queryId");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsTrue(response.QueryId == "queryId");
+            Assert.IsTrue(response.NaturalLanguageQuery == "naturalLanguageQuery");
+            Assert.IsTrue(response.Filter == "filter");
+            Assert.IsNotNull(response.Examples);
+            Assert.IsTrue(response.Examples.Count > 0);
+            Assert.IsTrue(response.Examples[0].DocumentId == "documentId");
+            Assert.IsTrue(response.Examples[0].CrossReference == "crossReference");
+            Assert.IsTrue(response.Examples[0].Relevance == 1.0f);
+        }
+        #endregion
+
+        #region Get Training Examples
+        //  Not implemented.
+        #endregion
+
+        #region Add Example
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateTrainingExample_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.CreateTrainingExample(null, "collectionId", "queryId", new TrainingExample());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateTrainingExample_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.CreateTrainingExample("environmentId", null, "queryId", new TrainingExample());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateTrainingExample_No_QueryId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.CreateTrainingExample("environmentId", "collectionId", null, new TrainingExample());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateTrainingExample_No_Body()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.CreateTrainingExample("environmentId", "collectionId", "queryId",null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void CreateTrainingExample_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+
+            service.CreateTrainingExample("environmentId", "collectionId", "queryId", new TrainingExample());
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void CreateTrainingExample_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+
+            service.CreateTrainingExample("environmentId", "collectionId", "queryId", new TrainingExample());
+        }
+
+        [TestMethod]
+        public void CreateTrainingExample_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PostAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region response
+            var response = new TrainingExample()
+            {
+                DocumentId = "documentId",
+                CrossReference = "crossReference",
+                Relevance = 1
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody(Arg.Any<TrainingExample>())
+                .Returns(request);
+            request.As<TrainingExample>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var trainingExample = new TrainingExample()
+            {
+                DocumentId = "documentId",
+                CrossReference = "crossReference",
+                Relevance = 1
+            };
+
+            var result = service.CreateTrainingExample("environmentId", "collectionId", "queryId", trainingExample);
+
+            Assert.IsNotNull(result);
+            client.Received().PostAsync(Arg.Any<string>());
+            Assert.IsTrue(result.DocumentId == "documentId");
+            Assert.IsTrue(result.CrossReference == "crossReference");
+            Assert.IsTrue(result.Relevance == 1.0f);
+        }
+        #endregion
+
+        #region Remove Example Document
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingExample_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingExample(null, "collectionId", "queryId", "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingExample_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingExample("environmentId", null, "queryId", "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingExample_No_QueryId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingExample("environmentId", "collectionId", null, "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingExample_No_ExampleId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.DeleteTrainingExample("environmentId", "collectionId", "queryId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void DeleteTrainingExample_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.DeleteTrainingExample("environmentId", "collectionId", "queryId", "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void DeleteTrainingExample_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+
+            service.DeleteTrainingExample("environmentId", "collectionId", "queryId", "exampleId");
+        }
+
+        [TestMethod]
+        public void DeleteTrainingExample_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.DeleteAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            object response = new object();
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<object>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.DeleteTrainingExample("environmentId", "collectionId", "queryId", "exampleId");
+
+            Assert.IsNotNull(result);
+            client.Received().DeleteAsync(Arg.Any<string>());
+        }
+        #endregion
+
+        #region Get Example Details
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingExample_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingExample(null, "collectionId", "queryId", "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingExample_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingExample("environmentId", null, "queryId", "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingExample_No_QueryId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingExample("environmentId", "collectionId", null, "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingExample_No_ExampleId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.GetTrainingExample("environmentId", "collectionId", "queryId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void GetTrainingExample_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.GetTrainingExample("environmentId", "collectionId", "queryId", "exampleId");
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void GetTrainingExample_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+            service.GetTrainingExample("environmentId", "collectionId", "queryId", "exampleId");
+        }
+
+        [TestMethod]
+        public void GetTrainingExample_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.GetAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            var response = new TrainingExample()
+            {
+                DocumentId = "documentId",
+                CrossReference = "crossReference",
+                Relevance = 1
+            };
+            #endregion
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.As<TrainingExample>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.GetTrainingExample("environmentId", "collectionId", "queryId", "exampleId");
+
+            Assert.IsNotNull(result);
+            client.Received().GetAsync(Arg.Any<string>());
+            Assert.IsTrue(response.DocumentId == "documentId");
+            Assert.IsTrue(response.CrossReference == "crossReference");
+            Assert.IsTrue(response.Relevance == 1.0f);
+        }
+        #endregion
+
+        #region Update Example
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateTrainingExample_No_EnvironmentId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.UpdateTrainingExample(null, "collectionId", "queryId", "exampleId", new TrainingExamplePatch());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateTrainingExample_No_CollectionId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.UpdateTrainingExample("environmentId", null, "queryId", "exampleId", new TrainingExamplePatch());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateTrainingExample_No_QueryId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.UpdateTrainingExample("environmentId", "collectionId", null, "exampleId", new TrainingExamplePatch());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateTrainingExample_No_ExampleId()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.UpdateTrainingExample("environmentId", "collectionId", "queryId", null, new TrainingExamplePatch());
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateTrainingExample_No_Body()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.UpdateTrainingExample("environmentId", "collectionId", "queryId", "exampleId", null);
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateTrainingExample_No_VersionDate()
+        {
+            DiscoveryService service = new DiscoveryService("username", "password", "versionDate");
+            service.VersionDate = null;
+            service.UpdateTrainingExample("environmentId", "collectionId", "queryId", "exampleId", new TrainingExamplePatch());
+        }
+
+        [TestMethod, ExpectedException(typeof(AggregateException))]
+        public void UpdateTrainingExample_Catch_Exception()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PutAsync(Arg.Any<string>())
+                 .Returns(x =>
+                 {
+                     throw new AggregateException(new ServiceResponseException(Substitute.For<IResponse>(),
+                                                                               Substitute.For<HttpResponseMessage>(HttpStatusCode.BadRequest),
+                                                                               string.Empty));
+                 });
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = DiscoveryService.DISCOVERY_VERSION_DATE_2017_09_01;
+
+            service.UpdateTrainingExample("environmentId", "collectionId", "queryId", "exampleId", new TrainingExamplePatch());
+        }
+
+        [TestMethod]
+        public void UpdateTrainingExample_Success()
+        {
+            IClient client = CreateClient();
+
+            IRequest request = Substitute.For<IRequest>();
+            client.PutAsync(Arg.Any<string>())
+                .Returns(request);
+
+            #region Response
+            var response = new TrainingExample()
+            {
+                DocumentId = "documentId",
+                CrossReference = "crossReference",
+                Relevance = 1
+            };
+            #endregion
+
+            var trainingExample = new TrainingExamplePatch()
+            {
+                CrossReference = "crossReference",
+                Relevance = 1
+            };
+
+            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
+                .Returns(request);
+            request.WithBody<TrainingExamplePatch>(trainingExample)
+                .Returns(request);
+            request.As<TrainingExample>()
+                .Returns(Task.FromResult(response));
+
+            DiscoveryService service = new DiscoveryService(client);
+            service.VersionDate = "versionDate";
+
+            var result = service.UpdateTrainingExample("environmentId", "collectionId", "queryId", "exampleId", trainingExample);
+
+            Assert.IsNotNull(result);
+            client.Received().PutAsync(Arg.Any<string>());
+            Assert.IsTrue(result.DocumentId == "documentId");
+            Assert.IsTrue(result.CrossReference == "crossReference");
+            Assert.IsTrue(result.Relevance == 1.0f);
+        }
+        #endregion
         #endregion
     }
 }
