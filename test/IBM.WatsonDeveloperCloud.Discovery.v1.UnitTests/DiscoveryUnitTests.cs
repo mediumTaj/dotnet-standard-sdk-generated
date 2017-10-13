@@ -158,11 +158,11 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 
             ListEnvironmentsResponse response = new ListEnvironmentsResponse()
             {
-                Environments = new List<ModelEnvironment>()
+                Environments = new List<Model.Environment>()
                {
-                   new ModelEnvironment()
+                   new Model.Environment()
                    {
-                       Status = ModelEnvironment.StatusEnum.PENDING,
+                       Status = Model.Environment.StatusEnum.PENDING,
                        Name = "name",
                        Description = "description",
                        Size = 1,
@@ -192,7 +192,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             client.Received().GetAsync(Arg.Any<string>());
             Assert.IsTrue(result.Environments != null);
             Assert.IsTrue(result.Environments.Count > 0);
-            Assert.IsTrue(result.Environments[0].Status == ModelEnvironment.StatusEnum.PENDING);
+            Assert.IsTrue(result.Environments[0].Status == Model.Environment.StatusEnum.PENDING);
             Assert.IsTrue(result.Environments[0].Name == "name");
             Assert.IsTrue(result.Environments[0].Description == "description");
             Assert.IsTrue(result.Environments[0].Size == 1);
@@ -271,9 +271,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            ModelEnvironment response = new ModelEnvironment()
+            Model.Environment response = new Model.Environment()
             {
-                Status = ModelEnvironment.StatusEnum.PENDING,
+                Status = Model.Environment.StatusEnum.PENDING,
                 Name = "name",
                 Description = "description",
                 Size = 1,
@@ -294,11 +294,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
-            request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
-                .Returns(request);
             request.WithBody<CreateEnvironmentRequest>(environment)
                 .Returns(request);
-            request.As<ModelEnvironment>()
+            request.As<Model.Environment>()
                 .Returns(Task.FromResult(response));
 
             DiscoveryService service = new DiscoveryService(client);
@@ -429,9 +427,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            ModelEnvironment response = new ModelEnvironment()
+            Model.Environment response = new Model.Environment()
             {
-                Status = ModelEnvironment.StatusEnum.PENDING,
+                Status = Model.Environment.StatusEnum.PENDING,
                 Name = "name",
                 Description = "description",
                 Size = 1,
@@ -445,7 +443,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 
             request.WithArgument(Arg.Any<string>(), Arg.Any<string>())
                 .Returns(request);
-            request.As<ModelEnvironment>()
+            request.As<Model.Environment>()
                 .Returns(Task.FromResult(response));
 
             DiscoveryService service = new DiscoveryService(client);
@@ -455,7 +453,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 
             Assert.IsNotNull(result);
             client.Received().GetAsync(Arg.Any<string>());
-            Assert.IsTrue(result.Status == ModelEnvironment.StatusEnum.PENDING);
+            Assert.IsTrue(result.Status == Model.Environment.StatusEnum.PENDING);
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Size == 1);
@@ -533,9 +531,9 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
 
             #region Response
-            ModelEnvironment response = new ModelEnvironment()
+            Model.Environment response = new Model.Environment()
             {
-                Status = ModelEnvironment.StatusEnum.PENDING,
+                Status = Model.Environment.StatusEnum.PENDING,
                 Name = "name",
                 Description = "description",
                 Size = 1,
@@ -557,7 +555,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                 .Returns(request);
             request.WithBody<UpdateEnvironmentRequest>(environment)
                 .Returns(request);
-            request.As<ModelEnvironment>()
+            request.As<Model.Environment>()
                 .Returns(Task.FromResult(response));
 
             DiscoveryService service = new DiscoveryService(client);
@@ -567,7 +565,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
 
             Assert.IsNotNull(result);
             client.Received().PutAsync(Arg.Any<string>());
-            Assert.IsTrue(result.Status == ModelEnvironment.StatusEnum.PENDING);
+            Assert.IsTrue(result.Status == Model.Environment.StatusEnum.PENDING);
             Assert.IsTrue(result.Name == "name");
             Assert.IsTrue(result.Description == "description");
             Assert.IsTrue(result.Size == 1);
@@ -1050,7 +1048,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                         Quotations = false,
                         ShowSourceText = false,
                         HierarchicalTypedRelations = false,
-                        _Model= "model"
+                        Model= "model"
                     }
                 }
             };
@@ -1109,7 +1107,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
             Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.Quotations == false);
             Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.ShowSourceText == false);
             Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.HierarchicalTypedRelations == false);
-            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options._Model == "model");
+            Assert.IsTrue(result.Configurations[0].Enrichments[0].Options.Model == "model");
         }
         #endregion
 
@@ -1209,7 +1207,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                             Quotations = false,
                             ShowSourceText = false,
                             HierarchicalTypedRelations = false,
-                            _Model = "model"
+                            Model = "model"
                         }
                     }
                 },
@@ -1439,7 +1437,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                             Quotations = false,
                             ShowSourceText = false,
                             HierarchicalTypedRelations = false,
-                            _Model = "model"
+                            Model = "model"
                         }
                     }
                 },
@@ -1579,7 +1577,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.UnitTests
                             Quotations = false,
                             ShowSourceText = false,
                             HierarchicalTypedRelations = false,
-                            _Model = "model"
+                            Model = "model"
                         }
                     }
                 },

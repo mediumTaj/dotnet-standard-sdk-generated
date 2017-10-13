@@ -71,7 +71,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             this.Client = httpClient;
         }
 
-        public ModelEnvironment CreateEnvironment(CreateEnvironmentRequest body)
+        public Environment CreateEnvironment(CreateEnvironmentRequest body)
         {
             if (body == null)
                 throw new ArgumentNullException(nameof(body));
@@ -79,7 +79,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'DISCOVERY_VERSION_DATE_2017_09_01'");
 
-            ModelEnvironment result = null;
+            Environment result = null;
 
             try
             {
@@ -87,7 +87,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                                 .PostAsync($"{this.Endpoint}/v1/environments")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<CreateEnvironmentRequest>(body)
-                                .As<ModelEnvironment>()
+                                .As<Environment>()
                                 .Result;
             }
             catch(AggregateException ae)
@@ -124,7 +124,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             return result;
         }
 
-        public ModelEnvironment GetEnvironment(string environmentId)
+        public Environment GetEnvironment(string environmentId)
         {
             if (string.IsNullOrEmpty(environmentId))
                 throw new ArgumentNullException(nameof(environmentId));
@@ -132,14 +132,14 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'DISCOVERY_VERSION_DATE_2017_09_01'");
 
-            ModelEnvironment result = null;
+            Environment result = null;
 
             try
             {
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .GetAsync($"{this.Endpoint}/v1/environments/{environmentId}")
                                 .WithArgument("version", VersionDate)
-                                .As<ModelEnvironment>()
+                                .As<Environment>()
                                 .Result;
             }
             catch(AggregateException ae)
@@ -204,7 +204,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             return result;
         }
 
-        public ModelEnvironment UpdateEnvironment(string environmentId, UpdateEnvironmentRequest body)
+        public Environment UpdateEnvironment(string environmentId, UpdateEnvironmentRequest body)
         {
             if (string.IsNullOrEmpty(environmentId))
                 throw new ArgumentNullException(nameof(environmentId));
@@ -214,7 +214,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'DISCOVERY_VERSION_DATE_2017_09_01'");
 
-            ModelEnvironment result = null;
+            Environment result = null;
 
             try
             {
@@ -222,7 +222,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
                                 .PutAsync($"{this.Endpoint}/v1/environments/{environmentId}")
                                 .WithArgument("version", VersionDate)
                                 .WithBody<UpdateEnvironmentRequest>(body)
-                                .As<ModelEnvironment>()
+                                .As<Environment>()
                                 .Result;
             }
             catch(AggregateException ae)

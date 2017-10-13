@@ -210,9 +210,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         /// </summary>
         /// <param name="workspaceId">The workspace ID.</param>
         /// <param name="entity">The name of the entity.</param>
-        /// <param name="body">A CreateValue object defining the content of the new value for the entity.</param>
+        /// <param name="properties">A CreateValue object defining the content of the new value for the entity.</param>
         /// <returns><see cref="Value" />Value</returns>
-        Value CreateValue(string workspaceId, string entity, CreateValue body);
+        Value CreateValue(string workspaceId, string entity, CreateValue properties);
 
         /// <summary>
         /// Delete entity value. Delete a value for an entity.
@@ -252,9 +252,9 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
         /// <param name="workspaceId">The workspace ID.</param>
         /// <param name="entity">The name of the entity.</param>
         /// <param name="value">The text of the entity value.</param>
-        /// <param name="body">An UpdateValue object defining the new content for value for the entity.</param>
+        /// <param name="properties">An UpdateValue object defining the new content for value for the entity.</param>
         /// <returns><see cref="Value" />Value</returns>
-        Value UpdateValue(string workspaceId, string entity, string value, UpdateValue body);
+        Value UpdateValue(string workspaceId, string entity, string value, UpdateValue properties);
         /// <summary>
         /// Add entity value synonym. Add a new synonym to an entity value.
         /// </summary>

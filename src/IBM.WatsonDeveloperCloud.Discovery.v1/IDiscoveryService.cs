@@ -26,8 +26,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
         /// Add an environment. Creates a new environment.  You can create only one environment per service instance. An attempt to create another environment results in an error.
         /// </summary>
         /// <param name="body">A JSON object that defines an environment name and optional description.</param>
-        /// <returns><see cref="ModelEnvironment" />ModelEnvironment</returns>
-        ModelEnvironment CreateEnvironment(CreateEnvironmentRequest body);
+        /// <returns><see cref="Environment" />Environment</returns>
+        Environment CreateEnvironment(CreateEnvironmentRequest body);
 
         /// <summary>
         /// Delete environment. 
@@ -40,8 +40,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
         /// Get environment info. 
         /// </summary>
         /// <param name="environmentId">The ID of the environment.</param>
-        /// <returns><see cref="ModelEnvironment" />ModelEnvironment</returns>
-        ModelEnvironment GetEnvironment(string environmentId);
+        /// <returns><see cref="Environment" />Environment</returns>
+        Environment GetEnvironment(string environmentId);
 
         /// <summary>
         /// List environments. List existing environments for the service instance.
@@ -63,8 +63,8 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1
         /// </summary>
         /// <param name="environmentId">The ID of the environment.</param>
         /// <param name="body">A JSON object that defines the environment's name and, optionally, description.</param>
-        /// <returns><see cref="ModelEnvironment" />ModelEnvironment</returns>
-        ModelEnvironment UpdateEnvironment(string environmentId, UpdateEnvironmentRequest body);
+        /// <returns><see cref="Environment" />Environment</returns>
+        Environment UpdateEnvironment(string environmentId, UpdateEnvironmentRequest body);
         /// <summary>
         /// Add configuration. Creates a new configuration.  If the input configuration contains the `configuration_id`, `created`, or `updated` properties, then they are ignored and overridden by the system, and an error is not returned so that the overridden fields do not need to be removed when copying a configuration.  The configuration can contain unrecognized JSON fields. Any such fields are ignored and do not generate an error. This makes it easier to use newer configuration files with older versions of the API and the service. It also makes it possible for the tooling to add additional metadata and information to the configuration.
         /// </summary>

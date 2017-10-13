@@ -56,6 +56,12 @@ namespace IBM.WatsonDeveloperCloud.PersonalityInsights.v3.Model
         [JsonProperty("raw_score", NullValueHandling = NullValueHandling.Ignore)]
         public double? RawScore { get; set; }
         /// <summary>
+        /// Indicates whether the characteristic is meaningful for the input language. The field is always `true` for all characteristics of English, Spanish, and Japanese input. The field is `false` for the subset of characteristics of Arabic and Korean input for which the service's models are unable to generate meaningful results.
+        /// </summary>
+        /// <value>Indicates whether the characteristic is meaningful for the input language. The field is always `true` for all characteristics of English, Spanish, and Japanese input. The field is `false` for the subset of characteristics of Arabic and Korean input for which the service's models are unable to generate meaningful results.</value>
+        [JsonProperty("significant", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Significant { get; set; }
+        /// <summary>
         /// For `personality` (Big Five) dimensions, more detailed results for the facets of each dimension as inferred from the input text.
         /// </summary>
         /// <value>For `personality` (Big Five) dimensions, more detailed results for the facets of each dimension as inferred from the input text.</value>

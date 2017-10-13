@@ -67,7 +67,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
         public void Setup()
         {
             var environmentVariable =
-            Environment.GetEnvironmentVariable("VCAP_SERVICES");
+            System.Environment.GetEnvironmentVariable("VCAP_SERVICES");
 
             var fileContent =
                 File.ReadAllText(environmentVariable);
@@ -160,7 +160,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
             var result = _discovery.GetEnvironment(environmentId);
             Console.WriteLine(string.Format("\tEnvironment {0} status is {1}.", environmentId, result.Status));
 
-            if (result.Status == ModelEnvironment.StatusEnum.ACTIVE)
+            if (result.Status == Model.Environment.StatusEnum.ACTIVE)
             {
                 autoEvent.Set();
             }
@@ -935,7 +935,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.IntegrationTests
         public static void TearDown()
         {
             var environmentVariable =
-            Environment.GetEnvironmentVariable("VCAP_SERVICES");
+            System.Environment.GetEnvironmentVariable("VCAP_SERVICES");
 
             var fileContent =
                 File.ReadAllText(environmentVariable);

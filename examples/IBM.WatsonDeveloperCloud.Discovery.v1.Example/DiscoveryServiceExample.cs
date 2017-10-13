@@ -244,7 +244,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
             var result = _discovery.GetEnvironment(environmentId);
             Console.WriteLine(string.Format("\tEnvironment {0} status is {1}.", environmentId, result.Status));
 
-            if (result.Status == ModelEnvironment.StatusEnum.ACTIVE)
+            if (result.Status == Model.Environment.StatusEnum.ACTIVE)
             {
                 autoEvent.Set();
             }
@@ -257,7 +257,7 @@ namespace IBM.WatsonDeveloperCloud.Discovery.v1.Example
                 });
             }
 
-            return result.Status == ModelEnvironment.StatusEnum.ACTIVE;
+            return result.Status == Model.Environment.StatusEnum.ACTIVE;
         }
         #endregion
 

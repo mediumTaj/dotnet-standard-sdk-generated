@@ -675,14 +675,14 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
 
             return result;
         }
-        public Value CreateValue(string workspaceId, string entity, CreateValue body)
+        public Value CreateValue(string workspaceId, string entity, CreateValue properties)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
             if (string.IsNullOrEmpty(entity))
                 throw new ArgumentNullException(nameof(entity));
-            if (body == null)
-                throw new ArgumentNullException(nameof(body));
+            if (properties == null)
+                throw new ArgumentNullException(nameof(properties));
 
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'CONVERSATION_VERSION_DATE_2017_05_26'");
@@ -694,7 +694,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values")
                                 .WithArgument("version", VersionDate)
-                                .WithBody<CreateValue>(body)
+                                .WithBody<CreateValue>(properties)
                                 .As<Value>()
                                 .Result;
             }
@@ -800,7 +800,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
             return result;
         }
 
-        public Value UpdateValue(string workspaceId, string entity, string value, UpdateValue body)
+        public Value UpdateValue(string workspaceId, string entity, string value, UpdateValue properties)
         {
             if (string.IsNullOrEmpty(workspaceId))
                 throw new ArgumentNullException(nameof(workspaceId));
@@ -808,8 +808,8 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
                 throw new ArgumentNullException(nameof(entity));
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
-            if (body == null)
-                throw new ArgumentNullException(nameof(body));
+            if (properties == null)
+                throw new ArgumentNullException(nameof(properties));
 
             if(string.IsNullOrEmpty(VersionDate))
                 throw new ArgumentNullException("versionDate cannot be null. Use 'CONVERSATION_VERSION_DATE_2017_05_26'");
@@ -821,7 +821,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1
                 result = this.Client.WithAuthentication(this.UserName, this.Password)
                                 .PostAsync($"{this.Endpoint}/v1/workspaces/{workspaceId}/entities/{entity}/values/{value}")
                                 .WithArgument("version", VersionDate)
-                                .WithBody<UpdateValue>(body)
+                                .WithBody<UpdateValue>(properties)
                                 .As<Value>()
                                 .Result;
             }
