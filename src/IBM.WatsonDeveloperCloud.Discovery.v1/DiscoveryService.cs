@@ -23,7 +23,7 @@ using IBM.WatsonDeveloperCloud.Discovery.v1.Model;
 using IBM.WatsonDeveloperCloud.Http;
 using IBM.WatsonDeveloperCloud.Http.Extensions;
 using IBM.WatsonDeveloperCloud.Service;
-using Newtonsoft.Json;
+using Environment = IBM.WatsonDeveloperCloud.Discovery.v1.Model.Environment;
 using System;
 
 namespace IBM.WatsonDeveloperCloud.Discovery.v1
