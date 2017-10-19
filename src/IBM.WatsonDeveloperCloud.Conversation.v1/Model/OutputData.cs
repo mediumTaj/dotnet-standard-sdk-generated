@@ -30,19 +30,19 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>Up to 50 messages logged with the request.</value>
         [JsonProperty("log_messages", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic LogMessages { get; set; }
+        public List<LogMessage> LogMessages { get; set; }
         /// <summary>
         /// An array of responses to the user.
         /// </summary>
         /// <value>An array of responses to the user.</value>
         [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Text { get; set; }
+        public List<string> Text { get; set; }
         /// <summary>
         /// An array of the nodes that were triggered to create the response.
         /// </summary>
         /// <value>An array of the nodes that were triggered to create the response.</value>
         [JsonProperty("nodes_visited", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic NodesVisited { get; set; }
+        public List<string> NodesVisited { get; set; }
     }
 
 }

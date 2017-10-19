@@ -17,25 +17,25 @@
 
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
+namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
 {
     /// <summary>
-    /// An intent identified in the user input.
+    /// Information about something that went wrong.
     /// </summary>
-    public class RuntimeIntent
+    public class WarningInfo
     {
         /// <summary>
-        /// The name of the recognized intent.
+        /// Codified warning string, such as `limit_reached`.
         /// </summary>
-        /// <value>The name of the recognized intent.</value>
-        [JsonProperty("intent", NullValueHandling = NullValueHandling.Ignore)]
-        public string Intent { get; set; }
+        /// <value>Codified warning string, such as `limit_reached`.</value>
+        [JsonProperty("warning_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string WarningId { get; set; }
         /// <summary>
-        /// A decimal percentage that represents Watson's confidence in the intent.
+        /// Information about the error.
         /// </summary>
-        /// <value>A decimal percentage that represents Watson's confidence in the intent.</value>
-        [JsonProperty("confidence", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Confidence { get; set; }
+        /// <value>Information about the error.</value>
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
+        public string Description { get; set; }
     }
 
 }

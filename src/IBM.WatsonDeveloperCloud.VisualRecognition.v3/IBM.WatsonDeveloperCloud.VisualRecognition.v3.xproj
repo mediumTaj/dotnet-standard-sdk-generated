@@ -7,9 +7,9 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>34f55944-7db0-4ec1-9600-9686c9dea071</ProjectGuid>
-    <RootNamespace>IBM.WatsonDeveloperCloud.Conversation.v1</RootNamespace>
-    <AssemblyName>IBM.WatsonDeveloperCloud.Conversation.v1</AssemblyName>
+    <ProjectGuid></ProjectGuid>
+    <RootNamespace>IBM.WatsonDeveloperCloud.VisualRecognition.v3</RootNamespace>
+    <AssemblyName>IBM.WatsonDeveloperCloud.VisualRecognition.v3</AssemblyName>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion></TargetFrameworkVersion>

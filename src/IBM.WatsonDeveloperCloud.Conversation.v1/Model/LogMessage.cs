@@ -64,7 +64,7 @@ namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
         /// </summary>
         /// <value>The text of the message.</value>
         [JsonProperty("msg", NullValueHandling = NullValueHandling.Ignore)]
-        public dynamic Msg { get; set; }
+        public string Msg { get; set; }
     }
 
 }

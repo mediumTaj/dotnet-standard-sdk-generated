@@ -15,13 +15,21 @@
 *
 */
 
-namespace IBM.WatsonDeveloperCloud.Conversation.v1.Model
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
 {
     /// <summary>
-    /// For internal use only.
+    /// Verbose list of classifiers retrieved in the GET v2/classifiers call.
     /// </summary>
-    public class SystemResponse
+    public class Classifiers
     {
+        /// <summary>
+        /// Gets or Sets Classifiers
+        /// </summary>
+        [JsonProperty("classifiers", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Classifier> Classifiers { get; set; }
     }
 
 }
