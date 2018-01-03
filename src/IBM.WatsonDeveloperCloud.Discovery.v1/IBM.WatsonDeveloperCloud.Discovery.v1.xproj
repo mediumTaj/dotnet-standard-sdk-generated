@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>f83df89e-e06d-4f2d-b6bf-b92da12dbaec</ProjectGuid>
+    <ProjectGuid>bef0e9d9-b2da-49e3-b985-023505a57e5e</ProjectGuid>
     <RootNamespace>IBM.WatsonDeveloperCloud.Discovery.v1</RootNamespace>
     <AssemblyName>IBM.WatsonDeveloperCloud.Discovery.v1</AssemblyName>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>

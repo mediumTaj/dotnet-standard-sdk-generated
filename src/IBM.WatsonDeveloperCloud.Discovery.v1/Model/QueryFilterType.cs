@@ -15,27 +15,28 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
+namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// Information about something that went wrong.
+    /// QueryFilterType.
     /// </summary>
-    public class WarningInfo
+    public class QueryFilterType
     {
         /// <summary>
-        /// Codified warning string, such as `limit_reached`.
+        /// A comma-separated list of types to exclude.
         /// </summary>
-        /// <value>Codified warning string, such as `limit_reached`.</value>
-        [JsonProperty("warning_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string WarningId { get; set; }
+        /// <value>A comma-separated list of types to exclude.</value>
+        [JsonProperty("exclude", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Exclude { get; set; }
         /// <summary>
-        /// Information about the error.
+        /// A comma-separated list of types to include. All other types are excluded.
         /// </summary>
-        /// <value>Information about the error.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        /// <value>A comma-separated list of types to include. All other types are excluded.</value>
+        [JsonProperty("include", NullValueHandling = NullValueHandling.Ignore)]
+        public List<string> Include { get; set; }
     }
 
 }

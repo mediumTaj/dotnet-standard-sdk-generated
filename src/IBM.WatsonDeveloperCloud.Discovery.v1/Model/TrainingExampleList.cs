@@ -18,18 +18,18 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
+namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// Verbose list of classifiers retrieved in the GET v2/classifiers call.
+    /// TrainingExampleList.
     /// </summary>
-    public class Classifiers
+    public class TrainingExampleList
     {
         /// <summary>
-        /// Gets or Sets Classifiers
+        /// Gets or Sets Examples
         /// </summary>
-        [JsonProperty("classifiers", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Classifier> Classifiers { get; set; }
+        [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
+        public List<TrainingExample> Examples { get; set; }
     }
 
 }

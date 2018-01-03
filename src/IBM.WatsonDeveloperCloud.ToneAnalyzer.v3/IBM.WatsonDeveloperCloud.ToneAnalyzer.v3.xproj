@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>0fd6fe2d-c15c-425c-8a0d-16bb8bdf0e26</ProjectGuid>
+    <ProjectGuid>b64707c4-ef17-4f06-a01b-12d6b7536173</ProjectGuid>
     <RootNamespace>IBM.WatsonDeveloperCloud.ToneAnalyzer.v3</RootNamespace>
     <AssemblyName>IBM.WatsonDeveloperCloud.ToneAnalyzer.v3</AssemblyName>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>

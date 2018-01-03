@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>423dc6ca-8ff9-48d3-9b9d-b2d3b9dcffd4</ProjectGuid>
+    <ProjectGuid>3bfb5e3c-ef98-47a5-8dd8-e8ab86ec4c2f</ProjectGuid>
     <RootNamespace>IBM.WatsonDeveloperCloud.LanguageTranslator.v2</RootNamespace>
     <AssemblyName>IBM.WatsonDeveloperCloud.LanguageTranslator.v2</AssemblyName>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>

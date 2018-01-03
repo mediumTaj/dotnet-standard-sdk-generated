@@ -15,21 +15,13 @@
 *
 */
 
-using Newtonsoft.Json;
-
-namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
+namespace IBM.WatsonDeveloperCloud.Discovery.v1.Model
 {
     /// <summary>
-    /// A category within a classifier.
+    /// An object that indicates the Categories enrichment will be applied to the specified field.
     /// </summary>
-    public class ModelClass
+    public class NluEnrichmentCategories
     {
-        /// <summary>
-        /// The name of the class.
-        /// </summary>
-        /// <value>The name of the class.</value>
-        [JsonProperty("class", NullValueHandling = NullValueHandling.Ignore)]
-        public string ClassName { get; set; }
     }
 
 }
