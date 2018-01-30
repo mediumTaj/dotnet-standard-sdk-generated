@@ -1,5 +1,5 @@
 /**
-* Copyright 2018 IBM Corp. All Rights Reserved.
+* Copyright 2017 IBM Corp. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -15,33 +15,29 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
-
 namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
 {
     /// <summary>
-    /// Result of a class within a classifier.
+    /// result of a class within a classifier
     /// </summary>
     public class ClassResult
     {
         /// <summary>
-        /// The name of the class.
+        /// Gets or Sets _Class
         /// </summary>
-        /// <value>The name of the class.</value>
-        [JsonProperty("class", NullValueHandling = NullValueHandling.Ignore)]
-        public string ClassName { get; set; }
+        [JsonProperty("class")]
+        public string _Class { get; set; }
         /// <summary>
-        /// Confidence score for the property in the range of 0 to 1. A higher score indicates greater likelihood that the class is depicted in the image. The default threshold for returning scores from a classifier is 0.5.
+        /// Confidence score, on a scale of 0.0 to 1.0.
         /// </summary>
-        /// <value>Confidence score for the property in the range of 0 to 1. A higher score indicates greater likelihood that the class is depicted in the image. The default threshold for returning scores from a classifier is 0.5.</value>
-        [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
-        public float? Score { get; set; }
+        [JsonProperty("score")]
+        public float Score { get; set; }
         /// <summary>
-        /// Knowledge graph of the property. For example, `People/Leaders/Presidents/USA/Barack Obama`. Included only if identified.
+        /// Type hierarchy, e.g. 'People/Leaders/Presidents/USA/Barack Obama'. Only included if found.
         /// </summary>
-        /// <value>Knowledge graph of the property. For example, `People/Leaders/Presidents/USA/Barack Obama`. Included only if identified.</value>
-        [JsonProperty("type_hierarchy", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type_hierarchy")]
         public string TypeHierarchy { get; set; }
     }
-
 }

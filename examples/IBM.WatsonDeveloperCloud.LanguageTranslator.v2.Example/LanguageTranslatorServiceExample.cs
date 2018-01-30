@@ -27,7 +27,6 @@ namespace IBM.WatsonDeveloperCloud.LanguageTranslator.v2.Example
     {
         private LanguageTranslatorService _languageTranslator;
         private string _glossaryPath = "glossary.tmx";
-        private string _glossaryMimeType = "text/xml";
         private string _baseModel = "en-fr";
         private string _customModelName = "dotnetExampleModel";
         private string _customModelID = "en-fr";

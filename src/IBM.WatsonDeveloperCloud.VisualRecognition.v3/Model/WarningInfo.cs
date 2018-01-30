@@ -1,5 +1,5 @@
 /**
-* Copyright 2018 IBM Corp. All Rights Reserved.
+* Copyright 2017 IBM Corp. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -15,27 +15,26 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
-
 namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
 {
     /// <summary>
-    /// Information about something that went wrong.
+    /// Information about something that went wrong. Omitted if no warning.
     /// </summary>
     public class WarningInfo
     {
         /// <summary>
-        /// Codified warning string, such as `limit_reached`.
+        /// Codified warning string, like 'limit_reached'.
         /// </summary>
-        /// <value>Codified warning string, such as `limit_reached`.</value>
-        [JsonProperty("warning_id", NullValueHandling = NullValueHandling.Ignore)]
+        /// <value>Codified warning string, like 'limit_reached'.</value>
+        [JsonProperty("warning_id")]
         public string WarningId { get; set; }
         /// <summary>
-        /// Information about the error.
+        /// Human-readable warning string, like 'Max number of images (100) reached.'.
         /// </summary>
-        /// <value>Information about the error.</value>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
+        /// <value>Human-readable warning string, like 'Max number of images (100) reached.'.</value>
+        [JsonProperty("description")]
         public string Description { get; set; }
     }
-
 }

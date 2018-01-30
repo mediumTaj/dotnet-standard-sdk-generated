@@ -1,5 +1,5 @@
 /**
-* Copyright 2018 IBM Corp. All Rights Reserved.
+* Copyright 2017 IBM Corp. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
 *
 */
 
+using System.Collections.Generic;
 using Newtonsoft.Json;
-
 namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
 {
     /// <summary>
@@ -25,11 +25,9 @@ namespace IBM.WatsonDeveloperCloud.VisualRecognition.v3.Model
     public class ModelClass
     {
         /// <summary>
-        /// The name of the class.
+        /// Gets or Sets _Class
         /// </summary>
-        /// <value>The name of the class.</value>
-        [JsonProperty("class", NullValueHandling = NullValueHandling.Ignore)]
-        public string ClassName { get; set; }
+        [JsonProperty("class")]
+        public string _Class { get; set; }
     }
-
 }
